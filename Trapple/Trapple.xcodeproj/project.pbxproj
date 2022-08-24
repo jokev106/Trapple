@@ -12,6 +12,7 @@
 		011AED8E28B4D03300E77F93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 011AED8D28B4D03300E77F93 /* Assets.xcassets */; };
 		011AED9128B4D03300E77F93 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 011AED9028B4D03300E77F93 /* Preview Assets.xcassets */; };
 		011AED9A28B4D15600E77F93 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 011AED9928B4D15600E77F93 /* CloudKit.framework */; };
+		701DD85B28B62459003E53CD /* TripHomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701DD85A28B62459003E53CD /* TripHomePageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		011AED9028B4D03300E77F93 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		011AED9728B4D12E00E77F93 /* Trapple.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Trapple.entitlements; sourceTree = "<group>"; };
 		011AED9928B4D15600E77F93 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		701DD85A28B62459003E53CD /* TripHomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripHomePageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				B3EFEA4C28B6045100B3C53A /* CardView */,
+				701DD85A28B62459003E53CD /* TripHomePageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				701DD85B28B62459003E53CD /* TripHomePageView.swift in Sources */,
 				011AED8C28B4D03000E77F93 /* ContentView.swift in Sources */,
 				011AED8A28B4D03000E77F93 /* TrappleApp.swift in Sources */,
 			);
@@ -322,7 +326,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Trapple/Preview Content\"";
-				DEVELOPMENT_TEAM = JRS36H7H6Q;
+				DEVELOPMENT_TEAM = 3Y6CHKGHC8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -352,7 +356,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Trapple/Preview Content\"";
-				DEVELOPMENT_TEAM = JRS36H7H6Q;
+				DEVELOPMENT_TEAM = 3Y6CHKGHC8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
