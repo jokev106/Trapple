@@ -89,37 +89,42 @@
 			isa = PBXGroup;
 			children = (
 			);
-			path = Services;
-			sourceTree = "<group>";
+			name = Services;
+			path = Trapple/Services;
+			sourceTree = SOURCE_ROOT;
 		};
 		B3EFEA4928B6043300B3C53A /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				B3EFEA4C28B6045100B3C53A /* CardView */,
 			);
-			path = Views;
-			sourceTree = "<group>";
+			name = Views;
+			path = Trapple/Views;
+			sourceTree = SOURCE_ROOT;
 		};
 		B3EFEA4A28B6043900B3C53A /* Model */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Model;
-			sourceTree = "<group>";
+			name = Model;
+			path = Trapple/Model;
+			sourceTree = SOURCE_ROOT;
 		};
 		B3EFEA4B28B6044900B3C53A /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = ViewModel;
-			sourceTree = "<group>";
+			name = ViewModel;
+			path = Trapple/ViewModel;
+			sourceTree = SOURCE_ROOT;
 		};
 		B3EFEA4C28B6045100B3C53A /* CardView */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = CardView;
-			sourceTree = "<group>";
+			name = CardView;
+			path = Trapple/Views/CardView;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
