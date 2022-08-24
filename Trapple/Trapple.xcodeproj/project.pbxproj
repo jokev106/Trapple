@@ -56,6 +56,10 @@
 		011AED8828B4D03000E77F93 /* Trapple */ = {
 			isa = PBXGroup;
 			children = (
+				B3EFEA4B28B6044900B3C53A /* ViewModel */,
+				B3EFEA4A28B6043900B3C53A /* Model */,
+				B3EFEA4928B6043300B3C53A /* Views */,
+				B3EFEA4828B6042B00B3C53A /* Services */,
 				011AED9728B4D12E00E77F93 /* Trapple.entitlements */,
 				011AED8928B4D03000E77F93 /* TrappleApp.swift */,
 				011AED8B28B4D03000E77F93 /* ContentView.swift */,
@@ -79,6 +83,42 @@
 				011AED9928B4D15600E77F93 /* CloudKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B3EFEA4828B6042B00B3C53A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		B3EFEA4928B6043300B3C53A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B3EFEA4C28B6045100B3C53A /* CardView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B3EFEA4A28B6043900B3C53A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B3EFEA4B28B6044900B3C53A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B3EFEA4C28B6045100B3C53A /* CardView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CardView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
