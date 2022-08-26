@@ -14,6 +14,7 @@
 		011AED9A28B4D15600E77F93 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 011AED9928B4D15600E77F93 /* CloudKit.framework */; };
 		B3B8FD7828B895F90007A213 /* TravelPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FD7728B895F90007A213 /* TravelPlanView.swift */; };
 		B3B8FD7A28B8960C0007A213 /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FD7928B8960C0007A213 /* MyProfileView.swift */; };
+		B3B8FD7E28B8C35B0007A213 /* TripCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FD7D28B8C35B0007A213 /* TripCardView.swift */; };
 		B3EFEA4E28B6078F00B3C53A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EFEA4D28B6078F00B3C53A /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,7 @@
 		011AED9928B4D15600E77F93 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		B3B8FD7728B895F90007A213 /* TravelPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelPlanView.swift; sourceTree = "<group>"; };
 		B3B8FD7928B8960C0007A213 /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
+		B3B8FD7D28B8C35B0007A213 /* TripCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCardView.swift; sourceTree = "<group>"; };
 		B3EFEA4D28B6078F00B3C53A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -126,6 +128,7 @@
 		B3EFEA4C28B6045100B3C53A /* CardView */ = {
 			isa = PBXGroup;
 			children = (
+				B3B8FD7D28B8C35B0007A213 /* TripCardView.swift */,
 			);
 			path = CardView;
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 				011AED8C28B4D03000E77F93 /* ContentView.swift in Sources */,
 				011AED8A28B4D03000E77F93 /* TrappleApp.swift in Sources */,
 				B3B8FD7828B895F90007A213 /* TravelPlanView.swift in Sources */,
+				B3B8FD7E28B8C35B0007A213 /* TripCardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

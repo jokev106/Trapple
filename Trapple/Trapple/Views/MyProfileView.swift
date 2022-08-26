@@ -75,7 +75,7 @@ extension MyProfileView {
                         .frame(width: 320, alignment: .leading)
                         .padding(.bottom, 0.5)
                         .foregroundColor(.black)
-
+                    
                 }
             }
         }
@@ -90,29 +90,11 @@ extension MyProfileView {
             ScrollView{
                 VStack{
                     ForEach((1..<10)) {_ in
-                        HStack{
-                            Rectangle()
-                                .frame(width: 40, height: 40)
-                                .foregroundColor(.gray)
-                                .cornerRadius(10)
-                            Spacer()
-                            VStack{
-                                Text("Trip Name")
-                                    .frame(width: 310, alignment: .leading)
-                                    .font(.system(size: 15, weight: .bold))
-                                    .foregroundColor(.black)
-                                Text("5 January 2023 - 8 January 2023")
-                                    .frame(width: 310, alignment: .leading)
-                                    .font(.system(size: 10, weight: .bold))
-                                    .foregroundColor(.gray)
-                                Rectangle()
-                                    .frame(width: 310, height: 1)
-                                    .foregroundColor(.black)
-                            }
+                        NavigationLink{
+                            
                         }
-                        .padding(.horizontal)
-                        .onTapGesture {
-                            //Function Move to Trip Page
+                        label: {
+                        TripCardView()
                         }
                     }
                 }
