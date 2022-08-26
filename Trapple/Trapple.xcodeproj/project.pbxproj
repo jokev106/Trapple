@@ -12,6 +12,9 @@
 		011AED8E28B4D03300E77F93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 011AED8D28B4D03300E77F93 /* Assets.xcassets */; };
 		011AED9128B4D03300E77F93 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 011AED9028B4D03300E77F93 /* Preview Assets.xcassets */; };
 		011AED9A28B4D15600E77F93 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 011AED9928B4D15600E77F93 /* CloudKit.framework */; };
+		B3B8FD7828B895F90007A213 /* TravelPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FD7728B895F90007A213 /* TravelPlanView.swift */; };
+		B3B8FD7A28B8960C0007A213 /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FD7928B8960C0007A213 /* MyProfileView.swift */; };
+		B3EFEA4E28B6078F00B3C53A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EFEA4D28B6078F00B3C53A /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		011AED9028B4D03300E77F93 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		011AED9728B4D12E00E77F93 /* Trapple.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Trapple.entitlements; sourceTree = "<group>"; };
 		011AED9928B4D15600E77F93 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		B3B8FD7728B895F90007A213 /* TravelPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelPlanView.swift; sourceTree = "<group>"; };
+		B3B8FD7928B8960C0007A213 /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
+		B3EFEA4D28B6078F00B3C53A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +68,6 @@
 				B3EFEA4828B6042B00B3C53A /* Services */,
 				011AED9728B4D12E00E77F93 /* Trapple.entitlements */,
 				011AED8928B4D03000E77F93 /* TrappleApp.swift */,
-				011AED8B28B4D03000E77F93 /* ContentView.swift */,
 				011AED8D28B4D03300E77F93 /* Assets.xcassets */,
 				011AED8F28B4D03300E77F93 /* Preview Content */,
 			);
@@ -96,6 +101,10 @@
 			isa = PBXGroup;
 			children = (
 				B3EFEA4C28B6045100B3C53A /* CardView */,
+				B3EFEA4D28B6078F00B3C53A /* HomeView.swift */,
+				011AED8B28B4D03000E77F93 /* ContentView.swift */,
+				B3B8FD7728B895F90007A213 /* TravelPlanView.swift */,
+				B3B8FD7928B8960C0007A213 /* MyProfileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -191,8 +200,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3B8FD7A28B8960C0007A213 /* MyProfileView.swift in Sources */,
+				B3EFEA4E28B6078F00B3C53A /* HomeView.swift in Sources */,
 				011AED8C28B4D03000E77F93 /* ContentView.swift in Sources */,
 				011AED8A28B4D03000E77F93 /* TrappleApp.swift in Sources */,
+				B3B8FD7828B895F90007A213 /* TravelPlanView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,10 +331,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Trapple/Trapple.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Trapple/Preview Content\"";
-				DEVELOPMENT_TEAM = JRS36H7H6Q;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -335,8 +348,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Trapple;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Adventurer.Trapple;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -349,10 +363,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Trapple/Trapple.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Trapple/Preview Content\"";
-				DEVELOPMENT_TEAM = JRS36H7H6Q;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -365,8 +380,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Trapple;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Adventurer.Trapple;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

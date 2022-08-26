@@ -11,7 +11,7 @@ import SwiftUI
 struct TrappleApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
         }
     }
 }
