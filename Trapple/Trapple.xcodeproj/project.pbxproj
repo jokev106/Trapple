@@ -14,6 +14,7 @@
 		011AED9A28B4D15600E77F93 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 011AED9928B4D15600E77F93 /* CloudKit.framework */; };
 		B3B8FD7828B895F90007A213 /* TravelPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FD7728B895F90007A213 /* TravelPlanView.swift */; };
 		B3B8FD7A28B8960C0007A213 /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FD7928B8960C0007A213 /* MyProfileView.swift */; };
+		B3B8FD7C28B8B9EE0007A213 /* CreatePlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FD7B28B8B9EE0007A213 /* CreatePlanView.swift */; };
 		B3EFEA4E28B6078F00B3C53A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EFEA4D28B6078F00B3C53A /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,7 @@
 		011AED9928B4D15600E77F93 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		B3B8FD7728B895F90007A213 /* TravelPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelPlanView.swift; sourceTree = "<group>"; };
 		B3B8FD7928B8960C0007A213 /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
+		B3B8FD7B28B8B9EE0007A213 /* CreatePlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlanView.swift; sourceTree = "<group>"; };
 		B3EFEA4D28B6078F00B3C53A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,6 +107,7 @@
 				011AED8B28B4D03000E77F93 /* ContentView.swift */,
 				B3B8FD7728B895F90007A213 /* TravelPlanView.swift */,
 				B3B8FD7928B8960C0007A213 /* MyProfileView.swift */,
+				B3B8FD7B28B8B9EE0007A213 /* CreatePlanView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 				011AED8C28B4D03000E77F93 /* ContentView.swift in Sources */,
 				011AED8A28B4D03000E77F93 /* TrappleApp.swift in Sources */,
 				B3B8FD7828B895F90007A213 /* TravelPlanView.swift in Sources */,
+				B3B8FD7C28B8B9EE0007A213 /* CreatePlanView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
