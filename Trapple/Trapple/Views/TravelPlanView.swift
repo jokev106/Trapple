@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct TravelPlanView: View {
+    
+    @Environment(\.presentationMode) var presentationMode:Binding<PresentationMode>
+    
+    @State var createPlan = true
+    
     var body: some View {
         GeometryReader{geo in
             ZStack{
@@ -45,9 +50,8 @@ extension TravelPlanView {
         HStack{
             Spacer()
             
-            NavigationLink {
-                CreatePlanView()
-                    .navigationBarHidden(true)
+            Button {
+                self.createPlan.toggle()
             } label: {
                 Text("Create")
                     .frame(width: 100, height: 100)
@@ -56,6 +60,9 @@ extension TravelPlanView {
                     .background(yellow)
                     .cornerRadius(10)
                     .shadow(color: Color.gray.opacity(0.275), radius: 8, x: 2, y: 4)
+            }.sheet(isPresented: $createPlan) {
+                CreatePlanView()
+                    .navigationBarHidden(true)
             }
             
             Spacer()

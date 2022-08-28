@@ -7,7 +7,9 @@
 
 import SwiftUI
 
+
 struct CreatePlanView: View {
+    
     
     //var for form input
     @State var inputTripName: String = ""
@@ -36,6 +38,7 @@ struct CreatePlanView: View {
                         }
                         CreateButton
                     }.navigationTitle("Create Plan")
+                        .background(graybg)
                         .toolbar{
                             ToolbarItem(placement: .navigationBarLeading) {
                                 Button{
@@ -43,8 +46,9 @@ struct CreatePlanView: View {
                                     presentationMode.wrappedValue.dismiss()
                                 }label: {
                                     Image(systemName: "chevron.left")
+                                        .foregroundColor(yellow)
                                     Text("Back")
-                                        .foregroundColor(.blue)
+                                        .foregroundColor(yellow)
                                 }
                             }
                         }
