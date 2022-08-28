@@ -28,8 +28,9 @@ struct MyProfileView: View {
                         HistoryUserSection
                         
                     }.navigationTitle("Profile")
+                        .background(graybg)
                 }
-            }
+            }.navigationAppearance(backgroundColor: UIColor(graybg), foregroundColor: UIColor(blacktext), hideSeperator: true)
         }
     }
 }
@@ -61,20 +62,22 @@ extension MyProfileView {
                     .padding(.horizontal, 1)
                     .frame(width: 350, height: 80)
                     .cornerRadius(13)
-                    .foregroundColor(.gray.opacity(0.5))
+                    .foregroundColor(.white)
                 VStack{
                     Text("Name")
                         .frame(width: 320, alignment: .leading)
+                        .font(Font.custom("Gilroy-Light", size: 15))
                         .padding(.top, 0.5)
-                        .foregroundColor(.black)
+                        .foregroundColor(blacktext)
                     Rectangle()
                         .frame(width: 310, height: 1)
                         .foregroundColor(.black)
                         .padding(.horizontal)
                     Text("Age ")
                         .frame(width: 320, alignment: .leading)
+                        .font(Font.custom("Gilroy-Light", size: 15))
                         .padding(.bottom, 0.5)
-                        .foregroundColor(.black)
+                        .foregroundColor(blacktext)
                     
                 }
             }
@@ -85,7 +88,8 @@ extension MyProfileView {
         VStack{
             Text("My History").bold()
                 .frame(width: 350, alignment: .leading)
-                .foregroundColor(Color.black)
+                .foregroundColor(blacktext)
+                .font(Font.custom("Gilroy-Light", size: 20))
                 .padding(0.5)
             ScrollView{
                 VStack{

@@ -28,6 +28,7 @@ struct HomeView: View {
                     MyProfileView()
                         .tabItem{
                             Label("My Profile", systemImage: "person.crop.circle.fill")
+                            
                         }
                 }.accentColor(yellow)
                 
