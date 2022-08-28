@@ -16,6 +16,7 @@
 		0172645E28B7508C008F0B79 /* CloudKitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172645D28B7508C008F0B79 /* CloudKitTesting.swift */; };
 		0172646028B8B15C008F0B79 /* CloudKitCRUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172645F28B8B15C008F0B79 /* CloudKitCRUD.swift */; };
 		0172646228B8B31D008F0B79 /* CloudKitCRUDViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172646128B8B31D008F0B79 /* CloudKitCRUDViewModel.swift */; };
+		01BAC25A28BB9B5800C61985 /* PlanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BAC25928BB9B5800C61985 /* PlanModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		0172645D28B7508C008F0B79 /* CloudKitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitTesting.swift; sourceTree = "<group>"; };
 		0172645F28B8B15C008F0B79 /* CloudKitCRUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitCRUD.swift; sourceTree = "<group>"; };
 		0172646128B8B31D008F0B79 /* CloudKitCRUDViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitCRUDViewModel.swift; sourceTree = "<group>"; };
+		01BAC25928BB9B5800C61985 /* PlanModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 		B3EFEA4A28B6043900B3C53A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				01BAC25928BB9B5800C61985 /* PlanModel.swift */,
 			);
 			name = Model;
 			path = Trapple/Model;
@@ -213,6 +216,7 @@
 				0172645E28B7508C008F0B79 /* CloudKitTesting.swift in Sources */,
 				011AED8A28B4D03000E77F93 /* TrappleApp.swift in Sources */,
 				0172645C28B74F74008F0B79 /* CloudKitViewModel.swift in Sources */,
+				01BAC25A28BB9B5800C61985 /* PlanModel.swift in Sources */,
 				0172646228B8B31D008F0B79 /* CloudKitCRUDViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

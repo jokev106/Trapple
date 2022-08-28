@@ -16,11 +16,17 @@ struct CloudKitCRUD: View {
             VStack{
                 header
                 textfield
+                textfield2
+                datepicker1
+                datepicker2
                 addButton
                 
                 List{
-                    ForEach(vm.plans, id: \.self){
-                        Text($0)
+                    ForEach(vm.plans, id: \.recordID){ item in
+                        HStack{
+                            Text(item.title)
+                            Text(item.destination)
+                        }
                     }
                 }
                 .listStyle(PlainListStyle())
@@ -44,11 +50,35 @@ extension CloudKitCRUD {
     }
     
     private var textfield: some View{
-        TextField("Add Plan Name", text: $vm.text)
+        TextField("Add Plan Name", text: $vm.title)
             .frame(height: 55)
             .padding(.leading)
             .background(Color.gray.opacity(0.4))
             .cornerRadius(10)
+    }
+    
+    private var textfield2: some View{
+        TextField("Add Destination Name", text: $vm.destination)
+            .frame(height: 55)
+            .padding(.leading)
+            .background(Color.gray.opacity(0.4))
+            .cornerRadius(10)
+    }
+    
+    private var datepicker1: some View{
+        DatePicker(
+            "Start Date",
+            selection: $vm.startDate,
+            displayedComponents: [.date]
+        )
+    }
+    
+    private var datepicker2: some View{
+        DatePicker(
+            "End Date",
+            selection: $vm.endDate,
+            displayedComponents: [.date]
+        )
     }
     
     private var addButton: some View{
