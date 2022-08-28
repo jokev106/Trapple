@@ -43,15 +43,19 @@ extension TravelPlanView {
     private var CreateJoinButton: some View{
         HStack{
             Spacer()
-            Text("Create")
-                .frame(width: 100, height: 100)
-                .foregroundColor(Color.black)
-                .background(Color.gray.opacity(0.5))
-                .cornerRadius(10)
-                .shadow(color: Color.gray.opacity(0.275), radius: 8, x: 2, y: 4)
-                .onTapGesture {
-                    //Function
-                }
+            
+            NavigationLink {
+                CreatePlanView()
+                    .navigationBarHidden(true)
+            } label: {
+                Text("Create")
+                    .frame(width: 100, height: 100)
+                    .foregroundColor(Color.black)
+                    .background(Color.gray.opacity(0.5))
+                    .cornerRadius(10)
+                    .shadow(color: Color.gray.opacity(0.275), radius: 8, x: 2, y: 4)
+            }
+            
             Spacer()
                 .frame(width: 60)
             Text("Join")
@@ -64,7 +68,7 @@ extension TravelPlanView {
                     //Function
                 }
             Spacer()
-
+            
         }.padding()
     }
     
@@ -86,7 +90,7 @@ extension TravelPlanView {
                                     .background(Color.white)
                                     .foregroundColor(Color.gray.opacity(0.5))
                                     .cornerRadius(13)
-                                    
+                                
                             }
                             
                             VStack{
@@ -118,7 +122,7 @@ extension TravelPlanView {
                                     .frame(width: 200,alignment: .leading)
                                     .foregroundColor(Color.black)
                             }
-
+                            
                             Spacer()
                         }
                         .frame(height: 120)
