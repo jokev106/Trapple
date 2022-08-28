@@ -13,6 +13,10 @@
 		011AED9128B4D03300E77F93 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 011AED9028B4D03300E77F93 /* Preview Assets.xcassets */; };
 		011AED9A28B4D15600E77F93 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 011AED9928B4D15600E77F93 /* CloudKit.framework */; };
 		701DD85B28B62459003E53CD /* TripHomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701DD85A28B62459003E53CD /* TripHomePageView.swift */; };
+		701DD85D28B628C2003E53CD /* RundownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701DD85C28B628C2003E53CD /* RundownView.swift */; };
+		701DD86228B63644003E53CD /* AddRundownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701DD86128B63644003E53CD /* AddRundownView.swift */; };
+		701E3B0028BB14D2008CFEB3 /* Gilroy-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 701E3AFE28BB14D2008CFEB3 /* Gilroy-ExtraBold.otf */; };
+		701E3B0128BB14D2008CFEB3 /* Gilroy-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 701E3AFF28BB14D2008CFEB3 /* Gilroy-Light.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,11 @@
 		011AED9728B4D12E00E77F93 /* Trapple.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Trapple.entitlements; sourceTree = "<group>"; };
 		011AED9928B4D15600E77F93 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		701DD85A28B62459003E53CD /* TripHomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripHomePageView.swift; sourceTree = "<group>"; };
+		701DD85C28B628C2003E53CD /* RundownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RundownView.swift; sourceTree = "<group>"; };
+		701DD86128B63644003E53CD /* AddRundownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRundownView.swift; sourceTree = "<group>"; };
+		701E3AFE28BB14D2008CFEB3 /* Gilroy-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-ExtraBold.otf"; sourceTree = "<group>"; };
+		701E3AFF28BB14D2008CFEB3 /* Gilroy-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Light.otf"; sourceTree = "<group>"; };
+		701E3B0228BB172D008CFEB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +67,7 @@
 		011AED8828B4D03000E77F93 /* Trapple */ = {
 			isa = PBXGroup;
 			children = (
+				701E3B0228BB172D008CFEB3 /* Info.plist */,
 				B3EFEA4B28B6044900B3C53A /* ViewModel */,
 				B3EFEA4A28B6043900B3C53A /* Model */,
 				B3EFEA4928B6043300B3C53A /* Views */,
@@ -87,6 +97,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		701E3AFD28BB14A8008CFEB3 /* Custom Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				701E3AFE28BB14D2008CFEB3 /* Gilroy-ExtraBold.otf */,
+				701E3AFF28BB14D2008CFEB3 /* Gilroy-Light.otf */,
+			);
+			path = "Custom Fonts";
+			sourceTree = "<group>";
+		};
 		B3EFEA4828B6042B00B3C53A /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -97,8 +116,11 @@
 		B3EFEA4928B6043300B3C53A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				701E3AFD28BB14A8008CFEB3 /* Custom Fonts */,
 				B3EFEA4C28B6045100B3C53A /* CardView */,
 				701DD85A28B62459003E53CD /* TripHomePageView.swift */,
+				701DD85C28B628C2003E53CD /* RundownView.swift */,
+				701DD86128B63644003E53CD /* AddRundownView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -184,6 +206,8 @@
 			files = (
 				011AED9128B4D03300E77F93 /* Preview Assets.xcassets in Resources */,
 				011AED8E28B4D03300E77F93 /* Assets.xcassets in Resources */,
+				701E3B0128BB14D2008CFEB3 /* Gilroy-Light.otf in Resources */,
+				701E3B0028BB14D2008CFEB3 /* Gilroy-ExtraBold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,6 +218,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				701DD86228B63644003E53CD /* AddRundownView.swift in Sources */,
+				701DD85D28B628C2003E53CD /* RundownView.swift in Sources */,
 				701DD85B28B62459003E53CD /* TripHomePageView.swift in Sources */,
 				011AED8C28B4D03000E77F93 /* ContentView.swift in Sources */,
 				011AED8A28B4D03000E77F93 /* TrappleApp.swift in Sources */,
@@ -329,6 +355,7 @@
 				DEVELOPMENT_TEAM = 3Y6CHKGHC8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Trapple/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -359,6 +386,7 @@
 				DEVELOPMENT_TEAM = 3Y6CHKGHC8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Trapple/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
