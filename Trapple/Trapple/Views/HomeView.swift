@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct HomeView: View {
+    
+    init(){
+        UITabBar.appearance().barTintColor = UIColor(darkblue)
+    }
+    
     var body: some View {
         GeometryReader{geo in
             ZStack{
@@ -24,7 +29,7 @@ struct HomeView: View {
                         .tabItem{
                             Label("My Profile", systemImage: "person.crop.circle.fill")
                         }
-                }.foregroundColor(Color.blue)
+                }.accentColor(yellow)
                 
             }
         }

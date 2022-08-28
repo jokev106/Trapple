@@ -19,9 +19,10 @@ struct TravelPlanView: View {
                         CreateJoinButton
                         Divider
                         OnGoingTripSection
-                    }.navigationTitle("Trip")
+                    }.navigationTitle(Text("Travel Plan").font(Font.custom("Gilroy-ExtraBold", size: 48)))
+                        .background(graybg)
                 }
-            }
+            }.navigationAppearance(backgroundColor: UIColor(graybg), foregroundColor: UIColor(blacktext), hideSeperator: true)
         }
     }
 }
@@ -51,7 +52,8 @@ extension TravelPlanView {
                 Text("Create")
                     .frame(width: 100, height: 100)
                     .foregroundColor(Color.black)
-                    .background(Color.gray.opacity(0.5))
+                    .font(Font.custom("Gilroy-ExtraBold", size: 18))
+                    .background(yellow)
                     .cornerRadius(10)
                     .shadow(color: Color.gray.opacity(0.275), radius: 8, x: 2, y: 4)
             }
@@ -61,7 +63,8 @@ extension TravelPlanView {
             Text("Join")
                 .frame(width: 100, height: 100)
                 .foregroundColor(Color.black)
-                .background(Color.gray.opacity(0.5))
+                .font(Font.custom("Gilroy-ExtraBold", size: 18))
+                .background(yellow)
                 .cornerRadius(10)
                 .shadow(color: Color.gray.opacity(0.275), radius: 8, x: 2, y: 4)
                 .onTapGesture {
@@ -75,6 +78,7 @@ extension TravelPlanView {
     private var OnGoingTripSection: some View{
         VStack{
             Text("On Going Trip").bold()
+                .font(Font.custom("Gilroy-Light", size: 20))
                 .frame(width: 370, alignment: .leading)
                 .foregroundColor(Color.black)
                 .padding(0.5)

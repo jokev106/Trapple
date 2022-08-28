@@ -12,16 +12,17 @@
 		011AED8E28B4D03300E77F93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 011AED8D28B4D03300E77F93 /* Assets.xcassets */; };
 		011AED9128B4D03300E77F93 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 011AED9028B4D03300E77F93 /* Preview Assets.xcassets */; };
 		011AED9A28B4D15600E77F93 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 011AED9928B4D15600E77F93 /* CloudKit.framework */; };
-		B3B8FD7828B895F90007A213 /* TravelPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FD7728B895F90007A213 /* TravelPlanView.swift */; };
-		B3B8FD7A28B8960C0007A213 /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FD7928B8960C0007A213 /* MyProfileView.swift */; };
-		B3B8FD7E28B8C35B0007A213 /* TripCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FD7D28B8C35B0007A213 /* TripCardView.swift */; };
-		B3B8FD7C28B8B9EE0007A213 /* CreatePlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FD7B28B8B9EE0007A213 /* CreatePlanView.swift */; };
-		B3EFEA4E28B6078F00B3C53A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EFEA4D28B6078F00B3C53A /* HomeView.swift */; };
 		701DD85B28B62459003E53CD /* TripHomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701DD85A28B62459003E53CD /* TripHomePageView.swift */; };
-		701DD85D28B628C2003E53CD /* RundownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701DD85C28B628C2003E53CD /* RundownView.swift */; };
-		701DD86228B63644003E53CD /* AddRundownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701DD86128B63644003E53CD /* AddRundownView.swift */; };
 		701E3B0028BB14D2008CFEB3 /* Gilroy-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 701E3AFE28BB14D2008CFEB3 /* Gilroy-ExtraBold.otf */; };
 		701E3B0128BB14D2008CFEB3 /* Gilroy-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 701E3AFF28BB14D2008CFEB3 /* Gilroy-Light.otf */; };
+		B3B8FD7828B895F90007A213 /* TravelPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FD7728B895F90007A213 /* TravelPlanView.swift */; };
+		B3B8FD7A28B8960C0007A213 /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FD7928B8960C0007A213 /* MyProfileView.swift */; };
+		B3B8FD7C28B8B9EE0007A213 /* CreatePlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FD7B28B8B9EE0007A213 /* CreatePlanView.swift */; };
+		B3B8FD7E28B8C35B0007A213 /* TripCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FD7D28B8C35B0007A213 /* TripCardView.swift */; };
+		B3B8FD8628BB94110007A213 /* RundownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FD8528BB94110007A213 /* RundownView.swift */; };
+		B3B8FD8828BB942C0007A213 /* NavigationAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FD8728BB942C0007A213 /* NavigationAppearance.swift */; };
+		B3B8FD8A28BB944B0007A213 /* ColorSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FD8928BB944B0007A213 /* ColorSet.swift */; };
+		B3EFEA4E28B6078F00B3C53A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EFEA4D28B6078F00B3C53A /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,17 +33,18 @@
 		011AED9028B4D03300E77F93 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		011AED9728B4D12E00E77F93 /* Trapple.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Trapple.entitlements; sourceTree = "<group>"; };
 		011AED9928B4D15600E77F93 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
-		B3B8FD7728B895F90007A213 /* TravelPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelPlanView.swift; sourceTree = "<group>"; };
-		B3B8FD7928B8960C0007A213 /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
-		B3B8FD7D28B8C35B0007A213 /* TripCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCardView.swift; sourceTree = "<group>"; };
-		B3B8FD7B28B8B9EE0007A213 /* CreatePlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlanView.swift; sourceTree = "<group>"; };
-		B3EFEA4D28B6078F00B3C53A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		701DD85A28B62459003E53CD /* TripHomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripHomePageView.swift; sourceTree = "<group>"; };
-		701DD85C28B628C2003E53CD /* RundownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RundownView.swift; sourceTree = "<group>"; };
-		701DD86128B63644003E53CD /* AddRundownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRundownView.swift; sourceTree = "<group>"; };
 		701E3AFE28BB14D2008CFEB3 /* Gilroy-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-ExtraBold.otf"; sourceTree = "<group>"; };
 		701E3AFF28BB14D2008CFEB3 /* Gilroy-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Light.otf"; sourceTree = "<group>"; };
 		701E3B0228BB172D008CFEB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		B3B8FD7728B895F90007A213 /* TravelPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelPlanView.swift; sourceTree = "<group>"; };
+		B3B8FD7928B8960C0007A213 /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
+		B3B8FD7B28B8B9EE0007A213 /* CreatePlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlanView.swift; sourceTree = "<group>"; };
+		B3B8FD7D28B8C35B0007A213 /* TripCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCardView.swift; sourceTree = "<group>"; };
+		B3B8FD8528BB94110007A213 /* RundownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RundownView.swift; sourceTree = "<group>"; };
+		B3B8FD8728BB942C0007A213 /* NavigationAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationAppearance.swift; sourceTree = "<group>"; };
+		B3B8FD8928BB944B0007A213 /* ColorSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSet.swift; sourceTree = "<group>"; };
+		B3EFEA4D28B6078F00B3C53A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,8 @@
 		B3EFEA4828B6042B00B3C53A /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				B3B8FD8728BB942C0007A213 /* NavigationAppearance.swift */,
+				B3B8FD8928BB944B0007A213 /* ColorSet.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -133,8 +137,7 @@
 				B3B8FD7928B8960C0007A213 /* MyProfileView.swift */,
 				B3B8FD7B28B8B9EE0007A213 /* CreatePlanView.swift */,
 				701DD85A28B62459003E53CD /* TripHomePageView.swift */,
-				701DD85C28B628C2003E53CD /* RundownView.swift */,
-				701DD86128B63644003E53CD /* AddRundownView.swift */,
+				B3B8FD8528BB94110007A213 /* RundownView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -235,10 +238,11 @@
 			files = (
 				B3B8FD7A28B8960C0007A213 /* MyProfileView.swift in Sources */,
 				B3EFEA4E28B6078F00B3C53A /* HomeView.swift in Sources */,
-				701DD86228B63644003E53CD /* AddRundownView.swift in Sources */,
-				701DD85D28B628C2003E53CD /* RundownView.swift in Sources */,
+				B3B8FD8628BB94110007A213 /* RundownView.swift in Sources */,
 				701DD85B28B62459003E53CD /* TripHomePageView.swift in Sources */,
+				B3B8FD8A28BB944B0007A213 /* ColorSet.swift in Sources */,
 				011AED8C28B4D03000E77F93 /* ContentView.swift in Sources */,
+				B3B8FD8828BB942C0007A213 /* NavigationAppearance.swift in Sources */,
 				011AED8A28B4D03000E77F93 /* TrappleApp.swift in Sources */,
 				B3B8FD7828B895F90007A213 /* TravelPlanView.swift in Sources */,
 				B3B8FD7E28B8C35B0007A213 /* TripCardView.swift in Sources */,
