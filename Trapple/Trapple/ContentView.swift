@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     init() {
         let navigationBarAppearace = UINavigationBarAppearance()
-
+        
         navigationBarAppearace.configureWithOpaqueBackground()
         
         navigationBarAppearace.backgroundColor = UIColor(Color("navBG"))

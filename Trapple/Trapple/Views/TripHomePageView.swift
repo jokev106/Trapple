@@ -29,6 +29,7 @@ struct TripHomePageView: View {
                 }
             }
         }
+        .accentColor(.yellow)
         .edgesIgnoringSafeArea(.top)
     }
 }
@@ -40,91 +41,103 @@ struct TripHomePageView_Previews: PreviewProvider {
 }
 
 // MARK: Components
+
 extension TripHomePageView {
     private var Rundown: some View {
-        VStack(spacing: 0) {
+        VStack {
             NavigationLink(destination: RundownView(), label: {
-                VStack(alignment: .leading) {
-                    Text("Rundown")
-                        .fontWeight(.bold)
-                    Text("Description".uppercased())
-                        .font(Font.custom("Gilroy-Light", size: 18))
-                    Text("Days : From - Until")
-                        .font(Font.custom("Gilroy-Light", size: 15))
-                        .opacity(0.5)
-                }
-                .foregroundColor(.black)
-                .padding()
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .background(Color("yellowCard"))
-                .cornerRadius(15)
-            })
-
-            HStack(spacing: 0) {
-                Text("00:00")
-                    .font(Font.custom("Gilroy-Light", size: 15))
-                    .fontWeight(.bold)
+                VStack(spacing: 0) {
+                    VStack(alignment: .leading) {
+                        Text("Rundown")
+                            .font(Font.custom("Gilroy-ExtraBold", size: 20))
+                        Text("Description".uppercased())
+                            .font(Font.custom("Gilroy-Light", size: 16))
+                        Text("Days : From - Until")
+                            .font(Font.custom("Gilroy-Light", size: 13))
+                    }
                     .padding()
-                
-                Rectangle()
-                    .frame(width: 1)
-                    .foregroundColor(Color("yellowCard"))
-                
-                VStack(alignment: .leading) {
-                    Text("Activity")
-                    Text("Location")
-                        .font(Font.custom("Gilroy-Light", size: 15))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .background(Color("yellowCard"))
+                    .cornerRadius(15)
+                    
+                    RundownCardview()
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(10)
-                .padding(.leading)
-            }
-            .frame(maxWidth: .infinity)
-            .background(.white)
-            .cornerRadius(15)
-            .shadow(radius: 1)
-            .padding()
+            })
         }
+        .foregroundColor(.black)
         .background(.white)
         .cornerRadius(15)
         .padding()
     }
     
     private var Equipment: some View {
-        VStack(spacing: 0) {
-            VStack(alignment: .leading) {
-                Text("Equipment")
-                    .fontWeight(.bold)
-            }
-            .padding()
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .background(Color("yellowCard"))
-            .cornerRadius(15)
+        VStack {
+            NavigationLink(destination: EquipmentView(), label: {
+                VStack(spacing: 0) {
+                    VStack(alignment: .leading) {
+                        Text("Equipment")
+                            .font(Font.custom("Gilroy-ExtraBold", size: 20))
+                            .foregroundColor(.black)
+                    }
+                    .padding()
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .background(Color("yellowCard"))
+                    .cornerRadius(15)
 
-            HStack(spacing: 0) {
-                Text("Item1")
-                    .padding(10)
-            
-                Spacer()
-            
-                ZStack {
-                    Rectangle()
-                        .frame(width: 20, height: 20)
-                        .foregroundColor(.blue)
-                        .cornerRadius(5)
-                        .padding(10)
+                    HStack(spacing: 0) {
+                        ZStack {
+                            Circle()
+                                .frame(width: 50, height: 50)
+                                .foregroundColor(Color("grayBG"))
                 
-                    Image(systemName: "checkmark")
-                        .resizable()
-                        .frame(width: 10, height: 10)
-                        .foregroundColor(.white)
+                            Image(systemName: "fork.knife")
+                        }
+                
+                        Spacer()
+                
+                        ZStack {
+                            Circle()
+                                .frame(width: 50, height: 50)
+                                .foregroundColor(Color("grayBG"))
+                
+                            Image(systemName: "tshirt")
+                        }
+                
+                        Spacer()
+                
+                        ZStack {
+                            Circle()
+                                .frame(width: 50, height: 50)
+                                .foregroundColor(Color("grayBG"))
+                
+                            Image(systemName: "wrench")
+                        }
+                
+                        Spacer()
+                
+                        ZStack {
+                            Circle()
+                                .frame(width: 50, height: 50)
+                                .foregroundColor(Color("grayBG"))
+                
+                            Image(systemName: "pills")
+                        }
+                
+                        Spacer()
+                
+                        ZStack {
+                            Circle()
+                                .frame(width: 50, height: 50)
+                                .foregroundColor(Color("grayBG"))
+                
+                            Image(systemName: "folder")
+                        }
+                    }
+                    .foregroundColor(.gray)
+                    .frame(maxWidth: .infinity)
+                    .padding()
                 }
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .background(.white)
-            .cornerRadius(15)
-            .shadow(radius: 1)
-            .padding()
+            })
         }
         .background(.white)
         .cornerRadius(15)
@@ -135,7 +148,7 @@ extension TripHomePageView {
         VStack(spacing: 0) {
             VStack(alignment: .leading) {
                 Text("Rules")
-                    .fontWeight(.bold)
+                    .font(Font.custom("Gilroy-ExtraBold", size: 20))
             }
             .padding()
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -152,10 +165,11 @@ extension TripHomePageView {
             
                 VStack(alignment: .leading) {
                     Text("Rules Number One")
+                    Text("Short Desc")
+                        .font(Font.custom("Gilroy-Light", size: 15))
                 }
             
                 .frame(maxWidth: 200, alignment: .leading)
-                .padding(10)
             }
         
             .frame(maxWidth: .infinity, alignment: .leading)
