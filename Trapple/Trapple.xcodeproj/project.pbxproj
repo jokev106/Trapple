@@ -22,6 +22,7 @@
 		B3B8FD8628BB94110007A213 /* RundownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FD8528BB94110007A213 /* RundownView.swift */; };
 		B3B8FD8828BB942C0007A213 /* NavigationAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FD8728BB942C0007A213 /* NavigationAppearance.swift */; };
 		B3B8FD8A28BB944B0007A213 /* ColorSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FD8928BB944B0007A213 /* ColorSet.swift */; };
+		B3B8FD8C28BC9C970007A213 /* SubmissionImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FD8B28BC9C970007A213 /* SubmissionImagePicker.swift */; };
 		B3EFEA4E28B6078F00B3C53A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EFEA4D28B6078F00B3C53A /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +45,7 @@
 		B3B8FD8528BB94110007A213 /* RundownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RundownView.swift; sourceTree = "<group>"; };
 		B3B8FD8728BB942C0007A213 /* NavigationAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationAppearance.swift; sourceTree = "<group>"; };
 		B3B8FD8928BB944B0007A213 /* ColorSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSet.swift; sourceTree = "<group>"; };
+		B3B8FD8B28BC9C970007A213 /* SubmissionImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmissionImagePicker.swift; sourceTree = "<group>"; };
 		B3EFEA4D28B6078F00B3C53A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,6 +124,7 @@
 			children = (
 				B3B8FD8728BB942C0007A213 /* NavigationAppearance.swift */,
 				B3B8FD8928BB944B0007A213 /* ColorSet.swift */,
+				B3B8FD8B28BC9C970007A213 /* SubmissionImagePicker.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 				B3B8FD8A28BB944B0007A213 /* ColorSet.swift in Sources */,
 				011AED8C28B4D03000E77F93 /* ContentView.swift in Sources */,
 				B3B8FD8828BB942C0007A213 /* NavigationAppearance.swift in Sources */,
+				B3B8FD8C28BC9C970007A213 /* SubmissionImagePicker.swift in Sources */,
 				011AED8A28B4D03000E77F93 /* TrappleApp.swift in Sources */,
 				B3B8FD7828B895F90007A213 /* TravelPlanView.swift in Sources */,
 				B3B8FD7E28B8C35B0007A213 /* TripCardView.swift in Sources */,

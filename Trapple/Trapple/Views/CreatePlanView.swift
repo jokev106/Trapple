@@ -176,6 +176,7 @@ extension CreatePlanView {
                         .padding(.horizontal, 50)
                         .padding(.top, 15)
                         DatePicker("Set Start Date", selection: $startDate, in: Date()..., displayedComponents: .date)
+                            .foregroundColor(yellow)
                             .datePickerStyle(GraphicalDatePickerStyle())
                             .frame(height: 300)
                             .labelsHidden()
