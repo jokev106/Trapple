@@ -11,7 +11,7 @@ struct TravelPlanView: View {
     
     @Environment(\.presentationMode) var presentationMode:Binding<PresentationMode>
     
-    @State var createPlan = true
+    @State var showCreatePlan = false
     
     var body: some View {
         GeometryReader{geo in
@@ -51,7 +51,7 @@ extension TravelPlanView {
             Spacer()
             
             Button {
-                self.createPlan.toggle()
+                self.showCreatePlan.toggle()
             } label: {
                 Text("Create")
                     .frame(width: 100, height: 100)
@@ -60,7 +60,7 @@ extension TravelPlanView {
                     .background(yellow)
                     .cornerRadius(10)
                     .shadow(color: Color.gray.opacity(0.275), radius: 8, x: 2, y: 4)
-            }.sheet(isPresented: $createPlan) {
+            }.sheet(isPresented: $showCreatePlan) {
                 CreatePlanView()
                     .navigationBarHidden(true)
             }
