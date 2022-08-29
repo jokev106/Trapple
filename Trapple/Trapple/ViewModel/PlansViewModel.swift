@@ -8,7 +8,7 @@
 import SwiftUI
 import CloudKit
 
-class CloudKitCRUDViewModel: ObservableObject {
+class PlansViewModel: ObservableObject {
     
     @Published var title: String = ""
     @Published var destination: String = ""

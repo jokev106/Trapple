@@ -1,16 +1,16 @@
 //
-//  CloudKitCRUD.swift
+//  CloudKitActivityTesting.swift
 //  Trapple
 //
-//  Created by Vincent Leonard on 26/08/22.
+//  Created by Vincent Leonard on 29/08/22.
 //
 
 import SwiftUI
 import CloudKit
 
-struct CloudKitCRUD: View {
-    
-    @StateObject private var vm = PlansViewModel()
+struct CloudKitActivityTesting: View {
+    @StateObject private var vm = ActivitiesViewModel()
+    @State var planID = CKRecord.ID()
     
     var body: some View{
         NavigationView{
@@ -18,21 +18,17 @@ struct CloudKitCRUD: View {
                 header
                 textfield
                 textfield2
+                textfield3
                 datepicker1
                 datepicker2
                 addButton
                 
                 List{
-                    ForEach(vm.plans, id: \.recordID){ item in
+                    ForEach(vm.activity, id: \.recordID){ item in
                         HStack{
                             Text(item.title)
-                                .onAppear{
-                                    print("RecordID: \(item.recordID)")
-                                }
-                            Text(item.destination)
-                            NavigationLink(destination: CloudKitActivityTesting(planID: item.recordID!)){
-                                
-                            }
+                            Text(item.location)
+                            Text(item.description)
                         }
                     }
                 }
@@ -41,23 +37,26 @@ struct CloudKitCRUD: View {
             .padding()
             .navigationBarHidden(true)
         }
+        .onAppear{
+            vm.fetchItems(planID: planID)
+        }
     }
 }
 
-struct CloudKitCRUD_Previews: PreviewProvider{
+struct CloudKitActivityTesting_Previews: PreviewProvider{
     static var previews: some View{
-        CloudKitCRUD()
+        CloudKitActivityTesting()
     }
 }
 
-extension CloudKitCRUD {
+extension CloudKitActivityTesting {
     
     private var header: some View{
         Text("CloudKit CRUD")
     }
     
     private var textfield: some View{
-        TextField("Add Plan Name", text: $vm.title)
+        TextField("Add Activity Name", text: $vm.title)
             .frame(height: 55)
             .padding(.leading)
             .background(Color.gray.opacity(0.4))
@@ -65,7 +64,15 @@ extension CloudKitCRUD {
     }
     
     private var textfield2: some View{
-        TextField("Add Destination Name", text: $vm.destination)
+        TextField("Add Location Name", text: $vm.location)
+            .frame(height: 55)
+            .padding(.leading)
+            .background(Color.gray.opacity(0.4))
+            .cornerRadius(10)
+    }
+    
+    private var textfield3: some View{
+        TextField("Add Description", text: $vm.description)
             .frame(height: 55)
             .padding(.leading)
             .background(Color.gray.opacity(0.4))
@@ -90,7 +97,7 @@ extension CloudKitCRUD {
     
     private var addButton: some View{
         Button{
-            vm.addButtonPressed()
+            vm.addButtonPressed(planID: planID)
         } label: {
             Text("Add")
                 .frame(height: 55)
@@ -102,3 +109,4 @@ extension CloudKitCRUD {
         }
     }
 }
+

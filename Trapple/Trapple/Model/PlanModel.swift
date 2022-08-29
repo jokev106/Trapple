@@ -17,6 +17,7 @@ struct PlanModel {
     let endDate: Date
     
     init(recordID: CKRecord.ID? = nil, title: String, destination: String, startDate: Date, endDate: Date) {
+        self.recordID = recordID
         self.title = title
         self.destination = destination
         self.startDate = startDate
