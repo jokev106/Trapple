@@ -23,6 +23,10 @@
 		B3B8FD8828BB942C0007A213 /* NavigationAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FD8728BB942C0007A213 /* NavigationAppearance.swift */; };
 		B3B8FD8A28BB944B0007A213 /* ColorSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FD8928BB944B0007A213 /* ColorSet.swift */; };
 		B3B8FD8C28BC9C970007A213 /* SubmissionImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FD8B28BC9C970007A213 /* SubmissionImagePicker.swift */; };
+		B3B8FD8E28BCA3FB0007A213 /* RulesCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FD8D28BCA3FB0007A213 /* RulesCardView.swift */; };
+		B3B8FD9028BCBD650007A213 /* RulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FD8F28BCBD650007A213 /* RulesView.swift */; };
+		B3B8FD9228BCC3BF0007A213 /* RulesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FD9128BCC3BF0007A213 /* RulesModel.swift */; };
+		B3B8FD9428BCC3C70007A213 /* RulesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FD9328BCC3C70007A213 /* RulesViewModel.swift */; };
 		B3EFEA4E28B6078F00B3C53A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EFEA4D28B6078F00B3C53A /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +50,10 @@
 		B3B8FD8728BB942C0007A213 /* NavigationAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationAppearance.swift; sourceTree = "<group>"; };
 		B3B8FD8928BB944B0007A213 /* ColorSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSet.swift; sourceTree = "<group>"; };
 		B3B8FD8B28BC9C970007A213 /* SubmissionImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmissionImagePicker.swift; sourceTree = "<group>"; };
+		B3B8FD8D28BCA3FB0007A213 /* RulesCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesCardView.swift; sourceTree = "<group>"; };
+		B3B8FD8F28BCBD650007A213 /* RulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesView.swift; sourceTree = "<group>"; };
+		B3B8FD9128BCC3BF0007A213 /* RulesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesModel.swift; sourceTree = "<group>"; };
+		B3B8FD9328BCC3C70007A213 /* RulesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesViewModel.swift; sourceTree = "<group>"; };
 		B3EFEA4D28B6078F00B3C53A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -141,6 +149,7 @@
 				B3B8FD7B28B8B9EE0007A213 /* CreatePlanView.swift */,
 				701DD85A28B62459003E53CD /* TripHomePageView.swift */,
 				B3B8FD8528BB94110007A213 /* RundownView.swift */,
+				B3B8FD8F28BCBD650007A213 /* RulesView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -148,6 +157,7 @@
 		B3EFEA4A28B6043900B3C53A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B3B8FD9128BCC3BF0007A213 /* RulesModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -155,6 +165,7 @@
 		B3EFEA4B28B6044900B3C53A /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				B3B8FD9328BCC3C70007A213 /* RulesViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -163,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				B3B8FD7D28B8C35B0007A213 /* TripCardView.swift */,
+				B3B8FD8D28BCA3FB0007A213 /* RulesCardView.swift */,
 			);
 			path = CardView;
 			sourceTree = "<group>";
@@ -239,14 +251,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3B8FD9028BCBD650007A213 /* RulesView.swift in Sources */,
 				B3B8FD7A28B8960C0007A213 /* MyProfileView.swift in Sources */,
 				B3EFEA4E28B6078F00B3C53A /* HomeView.swift in Sources */,
 				B3B8FD8628BB94110007A213 /* RundownView.swift in Sources */,
+				B3B8FD8E28BCA3FB0007A213 /* RulesCardView.swift in Sources */,
 				701DD85B28B62459003E53CD /* TripHomePageView.swift in Sources */,
+				B3B8FD9428BCC3C70007A213 /* RulesViewModel.swift in Sources */,
 				B3B8FD8A28BB944B0007A213 /* ColorSet.swift in Sources */,
 				011AED8C28B4D03000E77F93 /* ContentView.swift in Sources */,
 				B3B8FD8828BB942C0007A213 /* NavigationAppearance.swift in Sources */,
 				B3B8FD8C28BC9C970007A213 /* SubmissionImagePicker.swift in Sources */,
+				B3B8FD9228BCC3BF0007A213 /* RulesModel.swift in Sources */,
 				011AED8A28B4D03000E77F93 /* TrappleApp.swift in Sources */,
 				B3B8FD7828B895F90007A213 /* TravelPlanView.swift in Sources */,
 				B3B8FD7E28B8C35B0007A213 /* TripCardView.swift in Sources */,

@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct TrappleApp: App {
+    @StateObject static var rulesViewModel = RulesViewModel()
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            RulesView( index: 1)
+                .environmentObject(TrappleApp.rulesViewModel)
         }
     }
 }

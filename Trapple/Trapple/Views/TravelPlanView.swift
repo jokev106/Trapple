@@ -91,9 +91,10 @@ extension TravelPlanView {
                 .padding(0.5)
             ScrollView{
                 VStack{
-                    ForEach((1..<10)) {_ in
+                    ForEach((1..<10)) {cardview in
                         NavigationLink{
-                            
+                           TripHomePageView()
+                                .navigationBarHidden(true)
                         }
                     label: {
                         TripCardView()
