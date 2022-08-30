@@ -15,6 +15,16 @@ struct ContentView: View {
         
         navigationBarAppearace.backgroundColor = UIColor(Color("navBG"))
         
+        navigationBarAppearace.largeTitleTextAttributes = [
+            .font : UIFont(name: "Gilroy-ExtraBold", size: 30),
+            NSAttributedString.Key.foregroundColor : UIColor.black
+        ]
+        // this only applies to small titles
+//        navigationBarAppearace.titleTextAttributes = [
+//            .font : UIFont(name: "Gilroy-ExtraBold", size: 30),
+//            NSAttributedString.Key.foregroundColor : UIColor.black
+//        ]
+        
         UINavigationBar.appearance().standardAppearance = navigationBarAppearace
         
         UINavigationBar.appearance().compactAppearance = navigationBarAppearace

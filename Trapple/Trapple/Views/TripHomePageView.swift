@@ -12,6 +12,7 @@ struct TripHomePageView: View {
         NavigationView {
             ScrollView {
                 VStack {
+                    Spacer()
                     Rundown
                     Equipment
                     Rules
@@ -19,7 +20,7 @@ struct TripHomePageView: View {
             }
             .background(Color("grayBG"))
             .font(Font.custom("Gilroy-Light", size: 20))
-            .navigationTitle("Trip Name")
+            .navigationBarTitle(Text("Trip Name"), displayMode: .large)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {}, label: {
@@ -61,13 +62,15 @@ extension TripHomePageView {
                     .cornerRadius(15)
                     
                     RundownCardview()
+                        .padding()
                 }
             })
         }
         .foregroundColor(.black)
         .background(.white)
         .cornerRadius(15)
-        .padding()
+        .padding(.horizontal)
+        .padding(.vertical, 5)
     }
     
     private var Equipment: some View {
@@ -141,7 +144,8 @@ extension TripHomePageView {
         }
         .background(.white)
         .cornerRadius(15)
-        .padding()
+        .padding(.horizontal)
+        .padding(.vertical, 5)
     }
     
     private var Rules: some View {
@@ -165,6 +169,7 @@ extension TripHomePageView {
             
                 VStack(alignment: .leading) {
                     Text("Rules Number One")
+                        .font(Font.custom("Gilroy-ExtraBold", size: 20))
                     Text("Short Desc")
                         .font(Font.custom("Gilroy-Light", size: 15))
                 }
@@ -177,6 +182,7 @@ extension TripHomePageView {
         }
         .background(.white)
         .cornerRadius(15)
-        .padding()
+        .padding(.horizontal)
+        .padding(.vertical, 5)
     }
 }

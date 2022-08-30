@@ -17,6 +17,14 @@
 		701DD86228B63644003E53CD /* AddRundownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701DD86128B63644003E53CD /* AddRundownView.swift */; };
 		701E3B0028BB14D2008CFEB3 /* Gilroy-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 701E3AFE28BB14D2008CFEB3 /* Gilroy-ExtraBold.otf */; };
 		701E3B0128BB14D2008CFEB3 /* Gilroy-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 701E3AFF28BB14D2008CFEB3 /* Gilroy-Light.otf */; };
+		705EBB8928BC8940006B985C /* RundownCardview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705EBB8828BC8940006B985C /* RundownCardview.swift */; };
+		705EBB8B28BCA435006B985C /* RundownCardviewDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705EBB8A28BCA435006B985C /* RundownCardviewDetail.swift */; };
+		705EBB8D28BCB07C006B985C /* EquipmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705EBB8C28BCB07C006B985C /* EquipmentView.swift */; };
+		705EBB8F28BCBFF0006B985C /* AddCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705EBB8E28BCBFF0006B985C /* AddCategoryView.swift */; };
+		705EBB9128BDE8DF006B985C /* EquipmentCardview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705EBB9028BDE8DF006B985C /* EquipmentCardview.swift */; };
+		705EBB9328BDE8FD006B985C /* ItemListCardview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705EBB9228BDE8FD006B985C /* ItemListCardview.swift */; };
+		705EBB9528BDE958006B985C /* AddItemVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705EBB9428BDE958006B985C /* AddItemVIew.swift */; };
+		705EBB9728BDEBE9006B985C /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705EBB9628BDEBE9006B985C /* CategoryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +41,14 @@
 		701E3AFE28BB14D2008CFEB3 /* Gilroy-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-ExtraBold.otf"; sourceTree = "<group>"; };
 		701E3AFF28BB14D2008CFEB3 /* Gilroy-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Light.otf"; sourceTree = "<group>"; };
 		701E3B0228BB172D008CFEB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		705EBB8828BC8940006B985C /* RundownCardview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RundownCardview.swift; sourceTree = "<group>"; };
+		705EBB8A28BCA435006B985C /* RundownCardviewDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RundownCardviewDetail.swift; sourceTree = "<group>"; };
+		705EBB8C28BCB07C006B985C /* EquipmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentView.swift; sourceTree = "<group>"; };
+		705EBB8E28BCBFF0006B985C /* AddCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryView.swift; sourceTree = "<group>"; };
+		705EBB9028BDE8DF006B985C /* EquipmentCardview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentCardview.swift; sourceTree = "<group>"; };
+		705EBB9228BDE8FD006B985C /* ItemListCardview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListCardview.swift; sourceTree = "<group>"; };
+		705EBB9428BDE958006B985C /* AddItemVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemVIew.swift; sourceTree = "<group>"; };
+		705EBB9628BDEBE9006B985C /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +137,10 @@
 				701DD85A28B62459003E53CD /* TripHomePageView.swift */,
 				701DD85C28B628C2003E53CD /* RundownView.swift */,
 				701DD86128B63644003E53CD /* AddRundownView.swift */,
+				705EBB8C28BCB07C006B985C /* EquipmentView.swift */,
+				705EBB8E28BCBFF0006B985C /* AddCategoryView.swift */,
+				705EBB9428BDE958006B985C /* AddItemVIew.swift */,
+				705EBB9628BDEBE9006B985C /* CategoryView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -142,6 +162,10 @@
 		B3EFEA4C28B6045100B3C53A /* CardView */ = {
 			isa = PBXGroup;
 			children = (
+				705EBB8828BC8940006B985C /* RundownCardview.swift */,
+				705EBB8A28BCA435006B985C /* RundownCardviewDetail.swift */,
+				705EBB9028BDE8DF006B985C /* EquipmentCardview.swift */,
+				705EBB9228BDE8FD006B985C /* ItemListCardview.swift */,
 			);
 			path = CardView;
 			sourceTree = "<group>";
@@ -218,11 +242,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				705EBB8928BC8940006B985C /* RundownCardview.swift in Sources */,
+				705EBB8D28BCB07C006B985C /* EquipmentView.swift in Sources */,
 				701DD86228B63644003E53CD /* AddRundownView.swift in Sources */,
+				705EBB8F28BCBFF0006B985C /* AddCategoryView.swift in Sources */,
 				701DD85D28B628C2003E53CD /* RundownView.swift in Sources */,
+				705EBB9728BDEBE9006B985C /* CategoryView.swift in Sources */,
+				705EBB8B28BCA435006B985C /* RundownCardviewDetail.swift in Sources */,
 				701DD85B28B62459003E53CD /* TripHomePageView.swift in Sources */,
+				705EBB9128BDE8DF006B985C /* EquipmentCardview.swift in Sources */,
+				705EBB9328BDE8FD006B985C /* ItemListCardview.swift in Sources */,
 				011AED8C28B4D03000E77F93 /* ContentView.swift in Sources */,
 				011AED8A28B4D03000E77F93 /* TrappleApp.swift in Sources */,
+				705EBB9528BDE958006B985C /* AddItemVIew.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
