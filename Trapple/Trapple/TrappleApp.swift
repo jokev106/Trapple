@@ -12,7 +12,7 @@ struct TrappleApp: App {
     @StateObject static var rulesViewModel = RulesViewModel()
     var body: some Scene {
         WindowGroup {
-            RulesView( index: 1)
+            HomeView()
                 .environmentObject(TrappleApp.rulesViewModel)
         }
     }

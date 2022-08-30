@@ -23,6 +23,7 @@ struct RundownView: View {
         GeometryReader { geometry in
             ScrollView {
                 VStack(spacing: 0) {
+                    /*
 //                ScrollView(.horizontal, showsIndicators: false) {
 //                    HStack(spacing: 20) {
 //                        ForEach(0 ..< 10) {
@@ -140,7 +141,7 @@ struct RundownView: View {
 //                    .frame(maxWidth: .infinity)
 //                    .padding(.leading)
 //                    .padding(.trailing)
-                    
+                    */
                     if isExist == true {
                         ForEach(0 ..< nyoba.count, id: \.self) { card in
                             if nyoba[card] == true {

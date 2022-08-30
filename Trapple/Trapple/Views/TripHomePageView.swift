@@ -86,53 +86,53 @@ extension TripHomePageView {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .background(Color("yellowCard"))
                     .cornerRadius(15)
-
+                    
                     HStack(spacing: 0) {
                         ZStack {
                             Circle()
                                 .frame(width: 50, height: 50)
                                 .foregroundColor(Color("grayBG"))
-                
+                            
                             Image(systemName: "fork.knife")
                         }
-                
+                        
                         Spacer()
-                
+                        
                         ZStack {
                             Circle()
                                 .frame(width: 50, height: 50)
                                 .foregroundColor(Color("grayBG"))
-                
+                            
                             Image(systemName: "tshirt")
                         }
-                
+                        
                         Spacer()
-                
+                        
                         ZStack {
                             Circle()
                                 .frame(width: 50, height: 50)
                                 .foregroundColor(Color("grayBG"))
-                
+                            
                             Image(systemName: "wrench")
                         }
-                
+                        
                         Spacer()
-                
+                        
                         ZStack {
                             Circle()
                                 .frame(width: 50, height: 50)
                                 .foregroundColor(Color("grayBG"))
-                
+                            
                             Image(systemName: "pills")
                         }
-                
+                        
                         Spacer()
-                
+                        
                         ZStack {
                             Circle()
                                 .frame(width: 50, height: 50)
                                 .foregroundColor(Color("grayBG"))
-                
+                            
                             Image(systemName: "folder")
                         }
                     }
@@ -149,36 +149,42 @@ extension TripHomePageView {
     }
     
     private var Rules: some View {
-        VStack(spacing: 0) {
-            VStack(alignment: .leading) {
-                Text("Rules")
-                    .font(Font.custom("Gilroy-ExtraBold", size: 20))
-            }
-            .padding()
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .background(Color("yellowCard"))
-            .cornerRadius(15)
-
-            HStack(spacing: 0) {
-                Rectangle()
-                    .frame(width: 5)
-                    .background(.black)
+        VStack {
+            
+            NavigationLink(destination: EquipmentView(), label: {
+                VStack(spacing: 0) {
+                    VStack(alignment: .leading) {
+                        Text("Rules")
+                            .font(Font.custom("Gilroy-ExtraBold", size: 20))
+                    }
+                    .padding()
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .background(Color("yellowCard"))
                     .cornerRadius(15)
-                    .padding(.trailing)
-                    .opacity(0.4)
-            
-                VStack(alignment: .leading) {
-                    Text("Rules Number One")
-                        .font(Font.custom("Gilroy-ExtraBold", size: 20))
-                    Text("Short Desc")
-                        .font(Font.custom("Gilroy-Light", size: 15))
+                    
+                    HStack(spacing: 0) {
+                        Rectangle()
+                            .frame(width: 5)
+                            .background(.black)
+                            .cornerRadius(15)
+                            .padding(.trailing)
+                            .opacity(0.4)
+                        
+                        VStack(alignment: .leading) {
+                            Text("Rules Number One")
+                                .font(Font.custom("Gilroy-ExtraBold", size: 20))
+                            Text("Short Desc")
+                                .font(Font.custom("Gilroy-Light", size: 15))
+                        }
+                        
+                        .frame(maxWidth: 200, alignment: .leading)
+                    }
+                    
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding()
                 }
-            
-                .frame(maxWidth: 200, alignment: .leading)
-            }
-        
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding()
+                
+            })
         }
         .background(.white)
         .cornerRadius(15)
