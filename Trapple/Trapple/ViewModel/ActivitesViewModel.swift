@@ -36,8 +36,14 @@ class ActivitiesViewModel: ObservableObject {
         newActivity["title"] = title
         newActivity["location"] = location
         newActivity["description"] = description
-        newActivity["startDate"] = startDate
-        newActivity["endDate"] = endDate
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        let stringStart = dateFormatter.string(from: startDate)
+        let dateStart = dateFormatter.date(from: stringStart)
+        newActivity["startDate"] = dateStart
+        let stringEnd = dateFormatter.string(from: endDate)
+        let dateEnd = dateFormatter.date(from: stringEnd)
+        newActivity["endDate"] = dateEnd
         newActivity["planID"] = CKRecord.Reference(record: planDetail, action: .deleteSelf)
 //        newActivity.setValuesForKeys(PlanModel(title: title, destination: destination, startDate: startDate, endDate: endDate).planDictionary())
         saveItem(record: newActivity)
@@ -63,7 +69,7 @@ class ActivitiesViewModel: ObservableObject {
         let recordToMatch = CKRecord.Reference(recordID: planID, action: .deleteSelf)
         let predicate = NSPredicate(format: "planID == %@", recordToMatch)
         let query = CKQuery(recordType: "Activities", predicate: predicate)
-        query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
+        query.sortDescriptors = [NSSortDescriptor(key: "startDate", ascending: true)]
         let queryOperation = CKQueryOperation(query: query)
         
         var returnedItems: [ActivityModel] = []

@@ -32,8 +32,21 @@ class PlansViewModel: ObservableObject {
         newPlan["destination"] = destination
         newPlan["startDate"] = startDate
         newPlan["endDate"] = endDate
-//        newPlan.setValuesForKeys(PlanModel(title: title, destination: destination, startDate: startDate, endDate: endDate).planDictionary())
-        saveItem(record: newPlan)
+        newPlan["isHistory"] = false
+        
+        guard
+            let image = UIImage(named: "asd"),
+            let url = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first?.appendingPathComponent("ro.jpg"),
+            let data = image.jpegData(compressionQuality: 1.0)
+        else {return}
+        do {
+            try data.write(to: url)
+            let asset = CKAsset(fileURL: url)
+            newPlan["image"] = asset
+            saveItem(record: newPlan)
+        } catch let error {
+            print(error)
+        }
     }
     
     private func saveItem(record: CKRecord) {
@@ -47,6 +60,16 @@ class PlansViewModel: ObservableObject {
                 self?.startDate = Date()
                 self?.endDate = Date()
             }
+        }
+    }
+    
+    func deleteItem(indexSet: IndexSet){
+        guard let index = indexSet.first else {return}
+        let plan = plans[index]
+//        let recordID = plan.recordID!
+        
+        CKContainer.default().privateCloudDatabase.delete(withRecordID: plan.recordID!) { [weak self] returnedRecordID, ReturnedError in
+            self?.plans.remove(at: index)
         }
     }
     
@@ -65,6 +88,8 @@ class PlansViewModel: ObservableObject {
             case.success(let record):
 //                guard let title = record["title"] as? String else {return}
                 if let planList = PlanModel.fromRecord(record: record){
+//                    let imageAsset = record["image"] as? CKAsset
+//                    let imageURL = imageAsset?.fileURL
                     returnedItems.append(planList)
                 }
             case.failure(let error):
@@ -112,5 +137,9 @@ struct PlanViewModel{
     
     var endDate: Date {
         planList.endDate
+    }
+    
+    var imageURL: URL {
+        planList.imageURL
     }
 }

@@ -11,6 +11,7 @@ import CloudKit
 struct CloudKitCRUD: View {
     
     @StateObject private var vm = PlansViewModel()
+    @State var isShowingPhoto = false
     
     var body: some View{
         NavigationView{
@@ -20,6 +21,7 @@ struct CloudKitCRUD: View {
                 textfield2
                 datepicker1
                 datepicker2
+//                imagepicker
                 addButton
                 
                 List{
@@ -30,16 +32,27 @@ struct CloudKitCRUD: View {
                                     print("RecordID: \(item.recordID)")
                                 }
                             Text(item.destination)
-                            NavigationLink(destination: CloudKitActivityTesting(planID: item.recordID!)){
+                            
+//                            if let url = item.imageURL, let data = try? Data(contentsOf: url), let image = UIImage(data: data) {
+//                                Image(uiImage: image)
+//                                    .resizable()
+//                                    .frame(width: 50, height: 50)
+//                            }
+                            
+                            NavigationLink(destination: CloudKitActivityTesting(planID: item.recordID! , startDate: item.startDate , endDate: item.endDate)){
                                 
                             }
                         }
                     }
+                    .onDelete(perform: vm.deleteItem)
                 }
                 .listStyle(PlainListStyle())
             }
             .padding()
             .navigationBarHidden(true)
+//            .sheet(isPresented: $isShowingPhoto, content: {
+//                PhotoPicker()
+//            })
         }
     }
 }
@@ -86,6 +99,17 @@ extension CloudKitCRUD {
             selection: $vm.endDate,
             displayedComponents: [.date]
         )
+    }
+    
+    private var imagepicker: some View{
+        Image(uiImage: UIImage(named: "default-avatar")!)
+            .resizable()
+            .scaledToFill()
+            .frame(width: 150, height: 150)
+            .padding()
+            .onTapGesture {
+                isShowingPhoto = true
+            }
     }
     
     private var addButton: some View{

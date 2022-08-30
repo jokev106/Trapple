@@ -11,6 +11,11 @@ import CloudKit
 struct CloudKitActivityTesting: View {
     @StateObject private var vm = ActivitiesViewModel()
     @State var planID = CKRecord.ID()
+    @State var loopDate = Date()
+    @State var currentDate = Date()
+    
+    @State var startDate = Date()
+    @State var endDate = Date()
     
     var body: some View{
         NavigationView{
@@ -22,6 +27,8 @@ struct CloudKitActivityTesting: View {
                 datepicker1
                 datepicker2
                 addButton
+                
+                
                 
                 List{
                     ForEach(vm.activity, id: \.recordID){ item in
@@ -83,7 +90,7 @@ extension CloudKitActivityTesting {
         DatePicker(
             "Start Date",
             selection: $vm.startDate,
-            displayedComponents: [.date]
+            displayedComponents: [.hourAndMinute]
         )
     }
     
@@ -91,7 +98,7 @@ extension CloudKitActivityTesting {
         DatePicker(
             "End Date",
             selection: $vm.endDate,
-            displayedComponents: [.date]
+            displayedComponents: [.hourAndMinute]
         )
     }
     
