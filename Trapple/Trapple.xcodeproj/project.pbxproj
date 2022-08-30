@@ -28,6 +28,14 @@
 		B3B8FD9228BCC3BF0007A213 /* RulesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FD9128BCC3BF0007A213 /* RulesModel.swift */; };
 		B3B8FD9428BCC3C70007A213 /* RulesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FD9328BCC3C70007A213 /* RulesViewModel.swift */; };
 		B3EFEA4E28B6078F00B3C53A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EFEA4D28B6078F00B3C53A /* HomeView.swift */; };
+		705EBB8928BC8940006B985C /* RundownCardview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705EBB8828BC8940006B985C /* RundownCardview.swift */; };
+		705EBB8B28BCA435006B985C /* RundownCardviewDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705EBB8A28BCA435006B985C /* RundownCardviewDetail.swift */; };
+		705EBB8D28BCB07C006B985C /* EquipmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705EBB8C28BCB07C006B985C /* EquipmentView.swift */; };
+		705EBB8F28BCBFF0006B985C /* AddCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705EBB8E28BCBFF0006B985C /* AddCategoryView.swift */; };
+		705EBB9128BDE8DF006B985C /* EquipmentCardview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705EBB9028BDE8DF006B985C /* EquipmentCardview.swift */; };
+		705EBB9328BDE8FD006B985C /* ItemListCardview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705EBB9228BDE8FD006B985C /* ItemListCardview.swift */; };
+		705EBB9528BDE958006B985C /* AddItemVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705EBB9428BDE958006B985C /* AddItemVIew.swift */; };
+		705EBB9728BDEBE9006B985C /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705EBB9628BDEBE9006B985C /* CategoryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +63,14 @@
 		B3B8FD9128BCC3BF0007A213 /* RulesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesModel.swift; sourceTree = "<group>"; };
 		B3B8FD9328BCC3C70007A213 /* RulesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesViewModel.swift; sourceTree = "<group>"; };
 		B3EFEA4D28B6078F00B3C53A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		705EBB8828BC8940006B985C /* RundownCardview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RundownCardview.swift; sourceTree = "<group>"; };
+		705EBB8A28BCA435006B985C /* RundownCardviewDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RundownCardviewDetail.swift; sourceTree = "<group>"; };
+		705EBB8C28BCB07C006B985C /* EquipmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentView.swift; sourceTree = "<group>"; };
+		705EBB8E28BCBFF0006B985C /* AddCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryView.swift; sourceTree = "<group>"; };
+		705EBB9028BDE8DF006B985C /* EquipmentCardview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentCardview.swift; sourceTree = "<group>"; };
+		705EBB9228BDE8FD006B985C /* ItemListCardview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListCardview.swift; sourceTree = "<group>"; };
+		705EBB9428BDE958006B985C /* AddItemVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemVIew.swift; sourceTree = "<group>"; };
+		705EBB9628BDEBE9006B985C /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +166,12 @@
 				701DD85A28B62459003E53CD /* TripHomePageView.swift */,
 				B3B8FD8528BB94110007A213 /* RundownView.swift */,
 				B3B8FD8F28BCBD650007A213 /* RulesView.swift */,
+				701DD85C28B628C2003E53CD /* RundownView.swift */,
+				701DD86128B63644003E53CD /* AddRundownView.swift */,
+				705EBB8C28BCB07C006B985C /* EquipmentView.swift */,
+				705EBB8E28BCBFF0006B985C /* AddCategoryView.swift */,
+				705EBB9428BDE958006B985C /* AddItemVIew.swift */,
+				705EBB9628BDEBE9006B985C /* CategoryView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -175,6 +197,10 @@
 			children = (
 				B3B8FD7D28B8C35B0007A213 /* TripCardView.swift */,
 				B3B8FD8D28BCA3FB0007A213 /* RulesCardView.swift */,
+				705EBB8828BC8940006B985C /* RundownCardview.swift */,
+				705EBB8A28BCA435006B985C /* RundownCardviewDetail.swift */,
+				705EBB9028BDE8DF006B985C /* EquipmentCardview.swift */,
+				705EBB9228BDE8FD006B985C /* ItemListCardview.swift */,
 			);
 			path = CardView;
 			sourceTree = "<group>";
@@ -259,6 +285,16 @@
 				701DD85B28B62459003E53CD /* TripHomePageView.swift in Sources */,
 				B3B8FD9428BCC3C70007A213 /* RulesViewModel.swift in Sources */,
 				B3B8FD8A28BB944B0007A213 /* ColorSet.swift in Sources */,
+				705EBB8928BC8940006B985C /* RundownCardview.swift in Sources */,
+				705EBB8D28BCB07C006B985C /* EquipmentView.swift in Sources */,
+				701DD86228B63644003E53CD /* AddRundownView.swift in Sources */,
+				705EBB8F28BCBFF0006B985C /* AddCategoryView.swift in Sources */,
+				701DD85D28B628C2003E53CD /* RundownView.swift in Sources */,
+				705EBB9728BDEBE9006B985C /* CategoryView.swift in Sources */,
+				705EBB8B28BCA435006B985C /* RundownCardviewDetail.swift in Sources */,
+				701DD85B28B62459003E53CD /* TripHomePageView.swift in Sources */,
+				705EBB9128BDE8DF006B985C /* EquipmentCardview.swift in Sources */,
+				705EBB9328BDE8FD006B985C /* ItemListCardview.swift in Sources */,
 				011AED8C28B4D03000E77F93 /* ContentView.swift in Sources */,
 				B3B8FD8828BB942C0007A213 /* NavigationAppearance.swift in Sources */,
 				B3B8FD8C28BC9C970007A213 /* SubmissionImagePicker.swift in Sources */,
@@ -267,6 +303,7 @@
 				B3B8FD7828B895F90007A213 /* TravelPlanView.swift in Sources */,
 				B3B8FD7E28B8C35B0007A213 /* TripCardView.swift in Sources */,
 				B3B8FD7C28B8B9EE0007A213 /* CreatePlanView.swift in Sources */,
+				705EBB9528BDE958006B985C /* AddItemVIew.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
