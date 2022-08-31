@@ -9,26 +9,25 @@ import SwiftUI
 import CloudKit
 
 struct TravelPlanView: View {
-    
-    @Environment(\.presentationMode) var presentationMode:Binding<PresentationMode>
-    
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+
     @State var showCreatePlan = false
     @StateObject private var vm = PlansViewModel()
     
     var body: some View {
-        GeometryReader{geo in
-            ZStack{
-                NavigationView{
-                    VStack{
-                        //Content
+        GeometryReader { _ in
+            ZStack {
+//                NavigationView {
+                    VStack {
+                        // Content
                         Divider
-                        //Create and Join Button
+                        // Create and Join Button
                         CreateJoinButton
                         Divider
                         OnGoingTripSection
-                    }.navigationTitle(Text("Travel Plan").font(Font.custom("Gilroy-ExtraBold", size: 48)))
+                    }.navigationTitle("Travel Plan")
                         .background(graybg)
-                }
+//                }
             }.navigationAppearance(backgroundColor: UIColor(graybg), foregroundColor: UIColor(blacktext), hideSeperator: true)
         }
     }
@@ -40,18 +39,18 @@ struct TravelPlanView_Previews: PreviewProvider {
     }
 }
 
-//MARK: Components
+// MARK: Components
+
 extension TravelPlanView {
-    
     private var Divider: some View {
         SwiftUI.Divider()
             .padding(.horizontal)
     }
-    
-    private var CreateJoinButton: some View{
-        HStack{
+
+    private var CreateJoinButton: some View {
+        HStack {
             Spacer()
-            
+
             Button {
                 self.showCreatePlan.toggle()
             } label: {
@@ -66,7 +65,7 @@ extension TravelPlanView {
                 CreatePlanView()
                     .navigationBarHidden(true)
             }
-            
+
             Spacer()
                 .frame(width: 60)
             Text("Join")
@@ -77,15 +76,15 @@ extension TravelPlanView {
                 .cornerRadius(10)
                 .shadow(color: Color.gray.opacity(0.275), radius: 8, x: 2, y: 4)
                 .onTapGesture {
-                    //Function
+                    // Function
                 }
             Spacer()
-            
+
         }.padding()
     }
-    
-    private var OnGoingTripSection: some View{
-        VStack{
+
+    private var OnGoingTripSection: some View {
+        VStack {
             Text("On Going Trip").bold()
                 .font(Font.custom("Gilroy-Light", size: 20))
                 .frame(width: 370, alignment: .leading)
@@ -106,10 +105,8 @@ extension TravelPlanView {
             }
         }
     }
-    
 }
 
-//MARK: Functions
-extension TravelPlanView {
-    
-}
+// MARK: Functions
+
+extension TravelPlanView {}

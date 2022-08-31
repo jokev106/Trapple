@@ -8,69 +8,66 @@
 import SwiftUI
 
 struct RulesView: View {
+    @EnvironmentObject var dataRules: RulesViewModel
     
-    @EnvironmentObject var dataRules : RulesViewModel
+    @State var inputRules: String = "Input Rules"
+    @State var inputShortDesc: String = "Description"
     
-        @State var inputRules: String = "Input Rules"
-        @State var inputShortDesc: String = "Description"
-    
-    let index : Int
+    let index: Int
     
     var body: some View {
-        GeometryReader{geo in
-            VStack{
-                    VStack{
-                        //Content
-                        RulesList
-                        newRules
-                            .background(graybg)
-                            .frame(width: 900)
-                    }.navigationTitle(Text("Rules"))
-                        .toolbar{
-                            ToolbarItem(placement: .navigationBarTrailing) {
-                                Button{
-                                    //Save Data
-                                    self.dataRules.onUpdate(index: self.index, inputRules: self.inputRules, inputShortDesc: self.inputShortDesc)
-                                }label: {
-                                    Text("Save")
-                                        .foregroundColor(yellow)
-                                }
+        GeometryReader { _ in
+            VStack {
+                VStack {
+                    // Content
+                    RulesList
+                    newRules
+                        .background(graybg)
+//                        .frame(width: 900)
+                }.navigationTitle(Text("Rules"))
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            Button {
+                                // Save Data
+                                self.dataRules.onUpdate(index: self.index, inputRules: self.inputRules, inputShortDesc: self.inputShortDesc)
+                            } label: {
+                                Text("Save")
+                                    .foregroundColor(yellow)
                             }
                         }
+                    }
             }.navigationAppearance(backgroundColor: UIColor(graybg), foregroundColor: UIColor(blacktext), hideSeperator: true)
         }
     }
 }
 
 struct RulesView_Previews: PreviewProvider {
-        
     static var previews: some View {
-        RulesView(index: 1)
+        RulesView(index: 1).environmentObject(TripHomePageView.rulesViewModel)
     }
 }
 
+// MARK: Components
 
-//MARK: Components
-extension RulesView{
-    
+extension RulesView {
     private var RulesList: some View {
-        VStack{
+        VStack {
             List {
-                ForEach(Array(dataRules.rulesID.enumerated()), id: \.offset){offset, item in
-                    HStack{
+                ForEach(Array(dataRules.rulesID.enumerated()), id: \.offset) { _, item in
+                    HStack {
                         Rectangle()
                             .frame(width: 8, height: 75)
                             .cornerRadius(13)
                             .foregroundColor(blacktext)
                         Spacer()
-                            .frame(width:20)
-                        VStack{
+                            .frame(width: 20)
+                        VStack {
                             TextField("\(item.rules)", text: $inputRules)
                                 .font(Font.custom("Gilroy-ExtraBold", size: 17))
                                 .frame(width: 250, alignment: .leading)
                                 .foregroundColor(.black)
                             Spacer()
-                                .frame(height:5)
+                                .frame(height: 5)
                             TextField("\(item.shortdesc)", text: $inputShortDesc)
                                 .font(Font.custom("Gilroy-Light", size: 14))
                                 .frame(width: 250, alignment: .leading)
@@ -93,21 +90,18 @@ extension RulesView{
         }
     }
     
-    private var newRules: some View{
-        VStack{
+    private var newRules: some View {
+        VStack {
             Button {
                 self.dataRules.onAdd(rules: self.dataRules.inputRules, shortdesc: self.dataRules.inputShortDesc)
             } label: {
                 Text("")
                     .background(blacktext.opacity(1))
             }.frame(maxWidth: .infinity)
-                
-
         }
     }
 }
 
-//MARK: Functions
-extension RulesView{
-    
-}
+// MARK: Functions
+
+extension RulesView {}

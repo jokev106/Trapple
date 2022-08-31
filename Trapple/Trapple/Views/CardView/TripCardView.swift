@@ -73,7 +73,13 @@ struct TripCardView: View {
         .padding(.trailing, 30)
         .padding(.leading, 30)
         .shadow(color: Color.gray.opacity(0.275), radius: 8, x: 2, y: 4)
-
+        .swipeActions (edge: .trailing){
+            Button {
+                //Function for deleting card
+            } label: {
+                Text("Finish")
+            }.tint(Color.red)
+        }
     }
 }
 
