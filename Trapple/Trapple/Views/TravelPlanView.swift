@@ -23,7 +23,7 @@ struct TravelPlanView: View {
                         CreateJoinButton
                         Divider
                         OnGoingTripSection
-                    }.navigationTitle(Text("Travel Plan").font(Font.custom("Gilroy-ExtraBold", size: 48)))
+                    }.navigationTitle("Travel Plan")
                         .background(graybg)
 //                }
             }.navigationAppearance(backgroundColor: UIColor(graybg), foregroundColor: UIColor(blacktext), hideSeperator: true)

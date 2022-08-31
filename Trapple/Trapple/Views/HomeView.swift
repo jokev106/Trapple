@@ -51,7 +51,7 @@ struct HomeView: View {
                                 Label("My Profile", systemImage: "person.crop.circle.fill")
                             }
                     }
-                    .navigationBarHidden(true)
+//                    .navigationBarHidden(true)
                 }
                 .accentColor(yellow)
             }
