@@ -12,6 +12,14 @@
 		011AED8E28B4D03300E77F93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 011AED8D28B4D03300E77F93 /* Assets.xcassets */; };
 		011AED9128B4D03300E77F93 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 011AED9028B4D03300E77F93 /* Preview Assets.xcassets */; };
 		011AED9A28B4D15600E77F93 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 011AED9928B4D15600E77F93 /* CloudKit.framework */; };
+		01BAC26328BF449100C61985 /* PlansViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BAC26228BF449100C61985 /* PlansViewModel.swift */; };
+		01BAC26528BF44A000C61985 /* ActivitiesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BAC26428BF44A000C61985 /* ActivitiesViewModel.swift */; };
+		01BAC26728BF44B700C61985 /* PlanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BAC26628BF44B700C61985 /* PlanModel.swift */; };
+		01BAC26928BF44C200C61985 /* ActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BAC26828BF44C200C61985 /* ActivityModel.swift */; };
+		01BAC26C28BF44EA00C61985 /* CloudKitActivityTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BAC26B28BF44EA00C61985 /* CloudKitActivityTesting.swift */; };
+		01BAC26E28BF44FC00C61985 /* CloudKitCRUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BAC26D28BF44FC00C61985 /* CloudKitCRUD.swift */; };
+		01BAC27028BF451200C61985 /* CloudKitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BAC26F28BF451200C61985 /* CloudKitTesting.swift */; };
+		01BAC27228BF452B00C61985 /* CloudKitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BAC27128BF452B00C61985 /* CloudKitViewModel.swift */; };
 		701DD85B28B62459003E53CD /* TripHomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701DD85A28B62459003E53CD /* TripHomePageView.swift */; };
 		701E3B0028BB14D2008CFEB3 /* Gilroy-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 701E3AFE28BB14D2008CFEB3 /* Gilroy-ExtraBold.otf */; };
 		701E3B0128BB14D2008CFEB3 /* Gilroy-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 701E3AFF28BB14D2008CFEB3 /* Gilroy-Light.otf */; };
@@ -37,14 +45,6 @@
 		B3B8FD9428BCC3C70007A213 /* RulesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FD9328BCC3C70007A213 /* RulesViewModel.swift */; };
 		B3B8FD9628BE1DFE0007A213 /* AddRundownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FD9528BE1DFE0007A213 /* AddRundownView.swift */; };
 		B3EFEA4E28B6078F00B3C53A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EFEA4D28B6078F00B3C53A /* HomeView.swift */; };
-		0172645C28B74F74008F0B79 /* CloudKitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172645B28B74F74008F0B79 /* CloudKitViewModel.swift */; };
-		0172645E28B7508C008F0B79 /* CloudKitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172645D28B7508C008F0B79 /* CloudKitTesting.swift */; };
-		0172646028B8B15C008F0B79 /* CloudKitCRUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172645F28B8B15C008F0B79 /* CloudKitCRUD.swift */; };
-		0172646228B8B31D008F0B79 /* PlansViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172646128B8B31D008F0B79 /* PlansViewModel.swift */; };
-		01BAC25A28BB9B5800C61985 /* PlanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BAC25928BB9B5800C61985 /* PlanModel.swift */; };
-		01BAC25C28BC703800C61985 /* ActivitesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BAC25B28BC703800C61985 /* ActivitesViewModel.swift */; };
-		01BAC25E28BC713300C61985 /* ActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BAC25D28BC713300C61985 /* ActivityModel.swift */; };
-		01BAC26028BC758000C61985 /* CloudKitActivityTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BAC25F28BC758000C61985 /* CloudKitActivityTesting.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +55,14 @@
 		011AED9028B4D03300E77F93 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		011AED9728B4D12E00E77F93 /* Trapple.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Trapple.entitlements; sourceTree = "<group>"; };
 		011AED9928B4D15600E77F93 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		01BAC26228BF449100C61985 /* PlansViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlansViewModel.swift; sourceTree = "<group>"; };
+		01BAC26428BF44A000C61985 /* ActivitiesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesViewModel.swift; sourceTree = "<group>"; };
+		01BAC26628BF44B700C61985 /* PlanModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanModel.swift; sourceTree = "<group>"; };
+		01BAC26828BF44C200C61985 /* ActivityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityModel.swift; sourceTree = "<group>"; };
+		01BAC26B28BF44EA00C61985 /* CloudKitActivityTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitActivityTesting.swift; sourceTree = "<group>"; };
+		01BAC26D28BF44FC00C61985 /* CloudKitCRUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitCRUD.swift; sourceTree = "<group>"; };
+		01BAC26F28BF451200C61985 /* CloudKitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitTesting.swift; sourceTree = "<group>"; };
+		01BAC27128BF452B00C61985 /* CloudKitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitViewModel.swift; sourceTree = "<group>"; };
 		701DD85A28B62459003E53CD /* TripHomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripHomePageView.swift; sourceTree = "<group>"; };
 		701E3AFE28BB14D2008CFEB3 /* Gilroy-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-ExtraBold.otf"; sourceTree = "<group>"; };
 		701E3AFF28BB14D2008CFEB3 /* Gilroy-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Light.otf"; sourceTree = "<group>"; };
@@ -81,14 +89,6 @@
 		B3B8FD9328BCC3C70007A213 /* RulesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesViewModel.swift; sourceTree = "<group>"; };
 		B3B8FD9528BE1DFE0007A213 /* AddRundownView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRundownView.swift; sourceTree = "<group>"; };
 		B3EFEA4D28B6078F00B3C53A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		0172645B28B74F74008F0B79 /* CloudKitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitViewModel.swift; sourceTree = "<group>"; };
-		0172645D28B7508C008F0B79 /* CloudKitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitTesting.swift; sourceTree = "<group>"; };
-		0172645F28B8B15C008F0B79 /* CloudKitCRUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitCRUD.swift; sourceTree = "<group>"; };
-		0172646128B8B31D008F0B79 /* PlansViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlansViewModel.swift; sourceTree = "<group>"; };
-		01BAC25928BB9B5800C61985 /* PlanModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanModel.swift; sourceTree = "<group>"; };
-		01BAC25B28BC703800C61985 /* ActivitesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitesViewModel.swift; sourceTree = "<group>"; };
-		01BAC25D28BC713300C61985 /* ActivityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityModel.swift; sourceTree = "<group>"; };
-		01BAC25F28BC758000C61985 /* CloudKitActivityTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitActivityTesting.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +152,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		01BAC26A28BF44CE00C61985 /* CloudKitTesting */ = {
+			isa = PBXGroup;
+			children = (
+				01BAC26B28BF44EA00C61985 /* CloudKitActivityTesting.swift */,
+				01BAC26D28BF44FC00C61985 /* CloudKitCRUD.swift */,
+				01BAC26F28BF451200C61985 /* CloudKitTesting.swift */,
+			);
+			path = CloudKitTesting;
+			sourceTree = "<group>";
+		};
 		701E3AFD28BB14A8008CFEB3 /* Custom Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +184,7 @@
 		B3EFEA4928B6043300B3C53A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				01BAC26A28BF44CE00C61985 /* CloudKitTesting */,
 				701E3AFD28BB14A8008CFEB3 /* Custom Fonts */,
 				B3EFEA4C28B6045100B3C53A /* CardView */,
 				B3EFEA4D28B6078F00B3C53A /* HomeView.swift */,
@@ -197,6 +208,8 @@
 			isa = PBXGroup;
 			children = (
 				B3B8FD9128BCC3BF0007A213 /* RulesModel.swift */,
+				01BAC26628BF44B700C61985 /* PlanModel.swift */,
+				01BAC26828BF44C200C61985 /* ActivityModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -205,6 +218,9 @@
 			isa = PBXGroup;
 			children = (
 				B3B8FD9328BCC3C70007A213 /* RulesViewModel.swift */,
+				01BAC26228BF449100C61985 /* PlansViewModel.swift */,
+				01BAC26428BF44A000C61985 /* ActivitiesViewModel.swift */,
+				01BAC27128BF452B00C61985 /* CloudKitViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -296,14 +312,20 @@
 			files = (
 				B3B8FD9028BCBD650007A213 /* RulesView.swift in Sources */,
 				B3B8FD7A28B8960C0007A213 /* MyProfileView.swift in Sources */,
+				01BAC26C28BF44EA00C61985 /* CloudKitActivityTesting.swift in Sources */,
 				B3EFEA4E28B6078F00B3C53A /* HomeView.swift in Sources */,
 				B3B8FD8628BB94110007A213 /* RundownView.swift in Sources */,
 				B3B8FD8E28BCA3FB0007A213 /* RulesCardView.swift in Sources */,
 				701DD85B28B62459003E53CD /* TripHomePageView.swift in Sources */,
 				B3B8FD9428BCC3C70007A213 /* RulesViewModel.swift in Sources */,
+				01BAC26528BF44A000C61985 /* ActivitiesViewModel.swift in Sources */,
+				01BAC27028BF451200C61985 /* CloudKitTesting.swift in Sources */,
 				B3B8FD8A28BB944B0007A213 /* ColorSet.swift in Sources */,
 				705EBB8928BC8940006B985C /* RundownCardview.swift in Sources */,
+				01BAC26928BF44C200C61985 /* ActivityModel.swift in Sources */,
+				01BAC26328BF449100C61985 /* PlansViewModel.swift in Sources */,
 				705EBB8D28BCB07C006B985C /* EquipmentView.swift in Sources */,
+				01BAC26E28BF44FC00C61985 /* CloudKitCRUD.swift in Sources */,
 				705EBB8F28BCBFF0006B985C /* AddCategoryView.swift in Sources */,
 				705EBB9728BDEBE9006B985C /* CategoryView.swift in Sources */,
 				705EBB8B28BCA435006B985C /* RundownCardviewDetail.swift in Sources */,
@@ -312,20 +334,17 @@
 				705EBB9328BDE8FD006B985C /* ItemListCardview.swift in Sources */,
 				011AED8C28B4D03000E77F93 /* ContentView.swift in Sources */,
 				B3B8FD8828BB942C0007A213 /* NavigationAppearance.swift in Sources */,
+				01BAC26728BF44B700C61985 /* PlanModel.swift in Sources */,
 				B3B8FD8C28BC9C970007A213 /* SubmissionImagePicker.swift in Sources */,
 				B3B8FD9228BCC3BF0007A213 /* RulesModel.swift in Sources */,
 				B3B8FD9628BE1DFE0007A213 /* AddRundownView.swift in Sources */,
-				0172646028B8B15C008F0B79 /* CloudKitCRUD.swift in Sources */,
 				011AED8C28B4D03000E77F93 /* ContentView.swift in Sources */,
-				01BAC26028BC758000C61985 /* CloudKitActivityTesting.swift in Sources */,
-				01BAC25E28BC713300C61985 /* ActivityModel.swift in Sources */,
-				0172645E28B7508C008F0B79 /* CloudKitTesting.swift in Sources */,
-				01BAC25C28BC703800C61985 /* ActivitesViewModel.swift in Sources */,
 				011AED8A28B4D03000E77F93 /* TrappleApp.swift in Sources */,
 				B3B8FD7828B895F90007A213 /* TravelPlanView.swift in Sources */,
 				B3B8FD7E28B8C35B0007A213 /* TripCardView.swift in Sources */,
 				B3B8FD7C28B8B9EE0007A213 /* CreatePlanView.swift in Sources */,
 				705EBB9528BDE958006B985C /* AddItemVIew.swift in Sources */,
+				01BAC27228BF452B00C61985 /* CloudKitViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
