@@ -8,6 +8,19 @@
 import SwiftUI
 
 struct TripCardView: View {
+    
+    @State var plan: String = ""
+    @State var destination: String = ""
+    @State var startDate: Date = Date()
+    @State var endDate: Date = Date()
+    
+    
+    static let stackDateFormat: DateFormatter = {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "E, dd MMMM yyyy"
+            return formatter
+        }()
+    
     var body: some View {
         HStack{
             VStack{
@@ -22,20 +35,20 @@ struct TripCardView: View {
             }
             
             VStack{
-                Text("Traveling with Apple")
+                Text(plan)
                     .font(Font.custom("Gilroy-ExtraBold", size: 15))
                     .lineLimit(2)
                     .padding(.trailing, 10)
                     .frame(width: 200, alignment: .leading)
                     .foregroundColor(Color.black)
-                Text("BALI, Indonesia")
+                Text(destination)
                     .font(Font.custom("Gilroy-Light", size: 12))
                     .lineLimit(2)
                     .padding(.trailing, 10)
                     .padding(.top, 0.5)
                     .frame(width: 200,alignment: .leading)
                     .foregroundColor(Color.black)
-                Text("Start: Tuesday, 2 February 2025")
+                Text("Start: \(startDate, formatter: Self.stackDateFormat)")
                     .font(Font.custom("Gilroy-Light", size: 10))
                     .lineLimit(2)
                     .padding(.trailing, 10)

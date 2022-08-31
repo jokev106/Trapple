@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import CloudKit
 
 struct TravelPlanView: View {
     
     @Environment(\.presentationMode) var presentationMode:Binding<PresentationMode>
     
     @State var showCreatePlan = false
+    @StateObject private var vm = PlansViewModel()
     
     var body: some View {
         GeometryReader{geo in
@@ -91,13 +93,13 @@ extension TravelPlanView {
                 .padding(0.5)
             ScrollView{
                 VStack{
-                    ForEach((1..<10)) {cardview in
+                    ForEach(vm.plans, id: \.recordID) {items in
                         NavigationLink{
                            TripHomePageView()
 //                                .navigationBarHidden(true)
                         }
                     label: {
-                        TripCardView()
+                        TripCardView(plan: items.title, destination: items.destination, startDate: items.startDate, endDate: items.endDate)
                     }
                     }
                 }

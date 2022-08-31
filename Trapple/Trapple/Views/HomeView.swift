@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import CloudKit
 
 struct HomeView: View {
+    
+    @StateObject private var vm = CloudKitViewModel()
     
     init(){
         UITabBar.appearance().barTintColor = UIColor(darkblue)
@@ -19,7 +22,8 @@ struct HomeView: View {
                 TabView {
                     
                     //Move to Travel Plan view
-                    TravelPlanView()
+//                    TravelPlanView()
+                    CloudKitTesting()
                         .tabItem{
                             Label("Travel Plan", systemImage: "airplane")
                         }

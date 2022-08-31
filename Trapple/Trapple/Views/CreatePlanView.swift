@@ -6,16 +6,17 @@
 //
 
 import SwiftUI
+import CloudKit
 
 
 struct CreatePlanView: View {
     
-    
+    @StateObject private var vm = PlansViewModel()
     //var for form input
-    @State var inputTripName: String = ""
-    @State var inputDestination: String = ""
-    @State var startDate = Date()
-    @State var endDate = Date()
+//    @State var inputTripName: String = ""
+//    @State var inputDestination: String = ""
+//    @State var startDate = Date()
+//    @State var endDate = Date()
     
     //bool for showing date picker
     @State var showEndDate = false
@@ -87,7 +88,7 @@ extension CreatePlanView {
                     Image(systemName: "pencil")
                     Spacer()
                         .frame(width: 20)
-                    TextField("Trip Name", text: $inputTripName)
+                    TextField("Trip Name", text: $vm.title)
                         .frame(width: 250, alignment: .leading)
                         .foregroundColor(.black)
                     Spacer()
@@ -107,7 +108,7 @@ extension CreatePlanView {
                     Image(systemName: "airplane")
                     Spacer()
                         .frame(width: 20)
-                    TextField("Destination", text: $inputTripName)
+                    TextField("Destination", text: $vm.destination)
                         .frame(width: 250, alignment: .leading)
                         .foregroundColor(.black)
                     Spacer()
@@ -131,16 +132,21 @@ extension CreatePlanView {
     
     private var CreateButton : some View {
         VStack{
-            Text("Create")
-                .fontWeight(.bold)
-                .frame(height: 50)
-                .frame(maxWidth: .infinity)
-                .background(.gray.opacity(0.5))
-                .foregroundColor(.black)
-                .cornerRadius(10)
-                .onTapGesture {
-                    //Function Save trip plan data + Move to Trip Page
-                }
+            
+//            NavigationLink(destination: TripHomePageView(), label: {
+                Text("Create")
+                    .fontWeight(.bold)
+                    .frame(height: 50)
+                    .frame(maxWidth: .infinity)
+                    .background(.gray.opacity(0.5))
+                    .foregroundColor(.black)
+                    .cornerRadius(10)
+                    .onTapGesture {
+                        //Function Save trip plan data + Move to Trip Page
+                        vm.addButtonPressed()
+                        presentationMode.wrappedValue.dismiss()
+                    }
+//            })
         }.padding(20)
         
     }
@@ -175,7 +181,7 @@ extension CreatePlanView {
                         }
                         .padding(.horizontal, 50)
                         .padding(.top, 15)
-                        DatePicker("Set Start Date", selection: $startDate, in: Date()..., displayedComponents: .date)
+                        DatePicker("Set Start Date", selection: $vm.startDate, in: Date()..., displayedComponents: .date)
                             .accentColor(yellow)
                             .datePickerStyle(GraphicalDatePickerStyle())
                             .frame(height: 300)
@@ -245,7 +251,7 @@ extension CreatePlanView {
                         }
                         .padding(.horizontal, 50)
                         .padding(.top, 15)
-                        DatePicker("Set Start Date", selection: $startDate, in: Date()..., displayedComponents: .date)
+                        DatePicker("Set Start Date", selection: $vm.endDate, in: Date()..., displayedComponents: .date)
                             .datePickerStyle(GraphicalDatePickerStyle())
                             .frame(height: 300)
                             .accentColor(yellow)
