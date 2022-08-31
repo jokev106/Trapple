@@ -6,8 +6,13 @@
 //
 
 import SwiftUI
+import CloudKit
 
 struct TripHomePageView: View {
+    
+    @StateObject private var vm = ActivitiesViewModel()
+    @State var title: String = ""
+    @State var planID = CKRecord.ID()
     
     init(){
         UITabBar.appearance().barTintColor = UIColor(darkblue)

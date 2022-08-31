@@ -94,10 +94,7 @@ extension TravelPlanView {
             ScrollView{
                 VStack{
                     ForEach(vm.plans, id: \.recordID) {items in
-                        NavigationLink{
-                           TripHomePageView()
-//                                .navigationBarHidden(true)
-                        }
+                        NavigationLink(destination: TripHomePageView())
                     label: {
                         TripCardView(plan: items.title, destination: items.destination, startDate: items.startDate, endDate: items.endDate)
                     }
