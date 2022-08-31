@@ -188,13 +188,13 @@
 				701E3AFD28BB14A8008CFEB3 /* Custom Fonts */,
 				B3EFEA4C28B6045100B3C53A /* CardView */,
 				B3EFEA4D28B6078F00B3C53A /* HomeView.swift */,
-				B3B8FD9528BE1DFE0007A213 /* AddRundownView.swift */,
 				011AED8B28B4D03000E77F93 /* ContentView.swift */,
 				B3B8FD7728B895F90007A213 /* TravelPlanView.swift */,
 				B3B8FD7928B8960C0007A213 /* MyProfileView.swift */,
 				B3B8FD7B28B8B9EE0007A213 /* CreatePlanView.swift */,
 				701DD85A28B62459003E53CD /* TripHomePageView.swift */,
 				B3B8FD8528BB94110007A213 /* RundownView.swift */,
+				B3B8FD9528BE1DFE0007A213 /* AddRundownView.swift */,
 				B3B8FD8F28BCBD650007A213 /* RulesView.swift */,
 				705EBB8C28BCB07C006B985C /* EquipmentView.swift */,
 				705EBB8E28BCBFF0006B985C /* AddCategoryView.swift */,
@@ -475,7 +475,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Trapple/Preview Content\"";
-				DEVELOPMENT_TEAM = JRS36H7H6Q;
+				DEVELOPMENT_TEAM = 3Y6CHKGHC8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Trapple/Info.plist;
@@ -490,7 +490,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Trapple;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mc3.Trapple;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -509,7 +509,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Trapple/Preview Content\"";
-				DEVELOPMENT_TEAM = JRS36H7H6Q;
+				DEVELOPMENT_TEAM = 3Y6CHKGHC8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Trapple/Info.plist;
@@ -524,7 +524,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Trapple;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mc3.Trapple;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;

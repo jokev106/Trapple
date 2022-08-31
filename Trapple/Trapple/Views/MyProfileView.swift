@@ -27,7 +27,7 @@ struct MyProfileView: View {
                             .frame(height: 10)
                         HistoryUserSection
                         
-                    }.navigationTitle("Profile")
+                    }.navigationTitle("My Profile")
                         .background(graybg)
 //                }
             }.navigationAppearance(backgroundColor: UIColor(graybg), foregroundColor: UIColor(blacktext), hideSeperator: true)

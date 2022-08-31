@@ -23,6 +23,7 @@ struct RundownView: View {
         GeometryReader { geometry in
             ScrollView {
                 VStack(spacing: 0) {
+                    SegmentedControl
                     
                     if isExist == true {
                         ForEach(0 ..< nyoba.count, id: \.self) { card in

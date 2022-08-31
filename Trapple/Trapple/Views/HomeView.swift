@@ -13,17 +13,20 @@ struct HomeView: View {
     @StateObject private var vm = CloudKitViewModel()
     
     init() {
+        
+//        UITabBar.appearance().barTintColor = UIColor(darkblue)
+        
         let tabBarAppearance = UITabBarAppearance()
 
         tabBarAppearance.backgroundColor = UIColor(darkblue)
-
-//        UITabBar.appearance().barTintColor = UIColor(darkblue)
 
         UITabBar.appearance().standardAppearance = tabBarAppearance
 
         UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
         
         let toolBarAppearance = UIToolbarAppearance()
+        
+//        UIToolbar.appearance().barTintColor = UIColor.red
         
         toolBarAppearance.backgroundColor = UIColor(darkblue)
         
@@ -35,7 +38,6 @@ struct HomeView: View {
 
         UIToolbar.appearance().scrollEdgeAppearance = toolBarAppearance2
         
-//        UIToolbar.appearance().barTintColor = UIColor.red
     }
 
     var body: some View {
