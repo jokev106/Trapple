@@ -6,8 +6,12 @@
 //
 
 import SwiftUI
+import CloudKit
 
 struct EquipmentView: View {
+    
+    @StateObject private var vm = CategoriesViewModel()
+    @State var planID = CKRecord.ID()
     @State private var showModal = false
     
     let columns = [GridItem(.adaptive(minimum: 125, maximum: 350))]
@@ -23,7 +27,7 @@ struct EquipmentView: View {
                         .padding(.top)
                     
                     LazyVGrid(columns: columns) {
-                        NavigationLink(destination: CategoryView(title: "Food & Beverages", image: "fork.knife"), label: {
+                        NavigationLink(destination: CategoryView(planID: planID, title: "Food & Beverages", image: "fork.knife"), label: {
                             ZStack {
                                 Rectangle()
                                     .foregroundColor(.white)
@@ -46,7 +50,7 @@ struct EquipmentView: View {
                         .padding(.horizontal, 5)
                         .padding(.vertical, 5)
                         
-                        NavigationLink(destination: CategoryView(title: "Apparel", image: "tshirt"), label: {
+                        NavigationLink(destination: CategoryView(planID: planID, title: "Apparel", image: "tshirt"), label: {
                             ZStack {
                                 Rectangle()
                                     .foregroundColor(.white)
@@ -69,7 +73,7 @@ struct EquipmentView: View {
                         .padding(.horizontal, 5)
                         .padding(.vertical, 5)
                         
-                        NavigationLink(destination: CategoryView(title: "Tools", image: "wrench"), label: {
+                        NavigationLink(destination: CategoryView(planID: planID, title: "Tools", image: "wrench"), label: {
                             ZStack {
                                 Rectangle()
                                     .foregroundColor(.white)
@@ -92,7 +96,7 @@ struct EquipmentView: View {
                         .padding(.horizontal, 5)
                         .padding(.vertical, 5)
                     
-                        NavigationLink(destination: CategoryView(title: "Medicine", image: "pills"), label: {
+                        NavigationLink(destination: CategoryView(planID: planID, title: "Medicine", image: "pills"), label: {
                             ZStack {
                                 Rectangle()
                                     .foregroundColor(.white)
@@ -115,19 +119,19 @@ struct EquipmentView: View {
                         .padding(.horizontal, 5)
                         .padding(.vertical, 5)
                         
-                        ForEach(0 ..< 1, id: \.self) { _ in
-                            NavigationLink(destination: CategoryView(title: "Custom", image: "folder"), label: {
+                        ForEach(vm.categoryVM, id: \.recordID) { item in
+                            NavigationLink(destination: CategoryView(planID: planID, title: item.category, image: item.icon), label: {
                                 ZStack {
                                     Rectangle()
                                         .foregroundColor(.white)
                                     VStack {
-                                        Image(systemName: "folder")
+                                        Image(systemName: item.icon)
                                             .resizable()
                                             .scaledToFit()
                                             .frame(height: 50)
                                             .padding()
                                     
-                                        Text("Custom")
+                                        Text(item.category)
                                     }
                                 }
                             })
@@ -143,6 +147,9 @@ struct EquipmentView: View {
                     .padding(.horizontal)
                 }
                 .background(graybg)
+                .onAppear{
+                    vm.fetchItems(planID: planID)
+                }
             }
             .font(Font.custom("Gilroy-ExtraBold", size: 15))
             .navigationTitle("Equipment")
@@ -162,7 +169,7 @@ struct EquipmentView: View {
                     })
                     .frame(maxWidth: .infinity, alignment: .bottomLeading)
                     .sheet(isPresented: $showModal) {
-                        AddCategoryView(showModal: self.$showModal)
+                        AddCategoryView(planID: planID, showModal: self.$showModal)
                     }
                 }
             }

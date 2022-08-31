@@ -10,6 +10,8 @@ import SwiftUI
 struct ItemListCardview: View {
     @State var image: String
     @State var defaultImage: Bool
+    @State var itemName: String = ""
+    @State var description: String = ""
 
     var body: some View {
         HStack(spacing: 0) {
@@ -33,9 +35,9 @@ struct ItemListCardview: View {
                 .foregroundColor(Color("yellowCard"))
 
             VStack(alignment: .leading) {
-                Text("Item Name")
+                Text(itemName)
                     .font(Font.custom("Gilroy-ExtraBold", size: 17))
-                Text("Item Description")
+                Text(description)
                     .padding(.top, 3)
                     .padding(.bottom, 20)
             }

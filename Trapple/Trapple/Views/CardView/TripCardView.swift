@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CloudKit
 
 struct TripCardView: View {
     
@@ -13,6 +14,7 @@ struct TripCardView: View {
     @State var destination: String = ""
     @State var startDate: Date = Date()
     @State var endDate: Date = Date()
+    @State var planID: CKRecord.ID!
     
     
     static let stackDateFormat: DateFormatter = {
@@ -22,49 +24,53 @@ struct TripCardView: View {
         }()
     
     var body: some View {
+        
         HStack{
-            VStack{
-                Image("bali")
-                    .resizable()
-                    .padding(.trailing, 10)
-                    .frame(width: 120, height: 130)
-                    .background(Color.white)
-                    .foregroundColor(Color.gray.opacity(0.5))
-                    .cornerRadius(13)
-                    
+            NavigationLink(destination: TripHomePageView(title: plan, planID: planID)){
+                VStack{
+                    Image("bali")
+                        .resizable()
+                        .padding(.trailing, 10)
+                        .frame(width: 120, height: 130)
+                        .background(Color.white)
+                        .foregroundColor(Color.gray.opacity(0.5))
+                        .cornerRadius(13)
+                        
+                }
+                
+                VStack{
+                    Text(plan)
+                        .font(Font.custom("Gilroy-ExtraBold", size: 15))
+                        .lineLimit(2)
+                        .padding(.trailing, 10)
+                        .frame(width: 200, alignment: .leading)
+                        .foregroundColor(Color.black)
+                    Text(destination)
+                        .font(Font.custom("Gilroy-Light", size: 12))
+                        .lineLimit(2)
+                        .padding(.trailing, 10)
+                        .padding(.top, 0.5)
+                        .frame(width: 200,alignment: .leading)
+                        .foregroundColor(Color.black)
+                    Text("Start: \(startDate, formatter: Self.stackDateFormat)")
+                        .font(Font.custom("Gilroy-Light", size: 10))
+                        .lineLimit(2)
+                        .padding(.trailing, 10)
+                        .padding(.top, 5)
+                        .frame(width: 200,alignment: .leading)
+                        .foregroundColor(Color.black)
+                    Text("3 Days, 2 Night")
+                        .font(Font.custom("Gilroy-Light", size: 8))
+                        .lineLimit(2)
+                        .padding(.trailing, 10)
+                        .padding(.top, 2)
+                        .frame(width: 200,alignment: .leading)
+                        .foregroundColor(Color.black)
+                }
+
+                Spacer()
             }
             
-            VStack{
-                Text(plan)
-                    .font(Font.custom("Gilroy-ExtraBold", size: 15))
-                    .lineLimit(2)
-                    .padding(.trailing, 10)
-                    .frame(width: 200, alignment: .leading)
-                    .foregroundColor(Color.black)
-                Text(destination)
-                    .font(Font.custom("Gilroy-Light", size: 12))
-                    .lineLimit(2)
-                    .padding(.trailing, 10)
-                    .padding(.top, 0.5)
-                    .frame(width: 200,alignment: .leading)
-                    .foregroundColor(Color.black)
-                Text("Start: \(startDate, formatter: Self.stackDateFormat)")
-                    .font(Font.custom("Gilroy-Light", size: 10))
-                    .lineLimit(2)
-                    .padding(.trailing, 10)
-                    .padding(.top, 5)
-                    .frame(width: 200,alignment: .leading)
-                    .foregroundColor(Color.black)
-                Text("3 Days, 2 Night")
-                    .font(Font.custom("Gilroy-Light", size: 8))
-                    .lineLimit(2)
-                    .padding(.trailing, 10)
-                    .padding(.top, 2)
-                    .frame(width: 200,alignment: .leading)
-                    .foregroundColor(Color.black)
-            }
-
-            Spacer()
         }
         .frame(height: 120)
         .background(.white)

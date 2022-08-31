@@ -6,8 +6,12 @@
 //
 
 import SwiftUI
+import CloudKit
 
 struct CategoryView: View {
+    
+    @StateObject private var vm = EquipmentsViewModel()
+    @State var planID = CKRecord.ID()
     @State private var showModal = false
     @State var title: String
     @State var image: String
@@ -22,11 +26,14 @@ struct CategoryView: View {
                         .padding(.horizontal)
                         .padding(.top)
                     
-                    ForEach(0 ..< 3, id: \.self) { index in
-                        ItemListCardview(image: image, defaultImage: true)
+                    ForEach(vm.equipment, id: \.recordID) { index in
+                        ItemListCardview(image: image, defaultImage: true, itemName: index.itemName, description: index.description)
                             .padding(.horizontal)
                             .padding(.bottom)
                     }
+                }
+                .onAppear{
+                    vm.fetchItems(planID: planID, category: title)
                 }
             }
             .background(Color("grayBG"))
@@ -47,7 +54,7 @@ struct CategoryView: View {
                     })
                     .frame(maxWidth: .infinity, alignment: .bottomLeading)
                     .sheet(isPresented: $showModal) {
-                        AddItemVIew(showModal: self.$showModal)
+                        AddItemVIew(planID: planID, category: title, icon: image, showModal: self.$showModal)
                     }
                 }
             }

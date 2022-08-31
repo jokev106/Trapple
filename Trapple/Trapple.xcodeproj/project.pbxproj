@@ -20,6 +20,10 @@
 		01BAC26E28BF44FC00C61985 /* CloudKitCRUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BAC26D28BF44FC00C61985 /* CloudKitCRUD.swift */; };
 		01BAC27028BF451200C61985 /* CloudKitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BAC26F28BF451200C61985 /* CloudKitTesting.swift */; };
 		01BAC27228BF452B00C61985 /* CloudKitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BAC27128BF452B00C61985 /* CloudKitViewModel.swift */; };
+		01BAC27428BFB7D900C61985 /* EquipmentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BAC27328BFB7D900C61985 /* EquipmentsViewModel.swift */; };
+		01BAC27628BFBD1600C61985 /* EquipmentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BAC27528BFBD1600C61985 /* EquipmentModel.swift */; };
+		01BAC27828BFBE5C00C61985 /* CategoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BAC27728BFBE5C00C61985 /* CategoriesViewModel.swift */; };
+		01BAC27A28BFBE6C00C61985 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BAC27928BFBE6C00C61985 /* CategoryModel.swift */; };
 		701DD85B28B62459003E53CD /* TripHomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701DD85A28B62459003E53CD /* TripHomePageView.swift */; };
 		701E3B0028BB14D2008CFEB3 /* Gilroy-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 701E3AFE28BB14D2008CFEB3 /* Gilroy-ExtraBold.otf */; };
 		701E3B0128BB14D2008CFEB3 /* Gilroy-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 701E3AFF28BB14D2008CFEB3 /* Gilroy-Light.otf */; };
@@ -41,7 +45,7 @@
 		B3B8FD8C28BC9C970007A213 /* SubmissionImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FD8B28BC9C970007A213 /* SubmissionImagePicker.swift */; };
 		B3B8FD8E28BCA3FB0007A213 /* RulesCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FD8D28BCA3FB0007A213 /* RulesCardView.swift */; };
 		B3B8FD9028BCBD650007A213 /* RulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FD8F28BCBD650007A213 /* RulesView.swift */; };
-		B3B8FD9228BCC3BF0007A213 /* RulesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FD9128BCC3BF0007A213 /* RulesModel.swift */; };
+		B3B8FD9228BCC3BF0007A213 /* RuleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FD9128BCC3BF0007A213 /* RuleModel.swift */; };
 		B3B8FD9428BCC3C70007A213 /* RulesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FD9328BCC3C70007A213 /* RulesViewModel.swift */; };
 		B3B8FD9628BE1DFE0007A213 /* AddRundownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FD9528BE1DFE0007A213 /* AddRundownView.swift */; };
 		B3EFEA4E28B6078F00B3C53A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EFEA4D28B6078F00B3C53A /* HomeView.swift */; };
@@ -63,6 +67,10 @@
 		01BAC26D28BF44FC00C61985 /* CloudKitCRUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitCRUD.swift; sourceTree = "<group>"; };
 		01BAC26F28BF451200C61985 /* CloudKitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitTesting.swift; sourceTree = "<group>"; };
 		01BAC27128BF452B00C61985 /* CloudKitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitViewModel.swift; sourceTree = "<group>"; };
+		01BAC27328BFB7D900C61985 /* EquipmentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentsViewModel.swift; sourceTree = "<group>"; };
+		01BAC27528BFBD1600C61985 /* EquipmentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentModel.swift; sourceTree = "<group>"; };
+		01BAC27728BFBE5C00C61985 /* CategoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewModel.swift; sourceTree = "<group>"; };
+		01BAC27928BFBE6C00C61985 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		701DD85A28B62459003E53CD /* TripHomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripHomePageView.swift; sourceTree = "<group>"; };
 		701E3AFE28BB14D2008CFEB3 /* Gilroy-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-ExtraBold.otf"; sourceTree = "<group>"; };
 		701E3AFF28BB14D2008CFEB3 /* Gilroy-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Light.otf"; sourceTree = "<group>"; };
@@ -85,7 +93,7 @@
 		B3B8FD8B28BC9C970007A213 /* SubmissionImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmissionImagePicker.swift; sourceTree = "<group>"; };
 		B3B8FD8D28BCA3FB0007A213 /* RulesCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesCardView.swift; sourceTree = "<group>"; };
 		B3B8FD8F28BCBD650007A213 /* RulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesView.swift; sourceTree = "<group>"; };
-		B3B8FD9128BCC3BF0007A213 /* RulesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesModel.swift; sourceTree = "<group>"; };
+		B3B8FD9128BCC3BF0007A213 /* RuleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleModel.swift; sourceTree = "<group>"; };
 		B3B8FD9328BCC3C70007A213 /* RulesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesViewModel.swift; sourceTree = "<group>"; };
 		B3B8FD9528BE1DFE0007A213 /* AddRundownView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRundownView.swift; sourceTree = "<group>"; };
 		B3EFEA4D28B6078F00B3C53A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -207,9 +215,11 @@
 		B3EFEA4A28B6043900B3C53A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B3B8FD9128BCC3BF0007A213 /* RulesModel.swift */,
+				B3B8FD9128BCC3BF0007A213 /* RuleModel.swift */,
 				01BAC26628BF44B700C61985 /* PlanModel.swift */,
 				01BAC26828BF44C200C61985 /* ActivityModel.swift */,
+				01BAC27528BFBD1600C61985 /* EquipmentModel.swift */,
+				01BAC27928BFBE6C00C61985 /* CategoryModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -221,6 +231,8 @@
 				01BAC26228BF449100C61985 /* PlansViewModel.swift */,
 				01BAC26428BF44A000C61985 /* ActivitiesViewModel.swift */,
 				01BAC27128BF452B00C61985 /* CloudKitViewModel.swift */,
+				01BAC27328BFB7D900C61985 /* EquipmentsViewModel.swift */,
+				01BAC27728BFBE5C00C61985 /* CategoriesViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -317,10 +329,13 @@
 				B3B8FD8628BB94110007A213 /* RundownView.swift in Sources */,
 				B3B8FD8E28BCA3FB0007A213 /* RulesCardView.swift in Sources */,
 				701DD85B28B62459003E53CD /* TripHomePageView.swift in Sources */,
+				01BAC27428BFB7D900C61985 /* EquipmentsViewModel.swift in Sources */,
 				B3B8FD9428BCC3C70007A213 /* RulesViewModel.swift in Sources */,
 				01BAC26528BF44A000C61985 /* ActivitiesViewModel.swift in Sources */,
+				01BAC27828BFBE5C00C61985 /* CategoriesViewModel.swift in Sources */,
 				01BAC27028BF451200C61985 /* CloudKitTesting.swift in Sources */,
 				B3B8FD8A28BB944B0007A213 /* ColorSet.swift in Sources */,
+				01BAC27A28BFBE6C00C61985 /* CategoryModel.swift in Sources */,
 				705EBB8928BC8940006B985C /* RundownCardview.swift in Sources */,
 				01BAC26928BF44C200C61985 /* ActivityModel.swift in Sources */,
 				01BAC26328BF449100C61985 /* PlansViewModel.swift in Sources */,
@@ -336,8 +351,9 @@
 				B3B8FD8828BB942C0007A213 /* NavigationAppearance.swift in Sources */,
 				01BAC26728BF44B700C61985 /* PlanModel.swift in Sources */,
 				B3B8FD8C28BC9C970007A213 /* SubmissionImagePicker.swift in Sources */,
-				B3B8FD9228BCC3BF0007A213 /* RulesModel.swift in Sources */,
+				B3B8FD9228BCC3BF0007A213 /* RuleModel.swift in Sources */,
 				B3B8FD9628BE1DFE0007A213 /* AddRundownView.swift in Sources */,
+				01BAC27628BFBD1600C61985 /* EquipmentModel.swift in Sources */,
 				011AED8C28B4D03000E77F93 /* ContentView.swift in Sources */,
 				011AED8A28B4D03000E77F93 /* TrappleApp.swift in Sources */,
 				B3B8FD7828B895F90007A213 /* TravelPlanView.swift in Sources */,
@@ -475,7 +491,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Trapple/Preview Content\"";
-				DEVELOPMENT_TEAM = 3Y6CHKGHC8;
+				DEVELOPMENT_TEAM = JRS36H7H6Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Trapple/Info.plist;
@@ -490,7 +506,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mc3.Trapple;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Trapple;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -509,7 +525,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Trapple/Preview Content\"";
-				DEVELOPMENT_TEAM = 3Y6CHKGHC8;
+				DEVELOPMENT_TEAM = JRS36H7H6Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Trapple/Info.plist;
@@ -524,7 +540,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mc3.Trapple;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Trapple;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;

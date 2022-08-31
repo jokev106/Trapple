@@ -11,12 +11,12 @@ import CloudKit
 struct TripHomePageView: View {
     
     @StateObject private var vm = ActivitiesViewModel()
-    @State var title: String = ""
+    @State var title = String()
     @State var planID = CKRecord.ID()
     
-    init(){
-        UITabBar.appearance().barTintColor = UIColor(darkblue)
-    }
+//    init(){
+//        UITabBar.appearance().barTintColor = UIColor(darkblue)
+//    }
     
     @StateObject static var rulesViewModel = RulesViewModel()
     
@@ -33,7 +33,7 @@ struct TripHomePageView: View {
             .navigationAppearance(backgroundColor: UIColor(graybg), foregroundColor: UIColor(blacktext), hideSeperator: true)
             .background(Color("grayBG"))
             .font(Font.custom("Gilroy-Light", size: 20))
-            .navigationBarTitle(Text("Trip Name"), displayMode: .large)
+            .navigationTitle(title)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {}, label: {
@@ -88,7 +88,7 @@ extension TripHomePageView {
     
     private var Equipment: some View {
         VStack {
-            NavigationLink(destination: EquipmentView(), label: {
+            NavigationLink(destination: EquipmentView(planID: planID), label: {
                 VStack(spacing: 0) {
                     VStack(alignment: .leading) {
                         Text("Equipment")
@@ -165,8 +165,8 @@ extension TripHomePageView {
        
         VStack {
             
-            NavigationLink(destination: RulesView(index: 1)
-                .environmentObject(TripHomePageView.rulesViewModel)
+            NavigationLink(destination: RulesView()
+//                .environmentObject(TripHomePageView.rulesViewModel)
                            , label: {
                 VStack(spacing: 0) {
                     VStack(alignment: .leading) {

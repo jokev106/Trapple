@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct RulesView: View {
-    @EnvironmentObject var dataRules: RulesViewModel
+    @StateObject private var vm = RulesViewModel()
     
-    @State var inputRules: String = "Input Rules"
-    @State var inputShortDesc: String = "Description"
+    @State var title: String = ""
+    @State var description: String = ""
     
-    let index: Int
+//    let index: Int
     
     var body: some View {
         GeometryReader { _ in
@@ -29,7 +29,7 @@ struct RulesView: View {
                         ToolbarItem(placement: .navigationBarTrailing) {
                             Button {
                                 // Save Data
-                                self.dataRules.onUpdate(index: self.index, inputRules: self.inputRules, inputShortDesc: self.inputShortDesc)
+//                                self.dataRules.onUpdate(index: self.index, inputRules: self.inputRules, inputShortDesc: self.inputShortDesc)
                             } label: {
                                 Text("Save")
                                     .foregroundColor(yellow)
@@ -41,11 +41,11 @@ struct RulesView: View {
     }
 }
 
-struct RulesView_Previews: PreviewProvider {
-    static var previews: some View {
-        RulesView(index: 1).environmentObject(TripHomePageView.rulesViewModel)
-    }
-}
+//struct RulesView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        RulesView(index: 1).environmentObject(TripHomePageView.rulesViewModel)
+//    }
+//}
 
 // MARK: Components
 
@@ -53,7 +53,7 @@ extension RulesView {
     private var RulesList: some View {
         VStack {
             List {
-                ForEach(Array(dataRules.rulesID.enumerated()), id: \.offset) { _, item in
+                ForEach(vm.rules, id: \.recordID) { item in
                     HStack {
                         Rectangle()
                             .frame(width: 8, height: 75)
@@ -62,13 +62,13 @@ extension RulesView {
                         Spacer()
                             .frame(width: 20)
                         VStack {
-                            TextField("\(item.rules)", text: $inputRules)
+                            TextField("\(item.title)", text: $vm.title)
                                 .font(Font.custom("Gilroy-ExtraBold", size: 17))
                                 .frame(width: 250, alignment: .leading)
                                 .foregroundColor(.black)
                             Spacer()
                                 .frame(height: 5)
-                            TextField("\(item.shortdesc)", text: $inputShortDesc)
+                            TextField("\(item.description)", text: $vm.description)
                                 .font(Font.custom("Gilroy-Light", size: 14))
                                 .frame(width: 250, alignment: .leading)
                                 .foregroundColor(.black)
@@ -80,8 +80,8 @@ extension RulesView {
                     .frame(height: 80)
                     .background(graybg)
                 }
-                .onDelete(perform: dataRules.onDelete)
-                .onMove(perform: dataRules.onMove)
+                .onDelete(perform: vm.deleteItem)
+//                .onMove(perform: dataRules.onMove)
                 newRules
                     .frame(height: 500)
                     .background(graybg)
@@ -93,7 +93,7 @@ extension RulesView {
     private var newRules: some View {
         VStack {
             Button {
-                self.dataRules.onAdd(rules: self.dataRules.inputRules, shortdesc: self.dataRules.inputShortDesc)
+//                self.dataRules.onAdd(rules: self.dataRules.inputRules, shortdesc: self.dataRules.inputShortDesc)
             } label: {
                 Text("")
                     .background(blacktext.opacity(1))

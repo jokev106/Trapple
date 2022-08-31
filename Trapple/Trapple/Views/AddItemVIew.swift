@@ -6,8 +6,13 @@
 //
 
 import SwiftUI
+import CloudKit
 
 struct AddItemVIew: View {
+    @StateObject private var vm = EquipmentsViewModel()
+    @State var planID = CKRecord.ID()
+    @State var category: String = ""
+    @State var icon: String = ""
     @State var item: String = ""
     @State var description: String = ""
     @State var image: String = ""
@@ -32,7 +37,7 @@ struct AddItemVIew: View {
                                 .frame(width: 15)
                             Spacer()
                                 .frame(width: 20)
-                            TextField("Item Name", text: $item)
+                            TextField("Item Name", text: $vm.itemName)
                                 .frame(width: 250, alignment: .leading)
                                 .foregroundColor(.black)
                             Spacer()
@@ -57,7 +62,7 @@ struct AddItemVIew: View {
                                 .frame(width: 15)
                             Spacer()
                                 .frame(width: 20)
-                            TextField("Item Description", text: $description)
+                            TextField("Item Description", text: $vm.description)
                                 .frame(width: 250, alignment: .leading)
                                 .foregroundColor(.black)
                             Spacer()
@@ -109,6 +114,7 @@ struct AddItemVIew: View {
 
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     Button(action: {
+                        vm.addButtonPressed(planID: planID, category: category, icon: icon)
                         self.showModal.toggle()
                     }, label: {
                         Text("Add")

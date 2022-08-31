@@ -6,8 +6,12 @@
 //
 
 import SwiftUI
+import CloudKit
 
 struct AddCategoryView: View {
+    
+    @StateObject private var vm = CategoriesViewModel()
+    @State var planID = CKRecord.ID()
     @State var category: String = ""
     @State var icon: String = ""
     @State var listIcon = ["fork.knife", "cup.and.saucer", "scissors", "pencil.tip", "flame", "ant", "bolt", "list.dash", "car", "mouth", "cart", "bandage", "pawprint", "creditcard", "facemask", "eye", "exclamationmark.circle", "bolt.heart", "banknote", "bed.double", "alarm", "moon.zzz", "camera", "wifi", "gamecontroller", "sun.and.horizon", "trash", "play", "folder", "camera.macro"]
@@ -31,7 +35,7 @@ struct AddCategoryView: View {
                             Image(systemName: "tag")
                             Spacer()
                                 .frame(width: 20)
-                            TextField("Category Name", text: $category)
+                            TextField("Category Name", text: $vm.category)
                                 .frame(width: 250, alignment: .leading)
                                 .foregroundColor(.black)
                             Spacer()
@@ -169,6 +173,7 @@ struct AddCategoryView: View {
 
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     Button(action: {
+                        vm.addButtonPressed(planID: planID, icon: icon)
                         self.showModal.toggle()
                     }, label: {
                         Text("Add")
