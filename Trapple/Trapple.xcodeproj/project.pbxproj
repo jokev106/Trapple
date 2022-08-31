@@ -20,9 +20,6 @@
 		01BAC25C28BC703800C61985 /* ActivitesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BAC25B28BC703800C61985 /* ActivitesViewModel.swift */; };
 		01BAC25E28BC713300C61985 /* ActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BAC25D28BC713300C61985 /* ActivityModel.swift */; };
 		01BAC26028BC758000C61985 /* CloudKitActivityTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BAC25F28BC758000C61985 /* CloudKitActivityTesting.swift */; };
-		6AD05CF028BDF720002E430A /* PDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD05CEF28BDF720002E430A /* PDFViewController.swift */; };
-		6AD05CF328BDF768002E430A /* PDFCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD05CF228BDF768002E430A /* PDFCreator.swift */; };
-		6AD05CF528BDF777002E430A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD05CF428BDF777002E430A /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,9 +38,6 @@
 		01BAC25B28BC703800C61985 /* ActivitesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitesViewModel.swift; sourceTree = "<group>"; };
 		01BAC25D28BC713300C61985 /* ActivityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityModel.swift; sourceTree = "<group>"; };
 		01BAC25F28BC758000C61985 /* CloudKitActivityTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitActivityTesting.swift; sourceTree = "<group>"; };
-		6AD05CEF28BDF720002E430A /* PDFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewController.swift; sourceTree = "<group>"; };
-		6AD05CF228BDF768002E430A /* PDFCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFCreator.swift; sourceTree = "<group>"; };
-		6AD05CF428BDF777002E430A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,8 +72,6 @@
 		011AED8828B4D03000E77F93 /* Trapple */ = {
 			isa = PBXGroup;
 			children = (
-				6AD05CF128BDF75A002E430A /* Utilities */,
-				6AD05CEE28BDF706002E430A /* ViewController */,
 				B3EFEA4B28B6044900B3C53A /* ViewModel */,
 				B3EFEA4A28B6043900B3C53A /* Model */,
 				B3EFEA4928B6043300B3C53A /* Views */,
@@ -107,23 +99,6 @@
 				011AED9928B4D15600E77F93 /* CloudKit.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		6AD05CEE28BDF706002E430A /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				6AD05CEF28BDF720002E430A /* PDFViewController.swift */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		6AD05CF128BDF75A002E430A /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				6AD05CF228BDF768002E430A /* PDFCreator.swift */,
-				6AD05CF428BDF777002E430A /* Extensions.swift */,
-			);
-			path = Utilities;
 			sourceTree = "<group>";
 		};
 		B3EFEA4828B6042B00B3C53A /* Services */ = {
@@ -246,14 +221,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0172646028B8B15C008F0B79 /* CloudKitCRUD.swift in Sources */,
-				6AD05CF028BDF720002E430A /* PDFViewController.swift in Sources */,
 				011AED8C28B4D03000E77F93 /* ContentView.swift in Sources */,
 				01BAC26028BC758000C61985 /* CloudKitActivityTesting.swift in Sources */,
 				01BAC25E28BC713300C61985 /* ActivityModel.swift in Sources */,
-				6AD05CF328BDF768002E430A /* PDFCreator.swift in Sources */,
 				0172645E28B7508C008F0B79 /* CloudKitTesting.swift in Sources */,
 				01BAC25C28BC703800C61985 /* ActivitesViewModel.swift in Sources */,
-				6AD05CF528BDF777002E430A /* Extensions.swift in Sources */,
 				011AED8A28B4D03000E77F93 /* TrappleApp.swift in Sources */,
 				0172645C28B74F74008F0B79 /* CloudKitViewModel.swift in Sources */,
 				01BAC25A28BB9B5800C61985 /* PlanModel.swift in Sources */,
