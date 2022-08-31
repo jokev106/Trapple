@@ -23,125 +23,7 @@ struct RundownView: View {
         GeometryReader { geometry in
             ScrollView {
                 VStack(spacing: 0) {
-                    /*
-//                ScrollView(.horizontal, showsIndicators: false) {
-//                    HStack(spacing: 20) {
-//                        ForEach(0 ..< 10) {
-//                            Text("Item \($0)")
-//                                .foregroundColor(.white)
-//                                .font(.headline)
-//                                .frame(width: 70, height: 70)
-//                                .background(.gray)
-//                        }
-//                    }
-//                }
-//                .padding()
                     
-                    SegmentedControl
-                    
-//                    HStack {
-//                        VStack {
-//                            Text("SUN")
-//                            ZStack {
-//                                Circle()
-//                                    .frame(width: 40, height: 40)
-//                                    .foregroundColor(.blue)
-//                                    .opacity(0.2)
-//                                Text("1")
-//                                    .foregroundColor(.blue)
-//                                    .font(.headline)
-//                            }
-//                        }
-//                        .frame(maxWidth: .infinity)
-//
-//                        VStack {
-//                            Text("MON")
-//                            ZStack {
-//                                Circle()
-//                                    .frame(width: 40, height: 40)
-//                                    .foregroundColor(.blue)
-//                                    .opacity(0.2)
-//                                Text("2")
-//                                    .foregroundColor(.blue)
-//                                    .font(.headline)
-//                            }
-//                        }
-//                        .frame(maxWidth: .infinity)
-//
-//                        VStack {
-//                            Text("TUE")
-//                            ZStack {
-//                                Circle()
-//                                    .frame(width: 40, height: 40)
-//                                    .foregroundColor(.blue)
-//                                    .opacity(0.2)
-//                                Text("3")
-//                                    .foregroundColor(.blue)
-//                                    .font(.headline)
-//                            }
-//                        }
-//                        .frame(maxWidth: .infinity)
-//
-//                        VStack {
-//                            Text("WED")
-//                            ZStack {
-//                                Circle()
-//                                    .frame(width: 40, height: 40)
-//                                    .foregroundColor(.blue)
-//                                    .opacity(0.2)
-//                                Text("4")
-//                                    .foregroundColor(.blue)
-//                                    .font(.headline)
-//                            }
-//                        }
-//                        .frame(maxWidth: .infinity)
-//
-//                        VStack {
-//                            Text("THU")
-//                            ZStack {
-//                                Circle()
-//                                    .frame(width: 40, height: 40)
-//                                    .foregroundColor(.blue)
-//                                    .opacity(0.2)
-//                                Text("5")
-//                                    .foregroundColor(.blue)
-//                                    .font(.headline)
-//                            }
-//                        }
-//                        .frame(maxWidth: .infinity)
-//
-//                        VStack {
-//                            Text("FRI")
-//                            ZStack {
-//                                Circle()
-//                                    .frame(width: 40, height: 40)
-//                                    .foregroundColor(.blue)
-//                                    .opacity(0.2)
-//                                Text("6")
-//                                    .foregroundColor(.blue)
-//                                    .font(.headline)
-//                            }
-//                        }
-//                        .frame(maxWidth: .infinity)
-//
-//                        VStack {
-//                            Text("SAT")
-//                            ZStack {
-//                                Circle()
-//                                    .frame(width: 40, height: 40)
-//                                    .foregroundColor(.blue)
-//                                    .opacity(0.2)
-//                                Text("7")
-//                                    .foregroundColor(.blue)
-//                                    .font(.headline)
-//                            }
-//                        }
-//                        .frame(maxWidth: .infinity)
-//                    }
-//                    .frame(maxWidth: .infinity)
-//                    .padding(.leading)
-//                    .padding(.trailing)
-                    */
                     if isExist == true {
                         ForEach(0 ..< nyoba.count, id: \.self) { card in
                             if nyoba[card] == true {
@@ -169,11 +51,12 @@ struct RundownView: View {
                         }
                         .frame(width: geometry.size.width, height: geometry.size.height / 1.2, alignment: .center)
                     }
-                }
+                }.background(graybg)
             }
             .navigationAppearance(backgroundColor: UIColor(graybg), foregroundColor: UIColor(blacktext), hideSeperator: true)
             .font(Font.custom("Gilroy-Light", size: 15))
             .navigationTitle("Rundown")
+            .background(graybg)
             .toolbar {
                 ToolbarItem(placement: .bottomBar) {
                     Button(action: {

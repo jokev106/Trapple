@@ -33,7 +33,6 @@ struct TripHomePageView: View {
             .navigationAppearance(backgroundColor: UIColor(graybg), foregroundColor: UIColor(blacktext), hideSeperator: true)
             .background(Color("grayBG"))
             .font(Font.custom("Gilroy-Light", size: 20))
-//            .tabViewStyle(UITabBarAppearance.a)
             .navigationBarTitle(Text("Trip Name"), displayMode: .large)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -203,6 +202,7 @@ extension TripHomePageView {
                 
             })
         }
+        .foregroundColor(.black)
         .background(.white)
         .cornerRadius(15)
         .padding(.horizontal)

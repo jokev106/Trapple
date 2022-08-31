@@ -25,6 +25,11 @@ struct CreatePlanView: View {
     //Dismiss the view
     @Environment(\.presentationMode) var presentationMode:Binding<PresentationMode>
     
+    //var for submission image picker
+    @State var changeSubmissionImage = false
+    @State var openCameraSheet = false
+    @State var imageSelected = UIImage()
+    
     
     var body: some View {
         GeometryReader{geo in
@@ -70,18 +75,67 @@ extension CreatePlanView {
     
     private var PlanForm : some View{
         VStack{
-            Text("Let’s get started with your trip plan.")
-                .font(Font.system(size: 15))
-                .frame(width: 350, alignment: .leading)
+            Group{
+                Text("Let’s get started with your trip plan.")
+                    .font(Font.system(size: 15))
+                    .frame(width: 350, alignment: .leading)
+                
+                Spacer()
+                    .frame(height: 40)
+            }
+            //Trip Photos
+            Group{
+                    //Add photo from library
+                    Button(action:{
+                        changeSubmissionImage = true
+                        openCameraSheet = true
+                    }){
+                        if changeSubmissionImage {
+                            ZStack{
+                                Rectangle()
+                                    .frame(width: 246, height: 248)
+//                                .frame(maxWidth: .infinity)
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
+                                .padding(.horizontal, 30)
+                                Image(uiImage: imageSelected)
+                                    .resizable()
+                                    .frame(width: 212, height: 215, alignment: .center)
+                                    .aspectRatio(contentMode: .fit)
+
+                            }
+                        }else {
+                            ZStack{
+                                Rectangle()
+                                .frame(height: 144)
+                                .frame(maxWidth: .infinity)
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
+                                .padding(.horizontal, 30)
+                                HStack{
+                                    Spacer()
+                                    Image(systemName: "photo.on.rectangle.angled")
+                                        .resizable()
+                                        .foregroundColor(blacktext)
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 50, height: 50, alignment: .center)
+                                    Spacer()
+                                }
+                            }
+                        }
+                    }.sheet(isPresented: $openCameraSheet) {
+                        SubmissionPicker(selectedImage: $imageSelected, sourceType: .photoLibrary)
+                    }
+                Spacer()
+                    .frame(height: 10)
+            }
             
-            Spacer()
-                .frame(height: 40)
             //Trip Name Form
             ZStack{
                 Rectangle()
                     .frame(height: 50)
                     .frame(maxWidth: .infinity)
-                    .foregroundColor(.gray.opacity(0.2))
+                    .foregroundColor(.white)
                     .cornerRadius(10)
                     .padding(.horizontal, 30)
                 HStack{
@@ -101,7 +155,7 @@ extension CreatePlanView {
                 Rectangle()
                     .frame(height: 50)
                     .frame(maxWidth: .infinity)
-                    .foregroundColor(.gray.opacity(0.2))
+                    .foregroundColor(.white)
                     .cornerRadius(10)
                     .padding(.horizontal, 30)
                 HStack{
@@ -158,7 +212,7 @@ extension CreatePlanView {
                     Rectangle()
                         .frame(height: 350)
                         .frame(maxWidth: .infinity)
-                        .foregroundColor(.gray.opacity(0.2))
+                        .foregroundColor(.white)
                         .cornerRadius(10)
                         .padding(.horizontal, 30)
                     VStack{
@@ -196,7 +250,7 @@ extension CreatePlanView {
                     Rectangle()
                         .frame(height: 50)
                         .frame(maxWidth: .infinity)
-                        .foregroundColor(.gray.opacity(0.2))
+                        .foregroundColor(.white)
                         .cornerRadius(10)
                         .padding(.horizontal, 30)
                     HStack{
@@ -228,7 +282,7 @@ extension CreatePlanView {
                     Rectangle()
                         .frame(height: 350)
                         .frame(maxWidth: .infinity)
-                        .foregroundColor(.gray.opacity(0.2))
+                        .foregroundColor(.white)
                         .cornerRadius(10)
                         .padding(.horizontal, 30)
                     VStack{
@@ -266,7 +320,7 @@ extension CreatePlanView {
                     Rectangle()
                         .frame(height: 50)
                         .frame(maxWidth: .infinity)
-                        .foregroundColor(.gray.opacity(0.2))
+                        .foregroundColor(.white)
                         .cornerRadius(10)
                         .padding(.horizontal, 30)
                     HStack{
