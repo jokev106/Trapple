@@ -33,20 +33,21 @@ class PlansViewModel: ObservableObject {
         newPlan["startDate"] = startDate
         newPlan["endDate"] = endDate
         newPlan["isHistory"] = false
+        saveItem(record: newPlan)
         
-        guard
-            let image = UIImage(named: "asd"),
-            let url = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first?.appendingPathComponent("ro.jpg"),
-            let data = image.jpegData(compressionQuality: 1.0)
-        else {return}
-        do {
-            try data.write(to: url)
-            let asset = CKAsset(fileURL: url)
-            newPlan["image"] = asset
-            saveItem(record: newPlan)
-        } catch let error {
-            print(error)
-        }
+//        guard
+//            let image = UIImage(named: "asd"),
+//            let url = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first?.appendingPathComponent("ro.jpg"),
+//            let data = image.jpegData(compressionQuality: 1.0)
+//        else {return}
+//        do {
+//            try data.write(to: url)
+//            let asset = CKAsset(fileURL: url)
+//            newPlan["image"] = asset
+//            saveItem(record: newPlan)
+//        } catch let error {
+//            print(error)
+//        }
     }
     
     private func saveItem(record: CKRecord) {
@@ -139,7 +140,7 @@ struct PlanViewModel{
         planList.endDate
     }
     
-    var imageURL: URL {
-        planList.imageURL
-    }
+//    var imageURL: URL {
+//        planList.imageURL
+//    }
 }

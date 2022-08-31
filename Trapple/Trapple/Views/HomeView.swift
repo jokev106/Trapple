@@ -22,8 +22,7 @@ struct HomeView: View {
                 TabView {
                     
                     //Move to Travel Plan view
-//                    TravelPlanView()
-                    CloudKitTesting()
+                    TravelPlanView()
                         .tabItem{
                             Label("Travel Plan", systemImage: "airplane")
                         }

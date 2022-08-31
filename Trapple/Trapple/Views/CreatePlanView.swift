@@ -144,6 +144,7 @@ extension CreatePlanView {
                     .onTapGesture {
                         //Function Save trip plan data + Move to Trip Page
                         vm.addButtonPressed()
+                        vm.fetchItems()
                         presentationMode.wrappedValue.dismiss()
                     }
 //            })
