@@ -18,15 +18,12 @@ struct RulesView: View {
     
     var body: some View {
         GeometryReader{geo in
-            ZStack{
-                NavigationView{
-//                    ScrollView {
+            VStack{
                     VStack{
                         //Content
                         RulesList
                         newRules
                             .background(graybg)
-//                    }
                             .frame(width: 900)
                     }.navigationTitle(Text("Rules"))
                         .toolbar{
@@ -40,8 +37,7 @@ struct RulesView: View {
                                 }
                             }
                         }
-                }
-            }.background(graybg)
+            }.navigationAppearance(backgroundColor: UIColor(graybg), foregroundColor: UIColor(blacktext), hideSeperator: true)
         }
     }
 }

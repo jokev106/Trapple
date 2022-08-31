@@ -171,6 +171,7 @@ struct RundownView: View {
                     }
                 }
             }
+            .navigationAppearance(backgroundColor: UIColor(graybg), foregroundColor: UIColor(blacktext), hideSeperator: true)
             .font(Font.custom("Gilroy-Light", size: 15))
             .navigationTitle("Rundown")
             .toolbar {

@@ -142,8 +142,9 @@ struct EquipmentView: View {
                     }
                     .padding(.horizontal)
                 }
+                .background(graybg)
             }
-            .background(Color("grayBG"))
+            .navigationAppearance(backgroundColor: UIColor(graybg), foregroundColor: UIColor(blacktext), hideSeperator: true)
             .font(Font.custom("Gilroy-ExtraBold", size: 15))
             .navigationTitle("Equipment")
             .toolbar {

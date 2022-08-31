@@ -60,9 +60,7 @@ struct TripCardView: View {
         .padding(.trailing, 30)
         .padding(.leading, 30)
         .shadow(color: Color.gray.opacity(0.275), radius: 8, x: 2, y: 4)
-        .onTapGesture {
-            //Function Move to Trip Page
-        }
+
     }
 }
 

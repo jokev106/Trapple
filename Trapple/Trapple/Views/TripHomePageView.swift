@@ -8,8 +8,15 @@
 import SwiftUI
 
 struct TripHomePageView: View {
+    
+    init(){
+        UITabBar.appearance().barTintColor = UIColor(darkblue)
+    }
+    
+    @StateObject static var rulesViewModel = RulesViewModel()
+    
     var body: some View {
-        NavigationView {
+//        NavigationView {
             ScrollView {
                 VStack {
                     Spacer()
@@ -18,8 +25,10 @@ struct TripHomePageView: View {
                     Rules
                 }
             }
+            .navigationAppearance(backgroundColor: UIColor(graybg), foregroundColor: UIColor(blacktext), hideSeperator: true)
             .background(Color("grayBG"))
             .font(Font.custom("Gilroy-Light", size: 20))
+            .tabViewStyle(UITabBarAppearance.a)
             .navigationBarTitle(Text("Trip Name"), displayMode: .large)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -29,9 +38,9 @@ struct TripHomePageView: View {
                     })
                 }
             }
-        }
-        .accentColor(.yellow)
-        .edgesIgnoringSafeArea(.top)
+//        }
+//        .accentColor(.yellow)
+//        .edgesIgnoringSafeArea(.top)
     }
 }
 
@@ -149,9 +158,12 @@ extension TripHomePageView {
     }
     
     private var Rules: some View {
+       
         VStack {
             
-            NavigationLink(destination: EquipmentView(), label: {
+            NavigationLink(destination: RulesView(index: 1)
+                .environmentObject(TripHomePageView.rulesViewModel)
+                           , label: {
                 VStack(spacing: 0) {
                     VStack(alignment: .leading) {
                         Text("Rules")

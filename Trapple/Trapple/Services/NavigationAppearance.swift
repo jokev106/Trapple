@@ -10,16 +10,19 @@ import SwiftUI
 
 struct NavAppearanceModifier: ViewModifier{
     
-    init(backgroundColor: UIColor, foregroundColor: UIColor, hideSeperator: Bool){
+    init(backgroundColor: UIColor, foregroundColor: UIColor, hideSeperator: Bool, tabbarColor: UIColor){
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.backgroundColor = backgroundColor
         navBarAppearance.titleTextAttributes = [.foregroundColor: foregroundColor]
         if hideSeperator {
             navBarAppearance.shadowColor = .clear
         }
+        let tabBarAppearance = UITabBarAppearance()
+        tabBarAppearance.backgroundColor = UIColor(darkblue)
         UINavigationBar.appearance().standardAppearance = navBarAppearance
         UINavigationBar.appearance().compactAppearance = navBarAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
+        UITabBar.appearance().barTintColor = tabbarColor
     }
     
     func body(content: Content) -> some View {
@@ -29,6 +32,6 @@ struct NavAppearanceModifier: ViewModifier{
 
 extension View {
     func navigationAppearance(backgroundColor: UIColor, foregroundColor: UIColor, hideSeperator: Bool = false) -> some View {
-        self.modifier(NavAppearanceModifier(backgroundColor: backgroundColor, foregroundColor: foregroundColor, hideSeperator: hideSeperator))
+        self.modifier(NavAppearanceModifier(backgroundColor: backgroundColor, foregroundColor: foregroundColor, hideSeperator: hideSeperator, tabbarColor: UIColor(darkblue)))
     }
 }

@@ -94,7 +94,7 @@ extension TravelPlanView {
                     ForEach((1..<10)) {cardview in
                         NavigationLink{
                            TripHomePageView()
-                                .navigationBarHidden(true)
+//                                .navigationBarHidden(true)
                         }
                     label: {
                         TripCardView()
