@@ -37,17 +37,6 @@
 		B3B8FD9428BCC3C70007A213 /* RulesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FD9328BCC3C70007A213 /* RulesViewModel.swift */; };
 		B3B8FD9628BE1DFE0007A213 /* AddRundownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FD9528BE1DFE0007A213 /* AddRundownView.swift */; };
 		B3EFEA4E28B6078F00B3C53A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EFEA4D28B6078F00B3C53A /* HomeView.swift */; };
-		0172645C28B74F74008F0B79 /* CloudKitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172645B28B74F74008F0B79 /* CloudKitViewModel.swift */; };
-		0172645E28B7508C008F0B79 /* CloudKitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172645D28B7508C008F0B79 /* CloudKitTesting.swift */; };
-		0172646028B8B15C008F0B79 /* CloudKitCRUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172645F28B8B15C008F0B79 /* CloudKitCRUD.swift */; };
-		0172646228B8B31D008F0B79 /* PlansViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172646128B8B31D008F0B79 /* PlansViewModel.swift */; };
-		01BAC25A28BB9B5800C61985 /* PlanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BAC25928BB9B5800C61985 /* PlanModel.swift */; };
-		01BAC25C28BC703800C61985 /* ActivitesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BAC25B28BC703800C61985 /* ActivitesViewModel.swift */; };
-		01BAC25E28BC713300C61985 /* ActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BAC25D28BC713300C61985 /* ActivityModel.swift */; };
-		01BAC26028BC758000C61985 /* CloudKitActivityTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BAC25F28BC758000C61985 /* CloudKitActivityTesting.swift */; };
-		6AD05CF028BDF720002E430A /* PDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD05CEF28BDF720002E430A /* PDFViewController.swift */; };
-		6AD05CF328BDF768002E430A /* PDFCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD05CF228BDF768002E430A /* PDFCreator.swift */; };
-		6AD05CF528BDF777002E430A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD05CF428BDF777002E430A /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,17 +73,6 @@
 		B3B8FD9328BCC3C70007A213 /* RulesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesViewModel.swift; sourceTree = "<group>"; };
 		B3B8FD9528BE1DFE0007A213 /* AddRundownView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRundownView.swift; sourceTree = "<group>"; };
 		B3EFEA4D28B6078F00B3C53A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		0172645B28B74F74008F0B79 /* CloudKitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitViewModel.swift; sourceTree = "<group>"; };
-		0172645D28B7508C008F0B79 /* CloudKitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitTesting.swift; sourceTree = "<group>"; };
-		0172645F28B8B15C008F0B79 /* CloudKitCRUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitCRUD.swift; sourceTree = "<group>"; };
-		0172646128B8B31D008F0B79 /* PlansViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlansViewModel.swift; sourceTree = "<group>"; };
-		01BAC25928BB9B5800C61985 /* PlanModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanModel.swift; sourceTree = "<group>"; };
-		01BAC25B28BC703800C61985 /* ActivitesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitesViewModel.swift; sourceTree = "<group>"; };
-		01BAC25D28BC713300C61985 /* ActivityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityModel.swift; sourceTree = "<group>"; };
-		01BAC25F28BC758000C61985 /* CloudKitActivityTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitActivityTesting.swift; sourceTree = "<group>"; };
-		6AD05CEF28BDF720002E430A /* PDFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewController.swift; sourceTree = "<group>"; };
-		6AD05CF228BDF768002E430A /* PDFCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFCreator.swift; sourceTree = "<group>"; };
-		6AD05CF428BDF777002E430A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,8 +108,6 @@
 			isa = PBXGroup;
 			children = (
 				701E3B0228BB172D008CFEB3 /* Info.plist */,
-				6AD05CF128BDF75A002E430A /* Utilities */,
-				6AD05CEE28BDF706002E430A /* ViewController */,
 				B3EFEA4B28B6044900B3C53A /* ViewModel */,
 				B3EFEA4A28B6043900B3C53A /* Model */,
 				B3EFEA4928B6043300B3C53A /* Views */,
@@ -167,21 +143,6 @@
 				701E3AFF28BB14D2008CFEB3 /* Gilroy-Light.otf */,
 			);
 			path = "Custom Fonts";
-		6AD05CEE28BDF706002E430A /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				6AD05CEF28BDF720002E430A /* PDFViewController.swift */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		6AD05CF128BDF75A002E430A /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				6AD05CF228BDF768002E430A /* PDFCreator.swift */,
-				6AD05CF428BDF777002E430A /* Extensions.swift */,
-			);
-			path = Utilities;
 			sourceTree = "<group>";
 		};
 		B3EFEA4828B6042B00B3C53A /* Services */ = {
@@ -191,9 +152,8 @@
 				B3B8FD8928BB944B0007A213 /* ColorSet.swift */,
 				B3B8FD8B28BC9C970007A213 /* SubmissionImagePicker.swift */,
 			);
-			name = Services;
-			path = Trapple/Services;
-			sourceTree = SOURCE_ROOT;
+			path = Services;
+			sourceTree = "<group>";
 		};
 		B3EFEA4928B6043300B3C53A /* Views */ = {
 			isa = PBXGroup;
@@ -213,36 +173,25 @@
 				705EBB8E28BCBFF0006B985C /* AddCategoryView.swift */,
 				705EBB9428BDE958006B985C /* AddItemVIew.swift */,
 				705EBB9628BDEBE9006B985C /* CategoryView.swift */,
-				0172645D28B7508C008F0B79 /* CloudKitTesting.swift */,
-				0172645F28B8B15C008F0B79 /* CloudKitCRUD.swift */,
-				01BAC25F28BC758000C61985 /* CloudKitActivityTesting.swift */,
 			);
-			name = Views;
-			path = Trapple/Views;
-			sourceTree = SOURCE_ROOT;
+			path = Views;
+			sourceTree = "<group>";
 		};
 		B3EFEA4A28B6043900B3C53A /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				B3B8FD9128BCC3BF0007A213 /* RulesModel.swift */,
-				01BAC25928BB9B5800C61985 /* PlanModel.swift */,
-				01BAC25D28BC713300C61985 /* ActivityModel.swift */,
 			);
-			name = Model;
-			path = Trapple/Model;
-			sourceTree = SOURCE_ROOT;
+			path = Model;
+			sourceTree = "<group>";
 		};
 		B3EFEA4B28B6044900B3C53A /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				B3B8FD9328BCC3C70007A213 /* RulesViewModel.swift */,
-				0172645B28B74F74008F0B79 /* CloudKitViewModel.swift */,
-				0172646128B8B31D008F0B79 /* PlansViewModel.swift */,
-				01BAC25B28BC703800C61985 /* ActivitesViewModel.swift */,
 			);
-			name = ViewModel;
-			path = Trapple/ViewModel;
-			sourceTree = SOURCE_ROOT;
+			path = ViewModel;
+			sourceTree = "<group>";
 		};
 		B3EFEA4C28B6045100B3C53A /* CardView */ = {
 			isa = PBXGroup;
@@ -254,9 +203,8 @@
 				705EBB9028BDE8DF006B985C /* EquipmentCardview.swift */,
 				705EBB9228BDE8FD006B985C /* ItemListCardview.swift */,
 			);
-			name = CardView;
-			path = Trapple/Views/CardView;
-			sourceTree = SOURCE_ROOT;
+			path = CardView;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -356,19 +304,6 @@
 				B3B8FD7E28B8C35B0007A213 /* TripCardView.swift in Sources */,
 				B3B8FD7C28B8B9EE0007A213 /* CreatePlanView.swift in Sources */,
 				705EBB9528BDE958006B985C /* AddItemVIew.swift in Sources */,
-				0172646028B8B15C008F0B79 /* CloudKitCRUD.swift in Sources */,
-				6AD05CF028BDF720002E430A /* PDFViewController.swift in Sources */,
-				011AED8C28B4D03000E77F93 /* ContentView.swift in Sources */,
-				01BAC26028BC758000C61985 /* CloudKitActivityTesting.swift in Sources */,
-				01BAC25E28BC713300C61985 /* ActivityModel.swift in Sources */,
-				6AD05CF328BDF768002E430A /* PDFCreator.swift in Sources */,
-				0172645E28B7508C008F0B79 /* CloudKitTesting.swift in Sources */,
-				01BAC25C28BC703800C61985 /* ActivitesViewModel.swift in Sources */,
-				6AD05CF528BDF777002E430A /* Extensions.swift in Sources */,
-				011AED8A28B4D03000E77F93 /* TrappleApp.swift in Sources */,
-				0172645C28B74F74008F0B79 /* CloudKitViewModel.swift in Sources */,
-				01BAC25A28BB9B5800C61985 /* PlanModel.swift in Sources */,
-				0172646228B8B31D008F0B79 /* PlansViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
