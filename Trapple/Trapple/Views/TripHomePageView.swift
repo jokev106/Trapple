@@ -13,6 +13,8 @@ struct TripHomePageView: View {
     @StateObject private var vm = ActivitiesViewModel()
     @State var title = String()
     @State var planID = CKRecord.ID()
+    @State var startDate: Date = Date()
+    @State var endDate: Date = Date()
     
 //    init(){
 //        UITabBar.appearance().barTintColor = UIColor(darkblue)
@@ -59,7 +61,7 @@ struct TripHomePageView_Previews: PreviewProvider {
 extension TripHomePageView {
     private var Rundown: some View {
         VStack {
-            NavigationLink(destination: RundownView(), label: {
+            NavigationLink(destination: RundownView(planID: planID, startDate: startDate, endDate: endDate), label: {
                 VStack(spacing: 0) {
                     VStack(alignment: .leading) {
                         Text("Rundown")
@@ -74,8 +76,8 @@ extension TripHomePageView {
                     .background(Color("yellowCard"))
                     .cornerRadius(15)
                     
-                    RundownCardview()
-                        .padding()
+//                    RundownCardview()
+//                        .padding()
                 }
             })
         }

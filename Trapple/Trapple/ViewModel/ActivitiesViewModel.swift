@@ -15,21 +15,24 @@ class ActivitiesViewModel: ObservableObject {
     @Published var description: String = ""
     @Published var startDate: Date = Date()
     @Published var endDate: Date = Date()
+    @Published var actualDate: Date = Date()
     @Published var activity: [ActivityViewModel] = []
+    @Published var dates: [String] = []
+    @Published var isOpen: [Bool] = []
     
     init() {
 //        fetchItems()
     }
     
-    func addButtonPressed(planID: CKRecord.ID) {
+    func addButtonPressed(planID: CKRecord.ID, actualDate: String) {
         print("Activities Plan ID: \(planID)")
         guard !title.isEmpty else {return}
         guard !location.isEmpty else {return}
         guard !description.isEmpty else {return}
-        addItem(planID: planID, title: title, location: location, description: description, startDate: startDate, endDate: endDate)
+        addItem(planID: planID, title: title, location: location, description: description, startDate: startDate, endDate: endDate, actualDate: actualDate)
     }
     
-    private func addItem(planID: CKRecord.ID, title: String, location: String, description: String, startDate: Date, endDate: Date) {
+    private func addItem(planID: CKRecord.ID, title: String, location: String, description: String, startDate: Date, endDate: Date, actualDate: String) {
         let newActivity = CKRecord(recordType: "Activities")
         let planDetail = CKRecord(recordType: "Plans", recordID: planID)
 //        let reference = CKRecord.Reference(recordID: planDetail.recordID, action: .deleteSelf)
@@ -44,6 +47,9 @@ class ActivitiesViewModel: ObservableObject {
         let stringEnd = dateFormatter.string(from: endDate)
         let dateEnd = dateFormatter.date(from: stringEnd)
         newActivity["endDate"] = dateEnd
+        dateFormatter.dateFormat = "MMMM d"
+        let actualDate = dateFormatter.date(from: actualDate)
+        newActivity["actualDate"] = actualDate
         newActivity["planID"] = CKRecord.Reference(record: planDetail, action: .deleteSelf)
 //        newActivity.setValuesForKeys(PlanModel(title: title, destination: destination, startDate: startDate, endDate: endDate).planDictionary())
         saveItem(record: newActivity)
@@ -60,14 +66,20 @@ class ActivitiesViewModel: ObservableObject {
                 self?.description = ""
                 self?.startDate = Date()
                 self?.endDate = Date()
+                self?.actualDate = Date()
             }
         }
     }
     
-    func fetchItems(planID: CKRecord.ID) {
+    func fetchItems(planID: CKRecord.ID, actualDate: String) {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMMM d"
+        let actualDate = dateFormatter.date(from: actualDate)
         
         let recordToMatch = CKRecord.Reference(recordID: planID, action: .deleteSelf)
-        let predicate = NSPredicate(format: "planID == %@", recordToMatch)
+//        let predicate = NSPredicate(format: "planID == %@", recordToMatch)
+        let predicate = NSPredicate(format: "(planID == %@) AND (actualDate == %@)", argumentArray: [recordToMatch, actualDate])
         let query = CKQuery(recordType: "Activities", predicate: predicate)
         query.sortDescriptors = [NSSortDescriptor(key: "startDate", ascending: true)]
         let queryOperation = CKQueryOperation(query: query)
@@ -96,12 +108,48 @@ class ActivitiesViewModel: ObservableObject {
             
         }
         
+        print(returnedItems)
+        
+        for _ in returnedItems {
+            isOpen.append(false)
+        }
+        
         addOperation(operation: queryOperation)
         
     }
     
     func addOperation(operation: CKDatabaseOperation) {
         CKContainer.default().privateCloudDatabase.add(operation)
+    }
+    
+    func getDates(startDate: Date, endDate: Date) {
+        let dayDurationInSeconds: TimeInterval = 60*60*24
+        for date in stride(from: startDate, to: endDate, by: dayDurationInSeconds) {
+//            print(date)
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MMMM d"
+            let dateAppend = dateFormatter.string(from: date)
+            dates.append(dateAppend)
+        }
+        getFinalDate(endDate: endDate)
+    }
+    
+    func getFinalDate(endDate: Date){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMMM d"
+        let dateAppend = dateFormatter.string(from: endDate)
+        dates.append(dateAppend)
+        print(dates)
+    }
+}
+
+extension Date: Strideable {
+    public func distance(to other: Date) -> TimeInterval {
+        return other.timeIntervalSinceReferenceDate - self.timeIntervalSinceReferenceDate
+    }
+
+    public func advanced(by n: TimeInterval) -> Date {
+        return self + n
     }
 }
 
@@ -131,6 +179,10 @@ struct ActivityViewModel{
     
     var endDate: Date {
         activityList.endDate
+    }
+    
+    var actualDate: Date {
+        activityList.actualDate
     }
 }
 

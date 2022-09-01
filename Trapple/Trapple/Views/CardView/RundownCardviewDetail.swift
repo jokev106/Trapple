@@ -6,14 +6,28 @@
 //
 
 import SwiftUI
+import CloudKit
 
 struct RundownCardviewDetail: View {
+    
+    @State var activity: String
+    @State var location: String
+    @State var description: String
+    @State var startTime: Date
+    @State var endTime: Date
+    
+    static let stackDateFormat: DateFormatter = {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "HH:mm"
+            return formatter
+        }()
+    
     var body: some View {
         HStack(spacing: 0) {
             VStack {
-                Text("00:00")
+                Text(startTime, formatter: Self.stackDateFormat)
                     .font(Font.custom("Gilroy-ExtraBold", size: 13))
-                Text("00:00")
+                Text(endTime, formatter: Self.stackDateFormat)
                     .padding(.top, 1)
             }
             .padding()
@@ -23,11 +37,11 @@ struct RundownCardviewDetail: View {
                 .foregroundColor(Color("yellowCard"))
 
             VStack(alignment: .leading) {
-                Text("Activity")
+                Text(activity)
                     .font(Font.custom("Gilroy-ExtraBold", size: 15))
-                Text("Location")
+                Text(location)
                 VStack {
-                    Text("Description")
+                    Text(description)
                 }
                 .frame(height: 40, alignment: .top)
             }
@@ -43,8 +57,8 @@ struct RundownCardviewDetail: View {
     }
 }
 
-struct RundownCardviewDetail_Previews: PreviewProvider {
-    static var previews: some View {
-        RundownCardviewDetail()
-    }
-}
+//struct RundownCardviewDetail_Previews: PreviewProvider {
+//    static var previews: some View {
+//        RundownCardviewDetail()
+//    }
+//}

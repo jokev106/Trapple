@@ -16,26 +16,28 @@ struct ActivityModel {
     let description: String
     let startDate: Date
     let endDate: Date
+    let actualDate: Date
     
-    init(recordID: CKRecord.ID? = nil, title: String, location: String, description: String, startDate: Date, endDate: Date) {
+    init(recordID: CKRecord.ID? = nil, title: String, location: String, description: String, startDate: Date, endDate: Date, actualDate: Date) {
         self.recordID = recordID
         self.title = title
         self.location = location
         self.description = description
         self.startDate = startDate
         self.endDate = endDate
+        self.actualDate = actualDate
     }
     
     func activityDictionary() ->[String: Any]{
-        return ["title": title, "location": location, "description": description, "startDate": startDate, "endDate": endDate]
+        return ["title": title, "location": location, "description": description, "startDate": startDate, "endDate": endDate, "actualDate": actualDate]
     }
     
     static func fromRecord( record: CKRecord) -> ActivityModel? {
-        guard let title = record.value(forKey: "title") as? String , let location = record.value(forKey: "location") as? String , let description = record.value(forKey: "description") as? String , let startDate = record.value(forKey: "startDate") as? Date , let endDate = record.value(forKey: "endDate") as? Date
+        guard let title = record.value(forKey: "title") as? String , let location = record.value(forKey: "location") as? String , let description = record.value(forKey: "description") as? String , let startDate = record.value(forKey: "startDate") as? Date , let endDate = record.value(forKey: "endDate") as? Date, let actualDate = record.value(forKey: "actualDate") as? Date
         else{
             return nil
         }
         
-        return ActivityModel(recordID: record.recordID, title: title, location: location, description: description, startDate: startDate, endDate: endDate)
+        return ActivityModel(recordID: record.recordID, title: title, location: location, description: description, startDate: startDate, endDate: endDate, actualDate: actualDate)
     }
 }

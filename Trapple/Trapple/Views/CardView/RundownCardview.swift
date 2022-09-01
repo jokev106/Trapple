@@ -8,9 +8,14 @@
 import SwiftUI
 
 struct RundownCardview: View {
+    
+    @State var activity: String
+    @State var location: String
+    @State var startTime: Date
+    
     var body: some View {
         HStack(spacing: 0) {
-            Text("00:00")
+            Text(startTime, format: Date.FormatStyle().hour().minute())
                 .font(Font.custom("Gilroy-ExtraBold", size: 13))
                 .padding()
             
@@ -19,9 +24,9 @@ struct RundownCardview: View {
                 .foregroundColor(Color("yellowCard"))
             
             VStack(alignment: .leading) {
-                Text("Activity")
+                Text(activity)
                     .font(Font.custom("Gilroy-ExtraBold", size: 15))
-                Text("Location")
+                Text(location)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(10)
@@ -35,8 +40,8 @@ struct RundownCardview: View {
     }
 }
 
-struct RundownCardview_Previews: PreviewProvider {
-    static var previews: some View {
-        RundownCardview()
-    }
-}
+//struct RundownCardview_Previews: PreviewProvider {
+//    static var previews: some View {
+//        RundownCardview()
+//    }
+//}

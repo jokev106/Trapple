@@ -6,8 +6,15 @@
 //
 
 import SwiftUI
+import CloudKit
 
 struct AddRundownView: View {
+    
+    @StateObject private var vm = ActivitiesViewModel()
+    @State var planID = CKRecord.ID()
+    @State var selectedDate: Int
+    @State var startDate: Date
+    @State var endDate: Date
 
     @State var activity: String = ""
     @State var location: String = ""
@@ -31,21 +38,21 @@ struct AddRundownView: View {
             ScrollView {
                 VStack {
                     VStack(alignment: .leading) {
-                        TextField("Activity", text: $activity)
+                        TextField("Activity", text: $vm.title)
                             .frame(height: 25)
                     
                         Rectangle()
                             .frame(height: 1)
                             .opacity(0.3)
                     
-                        TextField("Location", text: $location)
+                        TextField("Location", text: $vm.location)
                             .frame(height: 25)
                     
                         Rectangle()
                             .frame(height: 1)
                             .opacity(0.3)
                     
-                        TextField("Description", text: $description)
+                        TextField("Description", text: $vm.description)
                             .frame(height: 25)
                     }
                     .padding()
@@ -64,11 +71,11 @@ struct AddRundownView: View {
                             
                         }) {
                             HStack {
-                                Text("Activity")
+                                Text("Start Time")
                                 
                                 Spacer()
                                 
-                                Text(start, style: .time)
+                                Text(vm.startDate, style: .time)
                                     .padding(5)
                                     .background(Color("grayBG"))
                                     .cornerRadius(5)
@@ -78,7 +85,7 @@ struct AddRundownView: View {
                         .foregroundColor(.black)
                         
                         if selected == 1 {
-                            DatePicker("", selection: $start, displayedComponents: .hourAndMinute).datePickerStyle(WheelDatePickerStyle())
+                            DatePicker("", selection: $vm.startDate, displayedComponents: .hourAndMinute).datePickerStyle(WheelDatePickerStyle())
                         }
                     
                         Rectangle()
@@ -94,11 +101,11 @@ struct AddRundownView: View {
                             
                         }) {
                             HStack {
-                                Text("Location")
+                                Text("End Time")
                             
                                 Spacer()
                             
-                                Text(end, style: .time)
+                                Text(vm.endDate, style: .time)
                                     .padding(5)
                                     .background(Color("grayBG"))
                                     .cornerRadius(5)
@@ -108,7 +115,7 @@ struct AddRundownView: View {
                         .foregroundColor(.black)
                         
                         if selected == 2 {
-                            DatePicker("", selection: $end, displayedComponents: .hourAndMinute).datePickerStyle(WheelDatePickerStyle())
+                            DatePicker("", selection: $vm.endDate, displayedComponents: .hourAndMinute).datePickerStyle(WheelDatePickerStyle())
                         }
                     }
                     .padding()
@@ -132,6 +139,8 @@ struct AddRundownView: View {
 
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     Button(action: {
+                        vm.addButtonPressed(planID: planID, actualDate: vm.dates[selectedDate])
+                        print(vm.dates)
                            self.showModal.toggle()
                     }, label: {
                         Text("Add")
@@ -140,6 +149,9 @@ struct AddRundownView: View {
                     })
                 }
             }
+        }
+        .onAppear{
+            vm.getDates(startDate: startDate, endDate: endDate)
         }
     }
     
@@ -154,11 +166,11 @@ struct AddRundownView: View {
     
 }
 
-struct AddRundownView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddRundownView(showModal: .constant(true))
-    }
-}
+//struct AddRundownView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AddRundownView(showModal: .constant(true))
+//    }
+//}
 
 //#if canImport(UIKit)
 //extension View {

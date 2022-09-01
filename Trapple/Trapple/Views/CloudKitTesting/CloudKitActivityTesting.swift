@@ -45,7 +45,7 @@ struct CloudKitActivityTesting: View {
             .navigationBarHidden(true)
         }
         .onAppear{
-            vm.fetchItems(planID: planID)
+//            vm.fetchItems(planID: planID)
         }
     }
 }
@@ -104,7 +104,7 @@ extension CloudKitActivityTesting {
     
     private var addButton: some View{
         Button{
-            vm.addButtonPressed(planID: planID)
+//            vm.addButtonPressed(planID: planID)
         } label: {
             Text("Add")
                 .frame(height: 55)
