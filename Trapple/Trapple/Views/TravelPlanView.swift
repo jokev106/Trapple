@@ -61,10 +61,12 @@ extension TravelPlanView {
                     .background(yellow)
                     .cornerRadius(10)
                     .shadow(color: Color.gray.opacity(0.275), radius: 8, x: 2, y: 4)
-            }.sheet(isPresented: $showCreatePlan) {
+            }.sheet(isPresented: $showCreatePlan, onDismiss: {
+                vm.fetchItems()
+            }, content: {
                 CreatePlanView()
                     .navigationBarHidden(true)
-            }
+            })
 
             Spacer()
                 .frame(width: 60)

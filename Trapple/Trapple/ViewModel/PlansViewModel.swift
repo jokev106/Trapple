@@ -78,7 +78,7 @@ class PlansViewModel: ObservableObject {
         
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "Plans", predicate: predicate)
-        query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
+        query.sortDescriptors = [NSSortDescriptor(key: "startDate", ascending: true)]
         let queryOperation = CKQueryOperation(query: query)
         
         var returnedItems: [PlanModel] = []

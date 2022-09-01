@@ -98,7 +98,7 @@ extension MyProfileView {
                             
                         }
                         label: {
-                        TripCardView()
+//                        TripCardView()
                         }
                     }
                 }
