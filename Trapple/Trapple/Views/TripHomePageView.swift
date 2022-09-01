@@ -12,6 +12,7 @@ struct TripHomePageView: View {
     
     @StateObject private var vm = ActivitiesViewModel()
     @State var title = String()
+    @State var destination = String()
     @State var planID = CKRecord.ID()
     @State var startDate: Date = Date()
     @State var endDate: Date = Date()
@@ -32,6 +33,9 @@ struct TripHomePageView: View {
                     Rules
                 }
             }
+            .onAppear{
+                vm.fetchItem(planID: planID)
+            }
             .navigationAppearance(backgroundColor: UIColor(graybg), foregroundColor: UIColor(blacktext), hideSeperator: true)
             .background(Color("grayBG"))
             .font(Font.custom("Gilroy-Light", size: 20))
@@ -50,11 +54,11 @@ struct TripHomePageView: View {
     }
 }
 
-struct TripHomePageView_Previews: PreviewProvider {
-    static var previews: some View {
-        TripHomePageView()
-    }
-}
+//struct TripHomePageView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TripHomePageView()
+//    }
+//}
 
 // MARK: Components
 
@@ -66,9 +70,9 @@ extension TripHomePageView {
                     VStack(alignment: .leading) {
                         Text("Rundown")
                             .font(Font.custom("Gilroy-ExtraBold", size: 20))
-                        Text("Description".uppercased())
+                        Text("\(destination)".uppercased())
                             .font(Font.custom("Gilroy-Light", size: 16))
-                        Text("Days : From - Until")
+                        Text("Days : \(startDate, format: Date.FormatStyle().day().month()) - \(endDate, format: Date.FormatStyle().day().month())")
                             .font(Font.custom("Gilroy-Light", size: 13))
                     }
                     .padding()
@@ -76,7 +80,7 @@ extension TripHomePageView {
                     .background(Color("yellowCard"))
                     .cornerRadius(15)
                     
-//                    RundownCardview()
+//                    RundownCardview(activity: vm.activity[0].title, location: vm.activity[0].location, startTime: vm.activity[0].startDate)
 //                        .padding()
                 }
             })
@@ -86,6 +90,7 @@ extension TripHomePageView {
         .cornerRadius(15)
         .padding(.horizontal)
         .padding(.vertical, 5)
+        
     }
     
     private var Equipment: some View {

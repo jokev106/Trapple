@@ -13,9 +13,15 @@ struct RundownCardview: View {
     @State var location: String
     @State var startTime: Date
     
+    static let stackDateFormat: DateFormatter = {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "HH:mm"
+            return formatter
+        }()
+    
     var body: some View {
         HStack(spacing: 0) {
-            Text(startTime, format: Date.FormatStyle().hour().minute())
+            Text(startTime, formatter: Self.stackDateFormat)
                 .font(Font.custom("Gilroy-ExtraBold", size: 13))
                 .padding()
             

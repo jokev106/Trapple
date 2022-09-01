@@ -118,6 +118,48 @@ class ActivitiesViewModel: ObservableObject {
         
     }
     
+    func fetchItem(planID: CKRecord.ID) {
+        
+        let recordToMatch = CKRecord.Reference(recordID: planID, action: .deleteSelf)
+        let predicate = NSPredicate(format: "planID == %@", recordToMatch)
+        let query = CKQuery(recordType: "Activities", predicate: predicate)
+        query.sortDescriptors = [NSSortDescriptor(key: "startDate", ascending: true)]
+        let queryOperation = CKQueryOperation(query: query)
+        
+        var returnedItems: [ActivityModel] = []
+        
+        //Query for saving fetched items in an array
+        queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
+            switch returnedResult {
+            case.success(let record):
+//                guard let title = record["title"] as? String else {return}
+                if let activityList = ActivityModel.fromRecord(record: record){
+                    returnedItems.append(activityList)
+                }
+            case.failure(let error):
+                print("Error recordMatchedBlock: \(error)")
+            }
+        }
+        
+        //Returned fetched items
+        queryOperation.queryResultBlock = { [weak self] returnedResult in
+            print("Returned Result: \(returnedResult)")
+            DispatchQueue.main.async {
+                self?.activity = returnedItems.map(ActivityViewModel.init)
+            }
+            
+        }
+        
+        print(returnedItems)
+        
+        for _ in returnedItems {
+            isOpen.append(false)
+        }
+        
+        addOperation(operation: queryOperation)
+        
+    }
+    
     func addOperation(operation: CKDatabaseOperation) {
         CKContainer.default().privateCloudDatabase.add(operation)
     }

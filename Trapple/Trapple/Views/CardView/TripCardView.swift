@@ -26,7 +26,7 @@ struct TripCardView: View {
     var body: some View {
         
         HStack{
-            NavigationLink(destination: TripHomePageView(title: plan, planID: planID, startDate: startDate, endDate: endDate)){
+            NavigationLink(destination: TripHomePageView(title: plan, destination: destination, planID: planID, startDate: startDate, endDate: endDate)){
                 VStack{
                     Image("bali")
                         .resizable()
