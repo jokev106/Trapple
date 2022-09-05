@@ -61,7 +61,7 @@ extension TravelPlanView {
                     .background(yellow)
                     .cornerRadius(10)
                     .shadow(color: Color.gray.opacity(0.275), radius: 8, x: 2, y: 4)
-            }.sheet(isPresented: $showCreatePlan, onDismiss: {
+            }.fullScreenCover(isPresented: $showCreatePlan, onDismiss: {
                 vm.fetchItems()
             }, content: {
                 CreatePlanView()
