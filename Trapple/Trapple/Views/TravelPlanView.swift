@@ -17,7 +17,7 @@ struct TravelPlanView: View {
     var body: some View {
         GeometryReader { _ in
             ZStack {
-//                NavigationView {
+                NavigationView {
                     VStack {
                         // Content
                         Divider
@@ -27,8 +27,8 @@ struct TravelPlanView: View {
                         OnGoingTripSection
                     }.navigationTitle("Travel Plan")
                         .background(graybg)
-//                }
-            }.navigationAppearance(backgroundColor: UIColor(graybg), foregroundColor: UIColor(blacktext), hideSeperator: true)
+                }
+            }
         }
     }
 }
@@ -54,14 +54,22 @@ extension TravelPlanView {
             Button {
                 self.showCreatePlan.toggle()
             } label: {
-                Text("Create")
-                    .frame(width: 100, height: 100)
-                    .foregroundColor(Color.black)
-                    .font(Font.custom("Gilroy-ExtraBold", size: 18))
-                    .background(yellow)
-                    .cornerRadius(10)
-                    .shadow(color: Color.gray.opacity(0.275), radius: 8, x: 2, y: 4)
-            }.sheet(isPresented: $showCreatePlan, onDismiss: {
+                ZStack{
+                    Rectangle()
+                        .frame(width: 162, height: 72)
+                        .foregroundColor(yellow)
+                        .cornerRadius(10)
+                        .shadow(color: Color.gray.opacity(0.275), radius: 8, x: 2, y: 4)
+                    VStack{
+                        Image(systemName: "rectangle.badge.plus")
+                            .foregroundColor(blacktext)
+                        Text("Create")
+                            .foregroundColor(blacktext)
+                            .font(Font.custom("Gilroy-ExtraBold", size: 16))
+                    }
+                }
+                
+            }.fullScreenCover(isPresented: $showCreatePlan, onDismiss: {
                 vm.fetchItems()
             }, content: {
                 CreatePlanView()
@@ -69,17 +77,26 @@ extension TravelPlanView {
             })
 
             Spacer()
-                .frame(width: 60)
-            Text("Join")
-                .frame(width: 100, height: 100)
-                .foregroundColor(Color.black)
-                .font(Font.custom("Gilroy-ExtraBold", size: 18))
-                .background(yellow)
-                .cornerRadius(10)
-                .shadow(color: Color.gray.opacity(0.275), radius: 8, x: 2, y: 4)
-                .onTapGesture {
-                    // Function
+                .frame(width: 15)
+            Button {
+
+            } label: {
+                ZStack{
+                    Rectangle()
+                        .frame(width: 162, height: 72)
+                        .foregroundColor(yellow)
+                        .cornerRadius(10)
+                        .shadow(color: Color.gray.opacity(0.275), radius: 8, x: 2, y: 4)
+                    VStack{
+                        Image(systemName: "person.3")
+                            .foregroundColor(blacktext)
+                        Text("Join")
+                            .foregroundColor(blacktext)
+                            .font(Font.custom("Gilroy-ExtraBold", size: 16))
+                    }
                 }
+                
+            }
             Spacer()
 
         }.padding()

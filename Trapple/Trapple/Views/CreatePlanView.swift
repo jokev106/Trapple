@@ -22,6 +22,10 @@ struct CreatePlanView: View {
     @State var showEndDate = false
     @State var showStartDate = false
     
+    //bool for showing value while date picker is false
+    @State var valueEndDate = false
+    @State var valueStartDate = false
+    
     //Dismiss the view
     @Environment(\.presentationMode) var presentationMode:Binding<PresentationMode>
     
@@ -30,6 +34,12 @@ struct CreatePlanView: View {
     @State var openCameraSheet = false
     @State var imageSelected = UIImage()
     
+    
+    static let stackDateFormat: DateFormatter = {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "E, dd MMMM yyyy"
+            return formatter
+        }()
     
     var body: some View {
         GeometryReader{geo in
@@ -55,6 +65,7 @@ struct CreatePlanView: View {
                                         .foregroundColor(yellow)
                                     Text("Back")
                                         .foregroundColor(yellow)
+                                    
                                 }
                             }
                         }
@@ -77,7 +88,7 @@ extension CreatePlanView {
         VStack{
             Group{
                 Text("Let’s get started with your trip plan.")
-                    .font(Font.system(size: 15))
+                    .font(Font.custom("Gilroy-Light", size: 15))
                     .frame(width: 350, alignment: .leading)
                 
                 Spacer()
@@ -144,6 +155,7 @@ extension CreatePlanView {
                         .frame(width: 20)
                     TextField("Trip Name", text: $vm.title)
                         .frame(width: 250, alignment: .leading)
+                        .font(Font.custom("Gilroy-Light", size: 15))
                         .foregroundColor(.black)
                     Spacer()
                 }.padding(.horizontal, 50)
@@ -164,6 +176,7 @@ extension CreatePlanView {
                         .frame(width: 20)
                     TextField("Destination", text: $vm.destination)
                         .frame(width: 250, alignment: .leading)
+                        .font(Font.custom("Gilroy-Light", size: 15))
                         .foregroundColor(.black)
                     Spacer()
                 }.padding(.horizontal, 50)
@@ -225,8 +238,9 @@ extension CreatePlanView {
                                     self.showStartDate.toggle()
                                 }
                             } label: {
-                                Text("Set Start Date")
-                                    .foregroundColor(.gray)
+                                Text(valueStartDate ?  "\(vm.startDate, formatter: CreatePlanView.stackDateFormat)" : "Set Start Date")
+                                    .foregroundColor(valueStartDate ? .black : .gray)
+                                    .font(Font.custom("Gilroy-Light", size: 15))
                                 Spacer()
                                 Image(systemName: "chevron.right")
                                     .foregroundColor(.gray)
@@ -260,10 +274,12 @@ extension CreatePlanView {
                         Button(action: {
                             withAnimation{
                                 self.showStartDate.toggle()
+                                valueStartDate = true
                             }
                         }, label: {
-                            Text("Set Start Date")
-                                .foregroundColor(.gray)
+                            Text((valueStartDate ? "\(vm.startDate, formatter: CreatePlanView.stackDateFormat)" : "Set Start Date"))
+                                .foregroundColor(valueStartDate ? .black : .gray)
+                                .font(Font.custom("Gilroy-Light", size: 15))
                             Spacer()
                             Image(systemName: "chevron.right")
                                 .foregroundColor(.gray)
@@ -295,8 +311,9 @@ extension CreatePlanView {
                                     self.showEndDate.toggle()
                                 }
                             } label: {
-                                Text("Set End Date")
-                                    .foregroundColor(.gray)
+                                Text((valueEndDate ? "\(vm.endDate, formatter: CreatePlanView.stackDateFormat)" : "Set End Date"))
+                                    .foregroundColor(valueEndDate ? .black : .gray)
+                                    .font(Font.custom("Gilroy-Light", size: 15))
                                 Spacer()
                                 Image(systemName: "chevron.right")
                                     .foregroundColor(.gray)
@@ -305,7 +322,7 @@ extension CreatePlanView {
                         }
                         .padding(.horizontal, 50)
                         .padding(.top, 15)
-                        DatePicker("Set Start Date", selection: $vm.endDate, in: Date()..., displayedComponents: .date)
+                        DatePicker("Set End Date", selection: $vm.endDate, in: Date()..., displayedComponents: .date)
                             .datePickerStyle(GraphicalDatePickerStyle())
                             .frame(height: 300)
                             .accentColor(yellow)
@@ -330,10 +347,12 @@ extension CreatePlanView {
                         Button(action: {
                             withAnimation{
                                 self.showEndDate.toggle()
+                                valueEndDate = true
                             }
                         }, label: {
-                            Text("Set End Date")
-                                .foregroundColor(.gray)
+                            Text((valueEndDate ? "\(vm.endDate, formatter: CreatePlanView.stackDateFormat)" : "Set End Date"))
+                                .foregroundColor(valueEndDate ? .black : .gray)
+                                .font(Font.custom("Gilroy-Light", size: 15))
                             Spacer()
                             Image(systemName: "chevron.right")
                                 .foregroundColor(.gray)

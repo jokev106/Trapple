@@ -14,8 +14,7 @@ struct HomeView: View {
     
     init() {
         
-//        UITabBar.appearance().barTintColor = UIColor(darkblue)
-        
+        //Initialize TabBar
         let tabBarAppearance = UITabBarAppearance()
 
         tabBarAppearance.backgroundColor = UIColor(darkblue)
@@ -24,6 +23,7 @@ struct HomeView: View {
 
         UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
         
+        //Initialize Toolbar
         let toolBarAppearance = UIToolbarAppearance()
         
 //        UIToolbar.appearance().barTintColor = UIColor.red
@@ -38,6 +38,24 @@ struct HomeView: View {
 
         UIToolbar.appearance().scrollEdgeAppearance = toolBarAppearance2
         
+        //Initialize NavBar
+        let navigationBarAppearace = UINavigationBarAppearance()
+
+        navigationBarAppearace.backgroundColor = UIColor(graybg)
+
+        navigationBarAppearace.largeTitleTextAttributes = [
+            .font : UIFont(name: "Gilroy-ExtraBold", size: 30),
+            NSAttributedString.Key.foregroundColor : UIColor.black
+        ]
+        
+        navigationBarAppearace.shadowColor = .clear
+
+        UINavigationBar.appearance().standardAppearance = navigationBarAppearace
+        
+        UINavigationBar.appearance().compactAppearance = navigationBarAppearace
+
+        UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearace
+
     }
 
     var body: some View {
@@ -47,17 +65,18 @@ struct HomeView: View {
                     TabView {
                         // Move to Travel Plan view
                         TravelPlanView()
+                            .navigationBarHidden(true)
                             .tabItem {
                                 Label("Travel Plan", systemImage: "airplane")
                             }
 
                         // Move to my profile view
                         MyProfileView()
+                            .navigationBarHidden(true)
                             .tabItem {
                                 Label("My Profile", systemImage: "person.crop.circle.fill")
                             }
                     }
-//                    .navigationBarHidden(true)
                 }
                 .accentColor(yellow)
             }
