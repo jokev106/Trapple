@@ -54,7 +54,7 @@ struct CategoryView: View {
                     })
                     .frame(maxWidth: .infinity, alignment: .bottomLeading)
                     .sheet(isPresented: $showModal) {
-                        AddItemVIew(planID: planID, category: title, icon: image, showModal: self.$showModal)
+                        AddItemVIew(vm: vm, planID: planID, category: title, icon: image, showModal: self.$showModal)
                     }
                 }
             }

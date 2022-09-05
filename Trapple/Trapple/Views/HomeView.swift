@@ -10,7 +10,8 @@ import CloudKit
 
 struct HomeView: View {
     
-    @StateObject private var vm = CloudKitViewModel()
+    @StateObject private var CKvm = CloudKitViewModel()
+    @StateObject private var vm = PlansViewModel()
     
     init() {
         
@@ -46,7 +47,7 @@ struct HomeView: View {
                 NavigationView {
                     TabView {
                         // Move to Travel Plan view
-                        TravelPlanView()
+                        TravelPlanView(vm: vm)
                             .tabItem {
                                 Label("Travel Plan", systemImage: "airplane")
                             }

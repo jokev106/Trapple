@@ -10,7 +10,7 @@ import CloudKit
 
 struct AddCategoryView: View {
     
-    @StateObject private var vm = CategoriesViewModel()
+    @ObservedObject var vm: CategoriesViewModel
     @State var planID = CKRecord.ID()
     @State var category: String = ""
     @State var icon: String = ""
@@ -186,8 +186,8 @@ struct AddCategoryView: View {
     }
 }
 
-struct AddCategoryView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddCategoryView(showModal: .constant(true))
-    }
-}
+//struct AddCategoryView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AddCategoryView(showModal: .constant(true))
+//    }
+//}

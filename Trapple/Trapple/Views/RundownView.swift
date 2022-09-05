@@ -10,10 +10,10 @@ import CloudKit
 
 struct RundownView: View {
     
-    @StateObject private var vm = ActivitiesViewModel()
-    @State var planID = CKRecord.ID()
-    @State var startDate: Date = Date()
-    @State var endDate: Date = Date()
+    @ObservedObject var vm: ActivitiesViewModel
+    @Binding var planID: CKRecord.ID
+    @Binding var startDate: Date
+    @Binding var endDate: Date
     @State private var selected = 0
     @State private var slider = 0
     @State private var posX = 0
@@ -102,11 +102,11 @@ struct RundownView: View {
     }
 }
 
-struct RundownView_Previews: PreviewProvider {
-    static var previews: some View {
-        RundownView()
-    }
-}
+//struct RundownView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        RundownView()
+//    }
+//}
 
 // MARK: Components
 

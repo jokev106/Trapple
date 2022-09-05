@@ -61,6 +61,7 @@ class PlansViewModel: ObservableObject {
                 self?.startDate = Date()
                 self?.endDate = Date()
             }
+            
         }
     }
     

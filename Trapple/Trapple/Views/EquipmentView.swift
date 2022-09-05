@@ -169,7 +169,7 @@ struct EquipmentView: View {
                     })
                     .frame(maxWidth: .infinity, alignment: .bottomLeading)
                     .sheet(isPresented: $showModal) {
-                        AddCategoryView(planID: planID, showModal: self.$showModal)
+                        AddCategoryView(vm: vm, planID: planID, showModal: self.$showModal)
                     }
                 }
             }

@@ -12,7 +12,7 @@ struct TravelPlanView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
     @State var showCreatePlan = false
-    @StateObject private var vm = PlansViewModel()
+    @ObservedObject var vm: PlansViewModel
     
     var body: some View {
         GeometryReader { _ in
@@ -33,11 +33,11 @@ struct TravelPlanView: View {
     }
 }
 
-struct TravelPlanView_Previews: PreviewProvider {
-    static var previews: some View {
-        TravelPlanView()
-    }
-}
+//struct TravelPlanView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TravelPlanView()
+//    }
+//}
 
 // MARK: Components
 
@@ -61,10 +61,8 @@ extension TravelPlanView {
                     .background(yellow)
                     .cornerRadius(10)
                     .shadow(color: Color.gray.opacity(0.275), radius: 8, x: 2, y: 4)
-            }.sheet(isPresented: $showCreatePlan, onDismiss: {
-                vm.fetchItems()
-            }, content: {
-                CreatePlanView()
+            }.sheet(isPresented: $showCreatePlan, content: {
+                CreatePlanView(vm: vm)
                     .navigationBarHidden(true)
             })
 
