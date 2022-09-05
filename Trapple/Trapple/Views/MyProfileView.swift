@@ -11,7 +11,7 @@ struct MyProfileView: View {
     var body: some View {
         GeometryReader{geo in
             ZStack{
-//                NavigationView{
+                NavigationView{
                     VStack{
                         //Content
                         Divider
@@ -29,8 +29,8 @@ struct MyProfileView: View {
                         
                     }.navigationTitle("My Profile")
                         .background(graybg)
-//                }
-            }.navigationAppearance(backgroundColor: UIColor(graybg), foregroundColor: UIColor(blacktext), hideSeperator: true)
+                }
+            }
         }
     }
 }
