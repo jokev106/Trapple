@@ -37,17 +37,8 @@ struct TripHomePageView: View {
                 vm.fetchItem(planID: planID)
             }
             .navigationAppearance(backgroundColor: UIColor(graybg), foregroundColor: UIColor(blacktext), hideSeperator: true)
-            .background(Color("grayBG"))
             .font(Font.custom("Gilroy-Light", size: 20))
             .navigationTitle(title)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {}, label: {
-                        Image(systemName: "square.and.arrow.up")
-                            .foregroundColor(.black)
-                    })
-                }
-            }
 //        }
 //        .accentColor(.yellow)
 //        .edgesIgnoringSafeArea(.top)
