@@ -157,15 +157,21 @@ class ActivitiesViewModel: ObservableObject {
     }
     
     func getDates(startDate: Date, endDate: Date) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy MMMM d"
+        let startDatestring = dateFormatter.string(from: startDate)
+        let startDates = dateFormatter.date(from: startDatestring)
+        let endDatestring = dateFormatter.string(from: endDate)
+        let endDates = dateFormatter.date(from: endDatestring)
         let dayDurationInSeconds: TimeInterval = 60*60*24
-        for date in stride(from: startDate, to: endDate, by: dayDurationInSeconds) {
+        for date in stride(from: startDates!, to: endDates!, by: dayDurationInSeconds) {
 //            print(date)
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MMMM d"
             let dateAppend = dateFormatter.string(from: date)
             dates.append(dateAppend)
         }
-        getFinalDate(endDate: endDate)
+        getFinalDate(endDate: endDates!)
     }
     
     func getFinalDate(endDate: Date){
@@ -174,6 +180,21 @@ class ActivitiesViewModel: ObservableObject {
         let dateAppend = dateFormatter.string(from: endDate)
         dates.append(dateAppend)
         print(dates)
+    }
+    
+    func getDateRange(startDate: Date, endDate: Date) -> Int {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy MMMM d"
+        let startDatestring = dateFormatter.string(from: startDate)
+        let startDates = dateFormatter.date(from: startDatestring)
+        let endDatestring = dateFormatter.string(from: endDate)
+        let endDates = dateFormatter.date(from: endDatestring)
+        let dayDurationInSeconds: TimeInterval = 60*60*24
+        var day: Int = 1
+        for date in stride(from: startDates!, to: endDates!, by: dayDurationInSeconds) {
+            day += 1
+        }
+        return day
     }
 }
 

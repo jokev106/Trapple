@@ -63,7 +63,7 @@ extension TripHomePageView {
                             .font(Font.custom("Gilroy-ExtraBold", size: 20))
                         Text("\(destination)".uppercased())
                             .font(Font.custom("Gilroy-Light", size: 16))
-                        Text("Days : \(startDate, format: Date.FormatStyle().day().month()) - \(endDate, format: Date.FormatStyle().day().month())")
+                        Text("\(vm.getDateRange(startDate: startDate, endDate: endDate)) Days \(vm.getDateRange(startDate: startDate, endDate: endDate) - 1) Nights : \(startDate, format: Date.FormatStyle().day().month()) - \(endDate, format: Date.FormatStyle().day().month())")
                             .font(Font.custom("Gilroy-Light", size: 13))
                     }
                     .padding()
