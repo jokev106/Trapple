@@ -8,35 +8,37 @@
 import SwiftUI
 
 struct RundownCardview: View {
-    
     @State var activity: String
     @State var location: String
     @State var startTime: Date
-    
+
     static let stackDateFormat: DateFormatter = {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "HH:mm"
-            return formatter
-        }()
-    
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        return formatter
+    }()
+
     var body: some View {
         HStack(spacing: 0) {
-            Text(startTime, formatter: Self.stackDateFormat)
-                .font(Font.custom("Gilroy-ExtraBold", size: 13))
-                .padding()
-            
+            VStack {
+                Text(startTime, formatter: Self.stackDateFormat)
+                    .font(Font.custom("Gilroy-ExtraBold", size: 13))
+            }
+            .frame(maxWidth: 50, maxHeight: .infinity, alignment: .top)
+            .padding()
+
             Rectangle()
                 .frame(width: 3)
                 .foregroundColor(Color("yellowCard"))
-            
+
             VStack(alignment: .leading) {
                 Text(activity)
-                    .font(Font.custom("Gilroy-ExtraBold", size: 15))
+                    .font(Font.custom("Gilroy-ExtraBold", size: 13))
+                Spacer()
                 Text(location)
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(10)
-            .padding(.leading)
+            .frame(maxWidth: .infinity, alignment: .topLeading)
+            .padding()
         }
         .font(Font.custom("Gilroy-Light", size: 11))
         .frame(maxWidth: .infinity)
@@ -46,8 +48,8 @@ struct RundownCardview: View {
     }
 }
 
-//struct RundownCardview_Previews: PreviewProvider {
+// struct RundownCardview_Previews: PreviewProvider {
 //    static var previews: some View {
 //        RundownCardview()
 //    }
-//}
+// }

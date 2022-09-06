@@ -152,10 +152,6 @@ class ActivitiesViewModel: ObservableObject {
         
         print(returnedItems)
         
-        for _ in returnedItems {
-            isOpen.append(false)
-        }
-        
         addOperation(operation: queryOperation)
         
     }

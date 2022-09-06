@@ -1,35 +1,35 @@
 //
-//  RundownCardviewDetail.swift
+//  RundownDetailCardView.swift
 //  Trapple
 //
-//  Created by Jonathan Valentino on 29/08/22.
+//  Created by Jonathan Valentino on 05/09/22.
 //
 
 import SwiftUI
-import CloudKit
 
-struct RundownCardviewDetail: View {
-    
+struct RundownDetailCardView: View {
     @State var activity: String
     @State var location: String
     @State var description: String
     @State var startTime: Date
     @State var endTime: Date
-    
+
     static let stackDateFormat: DateFormatter = {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "HH:mm"
-            return formatter
-        }()
-    
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        return formatter
+    }()
+
     var body: some View {
         HStack(spacing: 0) {
             VStack {
                 Text(startTime, formatter: Self.stackDateFormat)
                     .font(Font.custom("Gilroy-ExtraBold", size: 13))
+                Spacer()
+                    .frame(height: 23)
                 Text(endTime, formatter: Self.stackDateFormat)
-                    .padding(.top, 1)
             }
+            .frame(maxWidth: 50, maxHeight: .infinity, alignment: .top)
             .padding()
 
             Rectangle()
@@ -38,16 +38,15 @@ struct RundownCardviewDetail: View {
 
             VStack(alignment: .leading) {
                 Text(activity)
-                    .font(Font.custom("Gilroy-ExtraBold", size: 15))
+                    .font(Font.custom("Gilroy-ExtraBold", size: 13))
                 Text(location)
-                VStack {
-                    Text(description)
-                }
-                .frame(height: 40, alignment: .top)
+                Spacer()
+                    .frame(height: 10)
+                Text(description)
+                    .multilineTextAlignment(.leading)
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(10)
-            .padding(.leading)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+            .padding()
         }
         .font(Font.custom("Gilroy-Light", size: 11))
         .frame(maxWidth: .infinity)
@@ -57,8 +56,8 @@ struct RundownCardviewDetail: View {
     }
 }
 
-//struct RundownCardviewDetail_Previews: PreviewProvider {
+// struct RundownDetailCardView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        RundownCardviewDetail()
+//        RundownDetailCardView()
 //    }
-//}
+// }
