@@ -79,13 +79,20 @@ struct RundownView: View {
                             }
                             .frame(width: geometry.size.width, height: geometry.size.height / 1.2, alignment: .center)
                         }
-                    }.background(graybg)
+                    }
                 }
             }
             .navigationAppearance(backgroundColor: UIColor(graybg), foregroundColor: UIColor(blacktext), hideSeperator: true)
             .font(Font.custom("Gilroy-Light", size: 15))
             .navigationTitle("Rundown")
-            .background(graybg)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {}, label: {
+                        Image(systemName: "square.and.arrow.up")
+                            .foregroundColor(.black)
+                    })
+                }
+            }
             .onAppear {
                 vm.getDates(startDate: startDate, endDate: endDate)
                 vm.fetchItems(planID: planID, actualDate: vm.dates[selected])

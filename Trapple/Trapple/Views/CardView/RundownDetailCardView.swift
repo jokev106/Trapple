@@ -25,8 +25,9 @@ struct RundownDetailCardView: View {
             VStack {
                 Text(startTime, formatter: Self.stackDateFormat)
                     .font(Font.custom("Gilroy-ExtraBold", size: 13))
+                    .padding(.top, 2)
                 Spacer()
-                    .frame(height: 23)
+                    .frame(height: 25)
                 Text(endTime, formatter: Self.stackDateFormat)
             }
             .frame(maxWidth: 50, maxHeight: .infinity, alignment: .top)
@@ -38,7 +39,7 @@ struct RundownDetailCardView: View {
 
             VStack(alignment: .leading) {
                 Text(activity)
-                    .font(Font.custom("Gilroy-ExtraBold", size: 13))
+                    .font(Font.custom("Gilroy-ExtraBold", size: 15))
                 Text(location)
                 Spacer()
                     .frame(height: 10)
