@@ -13,6 +13,7 @@ struct TravelPlanView: View {
 
     @State var showCreatePlan = false
     @StateObject private var vm = PlansViewModel()
+    @State var dateNow = Date()
     
     var body: some View {
         GeometryReader { _ in
@@ -113,6 +114,21 @@ extension TravelPlanView {
                 VStack{
                     ForEach(vm.plans, id: \.recordID) {items in
                         TripCardView(plan: items.title, destination: items.destination, startDate: items.startDate, endDate: items.endDate, planID: items.recordID!)
+                            .onAppear{
+                                let dateFormatter = DateFormatter()
+                                dateFormatter.dateFormat = "yyyy MMMM d"
+                                let dateString = dateFormatter.string(from: dateNow)
+                                let currentDate = dateFormatter.date(from: dateString)
+                                let startString = dateFormatter.string(from: items.startDate)
+                                let startDateString = dateFormatter.date(from: startString)
+                                if startDateString! < currentDate!{
+                                    vm.updateHistory(plan: items)
+                                }
+                                vm.fetchItems()
+                            }
+                    }
+                    .onAppear{
+                        vm.fetchItems()
                     }
                 }
             }
