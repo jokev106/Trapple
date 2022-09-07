@@ -28,26 +28,27 @@ struct ItemListCardview: View {
                         .scaledToFill()
                 }
             }
-            .frame(width: 100, height: 100)
-
+            .frame(width: 100)
+            .frame(maxHeight: .infinity)
+            
             Rectangle()
                 .frame(width: 5)
                 .foregroundColor(Color("yellowCard"))
 
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 0) {
                 Text(itemName)
                     .font(Font.custom("Gilroy-ExtraBold", size: 17))
                 Text(description)
-                    .padding(.top, 3)
-                    .padding(.bottom, 20)
+                    .lineLimit(3)
+                    .padding(.top, 1)
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-            .padding(10)
-            .padding(.leading)
-            .background(.white)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.horizontal, 15)
+            .padding(.vertical, 10)
         }
-        .font(Font.custom("Gilroy-Light", size: 15))
+        .font(Font.custom("Gilroy-Light", size: 13))
         .frame(maxWidth: .infinity)
+        .frame(height: 100)
         .background(.white)
         .cornerRadius(15)
         .shadow(color: Color.gray.opacity(0.105), radius: 2, x: 0, y: 3)
