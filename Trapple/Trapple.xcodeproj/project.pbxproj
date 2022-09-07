@@ -24,6 +24,7 @@
 		01BAC27628BFBD1600C61985 /* EquipmentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BAC27528BFBD1600C61985 /* EquipmentModel.swift */; };
 		01BAC27828BFBE5C00C61985 /* CategoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BAC27728BFBE5C00C61985 /* CategoriesViewModel.swift */; };
 		01BAC27A28BFBE6C00C61985 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BAC27928BFBE6C00C61985 /* CategoryModel.swift */; };
+		6AD2847B28C87643008ABD73 /* ExportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD2847A28C87643008ABD73 /* ExportView.swift */; };
 		701DD85B28B62459003E53CD /* TripHomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701DD85A28B62459003E53CD /* TripHomePageView.swift */; };
 		701E3B0028BB14D2008CFEB3 /* Gilroy-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 701E3AFE28BB14D2008CFEB3 /* Gilroy-ExtraBold.otf */; };
 		701E3B0128BB14D2008CFEB3 /* Gilroy-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 701E3AFF28BB14D2008CFEB3 /* Gilroy-Light.otf */; };
@@ -71,6 +72,7 @@
 		01BAC27528BFBD1600C61985 /* EquipmentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentModel.swift; sourceTree = "<group>"; };
 		01BAC27728BFBE5C00C61985 /* CategoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewModel.swift; sourceTree = "<group>"; };
 		01BAC27928BFBE6C00C61985 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
+		6AD2847A28C87643008ABD73 /* ExportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportView.swift; sourceTree = "<group>"; };
 		701DD85A28B62459003E53CD /* TripHomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripHomePageView.swift; sourceTree = "<group>"; };
 		701E3AFE28BB14D2008CFEB3 /* Gilroy-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-ExtraBold.otf"; sourceTree = "<group>"; };
 		701E3AFF28BB14D2008CFEB3 /* Gilroy-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Light.otf"; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 				705EBB8E28BCBFF0006B985C /* AddCategoryView.swift */,
 				705EBB9628BDEBE9006B985C /* CategoryView.swift */,
 				705EBB9428BDE958006B985C /* AddItemVIew.swift */,
+				6AD2847A28C87643008ABD73 /* ExportView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				B3B8FD8E28BCA3FB0007A213 /* RulesCardView.swift in Sources */,
 				701DD85B28B62459003E53CD /* TripHomePageView.swift in Sources */,
 				01BAC27428BFB7D900C61985 /* EquipmentsViewModel.swift in Sources */,
+				6AD2847B28C87643008ABD73 /* ExportView.swift in Sources */,
 				B3B8FD9428BCC3C70007A213 /* RulesViewModel.swift in Sources */,
 				01BAC26528BF44A000C61985 /* ActivitiesViewModel.swift in Sources */,
 				01BAC27828BFBE5C00C61985 /* CategoriesViewModel.swift in Sources */,
