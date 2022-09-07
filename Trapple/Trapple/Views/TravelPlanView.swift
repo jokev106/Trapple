@@ -20,7 +20,6 @@ struct TravelPlanView: View {
                 NavigationView {
                     VStack {
                         // Content
-                        Divider
                         // Create and Join Button
                         CreateJoinButton
                         Divider
@@ -57,14 +56,14 @@ extension TravelPlanView {
                 ZStack{
                     Rectangle()
                         .frame(width: 162, height: 72)
-                        .foregroundColor(yellow)
+                        .foregroundColor(deepblue)
                         .cornerRadius(10)
                         .shadow(color: Color.gray.opacity(0.275), radius: 8, x: 2, y: 4)
                     VStack{
                         Image(systemName: "rectangle.badge.plus")
-                            .foregroundColor(blacktext)
+                            .foregroundColor(yellow)
                         Text("Create")
-                            .foregroundColor(blacktext)
+                            .foregroundColor(yellow)
                             .font(Font.custom("Gilroy-ExtraBold", size: 16))
                     }
                 }
@@ -84,14 +83,14 @@ extension TravelPlanView {
                 ZStack{
                     Rectangle()
                         .frame(width: 162, height: 72)
-                        .foregroundColor(yellow)
+                        .foregroundColor(deepblue)
                         .cornerRadius(10)
                         .shadow(color: Color.gray.opacity(0.275), radius: 8, x: 2, y: 4)
                     VStack{
                         Image(systemName: "person.3")
-                            .foregroundColor(blacktext)
+                            .foregroundColor(yellow)
                         Text("Join")
-                            .foregroundColor(blacktext)
+                            .foregroundColor(yellow)
                             .font(Font.custom("Gilroy-ExtraBold", size: 16))
                     }
                 }
@@ -109,6 +108,7 @@ extension TravelPlanView {
                 .frame(width: 370, alignment: .leading)
                 .foregroundColor(Color.black)
                 .padding(0.5)
+                .padding(.leading, 15)
             ScrollView{
                 VStack{
                     ForEach(vm.plans, id: \.recordID) {items in

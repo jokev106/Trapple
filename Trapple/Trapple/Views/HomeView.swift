@@ -15,20 +15,22 @@ struct HomeView: View {
     init() {
         
         //Initialize TabBar
-        let tabBarAppearance = UITabBarAppearance()
-
-        tabBarAppearance.backgroundColor = UIColor(darkblue)
-
-        UITabBar.appearance().standardAppearance = tabBarAppearance
-
-        UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+//        let tabBarAppearance = UITabBarAppearance()
+//
+//        tabBarAppearance.backgroundColor = UIColor(lightpurple)
+        UITabBar.appearance().backgroundColor = UIColor(lightpurple)
+//        UITabBar.appearance().barTintColor = UIColor(deepblue)
+        UITabBar.appearance().unselectedItemTintColor = UIColor(lilac)
+//        UITabBar.appearance().barTintColor = UIColor(lightpurple)
+        
+//        UITabBar.appearance().standardAppearance = tabBarAppearance
+//
+//        UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
         
         //Initialize Toolbar
         let toolBarAppearance = UIToolbarAppearance()
         
-//        UIToolbar.appearance().barTintColor = UIColor.red
-        
-        toolBarAppearance.backgroundColor = UIColor(darkblue)
+        toolBarAppearance.backgroundColor = UIColor(lightpurple)
         
         UIToolbar.appearance().standardAppearance = toolBarAppearance
         
@@ -78,7 +80,8 @@ struct HomeView: View {
                             }
                     }
                 }
-                .accentColor(yellow)
+                .accentColor(deepblue)
+            
             }
         }
     }

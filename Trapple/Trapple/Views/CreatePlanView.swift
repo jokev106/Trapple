@@ -30,9 +30,11 @@ struct CreatePlanView: View {
     @Environment(\.presentationMode) var presentationMode:Binding<PresentationMode>
     
     //var for submission image picker
+    @State var showActionSheetCamera = false
     @State var changeSubmissionImage = false
     @State var openCameraSheet = false
     @State var imageSelected = UIImage()
+    @State var sourceType: UIImagePickerController.SourceType = .camera
     
     @State var setstartdate = "Set Start Date"
     
@@ -63,14 +65,16 @@ struct CreatePlanView: View {
                                     presentationMode.wrappedValue.dismiss()
                                 }label: {
                                     Image(systemName: "chevron.left")
-                                        .foregroundColor(yellow)
+                                        .foregroundColor(deepblue)
                                     Text("Back")
-                                        .foregroundColor(yellow)
+                                        .foregroundColor(deepblue)
                                     
                                 }
                             }
                         }
-                }
+                }.sheet(isPresented: $openCameraSheet) {
+                    SubmissionPicker(selectedImage: self.$imageSelected,  sourceType: self.sourceType)
+                                    }
             }
         }
     }
@@ -97,10 +101,10 @@ extension CreatePlanView {
             }
             //Trip Photos
             Group{
-                //Add photo from library
+//                Add photo from library
                 Button(action:{
                     changeSubmissionImage = true
-                    openCameraSheet = true
+                    showActionSheetCamera = true
                 }){
                     if changeSubmissionImage {
                         ZStack{
@@ -135,11 +139,24 @@ extension CreatePlanView {
                             }
                         }
                     }
-                }.sheet(isPresented: $openCameraSheet) {
-                    SubmissionPicker(selectedImage: $imageSelected, sourceType: .camera)
+                }.actionSheet(isPresented: $showActionSheetCamera) {
+                    ActionSheet(title: Text("Select Photo"), message: Text("Choose"), buttons: [
+                        .default(Text("Photo Library")){
+                            self.openCameraSheet = true
+//                            SubmissionPicker(selectedImage: $imageSelected, sourceType: .photoLibrary)
+                            self.sourceType = .photoLibrary
+                        },
+                        .default(Text("Camera")){
+                            self.openCameraSheet = true
+//                            SubmissionPicker(selectedImage: $imageSelected, sourceType: .camera)
+                            self.sourceType = .camera
+                        },
+                        .cancel()
+                    ])
                 }
                 Spacer()
                     .frame(height: 10)
+                
             }
             
             //Trip Name Form
@@ -220,81 +237,81 @@ extension CreatePlanView {
     }
     
     private var TripStartDate : some View{
-                VStack{
-                    if showStartDate == true{
-                        ZStack{
-                            Rectangle()
-                                .frame(height: 350)
-                                .frame(maxWidth: .infinity)
-                                .foregroundColor(.white)
-                                .cornerRadius(10)
-                                .padding(.horizontal, 30)
-                            VStack{
-                                HStack{
-                                    Image(systemName: "calendar")
-                                    Spacer()
-                                        .frame(width: 20)
-                                    Button {
-                                        withAnimation{
-                                            self.showStartDate.toggle()
-                                        }
-                                    } label: {
-                                        Text(valueStartDate ?  "\(vm.startDate, formatter: CreatePlanView.stackDateFormat)" : "Set Start Date")
-                                            .foregroundColor(valueStartDate ? .black : .gray)
-                                            .font(Font.custom("Gilroy-Light", size: 15))
-                                        Spacer()
-                                        Image(systemName: "chevron.right")
-                                            .foregroundColor(.gray)
-                                            .rotationEffect(.degrees(showStartDate ? 90 : 0))
-                                            .animation(.easeInOut(duration: 4), value: showStartDate)
-                                    }
-                                    Spacer()
+        VStack{
+            if showStartDate == true{
+                ZStack{
+                    Rectangle()
+                        .frame(height: 350)
+                        .frame(maxWidth: .infinity)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                        .padding(.horizontal, 30)
+                    VStack{
+                        HStack{
+                            Image(systemName: "calendar")
+                            Spacer()
+                                .frame(width: 20)
+                            Button {
+                                withAnimation{
+                                    self.showStartDate.toggle()
                                 }
-                                .padding(.horizontal, 50)
-                                .padding(.top, 15)
-                                DatePicker("Set Start Date", selection: $vm.startDate, in: Date()..., displayedComponents: .date)
-                                    .accentColor(yellow)
-                                    .datePickerStyle(GraphicalDatePickerStyle())
-                                    .frame(height: 300)
-                                    .labelsHidden()
-                                    .padding(.horizontal, 50)
+                            } label: {
+                                Text(valueStartDate ?  "\(vm.startDate, formatter: CreatePlanView.stackDateFormat)" : "Set Start Date")
+                                    .foregroundColor(valueStartDate ? .black : .gray)
+                                    .font(Font.custom("Gilroy-Light", size: 15))
                                 Spacer()
+                                Image(systemName: "chevron.right")
+                                    .foregroundColor(.gray)
+                                    .rotationEffect(.degrees(showStartDate ? 90 : 0))
+                                    .animation(.easeInOut(duration: 4), value: showStartDate)
                             }
+                            Spacer()
                         }
-
-                    }else{
-                        ZStack{
-                            Rectangle()
-                                .frame(height: 50)
-                                .frame(maxWidth: .infinity)
-                                .foregroundColor(.white)
-                                .cornerRadius(10)
-                                .padding(.horizontal, 30)
-                            HStack{
-                                Image(systemName: "calendar")
-                                Spacer()
-                                    .frame(width: 20)
-                                Button(action: {
-                                    withAnimation{
-                                        self.showStartDate.toggle()
-                                        valueStartDate = true
-                                        showEndDate = false
-                                    }
-                                }, label: {
-                                    Text((valueStartDate ? "\(vm.startDate, formatter: CreatePlanView.stackDateFormat)" : "Set Start Date"))
-                                        .foregroundColor(valueStartDate ? .black : .gray)
-                                        .font(Font.custom("Gilroy-Light", size: 15))
-                                    Spacer()
-                                    Image(systemName: "chevron.right")
-                                        .foregroundColor(.gray)
-                                        .rotationEffect(.degrees(showStartDate ? 90 : 0))
-                                        .animation(.easeInOut(duration: 4), value: showStartDate)
-                                })
-                                Spacer()
-                            }.padding(.horizontal, 50)
-                        }
+                        .padding(.horizontal, 50)
+                        .padding(.top, 15)
+                        DatePicker("Set Start Date", selection: $vm.startDate, in: Date()..., displayedComponents: .date)
+                            .accentColor(deepblue)
+                            .datePickerStyle(GraphicalDatePickerStyle())
+                            .frame(height: 300)
+                            .labelsHidden()
+                            .padding(.horizontal, 50)
+                        Spacer()
                     }
                 }
+                
+            }else{
+                ZStack{
+                    Rectangle()
+                        .frame(height: 50)
+                        .frame(maxWidth: .infinity)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                        .padding(.horizontal, 30)
+                    HStack{
+                        Image(systemName: "calendar")
+                        Spacer()
+                            .frame(width: 20)
+                        Button(action: {
+                            withAnimation{
+                                self.showStartDate.toggle()
+                                valueStartDate = true
+                                showEndDate = false
+                            }
+                        }, label: {
+                            Text((valueStartDate ? "\(vm.startDate, formatter: CreatePlanView.stackDateFormat)" : "Set Start Date"))
+                                .foregroundColor(valueStartDate ? .black : .gray)
+                                .font(Font.custom("Gilroy-Light", size: 15))
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .foregroundColor(.gray)
+                                .rotationEffect(.degrees(showStartDate ? 90 : 0))
+                                .animation(.easeInOut(duration: 4), value: showStartDate)
+                        })
+                        Spacer()
+                    }.padding(.horizontal, 50)
+                }
+            }
+        }
     }
     
     private var TripEndDate : some View{
@@ -333,7 +350,7 @@ extension CreatePlanView {
                         DatePicker("Set End Date", selection: $vm.endDate, in: Date()..., displayedComponents: .date)
                             .datePickerStyle(GraphicalDatePickerStyle())
                             .frame(height: 300)
-                            .accentColor(yellow)
+                            .accentColor(deepblue)
                             .labelsHidden()
                             .padding(.horizontal, 50)
                         Spacer()
@@ -387,5 +404,3 @@ extension CreatePlanView {
     
     
 }
-
-
