@@ -37,10 +37,10 @@ class EquipmentsViewModel: ObservableObject {
         newEquipment["category"] = category
         newEquipment["icon"] = icon
         newEquipment["planID"] = CKRecord.Reference(record: planDetail, action: .deleteSelf)
-        saveItem(record: newEquipment)
+        saveItem(planID: planID, category: category, record: newEquipment)
     }
     
-    private func saveItem(record: CKRecord) {
+    private func saveItem(planID: CKRecord.ID, category: String, record: CKRecord) {
         CKContainer.default().privateCloudDatabase.save(record) { [weak self] returnedRecord, returnedError in
             print("Record: \(returnedRecord)")
             print("Error: \(returnedError)")
@@ -50,6 +50,9 @@ class EquipmentsViewModel: ObservableObject {
                 self?.description = ""
                 self?.category = ""
                 self?.icon = ""
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                    self?.fetchItems(planID: planID, category: category)
+                }
             }
         }
     }
@@ -60,7 +63,7 @@ class EquipmentsViewModel: ObservableObject {
         let predicate = NSPredicate(format: "(planID == %@) AND (category == %@)", argumentArray: [recordToMatch, category])
 //        let predicate2 = NSPredicate(format: "category == %@", argumentArray: [category])
         let query = CKQuery(recordType: "Items", predicate: predicate)
-        query.sortDescriptors = [NSSortDescriptor(key: "category", ascending: true)]
+        query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
         let queryOperation = CKQueryOperation(query: query)
         
         var returnedItems: [EquipmentModel] = []

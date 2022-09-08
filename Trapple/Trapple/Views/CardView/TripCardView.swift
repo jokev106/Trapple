@@ -10,6 +10,7 @@ import CloudKit
 
 struct TripCardView: View {
     
+    @ObservedObject var vm: PlansViewModel
     @State var plan: String = ""
     @State var destination: String = ""
     @State var startDate: Date = Date()
@@ -59,7 +60,7 @@ struct TripCardView: View {
                         .padding(.top, 5)
                         .frame(width: 200,alignment: .leading)
                         .foregroundColor(Color.black)
-                    Text("3 Days, 2 Night")
+                    Text("\(vm.getDateRange(startDate: startDate, endDate: endDate)) Days, \(vm.getDateRange(startDate: startDate, endDate: endDate) - 1) Nights")
                         .font(Font.custom("Gilroy-Light", size: 8))
                         .lineLimit(2)
                         .padding(.trailing, 10)

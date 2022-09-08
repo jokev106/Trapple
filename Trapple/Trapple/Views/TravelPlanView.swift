@@ -13,6 +13,7 @@ struct TravelPlanView: View {
 
     @State var showCreatePlan = false
     @ObservedObject var vm: PlansViewModel
+    @State var dateNow = Date()
     
     var body: some View {
         GeometryReader { _ in
@@ -110,7 +111,7 @@ extension TravelPlanView {
             ScrollView{
                 VStack{
                     ForEach(vm.plans, id: \.recordID) {items in
-                        TripCardView(plan: items.title, destination: items.destination, startDate: items.startDate, endDate: items.endDate, planID: items.recordID!)
+                        TripCardView(vm: vm, plan: items.title, destination: items.destination, startDate: items.startDate, endDate: items.endDate, planID: items.recordID!)
                             .onAppear{
                                 let dateFormatter = DateFormatter()
                                 dateFormatter.dateFormat = "yyyy MMMM d"

@@ -31,10 +31,10 @@ class CategoriesViewModel: ObservableObject {
         newCategory["category"] = category
         newCategory["icon"] = icon
         newCategory["planID"] = CKRecord.Reference(record: planDetail, action: .deleteSelf)
-        saveItem(record: newCategory)
+        saveItem(planID: planID, record: newCategory)
     }
     
-    private func saveItem(record: CKRecord) {
+    private func saveItem(planID: CKRecord.ID, record: CKRecord) {
         CKContainer.default().privateCloudDatabase.save(record) { [weak self] returnedRecord, returnedError in
             print("Record: \(returnedRecord)")
             print("Error: \(returnedError)")
@@ -42,6 +42,9 @@ class CategoriesViewModel: ObservableObject {
             DispatchQueue.main.async {
                 self?.category = ""
                 self?.icon = ""
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                    self?.fetchItems(planID: planID)
+                }
             }
         }
     }

@@ -46,7 +46,7 @@ struct RundownView: View {
                                     .frame(width: 20)
                             }
                             .sheet(isPresented: $showModal) {
-                                AddRundownView(planID: planID, selectedDate: selected, startDate: startDate, endDate: endDate, showModal: self.$showModal)
+                                AddRundownView(vm: vm, planID: planID, selectedDate: selected, startDate: startDate, endDate: endDate, showModal: self.$showModal)
                             }
                         }
                         .padding(.horizontal, 30)
