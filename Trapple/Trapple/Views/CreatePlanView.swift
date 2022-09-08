@@ -38,136 +38,11 @@ struct CreatePlanView: View {
                     VStack{
                         ScrollView{
                             //Content
-//                            PlanForm
-                            VStack{
-                                Group{
-                                    Text("Let’s get started with your trip plan.")
-                                        .font(Font.system(size: 15))
-                                        .frame(width: 350, alignment: .leading)
-                                    
-                                    Spacer()
-                                        .frame(height: 40)
-                                }
-                                //Trip Photos
-                                Group{
-                                        //Add photo from library
-                                        Button(action:{
-                                            changeSubmissionImage = true
-                                            openCameraSheet = true
-                                        }){
-                                            if changeSubmissionImage {
-                                                ZStack{
-                                                    Rectangle()
-                                                        .frame(width: 246, height: 248)
-                    //                                .frame(maxWidth: .infinity)
-                                                    .foregroundColor(.white)
-                                                    .cornerRadius(10)
-                                                    .padding(.horizontal, 30)
-                                                    Image(uiImage: imageSelected)
-                                                        .resizable()
-                                                        .frame(width: 212, height: 215, alignment: .center)
-                                                        .aspectRatio(contentMode: .fit)
-
-                                                }
-                                            }else {
-                                                ZStack{
-                                                    Rectangle()
-                                                    .frame(height: 144)
-                                                    .frame(maxWidth: .infinity)
-                                                    .foregroundColor(.white)
-                                                    .cornerRadius(10)
-                                                    .padding(.horizontal, 30)
-                                                    HStack{
-                                                        Spacer()
-                                                        Image(systemName: "photo.on.rectangle.angled")
-                                                            .resizable()
-                                                            .foregroundColor(blacktext)
-                                                            .aspectRatio(contentMode: .fit)
-                                                            .frame(width: 50, height: 50, alignment: .center)
-                                                        Spacer()
-                                                    }
-                                                }
-                                            }
-                                        }.sheet(isPresented: $openCameraSheet) {
-                                            SubmissionPicker(selectedImage: $imageSelected, sourceType: .photoLibrary)
-                                        }
-                                    Spacer()
-                                        .frame(height: 10)
-                                }
-                                
-                                //Trip Name Form
-                                ZStack{
-                                    Rectangle()
-                                        .frame(height: 50)
-                                        .frame(maxWidth: .infinity)
-                                        .foregroundColor(.white)
-                                        .cornerRadius(10)
-                                        .padding(.horizontal, 30)
-                                    HStack{
-                                        Image(systemName: "pencil")
-                                        Spacer()
-                                            .frame(width: 20)
-                                        TextField("Trip Name", text: $vm.title)
-                                            .frame(width: 250, alignment: .leading)
-                                            .foregroundColor(.black)
-                                        Spacer()
-                                    }.padding(.horizontal, 50)
-                                }
-                                Spacer()
-                                    .frame(height: 10)
-                                //Trip Destination Form
-                                ZStack{
-                                    Rectangle()
-                                        .frame(height: 50)
-                                        .frame(maxWidth: .infinity)
-                                        .foregroundColor(.white)
-                                        .cornerRadius(10)
-                                        .padding(.horizontal, 30)
-                                    HStack{
-                                        Image(systemName: "airplane")
-                                        Spacer()
-                                            .frame(width: 20)
-                                        TextField("Destination", text: $vm.destination)
-                                            .frame(width: 250, alignment: .leading)
-                                            .foregroundColor(.black)
-                                        Spacer()
-                                    }.padding(.horizontal, 50)
-                                }
-                                Spacer()
-                                    .frame(height: 10)
-                                //Trip Start Date Form
-                               TripStartDate
-                                Spacer()
-                                    .frame(height: 10)
-                                //Trip End Date Form
-                                TripEndDate
-                                
-                                Spacer()
-                                .frame(height: 10)
-                                
-                            }
+                            PlanForm
                             Spacer()
                             
                         }
-//                        CreateButton
-                        VStack{
-                            
-                //            NavigationLink(destination: TripHomePageView(), label: {
-                                Text("Create")
-                                    .fontWeight(.bold)
-                                    .frame(height: 50)
-                                    .frame(maxWidth: .infinity)
-                                    .background(.gray.opacity(0.5))
-                                    .foregroundColor(.black)
-                                    .cornerRadius(10)
-                                    .onTapGesture {
-                                        //Function Save trip plan data + Move to Trip Page
-                                        vm.addButtonPressed()
-                                        vm.fetchItems()
-                                        presentationMode.wrappedValue.dismiss()
-                                    }
-                //            })
-                        }.padding(20)
+                        CreateButton
                     }.navigationTitle("Create Plan")
                         .background(graybg)
                         .toolbar{
@@ -198,116 +73,116 @@ struct CreatePlanView: View {
 //MARK: Components
 extension CreatePlanView {
     
-//    private var PlanForm : some View{
-//        VStack{
-//            Group{
-//                Text("Let’s get started with your trip plan.")
-//                    .font(Font.system(size: 15))
-//                    .frame(width: 350, alignment: .leading)
-//
-//                Spacer()
-//                    .frame(height: 40)
-//            }
-//            //Trip Photos
-//            Group{
-//                    //Add photo from library
-//                    Button(action:{
-//                        changeSubmissionImage = true
-//                        openCameraSheet = true
-//                    }){
-//                        if changeSubmissionImage {
-//                            ZStack{
-//                                Rectangle()
-//                                    .frame(width: 246, height: 248)
-////                                .frame(maxWidth: .infinity)
-//                                .foregroundColor(.white)
-//                                .cornerRadius(10)
-//                                .padding(.horizontal, 30)
-//                                Image(uiImage: imageSelected)
-//                                    .resizable()
-//                                    .frame(width: 212, height: 215, alignment: .center)
-//                                    .aspectRatio(contentMode: .fit)
-//
-//                            }
-//                        }else {
-//                            ZStack{
-//                                Rectangle()
-//                                .frame(height: 144)
+    private var PlanForm : some View{
+        VStack{
+            Group{
+                Text("Let’s get started with your trip plan.")
+                    .font(Font.system(size: 15))
+                    .frame(width: 350, alignment: .leading)
+                
+                Spacer()
+                    .frame(height: 40)
+            }
+            //Trip Photos
+            Group{
+                    //Add photo from library
+                    Button(action:{
+                        changeSubmissionImage = true
+                        openCameraSheet = true
+                    }){
+                        if changeSubmissionImage {
+                            ZStack{
+                                Rectangle()
+                                    .frame(width: 246, height: 248)
 //                                .frame(maxWidth: .infinity)
-//                                .foregroundColor(.white)
-//                                .cornerRadius(10)
-//                                .padding(.horizontal, 30)
-//                                HStack{
-//                                    Spacer()
-//                                    Image(systemName: "photo.on.rectangle.angled")
-//                                        .resizable()
-//                                        .foregroundColor(blacktext)
-//                                        .aspectRatio(contentMode: .fit)
-//                                        .frame(width: 50, height: 50, alignment: .center)
-//                                    Spacer()
-//                                }
-//                            }
-//                        }
-//                    }.sheet(isPresented: $openCameraSheet) {
-//                        SubmissionPicker(selectedImage: $imageSelected, sourceType: .photoLibrary)
-//                    }
-//                Spacer()
-//                    .frame(height: 10)
-//            }
-//
-//            //Trip Name Form
-//            ZStack{
-//                Rectangle()
-//                    .frame(height: 50)
-//                    .frame(maxWidth: .infinity)
-//                    .foregroundColor(.white)
-//                    .cornerRadius(10)
-//                    .padding(.horizontal, 30)
-//                HStack{
-//                    Image(systemName: "pencil")
-//                    Spacer()
-//                        .frame(width: 20)
-//                    TextField("Trip Name", text: $vm.title)
-//                        .frame(width: 250, alignment: .leading)
-//                        .foregroundColor(.black)
-//                    Spacer()
-//                }.padding(.horizontal, 50)
-//            }
-//            Spacer()
-//                .frame(height: 10)
-//            //Trip Destination Form
-//            ZStack{
-//                Rectangle()
-//                    .frame(height: 50)
-//                    .frame(maxWidth: .infinity)
-//                    .foregroundColor(.white)
-//                    .cornerRadius(10)
-//                    .padding(.horizontal, 30)
-//                HStack{
-//                    Image(systemName: "airplane")
-//                    Spacer()
-//                        .frame(width: 20)
-//                    TextField("Destination", text: $vm.destination)
-//                        .frame(width: 250, alignment: .leading)
-//                        .foregroundColor(.black)
-//                    Spacer()
-//                }.padding(.horizontal, 50)
-//            }
-//            Spacer()
-//                .frame(height: 10)
-//            //Trip Start Date Form
-//           TripStartDate
-//            Spacer()
-//                .frame(height: 10)
-//            //Trip End Date Form
-//            TripEndDate
-//
-//            Spacer()
-//            .frame(height: 10)
-//
-//        }
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
+                                .padding(.horizontal, 30)
+                                Image(uiImage: imageSelected)
+                                    .resizable()
+                                    .frame(width: 212, height: 215, alignment: .center)
+                                    .aspectRatio(contentMode: .fit)
+
+                            }
+                        }else {
+                            ZStack{
+                                Rectangle()
+                                .frame(height: 144)
+                                .frame(maxWidth: .infinity)
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
+                                .padding(.horizontal, 30)
+                                HStack{
+                                    Spacer()
+                                    Image(systemName: "photo.on.rectangle.angled")
+                                        .resizable()
+                                        .foregroundColor(blacktext)
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 50, height: 50, alignment: .center)
+                                    Spacer()
+                                }
+                            }
+                        }
+                    }.sheet(isPresented: $openCameraSheet) {
+                        SubmissionPicker(selectedImage: $imageSelected, sourceType: .photoLibrary)
+                    }
+                Spacer()
+                    .frame(height: 10)
+            }
+            
+            //Trip Name Form
+            ZStack{
+                Rectangle()
+                    .frame(height: 50)
+                    .frame(maxWidth: .infinity)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
+                    .padding(.horizontal, 30)
+                HStack{
+                    Image(systemName: "pencil")
+                    Spacer()
+                        .frame(width: 20)
+                    TextField("Trip Name", text: $vm.title)
+                        .frame(width: 250, alignment: .leading)
+                        .foregroundColor(.black)
+                    Spacer()
+                }.padding(.horizontal, 50)
+            }
+            Spacer()
+                .frame(height: 10)
+            //Trip Destination Form
+            ZStack{
+                Rectangle()
+                    .frame(height: 50)
+                    .frame(maxWidth: .infinity)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
+                    .padding(.horizontal, 30)
+                HStack{
+                    Image(systemName: "airplane")
+                    Spacer()
+                        .frame(width: 20)
+                    TextField("Destination", text: $vm.destination)
+                        .frame(width: 250, alignment: .leading)
+                        .foregroundColor(.black)
+                    Spacer()
+                }.padding(.horizontal, 50)
+            }
+            Spacer()
+                .frame(height: 10)
+            //Trip Start Date Form
+           TripStartDate
+            Spacer()
+                .frame(height: 10)
+            //Trip End Date Form
+            TripEndDate
+            
+            Spacer()
+            .frame(height: 10)
+            
+        }
         
-//    }
+    }
     
     private var CreateButton : some View {
         VStack{
@@ -323,7 +198,6 @@ extension CreatePlanView {
                     .onTapGesture {
                         //Function Save trip plan data + Move to Trip Page
                         vm.addButtonPressed()
-                        vm.fetchItems()
                         presentationMode.wrappedValue.dismiss()
                     }
 //            })
