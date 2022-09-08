@@ -14,6 +14,7 @@ class PlansViewModel: ObservableObject {
     @Published var destination: String = ""
     @Published var startDate: Date = Date()
     @Published var endDate: Date = Date()
+    @Published var history: Int64 = 0
     @Published var plans: [PlanViewModel] = []
     
     init() {
@@ -32,7 +33,7 @@ class PlansViewModel: ObservableObject {
         newPlan["destination"] = destination
         newPlan["startDate"] = startDate
         newPlan["endDate"] = endDate
-        newPlan["isHistory"] = false
+        newPlan["isHistory"] = 0
         saveItem(record: newPlan)
         
 //        guard
@@ -65,6 +66,13 @@ class PlansViewModel: ObservableObject {
         }
     }
     
+    func updateHistory(plan: PlanViewModel) {
+        let record = plan.record
+        record["isHistory"] = 1
+        saveItem(record: record)
+    }
+
+    
     func deleteItem(indexSet: IndexSet){
         guard let index = indexSet.first else {return}
         let plan = plans[index]
@@ -77,7 +85,9 @@ class PlansViewModel: ObservableObject {
     
     func fetchItems() {
         
-        let predicate = NSPredicate(value: true)
+//        let predicate = NSPredicate(value: true)
+        let falseNumber:NSNumber = 0
+        let predicate = NSPredicate(format: "isHistory = %@", falseNumber)
         let query = CKQuery(recordType: "Plans", predicate: predicate)
         query.sortDescriptors = [NSSortDescriptor(key: "startDate", ascending: true)]
         let queryOperation = CKQueryOperation(query: query)
@@ -115,11 +125,54 @@ class PlansViewModel: ObservableObject {
     func addOperation(operation: CKDatabaseOperation) {
         CKContainer.default().privateCloudDatabase.add(operation)
     }
+    
+    func fetchHistory() {
+        
+//        let predicate = NSPredicate(value: true)
+        let trueNumber:NSNumber = 1
+        let predicate = NSPredicate(format: "isHistory == %@", trueNumber)
+        let query = CKQuery(recordType: "Plans", predicate: predicate)
+        query.sortDescriptors = [NSSortDescriptor(key: "startDate", ascending: true)]
+        let queryOperation = CKQueryOperation(query: query)
+        
+        var returnedItems: [PlanModel] = []
+        
+        //Query for saving fetched items in an array
+        queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
+            switch returnedResult {
+            case.success(let record):
+//                guard let title = record["title"] as? String else {return}
+                if let planList = PlanModel.fromRecord(record: record){
+//                    let imageAsset = record["image"] as? CKAsset
+//                    let imageURL = imageAsset?.fileURL
+                    returnedItems.append(planList)
+                }
+            case.failure(let error):
+                print("Error recordMatchedBlock: \(error)")
+            }
+        }
+        
+        //Returned fetched items
+        queryOperation.queryResultBlock = { [weak self] returnedResult in
+            print("Returned Result: \(returnedResult)")
+            DispatchQueue.main.async {
+                self?.plans = returnedItems.map(PlanViewModel.init)
+            }
+            
+        }
+        
+        addOperation(operation: queryOperation)
+        
+    }
 }
 
 struct PlanViewModel{
     
     let planList: PlanModel
+    
+    var record: CKRecord {
+        planList.record
+    }
     
     var recordID: CKRecord.ID? {
         planList.recordID
@@ -139,6 +192,10 @@ struct PlanViewModel{
     
     var endDate: Date {
         planList.endDate
+    }
+    
+    var isHistory: Int64 {
+        planList.isHistory
     }
     
 //    var imageURL: URL {

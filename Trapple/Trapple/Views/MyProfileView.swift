@@ -6,12 +6,16 @@
 //
 
 import SwiftUI
+import CloudKit
 
 struct MyProfileView: View {
+    
+    @StateObject private var vm = PlansViewModel()
+    
     var body: some View {
         GeometryReader{geo in
             ZStack{
-//                NavigationView{
+                NavigationView{
                     VStack{
                         //Content
                         Divider
@@ -29,8 +33,8 @@ struct MyProfileView: View {
                         
                     }.navigationTitle("My Profile")
                         .background(graybg)
-//                }
-            }.navigationAppearance(backgroundColor: UIColor(graybg), foregroundColor: UIColor(blacktext), hideSeperator: true)
+                }
+            }
         }
     }
 }
@@ -93,16 +97,13 @@ extension MyProfileView {
                 .padding(0.5)
             ScrollView{
                 VStack{
-                    ForEach((1..<10)) {_ in
-                        NavigationLink{
-                            
-                        }
-                        label: {
-//                        TripCardView()
-                        }
+                    ForEach(vm.plans, id: \.recordID) { items in
+                        TripCardView(plan: items.title, destination: items.destination, startDate: items.startDate, endDate: items.endDate, planID: items.recordID!)
                     }
                 }
             }
+        }.onAppear{
+            vm.fetchHistory()
         }
     }
     

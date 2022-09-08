@@ -1,8 +1,15 @@
+////
+////  ContentView.swift
+////  Trapple
+////
+////  Created by Vincent Leonard on 23/08/22.
+////
 //
-//  ContentView.swift
-//  Trapple
+//import SwiftUI
 //
-//  Created by Vincent Leonard on 23/08/22.
+//struct ContentView: View {
+//    init() {
+//        let navigationBarAppearace = UINavigationBarAppearance()
 //
 
 import SwiftUI

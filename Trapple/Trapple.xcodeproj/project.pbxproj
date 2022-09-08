@@ -28,13 +28,13 @@
 		701E3B0028BB14D2008CFEB3 /* Gilroy-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 701E3AFE28BB14D2008CFEB3 /* Gilroy-ExtraBold.otf */; };
 		701E3B0128BB14D2008CFEB3 /* Gilroy-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 701E3AFF28BB14D2008CFEB3 /* Gilroy-Light.otf */; };
 		705EBB8928BC8940006B985C /* RundownCardview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705EBB8828BC8940006B985C /* RundownCardview.swift */; };
-		705EBB8B28BCA435006B985C /* RundownCardviewDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705EBB8A28BCA435006B985C /* RundownCardviewDetail.swift */; };
 		705EBB8D28BCB07C006B985C /* EquipmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705EBB8C28BCB07C006B985C /* EquipmentView.swift */; };
 		705EBB8F28BCBFF0006B985C /* AddCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705EBB8E28BCBFF0006B985C /* AddCategoryView.swift */; };
 		705EBB9128BDE8DF006B985C /* EquipmentCardview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705EBB9028BDE8DF006B985C /* EquipmentCardview.swift */; };
 		705EBB9328BDE8FD006B985C /* ItemListCardview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705EBB9228BDE8FD006B985C /* ItemListCardview.swift */; };
 		705EBB9528BDE958006B985C /* AddItemVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705EBB9428BDE958006B985C /* AddItemVIew.swift */; };
 		705EBB9728BDEBE9006B985C /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705EBB9628BDEBE9006B985C /* CategoryView.swift */; };
+		70D1F2EB28C5E78000BD2202 /* RundownDetailCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D1F2EA28C5E78000BD2202 /* RundownDetailCardView.swift */; };
 		B3B8FD7828B895F90007A213 /* TravelPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FD7728B895F90007A213 /* TravelPlanView.swift */; };
 		B3B8FD7A28B8960C0007A213 /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FD7928B8960C0007A213 /* MyProfileView.swift */; };
 		B3B8FD7C28B8B9EE0007A213 /* CreatePlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8FD7B28B8B9EE0007A213 /* CreatePlanView.swift */; };
@@ -76,13 +76,13 @@
 		701E3AFF28BB14D2008CFEB3 /* Gilroy-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Light.otf"; sourceTree = "<group>"; };
 		701E3B0228BB172D008CFEB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		705EBB8828BC8940006B985C /* RundownCardview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RundownCardview.swift; sourceTree = "<group>"; };
-		705EBB8A28BCA435006B985C /* RundownCardviewDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RundownCardviewDetail.swift; sourceTree = "<group>"; };
 		705EBB8C28BCB07C006B985C /* EquipmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentView.swift; sourceTree = "<group>"; };
 		705EBB8E28BCBFF0006B985C /* AddCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryView.swift; sourceTree = "<group>"; };
 		705EBB9028BDE8DF006B985C /* EquipmentCardview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentCardview.swift; sourceTree = "<group>"; };
 		705EBB9228BDE8FD006B985C /* ItemListCardview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListCardview.swift; sourceTree = "<group>"; };
 		705EBB9428BDE958006B985C /* AddItemVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemVIew.swift; sourceTree = "<group>"; };
 		705EBB9628BDEBE9006B985C /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
+		70D1F2EA28C5E78000BD2202 /* RundownDetailCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RundownDetailCardView.swift; sourceTree = "<group>"; };
 		B3B8FD7728B895F90007A213 /* TravelPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelPlanView.swift; sourceTree = "<group>"; };
 		B3B8FD7928B8960C0007A213 /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
 		B3B8FD7B28B8B9EE0007A213 /* CreatePlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlanView.swift; sourceTree = "<group>"; };
@@ -206,8 +206,8 @@
 				B3B8FD8F28BCBD650007A213 /* RulesView.swift */,
 				705EBB8C28BCB07C006B985C /* EquipmentView.swift */,
 				705EBB8E28BCBFF0006B985C /* AddCategoryView.swift */,
-				705EBB9428BDE958006B985C /* AddItemVIew.swift */,
 				705EBB9628BDEBE9006B985C /* CategoryView.swift */,
+				705EBB9428BDE958006B985C /* AddItemVIew.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -243,7 +243,7 @@
 				B3B8FD7D28B8C35B0007A213 /* TripCardView.swift */,
 				B3B8FD8D28BCA3FB0007A213 /* RulesCardView.swift */,
 				705EBB8828BC8940006B985C /* RundownCardview.swift */,
-				705EBB8A28BCA435006B985C /* RundownCardviewDetail.swift */,
+				70D1F2EA28C5E78000BD2202 /* RundownDetailCardView.swift */,
 				705EBB9028BDE8DF006B985C /* EquipmentCardview.swift */,
 				705EBB9228BDE8FD006B985C /* ItemListCardview.swift */,
 			);
@@ -343,7 +343,6 @@
 				01BAC26E28BF44FC00C61985 /* CloudKitCRUD.swift in Sources */,
 				705EBB8F28BCBFF0006B985C /* AddCategoryView.swift in Sources */,
 				705EBB9728BDEBE9006B985C /* CategoryView.swift in Sources */,
-				705EBB8B28BCA435006B985C /* RundownCardviewDetail.swift in Sources */,
 				701DD85B28B62459003E53CD /* TripHomePageView.swift in Sources */,
 				705EBB9128BDE8DF006B985C /* EquipmentCardview.swift in Sources */,
 				705EBB9328BDE8FD006B985C /* ItemListCardview.swift in Sources */,
@@ -357,6 +356,7 @@
 				011AED8C28B4D03000E77F93 /* ContentView.swift in Sources */,
 				011AED8A28B4D03000E77F93 /* TrappleApp.swift in Sources */,
 				B3B8FD7828B895F90007A213 /* TravelPlanView.swift in Sources */,
+				70D1F2EB28C5E78000BD2202 /* RundownDetailCardView.swift in Sources */,
 				B3B8FD7E28B8C35B0007A213 /* TripCardView.swift in Sources */,
 				B3B8FD7C28B8B9EE0007A213 /* CreatePlanView.swift in Sources */,
 				705EBB9528BDE958006B985C /* AddItemVIew.swift in Sources */,
@@ -496,6 +496,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Trapple/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Trapple;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -530,6 +532,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Trapple/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Trapple;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
