@@ -22,9 +22,9 @@ struct TravelPlanView: View {
                         // Content
                         Divider
                         // Create and Join Button
-                        CreateJoinButton
+                        CreateJoinButton(vm: vm)
                         Divider
-                        OnGoingTripSection
+                        OnGoingTripSection(vm: vm)
                     }.navigationTitle("Travel Plan")
                         .background(graybg)
 //                }
@@ -47,60 +47,72 @@ extension TravelPlanView {
             .padding(.horizontal)
     }
 
-    private var CreateJoinButton: some View {
-        HStack {
-            Spacer()
+    
+}
 
-            Button {
-                self.showCreatePlan.toggle()
-            } label: {
-                Text("Create")
-                    .frame(width: 100, height: 100)
-                    .foregroundColor(Color.black)
-                    .font(Font.custom("Gilroy-ExtraBold", size: 18))
-                    .background(yellow)
-                    .cornerRadius(10)
-                    .shadow(color: Color.gray.opacity(0.275), radius: 8, x: 2, y: 4)
-            }.sheet(isPresented: $showCreatePlan, content: {
-                CreatePlanView(vm: vm)
-                    .navigationBarHidden(true)
-            })
+// MARK: Functions
 
-            Spacer()
-                .frame(width: 60)
-            Text("Join")
+extension TravelPlanView {}
+
+struct CreateJoinButton: View {
+    @ObservedObject var vm: PlansViewModel
+    @State var showCreatePlan = false
+    
+    var body: some View{
+    HStack {
+        Spacer()
+
+        Button {
+            self.showCreatePlan.toggle()
+        } label: {
+            Text("Create")
                 .frame(width: 100, height: 100)
                 .foregroundColor(Color.black)
                 .font(Font.custom("Gilroy-ExtraBold", size: 18))
                 .background(yellow)
                 .cornerRadius(10)
                 .shadow(color: Color.gray.opacity(0.275), radius: 8, x: 2, y: 4)
-                .onTapGesture {
-                    // Function
-                }
-            Spacer()
+        }.sheet(isPresented: $showCreatePlan, content: {
+            CreatePlanView(vm: vm)
+                .navigationBarHidden(true)
+        })
 
-        }.padding()
+        Spacer()
+            .frame(width: 60)
+        Text("Join")
+            .frame(width: 100, height: 100)
+            .foregroundColor(Color.black)
+            .font(Font.custom("Gilroy-ExtraBold", size: 18))
+            .background(yellow)
+            .cornerRadius(10)
+            .shadow(color: Color.gray.opacity(0.275), radius: 8, x: 2, y: 4)
+            .onTapGesture {
+                // Function
+                vm.fetchItems()
+            }
+        Spacer()
+
+    }.padding()
     }
+}
 
-    private var OnGoingTripSection: some View {
-        VStack {
-            Text("On Going Trip").bold()
-                .font(Font.custom("Gilroy-Light", size: 20))
-                .frame(width: 370, alignment: .leading)
-                .foregroundColor(Color.black)
-                .padding(0.5)
-            ScrollView{
-                VStack{
-                    ForEach(vm.plans, id: \.recordID) {items in
-                        TripCardView(plan: items.title, destination: items.destination, startDate: items.startDate, endDate: items.endDate, planID: items.recordID!)
-                    }
+struct OnGoingTripSection: View {
+    @ObservedObject var vm: PlansViewModel
+    
+    var body: some View{
+    VStack {
+        Text("On Going Trip").bold()
+            .font(Font.custom("Gilroy-Light", size: 20))
+            .frame(width: 370, alignment: .leading)
+            .foregroundColor(Color.black)
+            .padding(0.5)
+        ScrollView{
+            VStack{
+                ForEach(vm.plans, id: \.recordID) {items in
+                    TripCardView(plan: items.title, destination: items.destination, startDate: items.startDate, endDate: items.endDate, planID: items.recordID!)
                 }
             }
         }
     }
+    }
 }
-
-// MARK: Functions
-
-extension TravelPlanView {}

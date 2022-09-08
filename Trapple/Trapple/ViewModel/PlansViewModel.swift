@@ -60,6 +60,8 @@ class PlansViewModel: ObservableObject {
                 self?.destination = ""
                 self?.startDate = Date()
                 self?.endDate = Date()
+                self?.fetchItems()
+                print("fetchitems save")
             }
             
         }
@@ -93,6 +95,10 @@ class PlansViewModel: ObservableObject {
 //                    let imageAsset = record["image"] as? CKAsset
 //                    let imageURL = imageAsset?.fileURL
                     returnedItems.append(planList)
+                    print(planList.title)
+                    DispatchQueue.main.async {
+                        self.plans = returnedItems.map(PlanViewModel.init)
+                    }
                 }
             case.failure(let error):
                 print("Error recordMatchedBlock: \(error)")
