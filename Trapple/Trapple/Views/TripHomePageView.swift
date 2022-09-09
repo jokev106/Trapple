@@ -10,15 +10,11 @@ import SwiftUI
 
 struct TripHomePageView: View {
     @StateObject private var vm = ActivitiesViewModel()
-    @State var title = String()
-    @State var destination = String()
-    @State var planID = CKRecord.ID()
-    @State var startDate: Date = .init()
-    @State var endDate: Date = .init()
-    
-//    init(){
-//        UITabBar.appearance().barTintColor = UIColor(darkblue)
-//    }
+    @Binding var title: String
+    @Binding var destination: String
+    @Binding var planID: CKRecord.ID
+    @Binding var startDate: Date
+    @Binding var endDate: Date
     
     @StateObject static var rulesViewModel = RulesViewModel()
     
@@ -55,7 +51,7 @@ struct TripHomePageView: View {
 extension TripHomePageView {
     private var Rundown: some View {
         VStack {
-            NavigationLink(destination: RundownView(planID: planID, startDate: startDate, endDate: endDate), label: {
+            NavigationLink(destination: RundownView(vm: vm, planID: $planID, startDate: $startDate, endDate: $endDate), label: {
                 VStack(spacing: 0) {
                     VStack(alignment: .leading) {
                         Text("Rundown")

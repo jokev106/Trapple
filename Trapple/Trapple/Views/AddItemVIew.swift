@@ -9,7 +9,7 @@ import SwiftUI
 import CloudKit
 
 struct AddItemVIew: View {
-    @StateObject private var vm = EquipmentsViewModel()
+    @ObservedObject var vm: EquipmentsViewModel
     @State var planID = CKRecord.ID()
     @State var category: String = ""
     @State var icon: String = ""
@@ -127,8 +127,8 @@ struct AddItemVIew: View {
     }
 }
 
-struct AddItemVIew_Previews: PreviewProvider {
-    static var previews: some View {
-        AddItemVIew(showModal: .constant(true))
-    }
-}
+//struct AddItemVIew_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AddItemVIew(showModal: .constant(true))
+//    }
+//}

@@ -61,7 +61,11 @@ class PlansViewModel: ObservableObject {
                 self?.destination = ""
                 self?.startDate = Date()
                 self?.endDate = Date()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                    self?.fetchItems()
+                }
             }
+            
         }
     }
     
@@ -162,6 +166,21 @@ class PlansViewModel: ObservableObject {
         
         addOperation(operation: queryOperation)
         
+    }
+    
+    func getDateRange(startDate: Date, endDate: Date) -> Int {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy MMMM d"
+        let startDatestring = dateFormatter.string(from: startDate)
+        let startDates = dateFormatter.date(from: startDatestring)
+        let endDatestring = dateFormatter.string(from: endDate)
+        let endDates = dateFormatter.date(from: endDatestring)
+        let dayDurationInSeconds: TimeInterval = 60*60*24
+        var day: Int = 1
+        for date in stride(from: startDates!, to: endDates!, by: dayDurationInSeconds) {
+            day += 1
+        }
+        return day
     }
 }
 

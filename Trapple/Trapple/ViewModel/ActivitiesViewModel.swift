@@ -48,14 +48,14 @@ class ActivitiesViewModel: ObservableObject {
         let dateEnd = dateFormatter.date(from: stringEnd)
         newActivity["endDate"] = dateEnd
         dateFormatter.dateFormat = "MMMM d"
-        let actualDate = dateFormatter.date(from: actualDate)
-        newActivity["actualDate"] = actualDate
+        let convertedDate = dateFormatter.date(from: actualDate)
+        newActivity["actualDate"] = convertedDate
         newActivity["planID"] = CKRecord.Reference(record: planDetail, action: .deleteSelf)
 //        newActivity.setValuesForKeys(PlanModel(title: title, destination: destination, startDate: startDate, endDate: endDate).planDictionary())
-        saveItem(record: newActivity)
+        saveItem(planID: planID, actualDate: actualDate, record: newActivity)
     }
     
-    private func saveItem(record: CKRecord) {
+    private func saveItem(planID: CKRecord.ID, actualDate: String, record: CKRecord) {
         CKContainer.default().privateCloudDatabase.save(record) { [weak self] returnedRecord, returnedError in
             print("Record: \(returnedRecord)")
             print("Error: \(returnedError)")
@@ -67,6 +67,10 @@ class ActivitiesViewModel: ObservableObject {
                 self?.startDate = Date()
                 self?.endDate = Date()
                 self?.actualDate = Date()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                    self?.fetchItems(planID: planID, actualDate: actualDate)
+                    print("Success fetch activity items")
+                }
             }
         }
     }
