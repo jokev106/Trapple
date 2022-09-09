@@ -15,6 +15,7 @@ class PlansViewModel: ObservableObject {
     @Published var startDate: Date = Date()
     @Published var endDate: Date = Date()
     @Published var history: Int64 = 0
+    @Published var categoryDefault: Int64 = 0
     @Published var plans: [PlanViewModel] = []
     
     init() {
@@ -34,6 +35,7 @@ class PlansViewModel: ObservableObject {
         newPlan["startDate"] = startDate
         newPlan["endDate"] = endDate
         newPlan["isHistory"] = 0
+        newPlan["categoryDefault"] = 0
         saveItem(record: newPlan)
         
 //        guard
@@ -65,13 +67,19 @@ class PlansViewModel: ObservableObject {
                     self?.fetchItems()
                 }
             }
-            
         }
+        
     }
     
     func updateHistory(plan: PlanViewModel) {
         let record = plan.record
         record["isHistory"] = 1
+        saveItem(record: record)
+    }
+    
+    func updateCategory(plan: PlanViewModel) {
+        let record = plan.record
+        record["categoryDefault"] = 1
         saveItem(record: record)
     }
 
@@ -214,6 +222,10 @@ struct PlanViewModel{
     
     var isHistory: Int64 {
         planList.isHistory
+    }
+    
+    var categoryDefault: Int64 {
+        planList.categoryDefault
     }
     
 //    var imageURL: URL {

@@ -27,15 +27,15 @@ struct EquipmentView: View {
                         .padding(.top)
                     
                     LazyVGrid(columns: columns) {
-                        EquipmentCardview(planID: planID, category: "Food & Beverages", icon: "fork.knife")
-                        
-                        EquipmentCardview(planID: planID, category: "Apparel", icon: "tshirt")
-                        
-                        EquipmentCardview(planID: planID, category: "Tools", icon: "wrench")
-                        
-                        EquipmentCardview(planID: planID, category: "Medicine", icon: "pills")
-                    
-                        EquipmentCardview(planID: planID, category: "Folder", icon: "folder")
+//                        EquipmentCardview(planID: planID, category: "Food & Beverages", icon: "fork.knife")
+//
+//                        EquipmentCardview(planID: planID, category: "Apparel", icon: "tshirt")
+//
+//                        EquipmentCardview(planID: planID, category: "Tools", icon: "wrench")
+//
+//                        EquipmentCardview(planID: planID, category: "Medicine", icon: "pills")
+//
+//                        EquipmentCardview(planID: planID, category: "Folder", icon: "folder")
                     
                         ForEach(vm.categoryVM, id: \.recordID) { item in
                             EquipmentCardview(planID: planID, category: item.category, icon: item.icon)

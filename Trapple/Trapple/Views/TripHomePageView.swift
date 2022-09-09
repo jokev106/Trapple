@@ -9,14 +9,18 @@ import CloudKit
 import SwiftUI
 
 struct TripHomePageView: View {
+    @ObservedObject var planVM = PlansViewModel()
     @StateObject private var vm = ActivitiesViewModel()
+    @Binding var planRecord: PlanViewModel
     @Binding var title: String
     @Binding var destination: String
     @Binding var planID: CKRecord.ID
     @Binding var startDate: Date
     @Binding var endDate: Date
+    @Binding var categoryDefault: Int64
     
     @StateObject static var rulesViewModel = RulesViewModel()
+    @StateObject var categoryViewModel = CategoriesViewModel()
     
     var body: some View {
 //        NavigationView {
@@ -30,6 +34,25 @@ struct TripHomePageView: View {
         }
         .onAppear {
             vm.fetchItem(planID: planID)
+            
+            
+            if categoryDefault == 0{
+                categoryViewModel.addButtonPressed(planID: planID, category: "Food & Beverages", icon: "fork.knife")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
+                    categoryViewModel.addButtonPressed(planID: planID, category: "Apparel", icon: "tshirt")
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
+                    categoryViewModel.addButtonPressed(planID: planID, category: "Tools", icon: "wrench")
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
+                    categoryViewModel.addButtonPressed(planID: planID, category: "Medicine", icon: "pills")
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
+                    categoryViewModel.addButtonPressed(planID: planID, category: "Folder", icon: "folder")
+                }
+                planVM.updateCategory(plan: planRecord)
+                categoryDefault = 1
+            }
         }
         .navigationAppearance(backgroundColor: UIColor(graybg), foregroundColor: UIColor(blacktext), hideSeperator: true)
         .font(Font.custom("Gilroy-Light", size: 20))

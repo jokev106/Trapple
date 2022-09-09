@@ -12,6 +12,7 @@ struct CategoryView: View {
     
     @StateObject private var vm = EquipmentsViewModel()
     @State var planID = CKRecord.ID()
+    @State var categoryID = CKRecord.ID()
     @State private var showModal = false
     @State var title: String
     @State var image: String
@@ -34,7 +35,7 @@ struct CategoryView: View {
                     }
                 }
                 .onAppear{
-                    vm.fetchItems(planID: planID, category: title)
+                    vm.fetchItems(categoryID: categoryID, category: title)
                 }
             }
             .font(Font.custom("Gilroy-Light", size: 15))
@@ -48,7 +49,7 @@ struct CategoryView: View {
                             .foregroundColor(.black)
                     })
                     .sheet(isPresented: $showModal) {
-                        AddItemVIew(vm: vm, planID: planID, category: title, icon: image, showModal: self.$showModal)
+                        AddItemVIew(vm: vm, planID: planID, categoryID: categoryID, category: title, icon: image, showModal: self.$showModal)
                     }
                 }
             }
