@@ -10,11 +10,13 @@ import CloudKit
 
 struct RuleModel {
     
+    let record: CKRecord
     var recordID: CKRecord.ID?
     let title: String
     let description: String
     
-    init(recordID: CKRecord.ID? = nil, title: String, description: String) {
+    init(record: CKRecord, recordID: CKRecord.ID? = nil, title: String, description: String) {
+        self.record = record
         self.recordID = recordID
         self.title = title
         self.description = description
@@ -30,7 +32,7 @@ struct RuleModel {
             return nil
         }
         
-        return RuleModel(recordID: record.recordID, title: title, description: description)
+        return RuleModel(record: record.self, recordID: record.recordID, title: title, description: description)
     }
 }
 
