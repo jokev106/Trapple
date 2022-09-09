@@ -19,6 +19,7 @@ struct TripHomePageView: View {
     @Binding var endDate: Date
     @Binding var categoryDefault: Int64
     
+    @State var iconCount: Int = 0
     @StateObject static var rulesViewModel = RulesViewModel()
     @StateObject var categoryViewModel = CategoriesViewModel()
     
@@ -53,6 +54,8 @@ struct TripHomePageView: View {
                 planVM.updateCategory(plan: planRecord)
                 categoryDefault = 1
             }
+            
+            categoryViewModel.fetchItems(planID: planID)
         }
         .navigationAppearance(backgroundColor: UIColor(graybg), foregroundColor: UIColor(blacktext), hideSeperator: true)
         .font(Font.custom("Gilroy-Light", size: 20))
@@ -106,63 +109,78 @@ extension TripHomePageView {
         VStack {
             ZStack(alignment: .top) {
                 HStack(spacing: 0) {
-                    NavigationLink(destination: CategoryView(planID: planID, title: "Food & Beverages", image: "fork.knife"), label: {
-                        ZStack {
-                            Circle()
-                                .frame(width: 50, height: 50)
-                                .foregroundColor(Color("grayBG"))
-                    
-                            Image(systemName: "fork.knife")
+//                    NavigationLink(destination: CategoryView(planID: planID, title: "Food & Beverages", image: "fork.knife"), label: {
+//                        ZStack {
+//                            Circle()
+//                                .frame(width: 50, height: 50)
+//                                .foregroundColor(Color("grayBG"))
+//
+//                            Image(systemName: "fork.knife")
+//                        }
+//                    })
+//
+//                    Spacer()
+//
+//                    NavigationLink(destination: CategoryView(planID: planID, title: "Apparel", image: "tshirt"), label: {
+//                        ZStack {
+//                            Circle()
+//                                .frame(width: 50, height: 50)
+//                                .foregroundColor(Color("grayBG"))
+//
+//                            Image(systemName: "tshirt")
+//                        }
+//                    })
+//
+//                    Spacer()
+//
+//                    NavigationLink(destination: CategoryView(planID: planID, title: "Tools", image: "wrench"), label: {
+//                        ZStack {
+//                            Circle()
+//                                .frame(width: 50, height: 50)
+//                                .foregroundColor(Color("grayBG"))
+//
+//                            Image(systemName: "wrench")
+//                        }
+//                    })
+//
+//                    Spacer()
+//
+//                    NavigationLink(destination: CategoryView(planID: planID, title: "Medicine", image: "pills"), label: {
+//                        ZStack {
+//                            Circle()
+//                                .frame(width: 50, height: 50)
+//                                .foregroundColor(Color("grayBG"))
+//
+//                            Image(systemName: "pills")
+//                        }
+//                    })
+//
+//                    Spacer()
+//
+//                    NavigationLink(destination: CategoryView(planID: planID, title: "Folder", image: "folder"), label: {
+//                        ZStack {
+//                            Circle()
+//                                .frame(width: 50, height: 50)
+//                                .foregroundColor(Color("grayBG"))
+//
+//                            Image(systemName: "folder")
+//                        }
+//                    })
+                    ForEach(categoryViewModel.categoryVM.indices.prefix(5), id: \.self){ item in
+                        NavigationLink(destination: CategoryView(categoryID: categoryViewModel.categoryVM[item].recordID!, title: categoryViewModel.categoryVM[item].category, image: categoryViewModel.categoryVM[item].icon), label: {
+                            ZStack {
+                                Circle()
+                                    .frame(width: 50, height: 50)
+                                    .foregroundColor(Color("grayBG"))
+    
+                                Image(systemName: categoryViewModel.categoryVM[item].icon)
+                            }
+                        })
+                        if item < 4{
+                            Spacer()
                         }
-                    })
-                
-                    Spacer()
-                
-                    NavigationLink(destination: CategoryView(planID: planID, title: "Apparel", image: "tshirt"), label: {
-                        ZStack {
-                            Circle()
-                                .frame(width: 50, height: 50)
-                                .foregroundColor(Color("grayBG"))
-                    
-                            Image(systemName: "tshirt")
-                        }
-                    })
-                
-                    Spacer()
-                
-                    NavigationLink(destination: CategoryView(planID: planID, title: "Tools", image: "wrench"), label: {
-                        ZStack {
-                            Circle()
-                                .frame(width: 50, height: 50)
-                                .foregroundColor(Color("grayBG"))
-                    
-                            Image(systemName: "wrench")
-                        }
-                    })
-                
-                    Spacer()
-                
-                    NavigationLink(destination: CategoryView(planID: planID, title: "Medicine", image: "pills"), label: {
-                        ZStack {
-                            Circle()
-                                .frame(width: 50, height: 50)
-                                .foregroundColor(Color("grayBG"))
-                    
-                            Image(systemName: "pills")
-                        }
-                    })
-                
-                    Spacer()
-                
-                    NavigationLink(destination: CategoryView(planID: planID, title: "Folder", image: "folder"), label: {
-                        ZStack {
-                            Circle()
-                                .frame(width: 50, height: 50)
-                                .foregroundColor(Color("grayBG"))
-                    
-                            Image(systemName: "folder")
-                        }
-                    })
+                        
+                    }
                 }
                 .foregroundColor(.gray)
                 .frame(maxWidth: .infinity)
@@ -170,7 +188,7 @@ extension TripHomePageView {
                 .padding(.top, 55)
                 .background(.white)
                 
-                NavigationLink(destination: EquipmentView(planID: planID), label: {
+                NavigationLink(destination: EquipmentView(vm: categoryViewModel, planID: planID), label: {
                     VStack(spacing: 0) {
                         VStack(alignment: .leading) {
                             Text("Equipment")

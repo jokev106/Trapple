@@ -9,13 +9,13 @@ import SwiftUI
 import CloudKit
 
 struct EquipmentCardview: View {
-    @State var planID = CKRecord.ID()
+    @State var categoryID = CKRecord.ID()
     @State var category: String
     @State var icon: String
     
     var body: some View {
         ZStack {
-            NavigationLink(destination: CategoryView(planID: planID, title: category, image: icon), label: {
+            NavigationLink(destination: CategoryView(categoryID: categoryID, title: category, image: icon), label: {
                 VStack(alignment: .leading) {
                     Image(systemName: icon)
                         .resizable()

@@ -11,8 +11,8 @@ import CloudKit
 struct CategoryView: View {
     
     @StateObject private var vm = EquipmentsViewModel()
-    @State var planID = CKRecord.ID()
-    @State var categoryID = CKRecord.ID()
+//    @State var planID = CKRecord.ID()
+    @State var categoryID: CKRecord.ID
     @State private var showModal = false
     @State var title: String
     @State var image: String
@@ -49,7 +49,7 @@ struct CategoryView: View {
                             .foregroundColor(.black)
                     })
                     .sheet(isPresented: $showModal) {
-                        AddItemVIew(vm: vm, planID: planID, categoryID: categoryID, category: title, icon: image, showModal: self.$showModal)
+                        AddItemVIew(vm: vm, categoryID: categoryID, category: title, icon: image, showModal: self.$showModal)
                     }
                 }
             }
@@ -57,8 +57,8 @@ struct CategoryView: View {
     }
 }
 
-struct CategoryView_Previews: PreviewProvider {
-    static var previews: some View {
-        CategoryView(title: "Title", image: "photo")
-    }
-}
+//struct CategoryView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CategoryView(title: "Title", image: "photo")
+//    }
+//}
