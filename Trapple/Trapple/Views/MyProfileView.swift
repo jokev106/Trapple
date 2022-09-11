@@ -6,8 +6,12 @@
 //
 
 import SwiftUI
+import CloudKit
 
 struct MyProfileView: View {
+    
+    @StateObject private var vm = PlansViewModel()
+    
     var body: some View {
         GeometryReader{geo in
             ZStack{
@@ -71,16 +75,13 @@ extension MyProfileView {
                 .padding(0.5)
             ScrollView{
                 VStack{
-                    ForEach((1..<10)) {_ in
-                        NavigationLink{
-                            
-                        }
-                        label: {
-//                        TripCardView()
-                        }
+                    ForEach(vm.plans, id: \.recordID) { items in
+                        TripCardView(vm :vm, plan: items.title, destination: items.destination, startDate: items.startDate, endDate: items.endDate, planID: items.recordID!)
                     }
                 }
             }
+        }.onAppear{
+            vm.fetchHistory()
         }
     }
     

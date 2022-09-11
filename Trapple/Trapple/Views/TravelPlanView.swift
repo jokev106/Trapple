@@ -12,7 +12,8 @@ struct TravelPlanView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
     @State var showCreatePlan = false
-    @StateObject private var vm = PlansViewModel()
+    @ObservedObject var vm: PlansViewModel
+    @State var dateNow = Date()
     
     var body: some View {
         GeometryReader { _ in
@@ -32,11 +33,11 @@ struct TravelPlanView: View {
     }
 }
 
-struct TravelPlanView_Previews: PreviewProvider {
-    static var previews: some View {
-        TravelPlanView()
-    }
-}
+//struct TravelPlanView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TravelPlanView()
+//    }
+//}
 
 // MARK: Components
 
@@ -68,10 +69,8 @@ extension TravelPlanView {
                     }
                 }
                 
-            }.fullScreenCover(isPresented: $showCreatePlan, onDismiss: {
-                vm.fetchItems()
-            }, content: {
-                CreatePlanView()
+            }.fullScreenCover(isPresented: $showCreatePlan, content: {
+                CreatePlanView(vm: vm)
                     .navigationBarHidden(true)
             })
 
@@ -112,7 +111,22 @@ extension TravelPlanView {
             ScrollView{
                 VStack{
                     ForEach(vm.plans, id: \.recordID) {items in
-                        TripCardView(plan: items.title, destination: items.destination, startDate: items.startDate, endDate: items.endDate, planID: items.recordID!)
+                        TripCardView(vm: vm, plan: items.title, destination: items.destination, startDate: items.startDate, endDate: items.endDate, planID: items.recordID!)
+                            .onAppear{
+                                let dateFormatter = DateFormatter()
+                                dateFormatter.dateFormat = "yyyy MMMM d"
+                                let dateString = dateFormatter.string(from: dateNow)
+                                let currentDate = dateFormatter.date(from: dateString)
+                                let startString = dateFormatter.string(from: items.startDate)
+                                let startDateString = dateFormatter.date(from: startString)
+                                if startDateString! < currentDate!{
+                                    vm.updateHistory(plan: items)
+                                }
+                                vm.fetchItems()
+                            }
+                    }
+                    .onAppear{
+                        vm.fetchItems()
                     }
                 }
             }

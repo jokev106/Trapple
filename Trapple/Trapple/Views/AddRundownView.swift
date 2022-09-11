@@ -10,7 +10,7 @@ import CloudKit
 
 struct AddRundownView: View {
     
-    @StateObject private var vm = ActivitiesViewModel()
+    @ObservedObject var vm = ActivitiesViewModel()
     @State var planID = CKRecord.ID()
     @State var selectedDate: Int
     @State var startDate: Date

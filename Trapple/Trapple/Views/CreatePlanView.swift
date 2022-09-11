@@ -11,7 +11,7 @@ import CloudKit
 
 struct CreatePlanView: View {
     
-    @StateObject private var vm = PlansViewModel()
+    @ObservedObject var vm: PlansViewModel
     //var for form input
     //    @State var inputTripName: String = ""
     //    @State var inputDestination: String = ""
@@ -87,11 +87,11 @@ struct CreatePlanView: View {
     }
 }
 
-struct CreatePlanView_Previews: PreviewProvider {
-    static var previews: some View {
-        CreatePlanView()
-    }
-}
+//struct CreatePlanView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CreatePlanView()
+//    }
+//}
 
 //MARK: Components
 extension CreatePlanView {

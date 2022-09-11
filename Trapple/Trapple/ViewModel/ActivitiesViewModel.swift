@@ -48,14 +48,14 @@ class ActivitiesViewModel: ObservableObject {
         let dateEnd = dateFormatter.date(from: stringEnd)
         newActivity["endDate"] = dateEnd
         dateFormatter.dateFormat = "MMMM d"
-        let actualDate = dateFormatter.date(from: actualDate)
-        newActivity["actualDate"] = actualDate
+        let convertedDate = dateFormatter.date(from: actualDate)
+        newActivity["actualDate"] = convertedDate
         newActivity["planID"] = CKRecord.Reference(record: planDetail, action: .deleteSelf)
 //        newActivity.setValuesForKeys(PlanModel(title: title, destination: destination, startDate: startDate, endDate: endDate).planDictionary())
-        saveItem(record: newActivity)
+        saveItem(planID: planID, actualDate: actualDate, record: newActivity)
     }
     
-    private func saveItem(record: CKRecord) {
+    private func saveItem(planID: CKRecord.ID, actualDate: String, record: CKRecord) {
         CKContainer.default().privateCloudDatabase.save(record) { [weak self] returnedRecord, returnedError in
             print("Record: \(returnedRecord)")
             print("Error: \(returnedError)")
@@ -67,6 +67,10 @@ class ActivitiesViewModel: ObservableObject {
                 self?.startDate = Date()
                 self?.endDate = Date()
                 self?.actualDate = Date()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                    self?.fetchItems(planID: planID, actualDate: actualDate)
+                    print("Success fetch activity items")
+                }
             }
         }
     }
@@ -110,10 +114,6 @@ class ActivitiesViewModel: ObservableObject {
         
         print(returnedItems)
         
-        for _ in returnedItems {
-            isOpen.append(false)
-        }
-        
         addOperation(operation: queryOperation)
         
     }
@@ -152,10 +152,6 @@ class ActivitiesViewModel: ObservableObject {
         
         print(returnedItems)
         
-        for _ in returnedItems {
-            isOpen.append(false)
-        }
-        
         addOperation(operation: queryOperation)
         
     }
@@ -165,15 +161,21 @@ class ActivitiesViewModel: ObservableObject {
     }
     
     func getDates(startDate: Date, endDate: Date) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy MMMM d"
+        let startDatestring = dateFormatter.string(from: startDate)
+        let startDates = dateFormatter.date(from: startDatestring)
+        let endDatestring = dateFormatter.string(from: endDate)
+        let endDates = dateFormatter.date(from: endDatestring)
         let dayDurationInSeconds: TimeInterval = 60*60*24
-        for date in stride(from: startDate, to: endDate, by: dayDurationInSeconds) {
+        for date in stride(from: startDates!, to: endDates!, by: dayDurationInSeconds) {
 //            print(date)
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MMMM d"
             let dateAppend = dateFormatter.string(from: date)
             dates.append(dateAppend)
         }
-        getFinalDate(endDate: endDate)
+        getFinalDate(endDate: endDates!)
     }
     
     func getFinalDate(endDate: Date){
@@ -182,6 +184,21 @@ class ActivitiesViewModel: ObservableObject {
         let dateAppend = dateFormatter.string(from: endDate)
         dates.append(dateAppend)
         print(dates)
+    }
+    
+    func getDateRange(startDate: Date, endDate: Date) -> Int {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy MMMM d"
+        let startDatestring = dateFormatter.string(from: startDate)
+        let startDates = dateFormatter.date(from: startDatestring)
+        let endDatestring = dateFormatter.string(from: endDate)
+        let endDates = dateFormatter.date(from: endDatestring)
+        let dayDurationInSeconds: TimeInterval = 60*60*24
+        var day: Int = 1
+        for date in stride(from: startDates!, to: endDates!, by: dayDurationInSeconds) {
+            day += 1
+        }
+        return day
     }
 }
 

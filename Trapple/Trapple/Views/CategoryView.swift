@@ -22,6 +22,7 @@ struct CategoryView: View {
                 VStack {
                     Text("Item List")
                         .font(Font.custom("Gilroy-ExtraBold", size: 17))
+                        .foregroundColor(.gray)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.horizontal)
                         .padding(.top)
@@ -36,25 +37,18 @@ struct CategoryView: View {
                     vm.fetchItems(planID: planID, category: title)
                 }
             }
-            .background(Color("grayBG"))
             .font(Font.custom("Gilroy-Light", size: 15))
             .navigationTitle(title)
             .toolbar {
-                ToolbarItem(placement: .bottomBar) {
+                ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
                         showModal.toggle()
                     }, label: {
-                        HStack {
-                            Image(systemName: "plus.circle")
-                            Text("Add Item")
-                                .font(Font.custom("Gilroy-ExtraBold", size: 17))
-                        }
-                        .foregroundColor(.yellow)
-
+                        Image(systemName: "plus")
+                            .foregroundColor(.black)
                     })
-                    .frame(maxWidth: .infinity, alignment: .bottomLeading)
                     .sheet(isPresented: $showModal) {
-                        AddItemVIew(planID: planID, category: title, icon: image, showModal: self.$showModal)
+                        AddItemVIew(vm: vm, planID: planID, category: title, icon: image, showModal: self.$showModal)
                     }
                 }
             }
