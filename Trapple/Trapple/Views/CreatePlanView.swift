@@ -81,7 +81,7 @@ struct CreatePlanView: View {
                         }
                 }.sheet(isPresented: $openCameraSheet) {
                     SubmissionPicker(selectedImage: self.$imageSelected,  sourceType: self.sourceType)
-                                    }
+                }
             }
         }
     }
@@ -108,7 +108,7 @@ extension CreatePlanView {
             }
             //Trip Photos
             Group{
-//                Add photo from library
+                //                Add photo from library
                 Button(action:{
                     changeSubmissionImage = true
                     showActionSheetCamera = true
@@ -150,12 +150,12 @@ extension CreatePlanView {
                     ActionSheet(title: Text("Select Photo"), message: Text("Choose"), buttons: [
                         .default(Text("Photo Library")){
                             self.openCameraSheet = true
-//                            SubmissionPicker(selectedImage: $imageSelected, sourceType: .photoLibrary)
+                            //                            SubmissionPicker(selectedImage: $imageSelected, sourceType: .photoLibrary)
                             self.sourceType = .photoLibrary
                         },
                         .default(Text("Camera")){
                             self.openCameraSheet = true
-//                            SubmissionPicker(selectedImage: $imageSelected, sourceType: .camera)
+                            //                            SubmissionPicker(selectedImage: $imageSelected, sourceType: .camera)
                             self.sourceType = .camera
                         },
                         .cancel()
@@ -202,11 +202,11 @@ extension CreatePlanView {
                         DestinationCorrect
                         Spacer()
                             .frame(height: 10)
-                        }
                     }
+                }
             }else {
                 Group{
-                   DestinationCorrect
+                    DestinationCorrect
                     Spacer()
                         .frame(height: 10)
                 }
@@ -254,9 +254,9 @@ extension CreatePlanView {
                     .foregroundColor(.white)
                     .cornerRadius(10)
                     .overlay(
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(.red, lineWidth: 1)
-                        )
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(.red, lineWidth: 1)
+                    )
                     .padding(.horizontal, 30)
                 HStack{
                     Image(systemName: "calendar")
@@ -371,9 +371,9 @@ extension CreatePlanView {
                         TripStartDateIncorrect
                     }else{
                         TripStartDateCorrect
-                     }
+                    }
                 }else{
-                   TripStartDateCorrect
+                    TripStartDateCorrect
                 }
             }
         }
@@ -388,9 +388,9 @@ extension CreatePlanView {
                     .foregroundColor(.white)
                     .cornerRadius(10)
                     .overlay(
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(.red, lineWidth: 1)
-                        )
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(.red, lineWidth: 1)
+                    )
                     .padding(.horizontal, 30)
                 HStack{
                     Image(systemName: "calendar")
@@ -541,7 +541,7 @@ extension CreatePlanView {
             }
         }
     }
- 
+    
     private var TripNameCorrect: some View {
         ZStack{
             Rectangle()
@@ -572,11 +572,11 @@ extension CreatePlanView {
                     .foregroundColor(.white)
                     .cornerRadius(10)
                     .overlay(
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(.red, lineWidth: 1)
-                        )
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(.red, lineWidth: 1)
+                    )
                     .padding(.horizontal, 30)
-                    
+                
                 HStack{
                     Image(systemName: "pencil")
                     Spacer()
@@ -626,11 +626,11 @@ extension CreatePlanView {
                     .foregroundColor(.white)
                     .cornerRadius(10)
                     .overlay(
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(.red, lineWidth: 1)
-                        )
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(.red, lineWidth: 1)
+                    )
                     .padding(.horizontal, 30)
-                    
+                
                 HStack{
                     Image(systemName: "airplane")
                     Spacer()
@@ -661,19 +661,20 @@ extension CreatePlanView {
             startDateValidation = true
             endDateValidation = true
         }
-//        if vm.startDate.description.isEmpty || vm.endDate.description.isEmpty{
-//            startDateValidation = true
-//            endDateValidation = true
-//        }
-//        if vm.startDate.description.isEmpty { startDateValidation = true}
-//        if vm.endDate.description.isEmpty{
-//            endDateValidation = true
-//        }
-        else{
-            if (!vm.title.isEmpty) || (!vm.destination.isEmpty) || (!vm.startDate.description.isEmpty) || (!vm.endDate.description.isEmpty){
-            vm.addButtonPressed()
-            presentationMode.wrappedValue.dismiss()
+         if (!vm.title.isEmpty) && (!vm.destination.isEmpty) || vm.startDate.description.isEmpty || vm.endDate.description.isEmpty {
+            tripNameValidation = false
+            destinationValidation = false
+            startDateValidation = true
+            endDateValidation = true
+        }
+            //        if vm.startDate.description.isEmpty { startDateValidation = true}
+            //        if vm.endDate.description.isEmpty{
+            //            endDateValidation = true
+            //        }do
+        if (!vm.title.isEmpty) && (!vm.destination.isEmpty) && (!vm.startDate.description.isEmpty) && (!vm.endDate.description.isEmpty){
+                    vm.addButtonPressed()
+                    presentationMode.wrappedValue.dismiss()
+                }
             }
         }
-    }
-}
+        
