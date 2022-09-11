@@ -35,7 +35,7 @@ struct RundownView: View {
                     VStack(spacing: 0) {
                         HStack {
                             Text(currentDate)
-                                .foregroundColor(.black)
+                                .foregroundColor(blacktext)
                                 .font(Font.custom("Gilroy-ExtraBold", size: 17))
                                 .onAppear{
                                     let dateFormatter = DateFormatter()
@@ -82,6 +82,7 @@ struct RundownView: View {
                         } else {
                             VStack {
                                 Text("No Activity")
+                                    .foregroundColor(blacktext)
                                     .opacity(0.2)
                             }
                             .frame(width: geometry.size.width, height: geometry.size.height / 1.2, alignment: .center)
@@ -137,7 +138,7 @@ extension RundownView {
                             VStack {
                                 Text("Day \(index + 1)")
                                     .fontWeight(.bold)
-                                    .foregroundColor(.black)
+                                    .foregroundColor(blacktext)
                                     .opacity(selected == index ? 1.0 : 0.3)
                             
 //                                Text(vm.dates[index])
@@ -172,7 +173,7 @@ extension RundownView {
                     }
                 }
                 .disabled(slider > 0 ? false : true)
-                .foregroundColor(.black)
+                .foregroundColor(blacktext)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 
                 // RIGHT
@@ -188,7 +189,7 @@ extension RundownView {
                     }
                 }
                 .disabled(slider < Int(ceil(Double(vm.dates.count) / 3) - 1) ? false : true)
-                .foregroundColor(.black)
+                .foregroundColor(blacktext)
                 .frame(maxWidth: .infinity, alignment: .trailing)
             }
         }

@@ -29,17 +29,17 @@ struct HomeView: View {
 //        UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
         
         //Initialize Toolbar
-        let toolBarAppearance = UIToolbarAppearance()
-        
-        toolBarAppearance.backgroundColor = UIColor(lightpurple)
-        
-        UIToolbar.appearance().standardAppearance = toolBarAppearance
-        
-        let toolBarAppearance2 = UIToolbarAppearance()
-        
-        toolBarAppearance2.backgroundColor = UIColor(graybg)
-
-        UIToolbar.appearance().scrollEdgeAppearance = toolBarAppearance2
+//        let toolBarAppearance = UIToolbarAppearance()
+//        
+//        toolBarAppearance.backgroundColor = UIColor(lightpurple)
+//        
+//        UIToolbar.appearance().standardAppearance = toolBarAppearance
+//        
+//        let toolBarAppearance2 = UIToolbarAppearance()
+//        
+//        toolBarAppearance2.backgroundColor = UIColor(graybg)
+//
+//        UIToolbar.appearance().scrollEdgeAppearance = toolBarAppearance2
         
         //Initialize NavBar
         let navigationBarAppearace = UINavigationBarAppearance()
@@ -47,8 +47,7 @@ struct HomeView: View {
         navigationBarAppearace.backgroundColor = UIColor(graybg)
 
         navigationBarAppearace.largeTitleTextAttributes = [
-            .font : UIFont(name: "Gilroy-ExtraBold", size: 30),
-            NSAttributedString.Key.foregroundColor : UIColor.black
+            .font : UIFont(name: "Gilroy-ExtraBold", size: 30)
         ]
         
         navigationBarAppearace.shadowColor = .clear

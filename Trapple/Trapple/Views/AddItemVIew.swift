@@ -27,19 +27,20 @@ struct AddItemVIew: View {
                         Rectangle()
                             .frame(height: 50)
                             .frame(maxWidth: .infinity)
-                            .foregroundColor(.white)
+                            .foregroundColor(tripcardColor)
                             .cornerRadius(10)
                             .padding(.horizontal, 30)
                         HStack {
                             Image(systemName: "tag")
                                 .resizable()
                                 .scaledToFit()
+                                .foregroundColor(blacktext)
                                 .frame(width: 15)
                             Spacer()
                                 .frame(width: 20)
                             TextField("Item Name", text: $vm.itemName)
                                 .frame(width: 250, alignment: .leading)
-                                .foregroundColor(.black)
+                                .foregroundColor(blacktext)
                             Spacer()
                         }
                         .padding(.horizontal, 50)
@@ -52,19 +53,20 @@ struct AddItemVIew: View {
                         Rectangle()
                             .frame(height: 50)
                             .frame(maxWidth: .infinity)
-                            .foregroundColor(.white)
+                            .foregroundColor(tripcardColor)
                             .cornerRadius(10)
                             .padding(.horizontal, 30)
                         HStack {
                             Image(systemName: "pencil")
                                 .resizable()
                                 .scaledToFit()
+                                .foregroundColor(blacktext)
                                 .frame(width: 15)
                             Spacer()
                                 .frame(width: 20)
                             TextField("Item Description", text: $vm.description)
                                 .frame(width: 250, alignment: .leading)
-                                .foregroundColor(.black)
+                                .foregroundColor(blacktext)
                             Spacer()
                         }
                         .padding(.horizontal, 50)
@@ -77,19 +79,20 @@ struct AddItemVIew: View {
                         Rectangle()
                             .frame(height: 50)
                             .frame(maxWidth: .infinity)
-                            .foregroundColor(.white)
+                            .foregroundColor(tripcardColor)
                             .cornerRadius(10)
                             .padding(.horizontal, 30)
                         HStack {
                             Image(systemName: "photo")
                                 .resizable()
                                 .scaledToFit()
+                                .foregroundColor(blacktext)
                                 .frame(width: 15)
                             Spacer()
                                 .frame(width: 20)
                             TextField("Add Image", text: $image)
                                 .frame(width: 250, alignment: .leading)
-                                .foregroundColor(.black)
+                                .foregroundColor(blacktext)
                             Spacer()
                         }
                         .padding(.horizontal, 50)
@@ -104,6 +107,9 @@ struct AddItemVIew: View {
             .background(Color("grayBG"))
             .navigationBarTitle("Equipment", displayMode: .inline)
             .toolbar {
+                ToolbarItemGroup(placement: .principal){
+                Text("Equipment").font(.headline)
+            };
                 ToolbarItemGroup(placement: .navigationBarLeading) {
                     Button(action: { self.showModal.toggle()
                     }, label: {

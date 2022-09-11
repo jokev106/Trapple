@@ -118,7 +118,7 @@ extension CreatePlanView {
                             Rectangle()
                                 .frame(width: 246, height: 248)
                             //                                .frame(maxWidth: .infinity)
-                                .foregroundColor(.white)
+                                .foregroundColor(tripcardColor)
                                 .cornerRadius(10)
                                 .padding(.horizontal, 30)
                             Image(uiImage: imageSelected)
@@ -132,7 +132,7 @@ extension CreatePlanView {
                             Rectangle()
                                 .frame(height: 144)
                                 .frame(maxWidth: .infinity)
-                                .foregroundColor(.white)
+                                .foregroundColor(tripcardColor)
                                 .cornerRadius(10)
                                 .padding(.horizontal, 30)
                             HStack{
@@ -251,7 +251,7 @@ extension CreatePlanView {
                 Rectangle()
                     .frame(height: 50)
                     .frame(maxWidth: .infinity)
-                    .foregroundColor(.white)
+                    .foregroundColor(tripcardColor)
                     .cornerRadius(10)
                     .overlay(
                         RoundedRectangle(cornerRadius: 10)
@@ -260,6 +260,7 @@ extension CreatePlanView {
                     .padding(.horizontal, 30)
                 HStack{
                     Image(systemName: "calendar")
+                        .foregroundColor(blacktext)
                     Spacer()
                         .frame(width: 20)
                     Button(action: {
@@ -294,11 +295,12 @@ extension CreatePlanView {
             Rectangle()
                 .frame(height: 50)
                 .frame(maxWidth: .infinity)
-                .foregroundColor(.white)
+                .foregroundColor(tripcardColor)
                 .cornerRadius(10)
                 .padding(.horizontal, 30)
             HStack{
                 Image(systemName: "calendar")
+                    .foregroundColor(blacktext)
                 Spacer()
                     .frame(width: 20)
                 Button(action: {
@@ -329,12 +331,13 @@ extension CreatePlanView {
                     Rectangle()
                         .frame(height: 350)
                         .frame(maxWidth: .infinity)
-                        .foregroundColor(.white)
+                        .foregroundColor(tripcardColor)
                         .cornerRadius(10)
                         .padding(.horizontal, 30)
                     VStack{
                         HStack{
                             Image(systemName: "calendar")
+                                .foregroundColor(blacktext)
                             Spacer()
                                 .frame(width: 20)
                             Button {
@@ -385,7 +388,7 @@ extension CreatePlanView {
                 Rectangle()
                     .frame(height: 50)
                     .frame(maxWidth: .infinity)
-                    .foregroundColor(.white)
+                    .foregroundColor(tripcardColor)
                     .cornerRadius(10)
                     .overlay(
                         RoundedRectangle(cornerRadius: 10)
@@ -394,6 +397,7 @@ extension CreatePlanView {
                     .padding(.horizontal, 30)
                 HStack{
                     Image(systemName: "calendar")
+                        .foregroundColor(blacktext)
                     Spacer()
                         .frame(width: 20)
                     Button(action: {
@@ -428,11 +432,12 @@ extension CreatePlanView {
             Rectangle()
                 .frame(height: 50)
                 .frame(maxWidth: .infinity)
-                .foregroundColor(.white)
+                .foregroundColor(tripcardColor)
                 .cornerRadius(10)
                 .padding(.horizontal, 30)
             HStack{
                 Image(systemName: "calendar")
+                    .foregroundColor(blacktext)
                 Spacer()
                     .frame(width: 20)
                 Button(action: {
@@ -463,12 +468,13 @@ extension CreatePlanView {
                     Rectangle()
                         .frame(height: 350)
                         .frame(maxWidth: .infinity)
-                        .foregroundColor(.white)
+                        .foregroundColor(tripcardColor)
                         .cornerRadius(10)
                         .padding(.horizontal, 30)
                     VStack{
                         HStack{
                             Image(systemName: "calendar")
+                                .foregroundColor(blacktext)
                             Spacer()
                                 .frame(width: 20)
                             Button {
@@ -511,11 +517,12 @@ extension CreatePlanView {
                         Rectangle()
                             .frame(height: 50)
                             .frame(maxWidth: .infinity)
-                            .foregroundColor(.white)
+                            .foregroundColor(tripcardColor)
                             .cornerRadius(10)
                             .padding(.horizontal, 30)
                         HStack{
                             Image(systemName: "calendar")
+                                .foregroundColor(blacktext)
                             Spacer()
                                 .frame(width: 20)
                             Button(action: {
@@ -547,17 +554,19 @@ extension CreatePlanView {
             Rectangle()
                 .frame(height: 50)
                 .frame(maxWidth: .infinity)
-                .foregroundColor(.white)
+                .foregroundColor(tripcardColor)
                 .cornerRadius(10)
                 .padding(.horizontal, 30)
             HStack{
                 Image(systemName: "pencil")
+                    .foregroundColor(blacktext)
                 Spacer()
                     .frame(width: 20)
                 TextField("Trip Name", text: $vm.title)
                     .frame(width: 250, alignment: .leading)
                     .font(Font.custom("Gilroy-Light", size: 15))
-                    .foregroundColor(.black)
+                    .foregroundColor(blacktext)
+//                    .accentColor(hinttextcolor)
                 Spacer()
             }.padding(.horizontal, 50)
         }
@@ -569,7 +578,7 @@ extension CreatePlanView {
                 Rectangle()
                     .frame(height: 50)
                     .frame(maxWidth: .infinity)
-                    .foregroundColor(.white)
+                    .foregroundColor(tripcardColor)
                     .cornerRadius(10)
                     .overlay(
                         RoundedRectangle(cornerRadius: 10)
@@ -579,12 +588,14 @@ extension CreatePlanView {
                 
                 HStack{
                     Image(systemName: "pencil")
+                        .foregroundColor(blacktext)
                     Spacer()
                         .frame(width: 20)
                     TextField("Trip Name", text: $vm.title)
                         .frame(width: 250, alignment: .leading)
                         .font(Font.custom("Gilroy-Light", size: 15))
-                        .foregroundColor(.black)
+                        .foregroundColor(blacktext)
+//                        .accentColor(hinttextcolor)
                     Spacer()
                 }.padding(.horizontal, 50)
             }
@@ -601,17 +612,19 @@ extension CreatePlanView {
             Rectangle()
                 .frame(height: 50)
                 .frame(maxWidth: .infinity)
-                .foregroundColor(.white)
+                .foregroundColor(tripcardColor)
                 .cornerRadius(10)
                 .padding(.horizontal, 30)
             HStack{
                 Image(systemName: "airplane")
+                    .foregroundColor(blacktext)
                 Spacer()
                     .frame(width: 20)
                 TextField("Trip Name", text: $vm.destination)
                     .frame(width: 250, alignment: .leading)
                     .font(Font.custom("Gilroy-Light", size: 15))
-                    .foregroundColor(.black)
+                    .foregroundColor(blacktext)
+//                    .accentColor(hinttextcolor)
                 Spacer()
             }.padding(.horizontal, 50)
         }
@@ -623,22 +636,24 @@ extension CreatePlanView {
                 Rectangle()
                     .frame(height: 50)
                     .frame(maxWidth: .infinity)
-                    .foregroundColor(.white)
+                    .foregroundColor(tripcardColor)
                     .cornerRadius(10)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(.red, lineWidth: 1)
-                    )
+//                    .overlay(
+//                        RoundedRectangle(cornerRadius: 10)
+//                            .stroke(.red, lineWidth: 1)
+//                    )
                     .padding(.horizontal, 30)
                 
                 HStack{
                     Image(systemName: "airplane")
+                        .foregroundColor(blacktext)
                     Spacer()
                         .frame(width: 20)
                     TextField("Destination", text: $vm.destination)
                         .frame(width: 250, alignment: .leading)
                         .font(Font.custom("Gilroy-Light", size: 15))
-                        .foregroundColor(.black)
+                        .foregroundColor(blacktext)
+//                        .accentColor(hinttextcolor)
                     Spacer()
                 }.padding(.horizontal, 50)
             }

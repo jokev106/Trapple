@@ -52,14 +52,18 @@ extension TripHomePageView {
                     VStack(alignment: .leading) {
                         Text("Rundown")
                             .font(Font.custom("Gilroy-ExtraBold", size: 20))
+                            .foregroundColor(deepblue)
                         Text("\(destination)".uppercased())
                             .font(Font.custom("Gilroy-Light", size: 16))
+                            .foregroundColor(deepblue)
                         Text("\(vmActivity.getDateRange(startDate: startDate, endDate: endDate)) Days \(vmActivity.getDateRange(startDate: startDate, endDate: endDate) - 1) Nights : \(startDate, format: Date.FormatStyle().day().month()) - \(endDate, format: Date.FormatStyle().day().month())")
                             .font(Font.custom("Gilroy-Light", size: 13))
+                            .foregroundColor(deepblue)
+
                     }
                     .padding()
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .background(Color("yellowCard"))
+                    .background(lightpurple)
                     .cornerRadius(15)
                     
 //                    RundownCardview(activity: vm.activity[0].title, location: vm.activity[0].location, startTime: vm.activity[0].startDate)
@@ -140,22 +144,22 @@ extension TripHomePageView {
                         }
                     })
                 }
-                .foregroundColor(.gray)
+                .foregroundColor(deepblue)
                 .frame(maxWidth: .infinity)
                 .padding(12)
                 .padding(.top, 55)
-                .background(.white)
+                .background(lilac)
                 
                 NavigationLink(destination: EquipmentView(planID: planID), label: {
                     VStack(spacing: 0) {
                         VStack(alignment: .leading) {
                             Text("Equipment")
                                 .font(Font.custom("Gilroy-ExtraBold", size: 20))
-                                .foregroundColor(.black)
+                                .foregroundColor(deepblue)
                         }
                         .padding()
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .background(Color("yellowCard"))
+                        .background(lightpurple)
                         .cornerRadius(15)
                     }
                 })
@@ -174,10 +178,11 @@ extension TripHomePageView {
                     VStack(alignment: .leading) {
                         Text("Rules")
                             .font(Font.custom("Gilroy-ExtraBold", size: 20))
+                            .foregroundColor(deepblue)
                     }
                     .padding()
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .background(Color("yellowCard"))
+                    .background(lightpurple)
                     .cornerRadius(15)
                     
                     ForEach(vmRules.rules.indices, id: \.self) { index in

@@ -105,30 +105,32 @@ extension TravelPlanView {
             Text("On Going Trip").bold()
                 .font(Font.custom("Gilroy-Light", size: 20))
                 .frame(width: 370, alignment: .leading)
-                .foregroundColor(Color.black)
+                .foregroundColor(blacktext)
                 .padding(0.5)
                 .padding(.leading, 15)
             ScrollView{
                 VStack{
-                    ForEach(vm.plans, id: \.recordID) {items in
-                        TripCardView(vm: vm, plan: items.title, destination: items.destination, startDate: items.startDate, endDate: items.endDate, planID: items.recordID!)
-                            .onAppear{
-                                let dateFormatter = DateFormatter()
-                                dateFormatter.dateFormat = "yyyy MMMM d"
-                                let dateString = dateFormatter.string(from: dateNow)
-                                let currentDate = dateFormatter.date(from: dateString)
-                                let startString = dateFormatter.string(from: items.startDate)
-                                let startDateString = dateFormatter.date(from: startString)
-                                if startDateString! < currentDate!{
-                                    vm.updateHistory(plan: items)
+                    List{
+                        ForEach(vm.plans, id: \.recordID) {items in
+                            TripCardView(vm: vm, plan: items.title, destination: items.destination, startDate: items.startDate, endDate: items.endDate, planID: items.recordID!)
+                                .onAppear{
+                                    let dateFormatter = DateFormatter()
+                                    dateFormatter.dateFormat = "yyyy MMMM d"
+                                    let dateString = dateFormatter.string(from: dateNow)
+                                    let currentDate = dateFormatter.date(from: dateString)
+                                    let startString = dateFormatter.string(from: items.startDate)
+                                    let startDateString = dateFormatter.date(from: startString)
+                                    if startDateString! < currentDate!{
+                                        vm.updateHistory(plan: items)
+                                    }
+                                    vm.fetchItems()
                                 }
-                                vm.fetchItems()
-                            }
+                        }
                     }
-                    .onAppear{
-                        vm.fetchItems()
-                    }
+                }.onAppear{
+                    vm.fetchItems()
                 }
+
             }
         }
     }
