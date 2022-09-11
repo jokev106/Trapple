@@ -108,10 +108,10 @@ extension TravelPlanView {
                 .foregroundColor(blacktext)
                 .padding(0.5)
                 .padding(.leading, 15)
-            ScrollView{
+//            ScrollView{
                 VStack{
                     List{
-                        ForEach(vm.plans, id: \.recordID) {items in
+                        ForEach(vm.plans, id: \.recordID) { items in
                             TripCardView(vm: vm, plan: items.title, destination: items.destination, startDate: items.startDate, endDate: items.endDate, planID: items.recordID!)
                                 .onAppear{
                                     let dateFormatter = DateFormatter()
@@ -126,12 +126,12 @@ extension TravelPlanView {
                                     vm.fetchItems()
                                 }
                         }
+                        .onDelete(perform: vm.deleteItem)
                     }
                 }.onAppear{
                     vm.fetchItems()
                 }
-
-            }
+//            }
         }
     }
 }
