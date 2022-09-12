@@ -238,7 +238,7 @@ extension TripHomePageView {
                                 VStack(alignment: .leading) {
                                     Text("\(vmRules.rules[index].title)")
                                         .font(Font.custom("Gilroy-ExtraBold", size: 20))
-                                    Text("Short Desc")
+                                    Text("\(vmRules.rules[index].description)")
                                         .font(Font.custom("Gilroy-Light", size: 15))
                                 }
                         
