@@ -34,7 +34,7 @@ struct TripHomePageView: View {
             }
         }
         .onAppear {
-            vm.fetchItem(planID: planID)
+            vmActivity.fetchItem(planID: planID)
             
             
             if categoryDefault == 0{
