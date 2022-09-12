@@ -111,7 +111,7 @@ extension TravelPlanView {
             ScrollView{
                 VStack{
                     ForEach(vm.plans, id: \.recordID) {items in
-                        TripCardView(vm: vm, planRecord: items, plan: items.title, destination: items.destination, startDate: items.startDate, endDate: items.endDate, planID: items.recordID!, categoryDefault: items.categoryDefault)
+                        TripCardView(vm: vm, planRecord: items, plan: items.title, destination: items.destination, startDate: items.startDate, endDate: items.endDate, planID: items.recordID!, categoryDefault: items.categoryDefault, planImage: items.imageURL)
                             .onAppear{
                                 let dateFormatter = DateFormatter()
                                 dateFormatter.dateFormat = "yyyy MMMM d"

@@ -16,19 +16,20 @@ class PlansViewModel: ObservableObject {
     @Published var endDate: Date = Date()
     @Published var history: Int64 = 0
     @Published var categoryDefault: Int64 = 0
+    @Published var planImage: URL?
     @Published var plans: [PlanViewModel] = []
     
     init() {
         fetchItems()
     }
     
-    func addButtonPressed() {
+    func addButtonPressed(savedImage: UIImage) {
         guard !title.isEmpty else {return}
         guard !destination.isEmpty else {return}
-        addItem(title: title, destination: destination, startDate: startDate, endDate: endDate)
+        addItem(title: title, destination: destination, startDate: startDate, endDate: endDate, savedImage: savedImage)
     }
     
-    private func addItem(title: String, destination: String, startDate: Date, endDate: Date) {
+    private func addItem(title: String, destination: String, startDate: Date, endDate: Date, savedImage: UIImage) {
         let newPlan = CKRecord(recordType: "Plans")
         newPlan["title"] = title
         newPlan["destination"] = destination
@@ -36,21 +37,21 @@ class PlansViewModel: ObservableObject {
         newPlan["endDate"] = endDate
         newPlan["isHistory"] = 0
         newPlan["categoryDefault"] = 0
-        saveItem(record: newPlan)
+//        saveItem(record: newPlan)
         
-//        guard
-//            let image = UIImage(named: "asd"),
-//            let url = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first?.appendingPathComponent("ro.jpg"),
-//            let data = image.jpegData(compressionQuality: 1.0)
-//        else {return}
-//        do {
-//            try data.write(to: url)
-//            let asset = CKAsset(fileURL: url)
-//            newPlan["image"] = asset
-//            saveItem(record: newPlan)
-//        } catch let error {
-//            print(error)
-//        }
+        guard
+//            let image = UIImage(named: "logo"),
+            let url = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first?.appendingPathComponent("planImage2.jpg"),
+            let data = savedImage.jpegData(compressionQuality: 1.0)
+        else {return}
+        do {
+            try data.write(to: url)
+            let asset = CKAsset(fileURL: url)
+            newPlan["image"] = asset
+            saveItem(record: newPlan)
+        } catch let error {
+            print(error)
+        }
     }
     
     private func saveItem(record: CKRecord) {
@@ -226,6 +227,14 @@ struct PlanViewModel{
     
     var categoryDefault: Int64 {
         planList.categoryDefault
+    }
+    
+    var planImage: CKAsset {
+        planList.planImage
+    }
+    
+    var imageURL: URL {
+        planList.imageURL
     }
     
 //    var imageURL: URL {

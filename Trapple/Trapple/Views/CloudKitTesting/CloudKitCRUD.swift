@@ -114,7 +114,7 @@ extension CloudKitCRUD {
     
     private var addButton: some View{
         Button{
-            vm.addButtonPressed()
+//            vm.addButtonPressed()
         } label: {
             Text("Add")
                 .frame(height: 55)

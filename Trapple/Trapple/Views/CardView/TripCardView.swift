@@ -18,6 +18,7 @@ struct TripCardView: View {
     @State var endDate: Date = Date()
     @State var planID: CKRecord.ID
     @State var categoryDefault: Int64
+    @State var planImage: URL
     
     
     static let stackDateFormat: DateFormatter = {
@@ -31,14 +32,16 @@ struct TripCardView: View {
         HStack{
             NavigationLink(destination: TripHomePageView(planVM: vm, planRecord: $planRecord, title: $plan, destination: $destination, planID: $planID, startDate: $startDate, endDate: $endDate, categoryDefault: $categoryDefault)){
                 VStack{
-                    Image("bali")
+                    if let url = planImage, let data = try? Data(contentsOf: url), let
+                        image = UIImage(data: data){
+                    Image(uiImage: image)
                         .resizable()
                         .padding(.trailing, 10)
                         .frame(width: 120, height: 130)
                         .background(Color.white)
                         .foregroundColor(Color.gray.opacity(0.5))
                         .cornerRadius(13)
-                        
+                    }
                 }
                 
                 VStack{

@@ -211,7 +211,7 @@ extension CreatePlanView {
                 .cornerRadius(10)
                 .onTapGesture {
                     //Function Save trip plan data + Move to Trip Page
-                    vm.addButtonPressed()
+                    vm.addButtonPressed(savedImage: imageSelected)
                     presentationMode.wrappedValue.dismiss()
                 }
             //            })
