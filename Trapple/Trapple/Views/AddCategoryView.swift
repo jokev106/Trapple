@@ -35,7 +35,7 @@ struct AddCategoryView: View {
                             Image(systemName: "tag")
                             Spacer()
                                 .frame(width: 20)
-                            TextField("Category Name", text: $vm.category)
+                            TextField("Category Name", text: $category)
                                 .frame(width: 250, alignment: .leading)
                                 .foregroundColor(.black)
                             Spacer()
@@ -173,7 +173,7 @@ struct AddCategoryView: View {
 
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     Button(action: {
-                        vm.addButtonPressed(planID: planID, icon: icon)
+                        vm.addButtonPressed(planID: planID, category: category, icon: icon)
                         self.showModal.toggle()
                     }, label: {
                         Text("Add")

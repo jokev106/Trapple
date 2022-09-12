@@ -18,7 +18,7 @@ class CategoriesViewModel: ObservableObject {
 //        fetchItems()
     }
     
-    func addButtonPressed(planID: CKRecord.ID, icon: String) {
+    func addButtonPressed(planID: CKRecord.ID, category: String, icon: String) {
         print("Categories Plan ID: \(planID)")
         guard !category.isEmpty else {return}
         guard !icon.isEmpty else {return}
@@ -49,12 +49,22 @@ class CategoriesViewModel: ObservableObject {
         }
     }
     
+    func deleteItem(indexSet: IndexSet){
+        guard let index = indexSet.first else {return}
+        let categoryDelete = categoryVM[index]
+//        let recordID = plan.recordID!
+        
+        CKContainer.default().privateCloudDatabase.delete(withRecordID: categoryDelete.recordID!) { [weak self] returnedRecordID, ReturnedError in
+            self?.categoryVM.remove(at: index)
+        }
+    }
+    
     func fetchItems(planID: CKRecord.ID) {
         
         let recordToMatch = CKRecord.Reference(recordID: planID, action: .deleteSelf)
         let predicate = NSPredicate(format: "planID == %@", recordToMatch)
         let query = CKQuery(recordType: "Categories", predicate: predicate)
-        query.sortDescriptors = [NSSortDescriptor(key: "category", ascending: true)]
+        query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
         let queryOperation = CKQueryOperation(query: query)
         
         var returnedItems: [CategoryModel] = []
