@@ -11,6 +11,7 @@ import CloudKit
 struct MyProfileView: View {
     
     @StateObject private var vm = PlansViewModel()
+    @ObservedObject var CKvm: CloudKitViewModel
     
     var body: some View {
         GeometryReader{geo in
@@ -39,11 +40,11 @@ struct MyProfileView: View {
     }
 }
 
-struct MyProfileView_Previews: PreviewProvider {
-    static var previews: some View {
-        MyProfileView()
-    }
-}
+//struct MyProfileView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MyProfileView()
+//    }
+//}
 
 //MARK: Components
 extension MyProfileView {
@@ -68,7 +69,7 @@ extension MyProfileView {
                     .cornerRadius(13)
                     .foregroundColor(.white)
                 VStack{
-                    Text("Name")
+                    Text(CKvm.userName)
                         .frame(width: 320, alignment: .leading)
                         .font(Font.custom("Gilroy-Light", size: 15))
                         .padding(.top, 0.5)
