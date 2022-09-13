@@ -11,12 +11,13 @@ import CloudKit
 struct TripCardView: View {
     
     @ObservedObject var vm: PlansViewModel
-    @State var planrecord: PlanViewModel
+    @State var planRecord: PlanViewModel
     @State var plan: String = ""
     @State var destination: String = ""
     @State var startDate: Date = Date()
     @State var endDate: Date = Date()
     @State var planID: CKRecord.ID
+    @State var categoryDefault: Int64
     
     
     static let stackDateFormat: DateFormatter = {
@@ -28,7 +29,7 @@ struct TripCardView: View {
     var body: some View {
         
         HStack{
-            NavigationLink(destination: TripHomePageView(title: $plan, destination: $destination, planID: $planID, startDate: $startDate, endDate: $endDate)){
+            NavigationLink(destination: TripHomePageView(planVM: vm, planRecord: $planRecord, title: $plan, destination: $destination, planID: $planID, startDate: $startDate, endDate: $endDate, categoryDefault: $categoryDefault)){
                 VStack{
                     Image("bali")
                         .resizable()

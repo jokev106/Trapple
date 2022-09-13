@@ -17,8 +17,9 @@ struct PlanModel {
     let startDate: Date
     let endDate: Date
     let isHistory: Int64
+    let categoryDefault: Int64
     
-    init(record: CKRecord, recordID: CKRecord.ID? = nil, title: String, destination: String, startDate: Date, endDate: Date, isHistory: Int64) {
+    init(record: CKRecord, recordID: CKRecord.ID? = nil, title: String, destination: String, startDate: Date, endDate: Date, isHistory: Int64, categoryDefault: Int64) {
         self.record = record
         self.recordID = recordID
         self.title = title
@@ -26,18 +27,19 @@ struct PlanModel {
         self.startDate = startDate
         self.endDate = endDate
         self.isHistory = isHistory
+        self.categoryDefault = categoryDefault
     }
     
     func planDictionary() ->[String: Any]{
-        return ["title": title, "destination": destination, "startDate": startDate, "endDate": endDate, "isHistory": isHistory]
+        return ["title": title, "destination": destination, "startDate": startDate, "endDate": endDate, "isHistory": isHistory, "categoryDefault": categoryDefault]
     }
     
     static func fromRecord( record: CKRecord) -> PlanModel? {
-        guard let title = record.value(forKey: "title") as? String , let destination = record.value(forKey: "destination") as? String , let startDate = record.value(forKey: "startDate") as? Date , let endDate = record.value(forKey: "endDate") as? Date, let isHistory = record.value(forKey: "isHistory") as? Int64
+        guard let title = record.value(forKey: "title") as? String , let destination = record.value(forKey: "destination") as? String , let startDate = record.value(forKey: "startDate") as? Date , let endDate = record.value(forKey: "endDate") as? Date, let isHistory = record.value(forKey: "isHistory") as? Int64, let categoryDefault = record.value(forKey: "categoryDefault") as? Int64
         else{
             return nil
         }
         
-        return PlanModel(record: record.self, recordID: record.recordID, title: title, destination: destination, startDate: startDate, endDate: endDate, isHistory: isHistory)
+        return PlanModel(record: record.self, recordID: record.recordID, title: title, destination: destination, startDate: startDate, endDate: endDate, isHistory: isHistory, categoryDefault: categoryDefault)
     }
 }

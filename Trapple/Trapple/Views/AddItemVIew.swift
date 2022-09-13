@@ -11,6 +11,7 @@ import CloudKit
 struct AddItemVIew: View {
     @ObservedObject var vm: EquipmentsViewModel
     @State var planID = CKRecord.ID()
+    @State var categoryID = CKRecord.ID()
     @State var category: String = ""
     @State var icon: String = ""
     @State var item: String = ""
@@ -176,7 +177,7 @@ struct AddItemVIew: View {
 
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     Button(action: {
-                        vm.addButtonPressed(planID: planID, category: category, icon: icon)
+                        vm.addButtonPressed(categoryID: categoryID, category: category, icon: icon)
                         self.showModal.toggle()
                     }, label: {
                         Text("Add")

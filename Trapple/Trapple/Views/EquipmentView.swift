@@ -9,7 +9,7 @@ import CloudKit
 import SwiftUI
 
 struct EquipmentView: View {
-    @StateObject private var vm = CategoriesViewModel()
+    @ObservedObject var vm = CategoriesViewModel()
     @State var planID = CKRecord.ID()
     @State private var showModal = false
     
@@ -27,18 +27,18 @@ struct EquipmentView: View {
                         .padding(.top)
                     
                     LazyVGrid(columns: columns) {
-                        EquipmentCardview(planID: planID, category: "Food & Beverages", icon: "fork.knife")
-                        
-                        EquipmentCardview(planID: planID, category: "Apparel", icon: "tshirt")
-                        
-                        EquipmentCardview(planID: planID, category: "Tools", icon: "wrench")
-                        
-                        EquipmentCardview(planID: planID, category: "Medicine", icon: "pills")
-                    
-                        EquipmentCardview(planID: planID, category: "Folder", icon: "folder")
+//                        EquipmentCardview(planID: planID, category: "Food & Beverages", icon: "fork.knife")
+//
+//                        EquipmentCardview(planID: planID, category: "Apparel", icon: "tshirt")
+//
+//                        EquipmentCardview(planID: planID, category: "Tools", icon: "wrench")
+//
+//                        EquipmentCardview(planID: planID, category: "Medicine", icon: "pills")
+//
+//                        EquipmentCardview(planID: planID, category: "Folder", icon: "folder")
                     
                         ForEach(vm.categoryVM, id: \.recordID) { item in
-                            EquipmentCardview(planID: planID, category: item.category, icon: item.icon)
+                            EquipmentCardview(categoryID: item.recordID!, category: item.category, icon: item.icon)
                             
 //                            NavigationLink(destination: CategoryView(planID: planID, title: item.category, image: item.icon), label: {
 //                                ZStack {
