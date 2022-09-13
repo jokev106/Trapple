@@ -22,25 +22,26 @@ struct TripCardView: View {
     
     
     static let stackDateFormat: DateFormatter = {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "E, dd MMMM yyyy"
-            return formatter
-        }()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "E, dd MMMM yyyy"
+        return formatter
+    }()
     
     var body: some View {
         
-        HStack{
-            NavigationLink(destination: TripHomePageView(planVM: vm, planRecord: $planRecord, title: $plan, destination: $destination, planID: $planID, startDate: $startDate, endDate: $endDate, categoryDefault: $categoryDefault)){
+        NavigationLink(destination: TripHomePageView(planVM: vm, planRecord: $planRecord, title: $plan, destination: $destination, planID: $planID, startDate: $startDate, endDate: $endDate, categoryDefault: $categoryDefault)){
+            HStack{
                 VStack{
                     if let url = planImage, let data = try? Data(contentsOf: url), let
                         image = UIImage(data: data){
-                    Image(uiImage: image)
-                        .resizable()
-                        .padding(.trailing, 10)
-                        .frame(width: 120, height: 130)
-                        .background(Color.white)
-                        .foregroundColor(Color.gray.opacity(0.5))
-                        .cornerRadius(13)
+                        Image(uiImage: image)
+                            .resizable()
+                            .scaledToFill()
+                        //                        .padding(.trailing, 10)
+                        //                        .frame(width: 120, height: 130)
+                        //                        .background(Color.white)
+                        //                        .foregroundColor(Color.gray.opacity(0.5))
+                        //                        .cornerRadius(13)
                     }
                 }
                 
@@ -73,11 +74,12 @@ struct TripCardView: View {
                         .frame(width: 200,alignment: .leading)
                         .foregroundColor(Color.black)
                 }
-
+                
                 Spacer()
             }
             
         }
+        .frame(maxWidth: .infinity)
         .frame(height: 120)
         .background(.white)
         .cornerRadius(13)

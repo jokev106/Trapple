@@ -42,7 +42,7 @@ class PlansViewModel: ObservableObject {
         guard
 //            let image = UIImage(named: "logo"),
             let url = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first?.appendingPathComponent("planImage2.jpg"),
-            let data = savedImage.jpegData(compressionQuality: 1.0)
+            let data = savedImage.jpegData(compressionQuality: 0.01)
         else {return}
         do {
             try data.write(to: url)
