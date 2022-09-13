@@ -11,8 +11,7 @@ import SwiftUI
 struct TrappleApp: App {
     var body: some Scene {
         WindowGroup {
-            MenuView()
-            .environmentObject(ContentViewModel())
+            PDFView()
             //ContentView()
         }
     }
