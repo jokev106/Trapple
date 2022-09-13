@@ -11,6 +11,7 @@ import CloudKit
 struct TripCardView: View {
     
     @ObservedObject var vm: PlansViewModel
+    @State var planrecord: PlanViewModel
     @State var plan: String = ""
     @State var destination: String = ""
     @State var startDate: Date = Date()
@@ -76,15 +77,17 @@ struct TripCardView: View {
         .frame(height: 120)
         .background(tripcardColor)
         .cornerRadius(13)
-        .padding(.bottom, 20)
-        .padding(.trailing, 30)
-        .padding(.leading, 30)
+//        .padding(.bottom, 20)
+//        .padding(.trailing, 30)
+//        .padding(.leading, 30)
         .shadow(color: Color.gray.opacity(0.275), radius: 8, x: 2, y: 4)
         .swipeActions (edge: .trailing){
             Button {
                 //Function for deleting card
+                vm.updateHistory(plan: planrecord)
             } label: {
                 Text("Finish")
+
             }.tint(Color.red)
         }
     }

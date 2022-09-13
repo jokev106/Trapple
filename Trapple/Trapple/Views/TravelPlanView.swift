@@ -69,7 +69,8 @@ extension TravelPlanView {
                     }
                 }
                 
-            }.fullScreenCover(isPresented: $showCreatePlan, content: {
+            }
+            .fullScreenCover(isPresented: $showCreatePlan, content: {
                 CreatePlanView(vm: vm)
                     .navigationBarHidden(true)
             })
@@ -108,11 +109,11 @@ extension TravelPlanView {
                 .foregroundColor(blacktext)
                 .padding(0.5)
                 .padding(.leading, 15)
-            ScrollView{
+//            ScrollView{
                 VStack{
                     List{
                         ForEach(vm.plans, id: \.recordID) {items in
-                            TripCardView(vm: vm, plan: items.title, destination: items.destination, startDate: items.startDate, endDate: items.endDate, planID: items.recordID!)
+                            TripCardView(vm: vm, planrecord: items, plan: items.title, destination: items.destination, startDate: items.startDate, endDate: items.endDate, planID: items.recordID!)
                                 .onAppear{
                                     let dateFormatter = DateFormatter()
                                     dateFormatter.dateFormat = "yyyy MMMM d"
@@ -126,12 +127,18 @@ extension TravelPlanView {
                                     vm.fetchItems()
                                 }
                         }
+                        .padding(.bottom)
+                        .listRowBackground(graybg)
+//                        .list
+//                        .onDelete(perform: vm.deleteItem)
+                        .listRowSeparator(.hidden, edges: .all)
+                        .listRowInsets(EdgeInsets())
                     }
                 }.onAppear{
                     vm.fetchItems()
                 }
 
-            }
+//            }
         }
     }
 }

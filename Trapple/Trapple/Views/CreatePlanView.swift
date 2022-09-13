@@ -12,6 +12,7 @@ import CloudKit
 struct CreatePlanView: View {
     
     @ObservedObject var vm: PlansViewModel
+//    @State var planrecord: PlanViewModel
     //var for form input
     //    @State var inputTripName: String = ""
     //    @State var inputDestination: String = ""
@@ -228,7 +229,7 @@ extension CreatePlanView {
     private var CreateButton : some View {
         VStack{
             
-            //            NavigationLink(destination: TripHomePageView(), label: {
+//            NavigationLink(destination: TripHomePageView(title: vm.$title, destination: vm.$destination, planID: vm.$plans, startDate: vm.startDate, endDate: vm.endDate), label: {
             Text("Create")
                 .fontWeight(.bold)
                 .frame(height: 50)
@@ -240,7 +241,7 @@ extension CreatePlanView {
                     //Function Save trip plan data + Move to Trip Page
                     createButtonPressed()
                 }
-            //            })
+//                        })
         }.padding(20)
         
     }

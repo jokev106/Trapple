@@ -76,7 +76,10 @@ extension MyProfileView {
             ScrollView{
                 VStack{
                     ForEach(vm.plans, id: \.recordID) { items in
-                        TripCardView(vm :vm, plan: items.title, destination: items.destination, startDate: items.startDate, endDate: items.endDate, planID: items.recordID!)
+                        TripCardView(vm :vm, planrecord: items,plan: items.title, destination: items.destination, startDate: items.startDate, endDate: items.endDate, planID: items.recordID!)
+                                .padding(.bottom, 20)
+                                .padding(.trailing, 30)
+                                .padding(.leading, 30)
                     }
                 }
             }
