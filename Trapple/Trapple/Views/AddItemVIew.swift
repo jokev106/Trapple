@@ -177,7 +177,7 @@ struct AddItemVIew: View {
 
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     Button(action: {
-                        vm.addButtonPressed(categoryID: categoryID, category: category, icon: icon)
+                        vm.addButtonPressed(categoryID: categoryID, category: category, icon: icon, savedImage: imageSelected)
                         self.showModal.toggle()
                     }, label: {
                         Text("Add")

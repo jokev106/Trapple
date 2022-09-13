@@ -57,14 +57,10 @@ extension MyProfileView {
                 .resizable()
                 .frame(width: 80, height: 80)
                 .foregroundColor(deepblue)
+                .padding(.top)
             Spacer()
                 .frame(height: 10)
             ZStack{
-                Rectangle()
-                    .padding(.horizontal, 1)
-                    .frame(width: 350, height: 80)
-                    .cornerRadius(13)
-                    .foregroundColor(.white)
                 VStack{
                     Text(CKvm.userName)
                         .frame(maxWidth: .infinity, alignment: .center)

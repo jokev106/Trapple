@@ -30,7 +30,7 @@ struct CategoryView: View {
                     List{
                         ForEach(vm.equipment, id: \.recordID) { index in
                            
-                            ItemListCardview(image: image, defaultImage: true, itemName: index.itemName, description: index.description)
+                            ItemListCardview(image: image, defaultImage: true, itemName: index.itemName, description: index.description, equipmentImage: index.imageURL)
                                 .padding(.horizontal)
                                 .padding(.bottom)
                                 .listRowSeparator(.hidden)
