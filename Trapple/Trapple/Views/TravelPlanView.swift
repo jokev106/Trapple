@@ -21,7 +21,6 @@ struct TravelPlanView: View {
                 NavigationView {
                     VStack {
                         // Content
-                        Divider
                         // Create and Join Button
                         CreateJoinButton
                         Divider
@@ -58,19 +57,20 @@ extension TravelPlanView {
                 ZStack{
                     Rectangle()
                         .frame(width: 162, height: 72)
-                        .foregroundColor(yellow)
+                        .foregroundColor(deepblue)
                         .cornerRadius(10)
                         .shadow(color: Color.gray.opacity(0.275), radius: 8, x: 2, y: 4)
                     VStack{
                         Image(systemName: "rectangle.badge.plus")
-                            .foregroundColor(blacktext)
+                            .foregroundColor(yellow)
                         Text("Create")
-                            .foregroundColor(blacktext)
+                            .foregroundColor(yellow)
                             .font(Font.custom("Gilroy-ExtraBold", size: 16))
                     }
                 }
                 
-            }.fullScreenCover(isPresented: $showCreatePlan, content: {
+            }
+            .fullScreenCover(isPresented: $showCreatePlan, content: {
                 CreatePlanView(vm: vm)
                     .navigationBarHidden(true)
             })
@@ -83,14 +83,14 @@ extension TravelPlanView {
                 ZStack{
                     Rectangle()
                         .frame(width: 162, height: 72)
-                        .foregroundColor(yellow)
+                        .foregroundColor(deepblue)
                         .cornerRadius(10)
                         .shadow(color: Color.gray.opacity(0.275), radius: 8, x: 2, y: 4)
                     VStack{
                         Image(systemName: "person.3")
-                            .foregroundColor(blacktext)
+                            .foregroundColor(yellow)
                         Text("Join")
-                            .foregroundColor(blacktext)
+                            .foregroundColor(yellow)
                             .font(Font.custom("Gilroy-ExtraBold", size: 16))
                     }
                 }
@@ -106,30 +106,39 @@ extension TravelPlanView {
             Text("On Going Trip").bold()
                 .font(Font.custom("Gilroy-Light", size: 20))
                 .frame(width: 370, alignment: .leading)
-                .foregroundColor(Color.black)
+                .foregroundColor(blacktext)
                 .padding(0.5)
-            ScrollView{
+                .padding(.leading, 15)
+//            ScrollView{
                 VStack{
-                    ForEach(vm.plans, id: \.recordID) {items in
-                        TripCardView(vm: vm, planRecord: items, plan: items.title, destination: items.destination, startDate: items.startDate, endDate: items.endDate, planID: items.recordID!, categoryDefault: items.categoryDefault)
-                            .onAppear{
-                                let dateFormatter = DateFormatter()
-                                dateFormatter.dateFormat = "yyyy MMMM d"
-                                let dateString = dateFormatter.string(from: dateNow)
-                                let currentDate = dateFormatter.date(from: dateString)
-                                let startString = dateFormatter.string(from: items.startDate)
-                                let startDateString = dateFormatter.date(from: startString)
-                                if startDateString! < currentDate!{
-                                    vm.updateHistory(plan: items)
+                    List{
+                        ForEach(vm.plans, id: \.recordID) {items in
+                            TripCardView(vm: vm, planrecord: items, plan: items.title, destination: items.destination, startDate: items.startDate, endDate: items.endDate, planID: items.recordID!)
+                                .onAppear{
+                                    let dateFormatter = DateFormatter()
+                                    dateFormatter.dateFormat = "yyyy MMMM d"
+                                    let dateString = dateFormatter.string(from: dateNow)
+                                    let currentDate = dateFormatter.date(from: dateString)
+                                    let startString = dateFormatter.string(from: items.startDate)
+                                    let startDateString = dateFormatter.date(from: startString)
+                                    if startDateString! < currentDate!{
+                                        vm.updateHistory(plan: items)
+                                    }
+                                    vm.fetchItems()
                                 }
-                                vm.fetchItems()
-                            }
+                        }
+                        .padding(.bottom)
+                        .listRowBackground(graybg)
+//                        .list
+//                        .onDelete(perform: vm.deleteItem)
+                        .listRowSeparator(.hidden, edges: .all)
+                        .listRowInsets(EdgeInsets())
                     }
-                    .onAppear{
-                        vm.fetchItems()
-                    }
+                }.onAppear{
+                    vm.fetchItems()
                 }
-            }
+
+//            }
         }
     }
 }

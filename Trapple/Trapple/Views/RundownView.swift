@@ -22,6 +22,7 @@ struct RundownView: View {
     // DUMMY
     @State private var days = ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"]
     @State private var dates = ["August 3", "August 4", "August 5", "August 6", "August 7", "August 8", "August 9"]
+    
     @State private var isExist = true
     @State private var apaa = CKRecord.ID(recordName: "0")
     @State private var currentDate: String = ""
@@ -31,11 +32,11 @@ struct RundownView: View {
             VStack {
                 SegmentedControl
                 
-                ScrollView {
+//                ScrollView {
                     VStack(spacing: 0) {
                         HStack {
                             Text(currentDate)
-                                .foregroundColor(.black)
+                                .foregroundColor(blacktext)
                                 .font(Font.custom("Gilroy-ExtraBold", size: 17))
                                 .onAppear{
                                     let dateFormatter = DateFormatter()
@@ -60,34 +61,40 @@ struct RundownView: View {
                         .padding(.bottom)
                         
                         if !vm.activity.isEmpty {
-                            ForEach(vm.activity, id: \.recordID) { index in
-                                if apaa == index.recordID {
-                                    Button(action: { apaa = CKRecord.ID(recordName: "0") }) {
-                                        RundownDetailCardView(
-                                            activity: index.title, location: index.location, description: index.description, startTime: index.startDate, endTime: index.endDate
-                                        )
-                                    }
-    
-                                } else {
-                                    Button(action: { apaa = index.recordID! }) {
-                                        RundownCardview(activity: index.title, location: index.location, startTime: index.startDate)
+                            List{
+                                ForEach(vm.activity, id: \.recordID) { index in
+                                    if apaa == index.recordID {
+                                        Button(action: { apaa = CKRecord.ID(recordName: "0") }) {
+                                            RundownDetailCardView(
+                                                activity: index.title, location: index.location, description: index.description, startTime: index.startDate, endTime: index.endDate
+                                            )
+                                        }
+        
+                                    } else {
+                                        Button(action: { apaa = index.recordID! }) {
+                                            RundownCardview(activity: index.title, location: index.location, startTime: index.startDate)
+                                        }
                                     }
                                 }
+//                                .onDelete(perform: vm.delete)
+                                .foregroundColor(blacktext)
+                                .listRowSeparator(.hidden)
+                                .listRowInsets(EdgeInsets())
+//                                .padding(.horizontal)
+//                                .padding(.bottom)
+                                .animation(.default)
                             }
-                            .foregroundColor(.black)
-                            .padding(.horizontal)
-                            .padding(.bottom)
-                            .animation(.default)
 
                         } else {
                             VStack {
                                 Text("No Activity")
+                                    .foregroundColor(blacktext)
                                     .opacity(0.2)
                             }
                             .frame(width: geometry.size.width, height: geometry.size.height / 1.2, alignment: .center)
                         }
                     }
-                }
+//                }
             }
             .navigationAppearance(backgroundColor: UIColor(graybg), foregroundColor: UIColor(blacktext), hideSeperator: true)
             .font(Font.custom("Gilroy-Light", size: 15))
@@ -105,6 +112,7 @@ struct RundownView: View {
                 vm.fetchItems(planID: planID, actualDate: vm.dates[selected])
             }
         }
+        .background(graybg)
     }
 }
 
@@ -137,7 +145,7 @@ extension RundownView {
                             VStack {
                                 Text("Day \(index + 1)")
                                     .fontWeight(.bold)
-                                    .foregroundColor(.black)
+                                    .foregroundColor(blacktext)
                                     .opacity(selected == index ? 1.0 : 0.3)
                             
 //                                Text(vm.dates[index])
@@ -172,7 +180,7 @@ extension RundownView {
                     }
                 }
                 .disabled(slider > 0 ? false : true)
-                .foregroundColor(.black)
+                .foregroundColor(blacktext)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 
                 // RIGHT
@@ -188,7 +196,7 @@ extension RundownView {
                     }
                 }
                 .disabled(slider < Int(ceil(Double(vm.dates.count) / 3) - 1) ? false : true)
-                .foregroundColor(.black)
+                .foregroundColor(blacktext)
                 .frame(maxWidth: .infinity, alignment: .trailing)
             }
         }

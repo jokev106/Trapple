@@ -53,9 +53,9 @@ extension RulesView {
         ForEach(vm.listAdd.indices, id: \.self) { item in
             HStack {
                 Rectangle()
-                    .frame(width: 8, height: 75)
+                    .frame(width: 8, height:100)
                     .cornerRadius(13)
-                    .foregroundColor(blacktext)
+                    .foregroundColor(deepblue)
                 Spacer()
                     .frame(width: 20)
                 VStack {

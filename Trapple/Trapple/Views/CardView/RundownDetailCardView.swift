@@ -26,32 +26,38 @@ struct RundownDetailCardView: View {
                 Text(startTime, formatter: Self.stackDateFormat)
                     .font(Font.custom("Gilroy-ExtraBold", size: 13))
                     .padding(.top, 2)
+                    .foregroundColor(blacktext)
                 Spacer()
                     .frame(height: 25)
                 Text(endTime, formatter: Self.stackDateFormat)
+                    .foregroundColor(blacktext)
             }
             .frame(maxWidth: 50, maxHeight: .infinity, alignment: .top)
             .padding()
 
             Rectangle()
                 .frame(width: 3)
-                .foregroundColor(Color("yellowCard"))
+                .foregroundColor(deepblue)
 
             VStack(alignment: .leading) {
                 Text(activity)
+                    .foregroundColor(blacktext)
                     .font(Font.custom("Gilroy-ExtraBold", size: 15))
                 Text(location)
+                    .foregroundColor(blacktext)
                 Spacer()
                     .frame(height: 10)
+                    .foregroundColor(blacktext)
                 Text(description)
                     .multilineTextAlignment(.leading)
+                    .foregroundColor(blacktext)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
             .padding()
         }
         .font(Font.custom("Gilroy-Light", size: 11))
         .frame(maxWidth: .infinity)
-        .background(.white)
+        .background(tripcardColor)
         .cornerRadius(15)
         .shadow(color: Color.gray.opacity(0.105), radius: 2, x: 0, y: 3)
     }

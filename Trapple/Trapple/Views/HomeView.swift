@@ -16,28 +16,30 @@ struct HomeView: View {
     init() {
         
         //Initialize TabBar
-        let tabBarAppearance = UITabBarAppearance()
-
-        tabBarAppearance.backgroundColor = UIColor(darkblue)
-
-        UITabBar.appearance().standardAppearance = tabBarAppearance
-
-        UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+//        let tabBarAppearance = UITabBarAppearance()
+//
+//        tabBarAppearance.backgroundColor = UIColor(lightpurple)
+        UITabBar.appearance().backgroundColor = UIColor(lightpurple)
+//        UITabBar.appearance().barTintColor = UIColor(deepblue)
+        UITabBar.appearance().unselectedItemTintColor = UIColor(lilac)
+//        UITabBar.appearance().barTintColor = UIColor(lightpurple)
+        
+//        UITabBar.appearance().standardAppearance = tabBarAppearance
+//
+//        UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
         
         //Initialize Toolbar
-        let toolBarAppearance = UIToolbarAppearance()
-        
-//        UIToolbar.appearance().barTintColor = UIColor.red
-        
-        toolBarAppearance.backgroundColor = UIColor(darkblue)
-        
-        UIToolbar.appearance().standardAppearance = toolBarAppearance
-        
-        let toolBarAppearance2 = UIToolbarAppearance()
-        
-        toolBarAppearance2.backgroundColor = UIColor(graybg)
-
-        UIToolbar.appearance().scrollEdgeAppearance = toolBarAppearance2
+//        let toolBarAppearance = UIToolbarAppearance()
+//        
+//        toolBarAppearance.backgroundColor = UIColor(lightpurple)
+//        
+//        UIToolbar.appearance().standardAppearance = toolBarAppearance
+//        
+//        let toolBarAppearance2 = UIToolbarAppearance()
+//        
+//        toolBarAppearance2.backgroundColor = UIColor(graybg)
+//
+//        UIToolbar.appearance().scrollEdgeAppearance = toolBarAppearance2
         
         //Initialize NavBar
         let navigationBarAppearace = UINavigationBarAppearance()
@@ -45,8 +47,7 @@ struct HomeView: View {
         navigationBarAppearace.backgroundColor = UIColor(graybg)
 
         navigationBarAppearace.largeTitleTextAttributes = [
-            .font : UIFont(name: "Gilroy-ExtraBold", size: 30),
-            NSAttributedString.Key.foregroundColor : UIColor.black
+            .font : UIFont(name: "Gilroy-ExtraBold", size: 30)
         ]
         
         navigationBarAppearace.shadowColor = .clear
@@ -79,7 +80,8 @@ struct HomeView: View {
                             }
                     }
                 }
-                .accentColor(yellow)
+                .accentColor(deepblue)
+            
             }
         }
     }

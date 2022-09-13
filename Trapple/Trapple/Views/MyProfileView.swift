@@ -18,9 +18,6 @@ struct MyProfileView: View {
                 NavigationView{
                     VStack{
                         //Content
-                        Divider
-                        Spacer()
-                            .frame(height: 10)
                         //User Data Section (TOP)
                         UserDataSection
                         Spacer()
@@ -58,33 +55,14 @@ extension MyProfileView {
             Image(systemName: "person.crop.circle.fill")
                 .resizable()
                 .frame(width: 80, height: 80)
-                .foregroundColor(.gray)
+                .foregroundColor(deepblue)
             Spacer()
                 .frame(height: 10)
-            ZStack{
-                Rectangle()
-                    .padding(.horizontal, 1)
-                    .frame(width: 350, height: 80)
-                    .cornerRadius(13)
-                    .foregroundColor(.white)
-                VStack{
-                    Text("Name")
-                        .frame(width: 320, alignment: .leading)
-                        .font(Font.custom("Gilroy-Light", size: 15))
-                        .padding(.top, 0.5)
-                        .foregroundColor(blacktext)
-                    Rectangle()
-                        .frame(width: 310, height: 1)
-                        .foregroundColor(.black)
-                        .padding(.horizontal)
-                    Text("Age ")
-                        .frame(width: 320, alignment: .leading)
-                        .font(Font.custom("Gilroy-Light", size: 15))
-                        .padding(.bottom, 0.5)
-                        .foregroundColor(blacktext)
-                    
-                }
-            }
+            Text("Name")
+                .frame(maxWidth: .infinity, alignment: .center)
+                .font(Font.custom("Gilroy-ExtraBold", size: 20))
+                .padding(.top, 0.5)
+                .foregroundColor(deepblue)
         }
     }
     
@@ -98,7 +76,10 @@ extension MyProfileView {
             ScrollView{
                 VStack{
                     ForEach(vm.plans, id: \.recordID) { items in
-                        TripCardView(vm: vm, planRecord: items, plan: items.title, destination: items.destination, startDate: items.startDate, endDate: items.endDate, planID: items.recordID!, categoryDefault: items.categoryDefault)
+                        TripCardView(vm :vm, planrecord: items,plan: items.title, destination: items.destination, startDate: items.startDate, endDate: items.endDate, planID: items.recordID!)
+                                .padding(.bottom, 20)
+                                .padding(.trailing, 30)
+                                .padding(.leading, 30)
                     }
                 }
             }

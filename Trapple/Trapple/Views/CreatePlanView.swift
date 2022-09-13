@@ -12,11 +12,19 @@ import CloudKit
 struct CreatePlanView: View {
     
     @ObservedObject var vm: PlansViewModel
+//    @State var planrecord: PlanViewModel
     //var for form input
     //    @State var inputTripName: String = ""
     //    @State var inputDestination: String = ""
     //    @State var startDate = Date()
     //    @State var endDate = Date()
+    
+    //bool for validation form
+    @State var tripNameValidation = false
+    @State var destinationValidation = false
+    @State var startDateValidation = false
+    @State var endDateValidation = false
+    @State var createButtonOn = false
     
     //bool for showing date picker
     @State var showEndDate = false
@@ -30,9 +38,11 @@ struct CreatePlanView: View {
     @Environment(\.presentationMode) var presentationMode:Binding<PresentationMode>
     
     //var for submission image picker
+    @State var showActionSheetCamera = false
     @State var changeSubmissionImage = false
     @State var openCameraSheet = false
     @State var imageSelected = UIImage()
+    @State var sourceType: UIImagePickerController.SourceType = .camera
     
     @State var setstartdate = "Set Start Date"
     
@@ -63,13 +73,15 @@ struct CreatePlanView: View {
                                     presentationMode.wrappedValue.dismiss()
                                 }label: {
                                     Image(systemName: "chevron.left")
-                                        .foregroundColor(yellow)
+                                        .foregroundColor(deepblue)
                                     Text("Back")
-                                        .foregroundColor(yellow)
+                                        .foregroundColor(deepblue)
                                     
                                 }
                             }
                         }
+                }.sheet(isPresented: $openCameraSheet) {
+                    SubmissionPicker(selectedImage: self.$imageSelected,  sourceType: self.sourceType)
                 }
             }
         }
@@ -97,17 +109,17 @@ extension CreatePlanView {
             }
             //Trip Photos
             Group{
-                //Add photo from library
+                //                Add photo from library
                 Button(action:{
                     changeSubmissionImage = true
-                    openCameraSheet = true
+                    showActionSheetCamera = true
                 }){
                     if changeSubmissionImage {
                         ZStack{
                             Rectangle()
                                 .frame(width: 246, height: 248)
                             //                                .frame(maxWidth: .infinity)
-                                .foregroundColor(.white)
+                                .foregroundColor(tripcardColor)
                                 .cornerRadius(10)
                                 .padding(.horizontal, 30)
                             Image(uiImage: imageSelected)
@@ -121,7 +133,7 @@ extension CreatePlanView {
                             Rectangle()
                                 .frame(height: 144)
                                 .frame(maxWidth: .infinity)
-                                .foregroundColor(.white)
+                                .foregroundColor(tripcardColor)
                                 .cornerRadius(10)
                                 .padding(.horizontal, 30)
                             HStack{
@@ -135,55 +147,71 @@ extension CreatePlanView {
                             }
                         }
                     }
-                }.sheet(isPresented: $openCameraSheet) {
-                    SubmissionPicker(selectedImage: $imageSelected, sourceType: .camera)
+                }.actionSheet(isPresented: $showActionSheetCamera) {
+                    ActionSheet(title: Text("Select Photo"), message: Text("Choose"), buttons: [
+                        .default(Text("Photo Library")){
+                            self.openCameraSheet = true
+                            //                            SubmissionPicker(selectedImage: $imageSelected, sourceType: .photoLibrary)
+                            self.sourceType = .photoLibrary
+                        },
+                        .default(Text("Camera")){
+                            self.openCameraSheet = true
+                            //                            SubmissionPicker(selectedImage: $imageSelected, sourceType: .camera)
+                            self.sourceType = .camera
+                        },
+                        .cancel()
+                    ])
                 }
                 Spacer()
                     .frame(height: 10)
+                
             }
             
             //Trip Name Form
-            ZStack{
-                Rectangle()
-                    .frame(height: 50)
-                    .frame(maxWidth: .infinity)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
-                    .padding(.horizontal, 30)
-                HStack{
-                    Image(systemName: "pencil")
-                    Spacer()
-                        .frame(width: 20)
-                    TextField("Trip Name", text: $vm.title)
-                        .frame(width: 250, alignment: .leading)
-                        .font(Font.custom("Gilroy-Light", size: 15))
-                        .foregroundColor(.black)
-                    Spacer()
-                }.padding(.horizontal, 50)
+            if tripNameValidation == true {
+                if vm.title.isEmpty {
+                    Group{
+                        TripNameIncorrect
+                        Spacer()
+                            .frame(height: 10)
+                    }
+                }else {
+                    Group{
+                        TripNameCorrect
+                        Spacer()
+                            .frame(height: 10)
+                    }
+                }
             }
-            Spacer()
-                .frame(height: 10)
+            else {
+                Group{
+                    TripNameCorrect
+                    Spacer()
+                        .frame(height: 10)
+                }
+            }
             //Trip Destination Form
-            ZStack{
-                Rectangle()
-                    .frame(height: 50)
-                    .frame(maxWidth: .infinity)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
-                    .padding(.horizontal, 30)
-                HStack{
-                    Image(systemName: "airplane")
+            if destinationValidation == true {
+                if vm.destination.isEmpty{
+                    Group{
+                        DestinationIncorrect
+                        Spacer()
+                            .frame(height: 10)
+                    }
+                }else {
+                    Group{
+                        DestinationCorrect
+                        Spacer()
+                            .frame(height: 10)
+                    }
+                }
+            }else {
+                Group{
+                    DestinationCorrect
                     Spacer()
-                        .frame(width: 20)
-                    TextField("Destination", text: $vm.destination)
-                        .frame(width: 250, alignment: .leading)
-                        .font(Font.custom("Gilroy-Light", size: 15))
-                        .foregroundColor(.black)
-                    Spacer()
-                }.padding(.horizontal, 50)
+                        .frame(height: 10)
+                }
             }
-            Spacer()
-                .frame(height: 10)
             //Trip Start Date Form
             TripStartDate
             Spacer()
@@ -201,100 +229,237 @@ extension CreatePlanView {
     private var CreateButton : some View {
         VStack{
             
-            //            NavigationLink(destination: TripHomePageView(), label: {
+//            NavigationLink(destination: TripHomePageView(title: vm.$title, destination: vm.$destination, planID: vm.$plans, startDate: vm.startDate, endDate: vm.endDate), label: {
             Text("Create")
                 .fontWeight(.bold)
                 .frame(height: 50)
                 .frame(maxWidth: .infinity)
-                .background(.gray.opacity(0.5))
-                .foregroundColor(.black)
+                .background(deepblue)
+                .foregroundColor(yellow)
                 .cornerRadius(10)
                 .onTapGesture {
                     //Function Save trip plan data + Move to Trip Page
-                    vm.addButtonPressed()
-                    presentationMode.wrappedValue.dismiss()
+                    createButtonPressed()
                 }
-            //            })
+//                        })
         }.padding(20)
         
     }
     
+    private var TripStartDateIncorrect: some View{
+        VStack{
+            ZStack{
+                Rectangle()
+                    .frame(height: 50)
+                    .frame(maxWidth: .infinity)
+                    .foregroundColor(tripcardColor)
+                    .cornerRadius(10)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(.red, lineWidth: 1)
+                    )
+                    .padding(.horizontal, 30)
+                HStack{
+                    Image(systemName: "calendar")
+                        .foregroundColor(blacktext)
+                    Spacer()
+                        .frame(width: 20)
+                    Button(action: {
+                        withAnimation{
+                            self.showStartDate.toggle()
+                            valueStartDate = true
+                            showEndDate = false
+                        }
+                    }, label: {
+                        Text((valueStartDate ? "\(vm.startDate, formatter: CreatePlanView.stackDateFormat)" : "Set Start Date"))
+                            .foregroundColor(valueStartDate ? .black : .gray)
+                            .font(Font.custom("Gilroy-Light", size: 15))
+                        Spacer()
+                        Image(systemName: "chevron.right")
+                            .foregroundColor(.gray)
+                            .rotationEffect(.degrees(showStartDate ? 90 : 0))
+                            .animation(.easeInOut(duration: 4), value: showStartDate)
+                    })
+                    Spacer()
+                }.padding(.horizontal, 50)
+            }
+            Text("Start date is required")
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .font(Font.custom("Gilroy-Light", size: 15))
+                .foregroundColor(.red)
+                .padding(.horizontal, 50)
+        }
+    }
+    
+    private var TripStartDateCorrect: some View {
+        ZStack{
+            Rectangle()
+                .frame(height: 50)
+                .frame(maxWidth: .infinity)
+                .foregroundColor(tripcardColor)
+                .cornerRadius(10)
+                .padding(.horizontal, 30)
+            HStack{
+                Image(systemName: "calendar")
+                    .foregroundColor(blacktext)
+                Spacer()
+                    .frame(width: 20)
+                Button(action: {
+                    withAnimation{
+                        self.showStartDate.toggle()
+                        valueStartDate = true
+                        showEndDate = false
+                    }
+                }, label: {
+                    Text((valueStartDate ? "\(vm.startDate, formatter: CreatePlanView.stackDateFormat)" : "Set Start Date"))
+                        .foregroundColor(valueStartDate ? .black : .gray)
+                        .font(Font.custom("Gilroy-Light", size: 15))
+                    Spacer()
+                    Image(systemName: "chevron.right")
+                        .foregroundColor(.gray)
+                        .rotationEffect(.degrees(showStartDate ? 90 : 0))
+                        .animation(.easeInOut(duration: 4), value: showStartDate)
+                })
+                Spacer()
+            }.padding(.horizontal, 50)
+        }
+    }
+    
     private var TripStartDate : some View{
-                VStack{
-                    if showStartDate == true{
-                        ZStack{
-                            Rectangle()
-                                .frame(height: 350)
-                                .frame(maxWidth: .infinity)
-                                .foregroundColor(.white)
-                                .cornerRadius(10)
-                                .padding(.horizontal, 30)
-                            VStack{
-                                HStack{
-                                    Image(systemName: "calendar")
-                                    Spacer()
-                                        .frame(width: 20)
-                                    Button {
-                                        withAnimation{
-                                            self.showStartDate.toggle()
-                                        }
-                                    } label: {
-                                        Text(valueStartDate ?  "\(vm.startDate, formatter: CreatePlanView.stackDateFormat)" : "Set Start Date")
-                                            .foregroundColor(valueStartDate ? .black : .gray)
-                                            .font(Font.custom("Gilroy-Light", size: 15))
-                                        Spacer()
-                                        Image(systemName: "chevron.right")
-                                            .foregroundColor(.gray)
-                                            .rotationEffect(.degrees(showStartDate ? 90 : 0))
-                                            .animation(.easeInOut(duration: 4), value: showStartDate)
-                                    }
-                                    Spacer()
+        VStack{
+            if showStartDate == true{
+                ZStack{
+                    Rectangle()
+                        .frame(height: 350)
+                        .frame(maxWidth: .infinity)
+                        .foregroundColor(tripcardColor)
+                        .cornerRadius(10)
+                        .padding(.horizontal, 30)
+                    VStack{
+                        HStack{
+                            Image(systemName: "calendar")
+                                .foregroundColor(blacktext)
+                            Spacer()
+                                .frame(width: 20)
+                            Button {
+                                withAnimation{
+                                    self.showStartDate.toggle()
                                 }
-                                .padding(.horizontal, 50)
-                                .padding(.top, 15)
-                                DatePicker("Set Start Date", selection: $vm.startDate, in: Date()..., displayedComponents: .date)
-                                    .accentColor(yellow)
-                                    .datePickerStyle(GraphicalDatePickerStyle())
-                                    .frame(height: 300)
-                                    .labelsHidden()
-                                    .padding(.horizontal, 50)
+                            } label: {
+                                Text(valueStartDate ?  "\(vm.startDate, formatter: CreatePlanView.stackDateFormat)" : "Set Start Date")
+                                    .foregroundColor(valueStartDate ? .black : .gray)
+                                    .font(Font.custom("Gilroy-Light", size: 15))
                                 Spacer()
+                                Image(systemName: "chevron.right")
+                                    .foregroundColor(.gray)
+                                    .rotationEffect(.degrees(showStartDate ? 90 : 0))
+                                    .animation(.easeInOut(duration: 4), value: showStartDate)
                             }
+                            Spacer()
                         }
-
-                    }else{
-                        ZStack{
-                            Rectangle()
-                                .frame(height: 50)
-                                .frame(maxWidth: .infinity)
-                                .foregroundColor(.white)
-                                .cornerRadius(10)
-                                .padding(.horizontal, 30)
-                            HStack{
-                                Image(systemName: "calendar")
-                                Spacer()
-                                    .frame(width: 20)
-                                Button(action: {
-                                    withAnimation{
-                                        self.showStartDate.toggle()
-                                        valueStartDate = true
-                                        showEndDate = false
-                                    }
-                                }, label: {
-                                    Text((valueStartDate ? "\(vm.startDate, formatter: CreatePlanView.stackDateFormat)" : "Set Start Date"))
-                                        .foregroundColor(valueStartDate ? .black : .gray)
-                                        .font(Font.custom("Gilroy-Light", size: 15))
-                                    Spacer()
-                                    Image(systemName: "chevron.right")
-                                        .foregroundColor(.gray)
-                                        .rotationEffect(.degrees(showStartDate ? 90 : 0))
-                                        .animation(.easeInOut(duration: 4), value: showStartDate)
-                                })
-                                Spacer()
-                            }.padding(.horizontal, 50)
-                        }
+                        .padding(.horizontal, 50)
+                        .padding(.top, 15)
+                        DatePicker("Set Start Date", selection: $vm.startDate, in: Date()..., displayedComponents: .date)
+                            .accentColor(deepblue)
+                            .datePickerStyle(GraphicalDatePickerStyle())
+                            .frame(height: 300)
+                            .labelsHidden()
+                            .padding(.horizontal, 50)
+                        Spacer()
                     }
                 }
+                
+            }else{
+                if startDateValidation == true{
+                    if valueStartDate == false {
+                        TripStartDateIncorrect
+                    }else{
+                        TripStartDateCorrect
+                    }
+                }else{
+                    TripStartDateCorrect
+                }
+            }
+        }
+    }
+    
+    private var TripEndDateIncorrect : some View{
+        VStack{
+            ZStack{
+                Rectangle()
+                    .frame(height: 50)
+                    .frame(maxWidth: .infinity)
+                    .foregroundColor(tripcardColor)
+                    .cornerRadius(10)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(.red, lineWidth: 1)
+                    )
+                    .padding(.horizontal, 30)
+                HStack{
+                    Image(systemName: "calendar")
+                        .foregroundColor(blacktext)
+                    Spacer()
+                        .frame(width: 20)
+                    Button(action: {
+                        withAnimation{
+                            self.showEndDate.toggle()
+                            valueEndDate = true
+                            showStartDate = false
+                        }
+                    }, label: {
+                        Text((valueEndDate ? "\(vm.endDate, formatter: CreatePlanView.stackDateFormat)" : "Set Start Date"))
+                            .foregroundColor(valueEndDate ? .black : .gray)
+                            .font(Font.custom("Gilroy-Light", size: 15))
+                        Spacer()
+                        Image(systemName: "chevron.right")
+                            .foregroundColor(.gray)
+                            .rotationEffect(.degrees(showEndDate ? 90 : 0))
+                            .animation(.easeInOut(duration: 4), value: showEndDate)
+                    })
+                    Spacer()
+                }.padding(.horizontal, 50)
+            }
+            Text("End date is required")
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .font(Font.custom("Gilroy-Light", size: 15))
+                .foregroundColor(.red)
+                .padding(.horizontal, 50)
+        }
+    }
+    
+    private var TripEndDateCorrect: some View{
+        ZStack{
+            Rectangle()
+                .frame(height: 50)
+                .frame(maxWidth: .infinity)
+                .foregroundColor(tripcardColor)
+                .cornerRadius(10)
+                .padding(.horizontal, 30)
+            HStack{
+                Image(systemName: "calendar")
+                    .foregroundColor(blacktext)
+                Spacer()
+                    .frame(width: 20)
+                Button(action: {
+                    withAnimation{
+                        self.showEndDate.toggle()
+                        valueEndDate = true
+                        showStartDate = false
+                    }
+                }, label: {
+                    Text((valueEndDate ? "\(vm.endDate, formatter: CreatePlanView.stackDateFormat)" : "Set Start Date"))
+                        .foregroundColor(valueEndDate ? .black : .gray)
+                        .font(Font.custom("Gilroy-Light", size: 15))
+                    Spacer()
+                    Image(systemName: "chevron.right")
+                        .foregroundColor(.gray)
+                        .rotationEffect(.degrees(showEndDate ? 90 : 0))
+                        .animation(.easeInOut(duration: 4), value: showEndDate)
+                })
+                Spacer()
+            }.padding(.horizontal, 50)
+        }
     }
     
     private var TripEndDate : some View{
@@ -304,12 +469,13 @@ extension CreatePlanView {
                     Rectangle()
                         .frame(height: 350)
                         .frame(maxWidth: .infinity)
-                        .foregroundColor(.white)
+                        .foregroundColor(tripcardColor)
                         .cornerRadius(10)
                         .padding(.horizontal, 30)
                     VStack{
                         HStack{
                             Image(systemName: "calendar")
+                                .foregroundColor(blacktext)
                             Spacer()
                                 .frame(width: 20)
                             Button {
@@ -333,7 +499,7 @@ extension CreatePlanView {
                         DatePicker("Set End Date", selection: $vm.endDate, in: Date()..., displayedComponents: .date)
                             .datePickerStyle(GraphicalDatePickerStyle())
                             .frame(height: 300)
-                            .accentColor(yellow)
+                            .accentColor(deepblue)
                             .labelsHidden()
                             .padding(.horizontal, 50)
                         Spacer()
@@ -341,51 +507,190 @@ extension CreatePlanView {
                 }
                 
             }else{
-                ZStack{
-                    Rectangle()
-                        .frame(height: 50)
-                        .frame(maxWidth: .infinity)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
-                        .padding(.horizontal, 30)
-                    HStack{
-                        Image(systemName: "calendar")
-                        Spacer()
-                            .frame(width: 20)
-                        Button(action: {
-                            withAnimation{
-                                self.showEndDate.toggle()
-                                valueEndDate = true
-                                showStartDate = false
-                            }
-                        }, label: {
-                            Text((valueEndDate ? "\(vm.endDate, formatter: CreatePlanView.stackDateFormat)" : "Set End Date"))
-                                .foregroundColor(valueEndDate ? .black : .gray)
-                                .font(Font.custom("Gilroy-Light", size: 15))
+                if endDateValidation == true{
+                    if valueEndDate == false{
+                        TripEndDateIncorrect
+                    }else{
+                        TripEndDateCorrect
+                    }
+                }else{
+                    ZStack{
+                        Rectangle()
+                            .frame(height: 50)
+                            .frame(maxWidth: .infinity)
+                            .foregroundColor(tripcardColor)
+                            .cornerRadius(10)
+                            .padding(.horizontal, 30)
+                        HStack{
+                            Image(systemName: "calendar")
+                                .foregroundColor(blacktext)
                             Spacer()
-                            Image(systemName: "chevron.right")
-                                .foregroundColor(.gray)
-                                .rotationEffect(.degrees(showEndDate ? 90 : 0))
-                                .animation(.easeInOut(duration: 4), value: showEndDate)
-                        })
-                        
-                        //                    DatePicker("Set Start Date", selection: $startDate, in: Date()..., displayedComponents: .date)
-                        
-                        
-                        Spacer()
-                    }.padding(.horizontal, 50)
+                                .frame(width: 20)
+                            Button(action: {
+                                withAnimation{
+                                    self.showEndDate.toggle()
+                                    valueEndDate = true
+                                    showStartDate = false
+                                }
+                            }, label: {
+                                Text((valueEndDate ? "\(vm.endDate, formatter: CreatePlanView.stackDateFormat)" : "Set Start Date"))
+                                    .foregroundColor(valueEndDate ? .black : .gray)
+                                    .font(Font.custom("Gilroy-Light", size: 15))
+                                Spacer()
+                                Image(systemName: "chevron.right")
+                                    .foregroundColor(.gray)
+                                    .rotationEffect(.degrees(showEndDate ? 90 : 0))
+                                    .animation(.easeInOut(duration: 4), value: showEndDate)
+                            })
+                            Spacer()
+                        }.padding(.horizontal, 50)
+                    }
                 }
             }
         }
     }
     
+    private var TripNameCorrect: some View {
+        ZStack{
+            Rectangle()
+                .frame(height: 50)
+                .frame(maxWidth: .infinity)
+                .foregroundColor(tripcardColor)
+                .cornerRadius(10)
+                .padding(.horizontal, 30)
+            HStack{
+                Image(systemName: "pencil")
+                    .foregroundColor(blacktext)
+                Spacer()
+                    .frame(width: 20)
+                TextField("Trip Name", text: $vm.title)
+                    .frame(width: 250, alignment: .leading)
+                    .font(Font.custom("Gilroy-Light", size: 15))
+                    .foregroundColor(blacktext)
+//                    .accentColor(hinttextcolor)
+                Spacer()
+            }.padding(.horizontal, 50)
+        }
+    }
+    
+    private var TripNameIncorrect: some View {
+        VStack{
+            ZStack{
+                Rectangle()
+                    .frame(height: 50)
+                    .frame(maxWidth: .infinity)
+                    .foregroundColor(tripcardColor)
+                    .cornerRadius(10)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(.red, lineWidth: 1)
+                    )
+                    .padding(.horizontal, 30)
+                
+                HStack{
+                    Image(systemName: "pencil")
+                        .foregroundColor(blacktext)
+                    Spacer()
+                        .frame(width: 20)
+                    TextField("Trip Name", text: $vm.title)
+                        .frame(width: 250, alignment: .leading)
+                        .font(Font.custom("Gilroy-Light", size: 15))
+                        .foregroundColor(blacktext)
+//                        .accentColor(hinttextcolor)
+                    Spacer()
+                }.padding(.horizontal, 50)
+            }
+            Text("Trip Name is required")
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .font(Font.custom("Gilroy-Light", size: 15))
+                .foregroundColor(.red)
+                .padding(.horizontal, 50)
+        }
+    }
+    
+    private var DestinationCorrect: some View {
+        ZStack{
+            Rectangle()
+                .frame(height: 50)
+                .frame(maxWidth: .infinity)
+                .foregroundColor(tripcardColor)
+                .cornerRadius(10)
+                .padding(.horizontal, 30)
+            HStack{
+                Image(systemName: "airplane")
+                    .foregroundColor(blacktext)
+                Spacer()
+                    .frame(width: 20)
+                TextField("Trip Name", text: $vm.destination)
+                    .frame(width: 250, alignment: .leading)
+                    .font(Font.custom("Gilroy-Light", size: 15))
+                    .foregroundColor(blacktext)
+//                    .accentColor(hinttextcolor)
+                Spacer()
+            }.padding(.horizontal, 50)
+        }
+    }
+    
+    private var DestinationIncorrect: some View {
+        VStack{
+            ZStack{
+                Rectangle()
+                    .frame(height: 50)
+                    .frame(maxWidth: .infinity)
+                    .foregroundColor(tripcardColor)
+                    .cornerRadius(10)
+//                    .overlay(
+//                        RoundedRectangle(cornerRadius: 10)
+//                            .stroke(.red, lineWidth: 1)
+//                    )
+                    .padding(.horizontal, 30)
+                
+                HStack{
+                    Image(systemName: "airplane")
+                        .foregroundColor(blacktext)
+                    Spacer()
+                        .frame(width: 20)
+                    TextField("Destination", text: $vm.destination)
+                        .frame(width: 250, alignment: .leading)
+                        .font(Font.custom("Gilroy-Light", size: 15))
+                        .foregroundColor(blacktext)
+//                        .accentColor(hinttextcolor)
+                    Spacer()
+                }.padding(.horizontal, 50)
+            }
+            Text("Destination is Required")
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .font(Font.custom("Gilroy-Light", size: 15))
+                .foregroundColor(.red)
+                .padding(.horizontal, 50)
+        }
+    }
 }
 
 //MARK: Function
 extension CreatePlanView {
-    
-    
-    
-}
-
-
+    func createButtonPressed() {
+        
+        if vm.title.isEmpty || vm.destination.isEmpty || vm.startDate.description.isEmpty || vm.endDate.description.isEmpty{
+            tripNameValidation = true
+            destinationValidation = true
+            startDateValidation = true
+            endDateValidation = true
+        }
+         if (!vm.title.isEmpty) && (!vm.destination.isEmpty) || vm.startDate.description.isEmpty || vm.endDate.description.isEmpty {
+            tripNameValidation = false
+            destinationValidation = false
+            startDateValidation = true
+            endDateValidation = true
+        }
+            //        if vm.startDate.description.isEmpty { startDateValidation = true}
+            //        if vm.endDate.description.isEmpty{
+            //            endDateValidation = true
+            //        }do
+        if (!vm.title.isEmpty) && (!vm.destination.isEmpty) && (!vm.startDate.description.isEmpty) && (!vm.endDate.description.isEmpty){
+                    vm.addButtonPressed()
+                    presentationMode.wrappedValue.dismiss()
+                }
+            }
+        }
+        
