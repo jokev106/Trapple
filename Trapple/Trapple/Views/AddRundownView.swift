@@ -39,25 +39,30 @@ struct AddRundownView: View {
                 VStack {
                     VStack(alignment: .leading) {
                         TextField("Activity", text: $vm.title)
+                            .foregroundColor(blacktext)
                             .frame(height: 25)
                     
                         Rectangle()
                             .frame(height: 1)
+                            .foregroundColor(blacktext)
                             .opacity(0.3)
                     
                         TextField("Location", text: $vm.location)
                             .frame(height: 25)
+                            .foregroundColor(blacktext)
                     
                         Rectangle()
                             .frame(height: 1)
                             .opacity(0.3)
+                            .foregroundColor(blacktext)
                     
                         TextField("Description", text: $vm.description)
                             .frame(height: 25)
+                            .foregroundColor(blacktext)
                     }
                     .padding()
                     .frame(maxWidth: .infinity)
-                    .background(.white)
+                    .background(tripcardColor)
                     .cornerRadius(15)
                     .padding()
                     
@@ -72,24 +77,27 @@ struct AddRundownView: View {
                         }) {
                             HStack {
                                 Text("Start Time")
+                                    .foregroundColor(blacktext)
                                 
                                 Spacer()
                                 
                                 Text(vm.startDate, style: .time)
                                     .padding(5)
-                                    .background(Color("grayBG"))
+                                    .background(graytimebg)
                                     .cornerRadius(5)
                             }
                             .frame(height: 25)
                         }
-                        .foregroundColor(.black)
+                        .foregroundColor(blacktext)
                         
                         if selected == 1 {
                             DatePicker("", selection: $vm.startDate, displayedComponents: .hourAndMinute).datePickerStyle(WheelDatePickerStyle())
+                                .foregroundColor(blacktext)
                         }
                     
                         Rectangle()
                             .frame(height: 1)
+                            .foregroundColor(blacktext)
                             .opacity(0.3)
                     
                         Button(action: {
@@ -102,25 +110,27 @@ struct AddRundownView: View {
                         }) {
                             HStack {
                                 Text("End Time")
+                                    .foregroundColor(blacktext)
                             
                                 Spacer()
                             
                                 Text(vm.endDate, style: .time)
                                     .padding(5)
-                                    .background(Color("grayBG"))
+                                    .background(graytimebg)
                                     .cornerRadius(5)
                             }
                             .frame(height: 25)
                         }
-                        .foregroundColor(.black)
+                        .foregroundColor(blacktext)
                         
                         if selected == 2 {
                             DatePicker("", selection: $vm.endDate, displayedComponents: .hourAndMinute).datePickerStyle(WheelDatePickerStyle())
+                                .foregroundColor(blacktext)
                         }
                     }
                     .padding()
                     .frame(maxWidth: .infinity)
-                    .background(.white)
+                    .background(tripcardColor)
                     .cornerRadius(15)
                     .padding()
                 }

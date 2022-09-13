@@ -9,7 +9,13 @@ import Foundation
 import SwiftUI
 
 let blacktext = Color("BlackText")
-let darkblue = Color("DarkBlue")
+let deepblue = Color("deepBlue")
 let graybg = Color("grayBG")
 let navbg = Color("navBG")
 let yellow = Color("yellowCard")
+let lilac = Color("lilac")
+let lightpurple = Color("lightPurple")
+let tripcardColor = Color("tripCardColor")
+let iconblack = Color("iconBlack")
+let hinttextcolor = Color("hintTextColor")
+let graytimebg = Color("grayTimeBG")

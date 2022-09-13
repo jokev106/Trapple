@@ -35,3 +35,4 @@ extension View {
         self.modifier(NavAppearanceModifier(backgroundColor: backgroundColor, foregroundColor: foregroundColor, hideSeperator: hideSeperator))
     }
 }
+

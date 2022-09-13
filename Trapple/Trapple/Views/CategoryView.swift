@@ -54,7 +54,7 @@ struct CategoryView: View {
                         showModal.toggle()
                     }, label: {
                         Image(systemName: "plus")
-                            .foregroundColor(.black)
+                            .foregroundColor(blacktext)
                     })
                     .sheet(isPresented: $showModal) {
                         AddItemVIew(vm: vm, categoryID: categoryID, category: title, icon: image, showModal: self.$showModal)

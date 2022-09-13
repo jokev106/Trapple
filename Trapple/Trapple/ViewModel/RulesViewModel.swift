@@ -79,13 +79,18 @@ class RulesViewModel: ObservableObject {
         
     func deleteItem(indexSet: IndexSet) {
         guard let index = indexSet.first else { return }
-        let rule = rules[index]
-//        let recordID = plan.recordID!
         
-        CKContainer.default().privateCloudDatabase.delete(withRecordID: rule.recordID!) { [weak self] _, _ in
-            self?.rules.remove(at: index)
-            self?.removeList(index: index)
+        if rules.count > index {
+            let rule = rules[index]
+//            let recordID = plan.recordID!
+            
+            CKContainer.default().privateCloudDatabase.delete(withRecordID: rule.recordID!) { [weak self] _, _ in
+                self?.rules.remove(at: index)
+//                self?.removeList(index: index)
+            }
         }
+            
+        self.removeList(index: index)
     }
     
     func fetchItems(planID: CKRecord.ID) {

@@ -53,14 +53,14 @@ extension RulesView {
         ForEach(vm.listAdd.indices, id: \.self) { item in
             HStack {
                 Rectangle()
-                    .frame(width: 8, height: 75)
+                    .frame(width: 8, height:100)
                     .cornerRadius(13)
-                    .foregroundColor(blacktext)
+                    .foregroundColor(deepblue)
                 Spacer()
                     .frame(width: 20)
                 VStack {
                     TextField("Input Rules", text: $vm.listTitle[item])
-                        .font(Font.custom("Gilroy-ExtraBold", size: 17))
+                        .font(Font.custom("Gilroy-ExtraBold", size: 20))
                         .foregroundColor(.black)
                         .onChange(of: vm.listTitle[item]) { _ in
 //                            vm.updateTitle(planID: planID, rule: vm.rules[item], title: vm.listTitle[item])
@@ -74,7 +74,7 @@ extension RulesView {
                         .frame(height: 5)
 
                     TextField("Input Description", text: $vm.listDescription[item])
-                        .font(Font.custom("Gilroy-Light", size: 14))
+                        .font(Font.custom("Gilroy-Light", size: 15))
                         .foregroundColor(.black)
                         .onChange(of: vm.listDescription[item]) { _ in
 //                            vm.updateDescription(planID: planID, rule: vm.rules[item], description: vm.listDescription[item])
@@ -96,6 +96,7 @@ extension RulesView {
                         Text("Save")
                             .font(Font.custom("Gilroy-ExtraBold", size: 14))
                             .padding()
+                            .padding(.bottom)
                     }.buttonStyle(PlainButtonStyle())
                 }
 
@@ -108,13 +109,15 @@ extension RulesView {
                         Text("Save")
                             .font(Font.custom("Gilroy-ExtraBold", size: 14))
                             .padding()
+                            .padding(.bottom)
                     }.buttonStyle(PlainButtonStyle())
                 }
             }
-//            .listRowBackground(Color.white)
+            .listRowBackground(graybg)
             .listRowSeparator(.hidden)
             .listRowInsets(EdgeInsets())
             .frame(height: 100)
+//            RulesCardView(vm: vm, planID: planID, item: item)
         }
         .onDelete(perform: vm.deleteItem)
 //                .onMove(perform: dataRules.onMove)
