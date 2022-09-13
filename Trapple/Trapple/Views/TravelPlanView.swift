@@ -113,7 +113,7 @@ extension TravelPlanView {
                 VStack{
                     List{
                         ForEach(vm.plans, id: \.recordID) {items in
-                            TripCardView(vm: vm, planrecord: items, plan: items.title, destination: items.destination, startDate: items.startDate, endDate: items.endDate, planID: items.recordID!)
+                            TripCardView(vm: vm, planRecord: items, plan: items.title, destination: items.destination, startDate: items.startDate, endDate: items.endDate, planID: items.recordID!, categoryDefault: items.categoryDefault)
                                 .onAppear{
                                     let dateFormatter = DateFormatter()
                                     dateFormatter.dateFormat = "yyyy MMMM d"
