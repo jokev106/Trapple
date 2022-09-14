@@ -94,6 +94,8 @@ class EquipmentsViewModel: ObservableObject {
         
         var returnedItems: [EquipmentModel] = []
         
+        queryOperation.qualityOfService = .userInteractive
+        
         //Query for saving fetched items in an array
         queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
             switch returnedResult {
