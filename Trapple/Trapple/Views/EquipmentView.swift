@@ -53,10 +53,10 @@ struct EquipmentView: View {
                                         Text(vm.categoryVM[item].category)
                                             .frame(maxWidth: .infinity, alignment: .leading)
                                     }
-                                    .foregroundColor(.black)
+                                    .foregroundColor(deepblue)
                                     .padding()
                                     .frame(height: 100)
-                                    .background(.blue)
+                                    .background(lightpurple)
                                     .cornerRadius(15)
                                     .shadow(color: Color.gray.opacity(0.105), radius: 2, x: 0, y: 3)
                                     .padding(.horizontal, 5)
