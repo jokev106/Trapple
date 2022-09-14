@@ -68,22 +68,21 @@ class ActivitiesViewModel: ObservableObject {
                 self?.endDate = Date()
                 self?.actualDate = Date()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1){
-                    self?.fetchItems(planID: planID, actualDate: actualDate)
+                    self?.fetchItems(planID: planID)
                     print("Success fetch activity items")
                 }
             }
         }
     }
     
-    func fetchItems(planID: CKRecord.ID, actualDate: String) {
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMMM d"
-        let actualDate = dateFormatter.date(from: actualDate)
+    func fetchItems(planID: CKRecord.ID) {
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "MMMM d"
+//        let actualDate = dateFormatter.date(from: actualDate)
         
         let recordToMatch = CKRecord.Reference(recordID: planID, action: .deleteSelf)
 //        let predicate = NSPredicate(format: "planID == %@", recordToMatch)
-        let predicate = NSPredicate(format: "(planID == %@) AND (actualDate == %@)", argumentArray: [recordToMatch, actualDate])
+        let predicate = NSPredicate(format: "(planID == %@)", argumentArray: [recordToMatch, actualDate])
         let query = CKQuery(recordType: "Activities", predicate: predicate)
         query.sortDescriptors = [NSSortDescriptor(key: "startDate", ascending: true)]
         let queryOperation = CKQueryOperation(query: query)
@@ -121,7 +120,6 @@ class ActivitiesViewModel: ObservableObject {
     }
     
     func fetchItem(planID: CKRecord.ID) {
-        
         let recordToMatch = CKRecord.Reference(recordID: planID, action: .deleteSelf)
         let predicate = NSPredicate(format: "planID == %@", recordToMatch)
         let query = CKQuery(recordType: "Activities", predicate: predicate)

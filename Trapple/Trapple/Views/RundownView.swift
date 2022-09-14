@@ -9,9 +9,7 @@ import CloudKit
 import SwiftUI
 
 struct RundownView: View {
-    
-    @Environment(\.presentationMode) var presentationMode:Binding<PresentationMode>
-
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     @ObservedObject var vm: ActivitiesViewModel
     @Binding var planID: CKRecord.ID
@@ -32,112 +30,121 @@ struct RundownView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            NavigationView{
+            NavigationView {
                 VStack {
                     SegmentedControl
                     
-    //                ScrollView {
-                        VStack(spacing: 0) {
-                            HStack {
-                                Text(currentDate)
-                                    .foregroundColor(blacktext)
-                                    .font(Font.custom("Gilroy-ExtraBold", size: 17))
-                                    .onAppear{
-                                        let dateFormatter = DateFormatter()
-                                        dateFormatter.dateFormat = "MMMM d"
-                                        let startDatestring = dateFormatter.string(from: startDate)
-                                        currentDate = startDatestring
-                                    }
-                                
-                                Spacer()
-                                
-                                Button(action: { showModal.toggle() }) {
-                                    Image(systemName: "plus.circle.fill")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 20)
+                    //                ScrollView {
+                    VStack(spacing: 0) {
+                        HStack {
+                            Text(currentDate)
+                                .foregroundColor(blacktext)
+                                .font(Font.custom("Gilroy-ExtraBold", size: 17))
+                                .onAppear {
+                                    let dateFormatter = DateFormatter()
+                                    dateFormatter.dateFormat = "MMMM d"
+                                    let startDatestring = dateFormatter.string(from: startDate)
+                                    currentDate = startDatestring
                                 }
-                                .sheet(isPresented: $showModal) {
-                                    AddRundownView(vm: vm, planID: planID, selectedDate: selected, startDate: startDate, endDate: endDate, showModal: self.$showModal)
-                                }
+                                
+                            Spacer()
+                                
+                            Button(action: { showModal.toggle() }) {
+                                Image(systemName: "plus.circle.fill")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 20)
                             }
-                            .padding(.horizontal, 30)
-                            .padding(.bottom)
+                            .sheet(isPresented: $showModal) {
+                                AddRundownView(vm: vm, planID: planID, selectedDate: selected, startDate: startDate, endDate: endDate, showModal: self.$showModal)
+                            }
+                        }
+                        .padding(.horizontal, 30)
+                        .padding(.vertical)
                             
-                            if !vm.activity.isEmpty {
-                                List{
-                                    ForEach(vm.activity, id: \.recordID) { index in
+                        if !vm.activity.isEmpty {
+                            List {
+                                ForEach(vm.activity, id: \.recordID) { index in
+                                    if dateFormatter(date: index.actualDate) == currentDate {
                                         if apaa == index.recordID {
                                             Button(action: { apaa = CKRecord.ID(recordName: "0") }) {
                                                 RundownDetailCardView(
                                                     activity: index.title, location: index.location, description: index.description, startTime: index.startDate, endTime: index.endDate
                                                 )
                                             }
-            
+                                                
                                         } else {
                                             Button(action: { apaa = index.recordID! }) {
                                                 RundownCardview(activity: index.title, location: index.location, startTime: index.startDate)
                                             }
                                         }
                                     }
-    //                                .onDelete(perform: vm.delete)
-                                    .foregroundColor(blacktext)
-                                    .listRowSeparator(.hidden)
-                                    .listRowInsets(EdgeInsets())
-    //                                .padding(.horizontal)
-    //                                .padding(.bottom)
-                                    .animation(.default)
                                 }
-
-                            } else {
-                                VStack {
-                                    Text("No Activity")
-                                        .foregroundColor(blacktext)
-                                        .opacity(0.2)
-                                }
-                                .frame(width: geometry.size.width, height: geometry.size.height / 1.2, alignment: .center)
+                                //                                .onDelete(perform: vm.delete)
+                                .foregroundColor(blacktext)
+                                .listRowSeparator(.hidden)
+                                .listRowInsets(EdgeInsets())
+                                //                                .padding(.horizontal)
+                                //                                .padding(.bottom)
+                                .animation(.default)
                             }
+
+                        } else {
+                            VStack {
+                                Text("No Activity")
+                                    .foregroundColor(blacktext)
+                                    .opacity(0.2)
+                            }
+                            .frame(width: geometry.size.width, height: geometry.size.height / 1.2, alignment: .center)
                         }
-    //                }
+                    }
+                    //                }
                 }
                 .background(graybg)
                 .font(Font.custom("Gilroy-Light", size: 15))
                 .navigationTitle("Rundown")
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
-                        Button(action: {}, label: {
+                        NavigationLink(destination: PDFView(vm: vm, planID: $planID, startDate: $startDate, endDate: $endDate), label: {
                             Image(systemName: "square.and.arrow.up")
                                 .foregroundColor(.black)
                         })
-                    };
+                    }
                     ToolbarItem(placement: .navigationBarLeading) {
-                        Button{
-                            //Back to Travel Plan Screen
+                        Button {
+                            // Back to Travel Plan Screen
                             presentationMode.wrappedValue.dismiss()
-                        }label: {
+                        } label: {
                             Image(systemName: "chevron.left")
                                 .foregroundColor(deepblue)
                             Text("Back")
                                 .foregroundColor(deepblue)
-                            
                         }
                     }
                 }
-                .onAppear {
-                    vm.getDates(startDate: startDate, endDate: endDate)
-                    vm.fetchItems(planID: planID, actualDate: vm.dates[selected])
-                }
+            }
+            .onAppear {
+                vm.activity.removeAll()
+                vm.getDates(startDate: startDate, endDate: endDate)
+                vm.fetchItems(planID: planID)
             }
         }
         .background(graybg)
     }
+    
+    func dateFormatter(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMMM d"
+        
+        return dateFormatter.string(from: date)
+    }
 }
 
-//struct RundownView_Previews: PreviewProvider {
+// struct RundownView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        RundownView()
 //    }
-//}
+// }
 
 // MARK: Components
 
@@ -150,14 +157,14 @@ extension RundownView {
                         .frame(height: 0.5)
                         .foregroundColor(.gray)
                 }
-                .frame(height: 50, alignment: .bottom)
+                .frame(height: 30, alignment: .bottom)
                 
                 HStack(spacing: 0) {
                     ForEach(vm.dates.indices, id: \.self) { index in
                         Button(action: { selected = index
                             print(selected)
                             currentDate = vm.dates[selected]
-                            vm.fetchItems(planID: planID, actualDate: vm.dates[selected])
+//                            vm.fetchItems(planID: planID, actualDate: vm.dates[selected])
                         }) {
                             VStack {
                                 Text("Day \(index + 1)")
@@ -170,14 +177,12 @@ extension RundownView {
 //                                    .font(Font.custom("Gilroy-Light", size: 13))
 //                                    .opacity(selected == index ? 0.4 : 0.2)
                             
-                                Spacer()
-                            
                                 Rectangle()
                                     .frame(height: selected == index ? 2 : 0.5)
                                     .foregroundColor(selected == index ? .yellow : .gray)
                             }
                         }
-                        .frame(width: 100, height: 50, alignment: .leading)
+                        .frame(width: 100, height: 30, alignment: .bottomLeading)
                         .animation(.default)
                     }
                 }
@@ -188,7 +193,6 @@ extension RundownView {
                 Button(action: {
                     slider -= 1; posX += 300; selected = (slider * 3)
                     currentDate = vm.dates[selected]
-                    vm.fetchItems(planID: planID, actualDate: vm.dates[selected])
                 }) {
                     if slider > 0 {
                         Image(systemName: "chevron.left")
@@ -204,7 +208,6 @@ extension RundownView {
                 Button(action: {
                     slider += 1; posX -= 300; selected = (slider * 3)
                     currentDate = vm.dates[selected]
-                    vm.fetchItems(planID: planID, actualDate: vm.dates[selected])
                 }) {
                     if slider < Int(ceil(Double(vm.dates.count) / 3) - 1) {
                         Image(systemName: "chevron.right")
@@ -218,5 +221,6 @@ extension RundownView {
             }
         }
         .frame(maxWidth: .infinity)
+        .padding(.top, 5)
     }
 }
