@@ -12,8 +12,8 @@ struct TrappleApp: App {
     
     var body: some Scene {
         WindowGroup {
-//            HomeView()
-            PDFView()
+            HomeView()
+//            PDFView(showPDF: .constant(true))
         }
     }
 }
