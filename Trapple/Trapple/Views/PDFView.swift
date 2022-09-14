@@ -47,36 +47,34 @@ struct PDFView: View {
                             .cornerRadius(15)
                             
                             ForEach(vm.activity, id: \.recordID) { item in
-                                Group {
-                                    if dateFormatter(date: item.actualDate) == vm.dates[index] {
-                                        HStack(spacing: 0) {
-                                            VStack {
-                                                Text("\(item.startDate, formatter: Self.stackDateFormat) - \(item.endDate, formatter: Self.stackDateFormat)")
-                                                    .font(Font.custom("Gilroy-ExtraBold", size: 13))
-                                                    .padding(.top, 2)
-                                                    .foregroundColor(blacktext)
-                                            }
-                                            .frame(maxWidth: 100, maxHeight: .infinity, alignment: .top)
-                                            .padding()
-                                            
-                                            Rectangle()
-                                                .frame(width: 3)
-                                                .foregroundColor(deepblue)
-                                            
-                                            VStack(alignment: .leading) {
-                                                Text("\(item.title)")
-                                                    .foregroundColor(blacktext)
-                                                    .font(Font.custom("Gilroy-ExtraBold", size: 13))
-                                            }
-                                            .frame(maxWidth: .infinity, alignment: .topLeading)
-                                            .padding()
+                                if dateFormatter(date: item.actualDate) == vm.dates[index] {
+                                    HStack(spacing: 0) {
+                                        VStack {
+                                            Text("\(item.startDate, formatter: Self.stackDateFormat) - \(item.endDate, formatter: Self.stackDateFormat)")
+                                                .font(Font.custom("Gilroy-ExtraBold", size: 13))
+                                                .padding(.top, 2)
+                                                .foregroundColor(blacktext)
                                         }
-                                        .font(Font.custom("Gilroy-Light", size: 11))
-                                        .frame(maxWidth: .infinity)
-                                        .background(tripcardColor)
-                                        .cornerRadius(15)
-                                        .shadow(color: Color.gray.opacity(0.105), radius: 2, x: 0, y: 3)
+                                        .frame(maxWidth: 100, maxHeight: .infinity, alignment: .top)
+                                        .padding()
+                                            
+                                        Rectangle()
+                                            .frame(width: 3)
+                                            .foregroundColor(deepblue)
+                                            
+                                        VStack(alignment: .leading) {
+                                            Text("\(item.title)")
+                                                .foregroundColor(blacktext)
+                                                .font(Font.custom("Gilroy-ExtraBold", size: 13))
+                                        }
+                                        .frame(maxWidth: .infinity, alignment: .topLeading)
+                                        .padding()
                                     }
+                                    .font(Font.custom("Gilroy-Light", size: 11))
+                                    .frame(maxWidth: .infinity)
+                                    .background(tripcardColor)
+                                    .cornerRadius(15)
+                                    .shadow(color: Color.gray.opacity(0.105), radius: 2, x: 0, y: 3)
                                 }
                             }
                         }
@@ -99,10 +97,6 @@ struct PDFView: View {
                         sharePDF(content: { self }, fileName: filename)
                     }
             }
-        }
-        .onAppear{
-            vm.activity = []
-            vm.fetchItems2(planID: planID)
         }
     }
     

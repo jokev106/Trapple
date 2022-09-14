@@ -68,58 +68,14 @@ class ActivitiesViewModel: ObservableObject {
                 self?.endDate = Date()
                 self?.actualDate = Date()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1){
-                    self?.fetchItems(planID: planID, actualDate: actualDate)
+                    self?.fetchItems(planID: planID)
                     print("Success fetch activity items")
                 }
             }
         }
     }
     
-    func fetchItems(planID: CKRecord.ID, actualDate: String) {
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMMM d"
-        let actualDate = dateFormatter.date(from: actualDate)
-        
-        let recordToMatch = CKRecord.Reference(recordID: planID, action: .deleteSelf)
-//        let predicate = NSPredicate(format: "planID == %@", recordToMatch)
-        let predicate = NSPredicate(format: "(planID == %@) AND (actualDate == %@)", argumentArray: [recordToMatch, actualDate])
-        let query = CKQuery(recordType: "Activities", predicate: predicate)
-        query.sortDescriptors = [NSSortDescriptor(key: "startDate", ascending: true)]
-        let queryOperation = CKQueryOperation(query: query)
-        
-        var returnedItems: [ActivityModel] = []
-        
-        //Query for saving fetched items in an array
-        queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
-            switch returnedResult {
-            case.success(let record):
-//                guard let title = record["title"] as? String else {return}
-                if let activityList = ActivityModel.fromRecord(record: record){
-                    returnedItems.append(activityList)
-                }
-            case.failure(let error):
-                print("Error recordMatchedBlock: \(error)")
-            }
-        }
-        
-        //Returned fetched items
-        queryOperation.queryResultBlock = { [weak self] returnedResult in
-            print("Returned Result: \(returnedResult)")
-            DispatchQueue.main.async {
-                self?.activity = returnedItems.map(ActivityViewModel.init)
-            }
-            
-        }
-        
-        print(returnedItems)
-        
-        addOperation(operation: queryOperation)
-        
-    }
-    
-    func fetchItems2(planID: CKRecord.ID) {
-        
+    func fetchItems(planID: CKRecord.ID) {
 //        let dateFormatter = DateFormatter()
 //        dateFormatter.dateFormat = "MMMM d"
 //        let actualDate = dateFormatter.date(from: actualDate)
@@ -162,7 +118,6 @@ class ActivitiesViewModel: ObservableObject {
     }
     
     func fetchItem(planID: CKRecord.ID) {
-        
         let recordToMatch = CKRecord.Reference(recordID: planID, action: .deleteSelf)
         let predicate = NSPredicate(format: "planID == %@", recordToMatch)
         let query = CKQuery(recordType: "Activities", predicate: predicate)
@@ -204,6 +159,7 @@ class ActivitiesViewModel: ObservableObject {
     }
     
     func getDates(startDate: Date, endDate: Date) {
+        dates.removeAll()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy MMMM d"
         let startDatestring = dateFormatter.string(from: startDate)
