@@ -51,7 +51,9 @@ struct ItemListCardview: View {
             VStack(alignment: .leading, spacing: 0) {
                 Text(itemName)
                     .font(Font.custom("Gilroy-ExtraBold", size: 17))
+                    .foregroundColor(blacktext)
                 Text(description)
+                    .foregroundColor(blacktext)
                     .lineLimit(3)
                     .padding(.top, 1)
             }
@@ -62,7 +64,7 @@ struct ItemListCardview: View {
         .font(Font.custom("Gilroy-Light", size: 13))
         .frame(maxWidth: .infinity)
         .frame(height: 100)
-        .background(.white)
+        .background(tripcardColor)
         .cornerRadius(15)
         .shadow(color: Color.gray.opacity(0.105), radius: 2, x: 0, y: 3)
     }

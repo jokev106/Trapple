@@ -442,7 +442,7 @@ extension CreatePlanView {
                             showStartDate = false
                         }
                     }, label: {
-                        Text((valueEndDate ? "\(vm.endDate, formatter: CreatePlanView.stackDateFormat)" : "Set Start Date"))
+                        Text((valueEndDate ? "\(vm.endDate, formatter: CreatePlanView.stackDateFormat)" : "Set End Date"))
                             .foregroundColor(valueEndDate ? .black : .gray)
                             .font(Font.custom("Gilroy-Light", size: 15))
                         Spacer()
@@ -482,7 +482,7 @@ extension CreatePlanView {
                         showStartDate = false
                     }
                 }, label: {
-                    Text((valueEndDate ? "\(vm.endDate, formatter: CreatePlanView.stackDateFormat)" : "Set Start Date"))
+                    Text((valueEndDate ? "\(vm.endDate, formatter: CreatePlanView.stackDateFormat)" : "Set End Date"))
                         .foregroundColor(valueEndDate ? .black : .gray)
                         .font(Font.custom("Gilroy-Light", size: 15))
                     Spacer()

@@ -40,6 +40,7 @@ struct CategoryView: View {
                             perform: vm.deleteItem
                         )
                     }
+                    .listRowBackground(graybg)
                     .listStyle(.plain)
                 }
                 .background(graybg)
