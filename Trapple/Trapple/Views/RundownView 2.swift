@@ -11,7 +11,6 @@ import SwiftUI
 struct RundownView: View {
     
     @Environment(\.presentationMode) var presentationMode:Binding<PresentationMode>
-
     
     @ObservedObject var vm: ActivitiesViewModel
     @Binding var planID: CKRecord.ID
@@ -62,23 +61,21 @@ struct RundownView: View {
                                 }
                             }
                             .padding(.horizontal, 30)
-                            .padding(.vertical)
+                            .padding(.bottom)
                             
                             if !vm.activity.isEmpty {
                                 List{
                                     ForEach(vm.activity, id: \.recordID) { index in
-                                        if dateFormatter(date: index.actualDate) == currentDate {
-                                            if apaa == index.recordID {
-                                                Button(action: { apaa = CKRecord.ID(recordName: "0") }) {
-                                                    RundownDetailCardView(
-                                                        activity: index.title, location: index.location, description: index.description, startTime: index.startDate, endTime: index.endDate
-                                                    )
-                                                }
-                                                
-                                            } else {
-                                                Button(action: { apaa = index.recordID! }) {
-                                                    RundownCardview(activity: index.title, location: index.location, startTime: index.startDate)
-                                                }
+                                        if apaa == index.recordID {
+                                            Button(action: { apaa = CKRecord.ID(recordName: "0") }) {
+                                                RundownDetailCardView(
+                                                    activity: index.title, location: index.location, description: index.description, startTime: index.startDate, endTime: index.endDate
+                                                )
+                                            }
+            
+                                        } else {
+                                            Button(action: { apaa = index.recordID! }) {
+                                                RundownCardview(activity: index.title, location: index.location, startTime: index.startDate)
                                             }
                                         }
                                     }
@@ -103,6 +100,7 @@ struct RundownView: View {
     //                }
                 }
                 .background(graybg)
+
                 .font(Font.custom("Gilroy-Light", size: 15))
                 .navigationTitle("Rundown")
                 .toolbar {
@@ -122,31 +120,26 @@ struct RundownView: View {
                             Text("Back")
                                 .foregroundColor(deepblue)
                             
-                        
+                        }
+                    }
+                }
+                .onAppear {
+                    vm.getDates(startDate: startDate, endDate: endDate)
+                    vm.fetchItems(planID: planID, actualDate: vm.dates[selected])
                 }
             }
-            .onAppear {
-                vm.activity.removeAll()
-                vm.getDates(startDate: startDate, endDate: endDate)
-                vm.fetchItems(planID: planID)
-            }
+            .background(graybg
+            )
         }
         .background(graybg)
     }
-    
-    func dateFormatter(date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMMM d"
-        
-        return dateFormatter.string(from: date)
-    }
 }
 
-// struct RundownView_Previews: PreviewProvider {
+//struct RundownView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        RundownView()
 //    }
-// }
+//}
 
 // MARK: Components
 
@@ -159,14 +152,14 @@ extension RundownView {
                         .frame(height: 0.5)
                         .foregroundColor(.gray)
                 }
-                .frame(height: 30, alignment: .bottom)
+                .frame(height: 50, alignment: .bottom)
                 
                 HStack(spacing: 0) {
                     ForEach(vm.dates.indices, id: \.self) { index in
                         Button(action: { selected = index
                             print(selected)
                             currentDate = vm.dates[selected]
-//                            vm.fetchItems(planID: planID, actualDate: vm.dates[selected])
+                            vm.fetchItems(planID: planID, actualDate: vm.dates[selected])
                         }) {
                             VStack {
                                 Text("Day \(index + 1)")
@@ -179,12 +172,14 @@ extension RundownView {
 //                                    .font(Font.custom("Gilroy-Light", size: 13))
 //                                    .opacity(selected == index ? 0.4 : 0.2)
                             
+                                Spacer()
+                            
                                 Rectangle()
                                     .frame(height: selected == index ? 2 : 0.5)
                                     .foregroundColor(selected == index ? .yellow : .gray)
                             }
                         }
-                        .frame(width: 100, height: 30, alignment: .bottomLeading)
+                        .frame(width: 100, height: 50, alignment: .leading)
                         .animation(.default)
                     }
                 }
@@ -195,6 +190,7 @@ extension RundownView {
                 Button(action: {
                     slider -= 1; posX += 300; selected = (slider * 3)
                     currentDate = vm.dates[selected]
+                    vm.fetchItems(planID: planID, actualDate: vm.dates[selected])
                 }) {
                     if slider > 0 {
                         Image(systemName: "chevron.left")
@@ -210,6 +206,7 @@ extension RundownView {
                 Button(action: {
                     slider += 1; posX -= 300; selected = (slider * 3)
                     currentDate = vm.dates[selected]
+                    vm.fetchItems(planID: planID, actualDate: vm.dates[selected])
                 }) {
                     if slider < Int(ceil(Double(vm.dates.count) / 3) - 1) {
                         Image(systemName: "chevron.right")
@@ -223,6 +220,5 @@ extension RundownView {
             }
         }
         .frame(maxWidth: .infinity)
-        .padding(.top, 5)
     }
 }

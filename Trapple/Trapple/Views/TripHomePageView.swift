@@ -9,6 +9,10 @@ import CloudKit
 import SwiftUI
 
 struct TripHomePageView: View {
+    
+    @Environment(\.presentationMode) var presentationMode:Binding<PresentationMode>
+    
+    
     @ObservedObject var planVM = PlansViewModel()
     @Binding var planRecord: PlanViewModel
     @StateObject private var vmActivity = ActivitiesViewModel()
@@ -24,7 +28,7 @@ struct TripHomePageView: View {
     @StateObject var categoryViewModel = CategoriesViewModel()
     
     var body: some View {
-//        NavigationView {
+        NavigationView {
         ScrollView {
             VStack {
                 Spacer()
@@ -32,7 +36,9 @@ struct TripHomePageView: View {
                 Equipment
                 Rules
             }
+            .background(graybg)
         }
+        .background(graybg)
         .onAppear {
             vmActivity.fetchItem(planID: planID)
             
@@ -57,10 +63,25 @@ struct TripHomePageView: View {
             
             categoryViewModel.fetchItems(planID: planID)
         }
-        .navigationAppearance(backgroundColor: UIColor(graybg), foregroundColor: UIColor(blacktext), hideSeperator: true)
+//        .navigationAppearance(backgroundColor: UIColor(graybg), foregroundColor: UIColor(blacktext), hideSeperator: true)
         .font(Font.custom("Gilroy-Light", size: 20))
         .navigationTitle(title)
-//        }
+        .toolbar{
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button{
+                    //Back to Travel Plan Screen
+                    presentationMode.wrappedValue.dismiss()
+                }label: {
+                    Image(systemName: "chevron.left")
+                        .foregroundColor(deepblue)
+                    Text("Travel Plan")
+                        .foregroundColor(deepblue)
+                    
+                }
+            }
+        }
+        }
+        .background(graybg)
 //        .accentColor(.yellow)
 //        .edgesIgnoringSafeArea(.top)
     }
@@ -77,7 +98,9 @@ struct TripHomePageView: View {
 extension TripHomePageView {
     private var Rundown: some View {
         VStack {
-            NavigationLink(destination: RundownView(vm: vmActivity, planID: $planID, startDate: $startDate, endDate: $endDate), label: {
+            NavigationLink(destination: RundownView(vm: vmActivity, planID: $planID, startDate: $startDate, endDate: $endDate)
+                .navigationBarHidden(true)
+                           , label: {
                 VStack(spacing: 0) {
                     VStack(alignment: .leading) {
                         Text("Rundown")

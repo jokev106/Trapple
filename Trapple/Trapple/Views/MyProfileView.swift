@@ -32,9 +32,10 @@ struct MyProfileView: View {
                     }.navigationTitle("My Profile")
                         .background(graybg)
                 }
-                .background(graybg)
+//                .background(graybg)
             }
         }
+        .background(graybg)
     }
 }
 

@@ -42,6 +42,7 @@ struct CategoryView: View {
                     }
                     .listStyle(.plain)
                 }
+                .background(graybg)
                 .onAppear{
                     vm.fetchItems(categoryID: categoryID, category: title)
                 }
@@ -62,6 +63,7 @@ struct CategoryView: View {
                 }
             }
         }
+        .background(graybg)
     }
 }
 
