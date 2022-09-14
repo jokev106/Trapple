@@ -107,7 +107,7 @@ struct RundownView: View {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         NavigationLink(destination: PDFView(vm: vm, planID: $planID, startDate: $startDate, endDate: $endDate), label: {
                             Image(systemName: "square.and.arrow.up")
-                                .foregroundColor(.black)
+                                .foregroundColor(blacktext)
                         })
                     }
                     ToolbarItem(placement: .navigationBarLeading) {
