@@ -112,6 +112,7 @@ extension TravelPlanView {
 //            ScrollView{
                 VStack{
                     List{
+
                     ForEach(vm.plans, id: \.recordID) {items in
                         TripCardView(vm: vm, planRecord: items, plan: items.title, destination: items.destination, startDate: items.startDate, endDate: items.endDate, planID: items.recordID!, categoryDefault: items.categoryDefault, planImage: items.imageURL)
                             .onAppear{
@@ -123,6 +124,7 @@ extension TravelPlanView {
                                 let startDateString = dateFormatter.date(from: startString)
                                 if startDateString! < currentDate!{
                                     vm.updateHistory(plan: items)
+
                                 }
                         }
                         .padding(.bottom)

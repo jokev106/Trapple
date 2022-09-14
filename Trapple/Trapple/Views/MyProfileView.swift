@@ -32,6 +32,7 @@ struct MyProfileView: View {
                     }.navigationTitle("My Profile")
                         .background(graybg)
                 }
+                .background(graybg)
             }
         }
     }
@@ -83,7 +84,9 @@ extension MyProfileView {
             ScrollView{
                 VStack{
                     ForEach(vm.plans, id: \.recordID) { items in
+
                         TripCardView(vm: vm, planRecord: items, plan: items.title, destination: items.destination, startDate: items.startDate, endDate: items.endDate, planID: items.recordID!, categoryDefault: items.categoryDefault, planImage: items.imageURL)
+
                                 .padding(.bottom, 20)
                                 .padding(.trailing, 30)
                                 .padding(.leading, 30)
