@@ -167,7 +167,7 @@ extension RundownView {
                                     .foregroundColor(selected == index ? .yellow : .gray)
                             }
                         }
-                        .frame(width: 100, height: 30, alignment: .leading)
+                        .frame(width: 100, height: 30, alignment: .bottomLeading)
                         .animation(.default)
                     }
                 }
