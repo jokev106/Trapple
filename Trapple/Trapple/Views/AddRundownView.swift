@@ -139,6 +139,9 @@ struct AddRundownView: View {
             .background(Color("grayBG"))
             .navigationBarTitle("Activity", displayMode: .inline)
             .toolbar {
+                ToolbarItemGroup(placement: .principal){
+                    Text("Equipment").font(Font.custom("Gilroy-ExtraBold", size: 20))
+            };
                 ToolbarItemGroup(placement: .navigationBarLeading) {
                     Button(action: { self.showModal.toggle()
                     }, label: {

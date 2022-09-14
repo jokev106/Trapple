@@ -29,7 +29,8 @@ struct TripCardView: View {
     
     var body: some View {
         
-        NavigationLink(destination: TripHomePageView(planVM: vm, planRecord: $planRecord, title: $plan, destination: $destination, planID: $planID, startDate: $startDate, endDate: $endDate, categoryDefault: $categoryDefault)){
+        NavigationLink(destination: TripHomePageView(planVM: vm, planRecord: $planRecord, title: $plan, destination: $destination, planID: $planID, startDate: $startDate, endDate: $endDate, categoryDefault: $categoryDefault)
+            .navigationBarHidden(true)){
             HStack{
                 VStack{
                     if let url = planImage, let data = try? Data(contentsOf: url), let

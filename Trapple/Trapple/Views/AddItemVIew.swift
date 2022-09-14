@@ -189,6 +189,7 @@ struct AddItemVIew: View {
         }.sheet(isPresented: $openCameraSheet) {
             SubmissionPicker(selectedImage: self.$imageSelected,  sourceType: self.sourceType)
         }
+        .background(graybg)
 
     }
 }

@@ -186,6 +186,7 @@ struct AddCategoryView: View {
                 }
             }
         }
+        .background(graybg)
     }
 }
 

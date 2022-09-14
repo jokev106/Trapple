@@ -11,7 +11,6 @@ import SwiftUI
 struct RundownView: View {
     
     @Environment(\.presentationMode) var presentationMode:Binding<PresentationMode>
-
     
     @ObservedObject var vm: ActivitiesViewModel
     @Binding var planID: CKRecord.ID
@@ -101,6 +100,7 @@ struct RundownView: View {
     //                }
                 }
                 .background(graybg)
+
                 .font(Font.custom("Gilroy-Light", size: 15))
                 .navigationTitle("Rundown")
                 .toolbar {
@@ -128,6 +128,8 @@ struct RundownView: View {
                     vm.fetchItems(planID: planID, actualDate: vm.dates[selected])
                 }
             }
+            .background(graybg
+            )
         }
         .background(graybg)
     }

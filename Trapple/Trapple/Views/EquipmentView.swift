@@ -84,10 +84,12 @@ struct EquipmentView: View {
                     }
                     .padding(.horizontal)
                 }
+            .background(graybg)
                 .onAppear {
                     vm.fetchItems(planID: planID)
                 }
             }
+        .background(graybg)
             .font(Font.custom("Gilroy-ExtraBold", size: 15))
             .navigationTitle("Equipment")
             .toolbar {
