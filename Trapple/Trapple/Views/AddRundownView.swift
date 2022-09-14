@@ -140,13 +140,13 @@ struct AddRundownView: View {
             .navigationBarTitle("Activity", displayMode: .inline)
             .toolbar {
                 ToolbarItemGroup(placement: .principal){
-                    Text("Equipment").font(Font.custom("Gilroy-ExtraBold", size: 20))
+                    Text("Activity").font(Font.custom("Gilroy-ExtraBold", size: 18))
             };
                 ToolbarItemGroup(placement: .navigationBarLeading) {
                     Button(action: { self.showModal.toggle()
                     }, label: {
                         Text("Cancel")
-                            .foregroundColor(.yellow)
+                            .foregroundColor(deepblue)
                     })
                 }
 
@@ -158,7 +158,7 @@ struct AddRundownView: View {
                     }, label: {
                         Text("Add")
                             .fontWeight(.bold)
-                            .foregroundColor(.yellow)
+                            .foregroundColor(deepblue)
                     })
                 }
             }

@@ -42,6 +42,7 @@ struct CreatePlanView: View {
     //var for submission image picker
     @State var showActionSheetCamera = false
     @State var changeSubmissionImage = false
+    @State var valueSubmissionImage = false
     @State var openCameraSheet = false
     @State var imageSelected = UIImage()
     @State var sourceType: UIImagePickerController.SourceType = .camera
@@ -131,22 +132,33 @@ extension CreatePlanView {
                             
                         }
                     }else {
-                        ZStack{
-                            Rectangle()
-                                .frame(height: 144)
-                                .frame(maxWidth: .infinity)
-                                .foregroundColor(tripcardColor)
-                                .cornerRadius(10)
-                                .padding(.horizontal, 30)
-                            HStack{
-                                Spacer()
-                                Image(systemName: "photo.on.rectangle.angled")
-                                    .resizable()
-                                    .foregroundColor(blacktext)
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 50, height: 50, alignment: .center)
-                                Spacer()
+                        VStack{
+                            ZStack{
+                                Rectangle()
+                                    .frame(height: 144)
+                                    .frame(maxWidth: .infinity)
+                                    .foregroundColor(tripcardColor)
+                                    .cornerRadius(10)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .stroke(.red, lineWidth: 1)
+                                    )
+                                    .padding(.horizontal, 30)
+                                HStack{
+                                    Spacer()
+                                    Image(systemName: "photo.on.rectangle.angled")
+                                        .resizable()
+                                        .foregroundColor(blacktext)
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 50, height: 50, alignment: .center)
+                                    Spacer()
+                                }
                             }
+                            Text("Photo is required")
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .font(Font.custom("Gilroy-Light", size: 15))
+                                .foregroundColor(.red)
+                                .padding(.horizontal, 50)
                         }
                     }
                 }.actionSheet(isPresented: $showActionSheetCamera) {
@@ -643,7 +655,7 @@ extension CreatePlanView {
                     .foregroundColor(blacktext)
                 Spacer()
                     .frame(width: 20)
-                TextField("Trip Name", text: $vm.destination)
+                TextField("Destination", text: $vm.destination)
                     .frame(width: 250, alignment: .leading)
                     .font(Font.custom("Gilroy-Light", size: 15))
                     .foregroundColor(blacktext)
