@@ -11,6 +11,7 @@ import CloudKit
 struct MyProfileView: View {
     
     @StateObject private var vm = PlansViewModel()
+    @ObservedObject var CKvm: CloudKitViewModel
     
     var body: some View {
         GeometryReader{geo in
@@ -37,11 +38,11 @@ struct MyProfileView: View {
     }
 }
 
-struct MyProfileView_Previews: PreviewProvider {
-    static var previews: some View {
-        MyProfileView()
-    }
-}
+//struct MyProfileView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MyProfileView()
+//    }
+//}
 
 //MARK: Components
 extension MyProfileView {
@@ -57,13 +58,19 @@ extension MyProfileView {
                 .resizable()
                 .frame(width: 80, height: 80)
                 .foregroundColor(deepblue)
+                .padding(.top)
             Spacer()
                 .frame(height: 10)
-            Text("Name")
-                .frame(maxWidth: .infinity, alignment: .center)
+            ZStack{
+                VStack{
+                    Text(CKvm.userName)
+                        .frame(maxWidth: .infinity, alignment: .center)
                 .font(Font.custom("Gilroy-ExtraBold", size: 20))
                 .padding(.top, 0.5)
                 .foregroundColor(deepblue)
+                    
+                }
+            }
         }
     }
     
@@ -77,7 +84,9 @@ extension MyProfileView {
             ScrollView{
                 VStack{
                     ForEach(vm.plans, id: \.recordID) { items in
-                        TripCardView(vm :vm, planRecord: items,plan: items.title, destination: items.destination, startDate: items.startDate, endDate: items.endDate, planID: items.recordID!, categoryDefault: items.categoryDefault)
+
+                        TripCardView(vm: vm, planRecord: items, plan: items.title, destination: items.destination, startDate: items.startDate, endDate: items.endDate, planID: items.recordID!, categoryDefault: items.categoryDefault, planImage: items.imageURL)
+
                                 .padding(.bottom, 20)
                                 .padding(.trailing, 30)
                                 .padding(.leading, 30)

@@ -259,7 +259,7 @@ extension CreatePlanView {
                     .cornerRadius(10)
                     .onTapGesture {
                         //Function Save trip plan data + Move to Trip Page
-                        vm.addButtonPressed()
+                        vm.addButtonPressed(savedImage: imageSelected)
                         presentationMode.wrappedValue.dismiss()
                     }
             }
@@ -691,34 +691,29 @@ extension CreatePlanView {
 
 //MARK: Function
 extension CreatePlanView {
-//    func createButtonPressed() {
-//
-//        if vm.title.isEmpty || vm.destination.isEmpty || vm.startDate.description.isEmpty || vm.endDate.description.isEmpty{
-//            tripNameValidation = true
-//            destinationValidation = true
-//            startDateValidation = true
-//            endDateValidation = true
-//        }
-//         if (!vm.title.isEmpty) && (!vm.destination.isEmpty) || vm.startDate.description.isEmpty || vm.endDate.description.isEmpty {
-//            tripNameValidation = false
-//            destinationValidation = false
-//            startDateValidation = true
-//            endDateValidation = true
-//        }
-//            //        if vm.startDate.description.isEmpty { startDateValidation = true}
-//            //        if vm.endDate.description.isEmpty{
-//            //            endDateValidation = true
-//            //        }do
-//        if (!vm.title.isEmpty) && (!vm.destination.isEmpty) && (!vm.startDate.description.isEmpty) && (!vm.endDate.description.isEmpty){
-//                    vm.addButtonPressed()
-//                    presentationMode.wrappedValue.dismiss()
-//                }
-//            }
-//
-//    func ColorCreateButton(){
-//        if !vm.endDate.description.isEmpty{
-//            colorCreateButton = true
-//        }
-//    }
-}
+
+    func createButtonPressed(imageSelected: UIImage) {
+        
+        if vm.title.isEmpty || vm.destination.isEmpty || vm.startDate.description.isEmpty || vm.endDate.description.isEmpty{
+            tripNameValidation = true
+            destinationValidation = true
+            startDateValidation = true
+            endDateValidation = true
+        }
+         if (!vm.title.isEmpty) && (!vm.destination.isEmpty) || vm.startDate.description.isEmpty || vm.endDate.description.isEmpty {
+            tripNameValidation = false
+            destinationValidation = false
+            startDateValidation = true
+            endDateValidation = true
+        }
+            //        if vm.startDate.description.isEmpty { startDateValidation = true}
+            //        if vm.endDate.description.isEmpty{
+            //            endDateValidation = true
+            //        }do
+        if (!vm.title.isEmpty) && (!vm.destination.isEmpty) && (!vm.startDate.description.isEmpty) && (!vm.endDate.description.isEmpty){
+            vm.addButtonPressed(savedImage: imageSelected)
+                    presentationMode.wrappedValue.dismiss()
+                }
+            }
+        }
         

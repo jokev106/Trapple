@@ -10,7 +10,7 @@ import SwiftUI
 
 struct EquipmentView: View {
     @ObservedObject var vm = CategoriesViewModel()
-    @State var planID = CKRecord.ID()
+    @State var planID: CKRecord.ID
     @State private var showModal = false
     
     let columns = [GridItem(.adaptive(minimum: 125, maximum: 350))]
@@ -37,31 +37,49 @@ struct EquipmentView: View {
 //
 //                        EquipmentCardview(planID: planID, category: "Folder", icon: "folder")
                     
-                        ForEach(vm.categoryVM, id: \.recordID) { item in
-                            EquipmentCardview(categoryID: item.recordID!, category: item.category, icon: item.icon)
+                        ForEach(vm.categoryVM.indices, id: \.self) { item in
+//                            EquipmentCardview(vm: vm, planID: planID, categoryID: vm.categoryVM[item].recordID!, category: vm.categoryVM[item].category, icon: vm.categoryVM[item].icon, categoryIndex: IndexSet([item]))
                             
-//                            NavigationLink(destination: CategoryView(planID: planID, title: item.category, image: item.icon), label: {
-//                                ZStack {
-//                                    Rectangle()
-//                                        .foregroundColor(.white)
-//                                    VStack {
-//                                        Image(systemName: item.icon)
-//                                            .resizable()
-//                                            .scaledToFit()
-//                                            .frame(height: 50)
-//                                            .padding()
-//
-//                                        Text(item.category)
-//                                    }
-//                                }
-//                            })
-//                            .foregroundColor(.gray)
-//                            .frame(height: 200)
-//                            .background(.white)
-//                            .cornerRadius(15)
-//                            .shadow(color: Color.gray.opacity(0.105), radius: 2, x: 0, y: 3)
-//                            .padding(.horizontal, 5)
-//                            .padding(.vertical, 5)
+                            ZStack {
+                                NavigationLink(destination: CategoryView(categoryID: vm.categoryVM[item].recordID!, title: vm.categoryVM[item].category, image: vm.categoryVM[item].icon), label: {
+                                    VStack(alignment: .leading) {
+                                        Image(systemName: vm.categoryVM[item].icon)
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(height: 30)
+                                        
+                                        Spacer()
+                                        
+                                        Text(vm.categoryVM[item].category)
+                                            .frame(maxWidth: .infinity, alignment: .leading)
+                                    }
+                                    .foregroundColor(.black)
+                                    .padding()
+                                    .frame(height: 100)
+                                    .background(.blue)
+                                    .cornerRadius(15)
+                                    .shadow(color: Color.gray.opacity(0.105), radius: 2, x: 0, y: 3)
+                                    .padding(.horizontal, 5)
+                                    .padding(.vertical, 5)
+                                })
+                                
+                                Button(action: {
+                                    vm.deleteItem(indexSet: IndexSet([item]), planID: planID)
+                                }, label: {
+                                    Image(systemName: "minus")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 7)
+                                        .foregroundColor(.black)
+                                        .padding(7)
+                                        .background(.white)
+                                        .clipShape(Circle())
+                                })
+                                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+                                .shadow(color: Color.gray.opacity(0.105), radius: 2, x: 0, y: 3)
+                                .padding()
+                            }
+                        }
                         }
                     }
                     .padding(.horizontal)
@@ -87,10 +105,10 @@ struct EquipmentView: View {
             }
         }
     }
-}
 
-struct EquipmentView_Previews: PreviewProvider {
-    static var previews: some View {
-        EquipmentView()
-    }
-}
+
+//struct EquipmentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        EquipmentView()
+//    }
+//}
