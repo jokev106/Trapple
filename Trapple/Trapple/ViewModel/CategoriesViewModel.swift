@@ -73,6 +73,8 @@ class CategoriesViewModel: ObservableObject {
         
         var returnedItems: [CategoryModel] = []
         
+        queryOperation.qualityOfService = .userInteractive
+        
         //Query for saving fetched items in an array
         queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
             switch returnedResult {

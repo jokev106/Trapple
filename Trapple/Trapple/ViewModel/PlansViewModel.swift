@@ -42,7 +42,7 @@ class PlansViewModel: ObservableObject {
         guard
 //            let image = UIImage(named: "logo"),
             let url = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first?.appendingPathComponent("planImage2.jpg"),
-            let data = savedImage.jpegData(compressionQuality: 0.0001)
+            let data = savedImage.jpegData(compressionQuality: 0.000000001)
         else {return}
         do {
             try data.write(to: url)
@@ -106,6 +106,8 @@ class PlansViewModel: ObservableObject {
         
         var returnedItems: [PlanModel] = []
         
+        queryOperation.qualityOfService = .userInteractive
+        
         //Query for saving fetched items in an array
         queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
             switch returnedResult {
@@ -148,6 +150,8 @@ class PlansViewModel: ObservableObject {
         let queryOperation = CKQueryOperation(query: query)
         
         var returnedItems: [PlanModel] = []
+        
+        queryOperation.qualityOfService = .userInteractive
         
         //Query for saving fetched items in an array
         queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
