@@ -12,15 +12,28 @@ struct ItemListCardview: View {
     @State var defaultImage: Bool
     @State var itemName: String = ""
     @State var description: String = ""
+    @State var equipmentImage: URL
 
     var body: some View {
         HStack(spacing: 0) {
             HStack {
                 if defaultImage == true {
-                    Image(systemName: image)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 50, height: 50)
+//                    Image(systemName: image)
+//                        .resizable()
+//                        .scaledToFit()
+//                        .frame(width: 50, height: 50)
+                    
+                    if let url = equipmentImage, let data = try? Data(contentsOf: url), let
+                        image = UIImage(data: data){
+                        Image(uiImage: image)
+                            .resizable()
+                            .scaledToFill()
+                        //                        .padding(.trailing, 10)
+                        //                        .frame(width: 120, height: 130)
+                        //                        .background(Color.white)
+                        //                        .foregroundColor(Color.gray.opacity(0.5))
+                        //                        .cornerRadius(13)
+                    }
 
                 } else {
                     Image(systemName: image)
@@ -55,8 +68,8 @@ struct ItemListCardview: View {
     }
 }
 
-struct ItemListCardview_Previews: PreviewProvider {
-    static var previews: some View {
-        ItemListCardview(image: "photo", defaultImage: true)
-    }
-}
+//struct ItemListCardview_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ItemListCardview(image: "photo", defaultImage: true)
+//    }
+//}

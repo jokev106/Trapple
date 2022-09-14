@@ -89,6 +89,8 @@ class ActivitiesViewModel: ObservableObject {
         
         var returnedItems: [ActivityModel] = []
         
+        queryOperation.qualityOfService = .userInteractive
+        
         //Query for saving fetched items in an array
         queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
             switch returnedResult {
@@ -125,6 +127,8 @@ class ActivitiesViewModel: ObservableObject {
         let queryOperation = CKQueryOperation(query: query)
         
         var returnedItems: [ActivityModel] = []
+        
+        queryOperation.qualityOfService = .userInteractive
         
         //Query for saving fetched items in an array
         queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in

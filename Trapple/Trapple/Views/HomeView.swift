@@ -73,7 +73,7 @@ struct HomeView: View {
                             }
 
                         // Move to my profile view
-                        MyProfileView()
+                        MyProfileView(CKvm: CKvm)
                             .navigationBarHidden(true)
                             .tabItem {
                                 Label("My Profile", systemImage: "person.crop.circle.fill")

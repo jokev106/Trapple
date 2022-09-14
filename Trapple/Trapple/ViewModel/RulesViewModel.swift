@@ -102,6 +102,8 @@ class RulesViewModel: ObservableObject {
         
         var returnedItems: [RuleModel] = []
         
+        queryOperation.qualityOfService = .userInteractive
+        
         // Query for saving fetched items in an array
         queryOperation.recordMatchedBlock = { _, returnedResult in
             switch returnedResult {
