@@ -85,7 +85,7 @@ struct TripCardView: View {
         .swipeActions (edge: .trailing){
             Button {
                 //Function for deleting card
-                vm.updateHistory(plan: planrecord)
+                vm.updateHistory(plan: planRecord)
             } label: {
                 Text("Finish")
 

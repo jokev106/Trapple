@@ -26,6 +26,8 @@ struct CreatePlanView: View {
     @State var endDateValidation = false
     @State var createButtonOn = false
     
+    @State var colorCreateButton = false
+    
     //bool for showing date picker
     @State var showEndDate = false
     @State var showStartDate = false
@@ -230,18 +232,38 @@ extension CreatePlanView {
         VStack{
             
 //            NavigationLink(destination: TripHomePageView(title: vm.$title, destination: vm.$destination, planID: vm.$plans, startDate: vm.startDate, endDate: vm.endDate), label: {
-            Text("Create")
-                .fontWeight(.bold)
-                .frame(height: 50)
-                .frame(maxWidth: .infinity)
-                .background(deepblue)
-                .foregroundColor(yellow)
-                .cornerRadius(10)
-                .onTapGesture {
-                    //Function Save trip plan data + Move to Trip Page
-                    createButtonPressed()
-                }
-//                        })
+            if vm.title.isEmpty || vm.destination.isEmpty || valueStartDate == false  || valueEndDate == false {
+                Text("Create")
+                    .fontWeight(.bold)
+                    .frame(height: 50)
+                    .frame(maxWidth: .infinity)
+                    .background(.gray)
+                    .foregroundColor(graytimebg)
+                    .cornerRadius(10)
+                    .onTapGesture {
+                        //Function Save trip plan data + Move to Trip Page
+                        tripNameValidation = true
+                        destinationValidation = true
+                        startDateValidation = true
+                        endDateValidation = true
+                    }
+
+            }
+             else {
+                Text("Create")
+                    .fontWeight(.bold)
+                    .frame(height: 50)
+                    .frame(maxWidth: .infinity)
+                    .background(deepblue)
+                    .foregroundColor(yellow)
+                    .cornerRadius(10)
+                    .onTapGesture {
+                        //Function Save trip plan data + Move to Trip Page
+                        vm.addButtonPressed()
+                        presentationMode.wrappedValue.dismiss()
+                    }
+            }
+            //                        })
         }.padding(20)
         
     }
@@ -639,10 +661,10 @@ extension CreatePlanView {
                     .frame(maxWidth: .infinity)
                     .foregroundColor(tripcardColor)
                     .cornerRadius(10)
-//                    .overlay(
-//                        RoundedRectangle(cornerRadius: 10)
-//                            .stroke(.red, lineWidth: 1)
-//                    )
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(.red, lineWidth: 1)
+                    )
                     .padding(.horizontal, 30)
                 
                 HStack{
@@ -669,28 +691,34 @@ extension CreatePlanView {
 
 //MARK: Function
 extension CreatePlanView {
-    func createButtonPressed() {
-        
-        if vm.title.isEmpty || vm.destination.isEmpty || vm.startDate.description.isEmpty || vm.endDate.description.isEmpty{
-            tripNameValidation = true
-            destinationValidation = true
-            startDateValidation = true
-            endDateValidation = true
-        }
-         if (!vm.title.isEmpty) && (!vm.destination.isEmpty) || vm.startDate.description.isEmpty || vm.endDate.description.isEmpty {
-            tripNameValidation = false
-            destinationValidation = false
-            startDateValidation = true
-            endDateValidation = true
-        }
-            //        if vm.startDate.description.isEmpty { startDateValidation = true}
-            //        if vm.endDate.description.isEmpty{
-            //            endDateValidation = true
-            //        }do
-        if (!vm.title.isEmpty) && (!vm.destination.isEmpty) && (!vm.startDate.description.isEmpty) && (!vm.endDate.description.isEmpty){
-                    vm.addButtonPressed()
-                    presentationMode.wrappedValue.dismiss()
-                }
-            }
-        }
+//    func createButtonPressed() {
+//
+//        if vm.title.isEmpty || vm.destination.isEmpty || vm.startDate.description.isEmpty || vm.endDate.description.isEmpty{
+//            tripNameValidation = true
+//            destinationValidation = true
+//            startDateValidation = true
+//            endDateValidation = true
+//        }
+//         if (!vm.title.isEmpty) && (!vm.destination.isEmpty) || vm.startDate.description.isEmpty || vm.endDate.description.isEmpty {
+//            tripNameValidation = false
+//            destinationValidation = false
+//            startDateValidation = true
+//            endDateValidation = true
+//        }
+//            //        if vm.startDate.description.isEmpty { startDateValidation = true}
+//            //        if vm.endDate.description.isEmpty{
+//            //            endDateValidation = true
+//            //        }do
+//        if (!vm.title.isEmpty) && (!vm.destination.isEmpty) && (!vm.startDate.description.isEmpty) && (!vm.endDate.description.isEmpty){
+//                    vm.addButtonPressed()
+//                    presentationMode.wrappedValue.dismiss()
+//                }
+//            }
+//
+//    func ColorCreateButton(){
+//        if !vm.endDate.description.isEmpty{
+//            colorCreateButton = true
+//        }
+//    }
+}
         
