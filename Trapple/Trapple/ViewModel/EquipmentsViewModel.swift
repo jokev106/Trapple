@@ -7,6 +7,7 @@
 
 import Foundation
 import CloudKit
+import UIKit
 
 class EquipmentsViewModel: ObservableObject {
     
@@ -14,22 +15,23 @@ class EquipmentsViewModel: ObservableObject {
     @Published var description: String = ""
     @Published var category: String = ""
     @Published var icon: String = ""
+    @Published var planImage: URL?
     @Published var equipment: [EquipmentViewModel] = []
     
     init() {
 //        fetchItems()
     }
     
-    func addButtonPressed(categoryID: CKRecord.ID, category: String, icon: String) {
+    func addButtonPressed(categoryID: CKRecord.ID, category: String, icon: String, savedImage: UIImage) {
         print("Equipments Category ID: \(categoryID)")
         guard !itemName.isEmpty else {return}
         guard !description.isEmpty else {return}
         guard !category.isEmpty else {return}
         guard !icon.isEmpty else {return}
-        addItem(categoryID: categoryID, itemName: itemName, description: description, category: category, icon: icon)
+        addItem(categoryID: categoryID, itemName: itemName, description: description, category: category, icon: icon, savedImage: savedImage)
     }
     
-    private func addItem(categoryID: CKRecord.ID, itemName: String, description: String, category: String, icon: String) {
+    private func addItem(categoryID: CKRecord.ID, itemName: String, description: String, category: String, icon: String, savedImage: UIImage) {
         let newEquipment = CKRecord(recordType: "Items")
         let categoryDetail = CKRecord(recordType: "Categories", recordID: categoryID)
         newEquipment["itemName"] = itemName
@@ -37,6 +39,20 @@ class EquipmentsViewModel: ObservableObject {
         newEquipment["category"] = category
         newEquipment["icon"] = icon
         newEquipment["categoryID"] = CKRecord.Reference(record: categoryDetail, action: .deleteSelf)
+        
+        guard
+//            let image = UIImage(named: "logo"),
+            let url = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first?.appendingPathComponent("planImage2.jpg"),
+            let data = savedImage.jpegData(compressionQuality: 0.0001)
+        else {return}
+        do {
+            try data.write(to: url)
+            let asset = CKAsset(fileURL: url)
+            newEquipment["image"] = asset
+        } catch let error {
+            print(error)
+        }
+        
         saveItem(categoryID: categoryID, category: category, record: newEquipment)
     }
     
@@ -131,5 +147,13 @@ struct EquipmentViewModel{
     
     var icon: String {
         equipmentList.icon
+    }
+    
+    var equipmentImage: CKAsset {
+        equipmentList.equipmentImage
+    }
+    
+    var imageURL: URL {
+        equipmentList.imageURL
     }
 }

@@ -49,13 +49,17 @@ class CategoriesViewModel: ObservableObject {
         }
     }
     
-    func deleteItem(indexSet: IndexSet){
+    func deleteItem(indexSet: IndexSet, planID: CKRecord.ID){
         guard let index = indexSet.first else {return}
         let categoryDelete = categoryVM[index]
 //        let recordID = plan.recordID!
         
         CKContainer.default().privateCloudDatabase.delete(withRecordID: categoryDelete.recordID!) { [weak self] returnedRecordID, ReturnedError in
             self?.categoryVM.remove(at: index)
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+            self.fetchItems(planID: planID)
         }
     }
     

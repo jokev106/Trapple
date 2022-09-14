@@ -9,9 +9,12 @@ import SwiftUI
 import CloudKit
 
 struct EquipmentCardview: View {
+    @ObservedObject var vm: CategoriesViewModel
+    @State var planID = CKRecord.ID()
     @State var categoryID = CKRecord.ID()
     @State var category: String
     @State var icon: String
+    @State var categoryIndex: IndexSet
     
     var body: some View {
         ZStack {
@@ -37,7 +40,9 @@ struct EquipmentCardview: View {
                 .padding(.vertical, 5)
             })
             
-            Button(action: {}, label: {
+            Button(action: {
+                vm.deleteItem(indexSet: categoryIndex, planID: planID)
+            }, label: {
                 Image(systemName: "minus")
                     .resizable()
                     .scaledToFit()

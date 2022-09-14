@@ -239,7 +239,8 @@ extension CreatePlanView {
                 .cornerRadius(10)
                 .onTapGesture {
                     //Function Save trip plan data + Move to Trip Page
-                    createButtonPressed()
+                    createButtonPressed(imageSelected: imageSelected)
+                    presentationMode.wrappedValue.dismiss()
                 }
 //                        })
         }.padding(20)
@@ -669,7 +670,7 @@ extension CreatePlanView {
 
 //MARK: Function
 extension CreatePlanView {
-    func createButtonPressed() {
+    func createButtonPressed(imageSelected: UIImage) {
         
         if vm.title.isEmpty || vm.destination.isEmpty || vm.startDate.description.isEmpty || vm.endDate.description.isEmpty{
             tripNameValidation = true
@@ -688,7 +689,7 @@ extension CreatePlanView {
             //            endDateValidation = true
             //        }do
         if (!vm.title.isEmpty) && (!vm.destination.isEmpty) && (!vm.startDate.description.isEmpty) && (!vm.endDate.description.isEmpty){
-                    vm.addButtonPressed()
+            vm.addButtonPressed(savedImage: imageSelected)
                     presentationMode.wrappedValue.dismiss()
                 }
             }

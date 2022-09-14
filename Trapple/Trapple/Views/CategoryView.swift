@@ -19,7 +19,7 @@ struct CategoryView: View {
 
     var body: some View {
         GeometryReader { _ in
-            ScrollView {
+//            ScrollView {
                 VStack {
                     Text("Item List")
                         .font(Font.custom("Gilroy-ExtraBold", size: 17))
@@ -27,17 +27,25 @@ struct CategoryView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.horizontal)
                         .padding(.top)
-                    
-                    ForEach(vm.equipment, id: \.recordID) { index in
-                        ItemListCardview(image: image, defaultImage: true, itemName: index.itemName, description: index.description)
-                            .padding(.horizontal)
-                            .padding(.bottom)
+                    List{
+                        ForEach(vm.equipment, id: \.recordID) { index in
+                           
+                            ItemListCardview(image: image, defaultImage: true, itemName: index.itemName, description: index.description, equipmentImage: index.imageURL)
+                                .padding(.horizontal)
+                                .padding(.bottom)
+                                .listRowSeparator(.hidden)
+                                .listRowInsets(EdgeInsets())
+                        }
+                        .onDelete(
+                            perform: vm.deleteItem
+                        )
                     }
+                    .listStyle(.plain)
                 }
                 .onAppear{
                     vm.fetchItems(categoryID: categoryID, category: title)
                 }
-            }
+//            }
             .font(Font.custom("Gilroy-Light", size: 15))
             .navigationTitle(title)
             .toolbar {

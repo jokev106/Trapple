@@ -161,6 +161,7 @@ class ActivitiesViewModel: ObservableObject {
     }
     
     func getDates(startDate: Date, endDate: Date) {
+        dates.removeAll()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy MMMM d"
         let startDatestring = dateFormatter.string(from: startDate)
