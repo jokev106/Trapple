@@ -64,18 +64,18 @@ struct RundownView: View {
                         
                     if !vm.activity.isEmpty {
                         List {
-                            ForEach(vm.activity.indices, id: \.self) { index in
-                                if dateFormatter(date: vm.activity[index].actualDate) == currentDate {
-                                    if apaa == vm.activity[index].recordID {
+                            ForEach(vm.activity, id: \.recordID) { index in
+                                if dateFormatter(date: index.actualDate) == currentDate {
+                                    if apaa == index.recordID {
                                         Button(action: { apaa = CKRecord.ID(recordName: "0") }) {
                                             RundownDetailCardView(
-                                                activity: vm.activity[index].title, location: vm.activity[index].location, description: vm.activity[index].description, startTime: vm.activity[index].startDate, endTime: vm.activity[index].endDate
+                                                activity: index.title, location: index.location, description: index.description, startTime: index.startDate, endTime: index.endDate
                                             )
                                         }
                                             
                                     } else {
-                                        Button(action: { apaa = vm.activity[index].recordID! }) {
-                                            RundownCardview(activity: vm.activity[index].title, location: vm.activity[index].location, startTime: vm.activity[index].startDate)
+                                        Button(action: { apaa = index.recordID! }) {
+                                            RundownCardview(activity: index.title, location: index.location, startTime: index.startDate)
                                         }
                                     }
                                 }

@@ -39,9 +39,10 @@ struct CategoryView: View {
                         .onDelete(
                             perform: vm.deleteItem
                         )
+                        .listRowBackground(graybg)
+                        .listStyle(.plain)
                     }
-                    .listRowBackground(graybg)
-                    .listStyle(.plain)
+                    
                 }
                 .background(graybg)
                 .onAppear{
