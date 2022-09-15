@@ -23,7 +23,7 @@ struct EquipmentView: View {
                         .font(Font.custom("Gilroy-ExtraBold", size: 17))
                         .foregroundColor(.gray)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.horizontal, 20)
+                        .padding(.horizontal, 25)
                         .padding(.top)
                     
                     LazyVGrid(columns: columns) {
@@ -80,37 +80,36 @@ struct EquipmentView: View {
                                 .padding()
                             }
                         }
-                        }
                     }
                     .padding(.horizontal)
                 }
-            .background(graybg)
-                .onAppear {
-                    vm.fetchItems(planID: planID)
-                }
             }
+            .background(graybg)
+            .onAppear {
+                vm.fetchItems(planID: planID)
+            }
+        }
         .background(graybg)
-            .font(Font.custom("Gilroy-ExtraBold", size: 15))
-            .navigationTitle("Equipment")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        showModal.toggle()
-                    }, label: {
-                        Image(systemName: "plus")
-                            .foregroundColor(.black)
-                    })
-                    .sheet(isPresented: $showModal) {
-                        AddCategoryView(vm: vm, planID: planID, showModal: self.$showModal)
-                    }
+        .font(Font.custom("Gilroy-ExtraBold", size: 15))
+        .navigationTitle("Equipment")
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(action: {
+                    showModal.toggle()
+                }, label: {
+                    Image(systemName: "plus")
+                        .foregroundColor(.black)
+                })
+                .sheet(isPresented: $showModal) {
+                    AddCategoryView(vm: vm, planID: planID, showModal: self.$showModal)
                 }
             }
         }
     }
+}
 
-
-//struct EquipmentView_Previews: PreviewProvider {
+// struct EquipmentView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        EquipmentView()
 //    }
-//}
+// }
