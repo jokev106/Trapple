@@ -65,8 +65,8 @@ struct RundownView: View {
                     if !vm.activity.isEmpty {
                         List {
                             ForEach(vm.activity.indices, id: \.self) { index in
-                                if dateFormatter(date: index.actualDate) == currentDate {
-                                    if apaa == index.recordID {
+                                if dateFormatter(date: vm.activity[index].actualDate) == currentDate {
+                                    if apaa == vm.activity[index].recordID {
                                         Button(action: { apaa = CKRecord.ID(recordName: "0") }) {
                                             RundownDetailCardView(
                                                 activity: vm.activity[index].title, location: vm.activity[index].location, description: vm.activity[index].description, startTime: vm.activity[index].startDate, endTime: vm.activity[index].endDate
@@ -81,7 +81,6 @@ struct RundownView: View {
                                 }
                             }
                             .onDelete(perform: vm.deleteItem)
-                            //                                .onDelete(perform: vm.delete)
                             .foregroundColor(blacktext)
                             .listRowSeparator(.hidden)
                             .listRowInsets(EdgeInsets())
