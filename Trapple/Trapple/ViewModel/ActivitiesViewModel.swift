@@ -75,6 +75,18 @@ class ActivitiesViewModel: ObservableObject {
         }
     }
     
+    func deleteItem(indexSet: IndexSet){
+        guard let index = indexSet.first else {return}
+        let activitiesDelete = activity[index]
+//        let recordID = plan.recordID!
+        
+        CKContainer.default().privateCloudDatabase.delete(withRecordID: activitiesDelete.recordID!) { [weak self] returnedRecordID, ReturnedError in
+            self?.activity.remove(at: index)
+        }
+        
+        
+    }
+    
     func fetchItems(planID: CKRecord.ID) {
 //        let dateFormatter = DateFormatter()
 //        dateFormatter.dateFormat = "MMMM d"
