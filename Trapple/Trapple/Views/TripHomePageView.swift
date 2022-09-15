@@ -9,9 +9,7 @@ import CloudKit
 import SwiftUI
 
 struct TripHomePageView: View {
-    
-    @Environment(\.presentationMode) var presentationMode:Binding<PresentationMode>
-    
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     @ObservedObject var planVM = PlansViewModel()
     @Binding var planRecord: PlanViewModel
@@ -28,7 +26,7 @@ struct TripHomePageView: View {
     @StateObject var categoryViewModel = CategoriesViewModel()
     
     var body: some View {
-        NavigationView {
+//        NavigationView {
         ScrollView {
             VStack {
                 Spacer()
@@ -36,25 +34,24 @@ struct TripHomePageView: View {
                 Equipment
                 Rules
             }
-            .background(graybg)
+//                .background(graybg)
         }
         .background(graybg)
         .onAppear {
             vmActivity.fetchItem(planID: planID)
             
-            
-            if categoryDefault == 0{
+            if categoryDefault == 0 {
                 categoryViewModel.addButtonPressed(planID: planID, category: "Food & Beverages", icon: "fork.knife")
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     categoryViewModel.addButtonPressed(planID: planID, category: "Apparel", icon: "tshirt")
                 }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     categoryViewModel.addButtonPressed(planID: planID, category: "Tools", icon: "wrench")
                 }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     categoryViewModel.addButtonPressed(planID: planID, category: "Medicine", icon: "pills")
                 }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     categoryViewModel.addButtonPressed(planID: planID, category: "Folder", icon: "folder")
                 }
                 planVM.updateCategory(plan: planRecord)
@@ -63,28 +60,24 @@ struct TripHomePageView: View {
             
             categoryViewModel.fetchItems(planID: planID)
         }
-//        .navigationAppearance(backgroundColor: UIColor(graybg), foregroundColor: UIColor(blacktext), hideSeperator: true)
         .font(Font.custom("Gilroy-Light", size: 20))
         .navigationTitle(title)
-        .toolbar{
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button{
-                    //Back to Travel Plan Screen
-                    presentationMode.wrappedValue.dismiss()
-                }label: {
-                    Image(systemName: "chevron.left")
-                        .foregroundColor(deepblue)
-                    Text("Travel Plan")
-                        .foregroundColor(deepblue)
-                    
-                }
-            }
-        }
-        }
-        .background(graybg)
-//        .accentColor(.yellow)
-//        .edgesIgnoringSafeArea(.top)
+//        .toolbar {
+//            ToolbarItem(placement: .navigationBarLeading) {
+//                Button {
+//                    // Back to Travel Plan Screen
+//                    presentationMode.wrappedValue.dismiss()
+//                } label: {
+//                    Image(systemName: "chevron.left")
+//                        .foregroundColor(deepblue)
+//                    Text("Travel Plan")
+//                        .foregroundColor(deepblue)
+//                }
+//            }
+//        }
     }
+//        .edgesIgnoringSafeArea(.top)
+//    }
 }
 
 // struct TripHomePageView_Previews: PreviewProvider {
@@ -98,9 +91,7 @@ struct TripHomePageView: View {
 extension TripHomePageView {
     private var Rundown: some View {
         VStack {
-            NavigationLink(destination: RundownView(vm: vmActivity, planID: $planID, startDate: $startDate, endDate: $endDate)
-                .navigationBarHidden(true)
-                           , label: {
+            NavigationLink(destination: RundownView(vm: vmActivity, planID: $planID, startDate: $startDate, endDate: $endDate), label: {
                 VStack(spacing: 0) {
                     VStack(alignment: .leading) {
                         Text("Rundown")
@@ -112,7 +103,6 @@ extension TripHomePageView {
                         Text("\(vmActivity.getDateRange(startDate: startDate, endDate: endDate)) Days \(vmActivity.getDateRange(startDate: startDate, endDate: endDate) - 1) Nights : \(startDate, format: Date.FormatStyle().day().month()) - \(endDate, format: Date.FormatStyle().day().month())")
                             .font(Font.custom("Gilroy-Light", size: 13))
                             .foregroundColor(deepblue)
-
                     }
                     .padding()
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -196,7 +186,7 @@ extension TripHomePageView {
 //                            Image(systemName: "folder")
 //                        }
 //                    })
-                    ForEach(categoryViewModel.categoryVM.indices.prefix(5), id: \.self){ item in
+                    ForEach(categoryViewModel.categoryVM.indices.prefix(5), id: \.self) { item in
                         NavigationLink(destination: CategoryView(categoryID: categoryViewModel.categoryVM[item].recordID!, title: categoryViewModel.categoryVM[item].category, image: categoryViewModel.categoryVM[item].icon), label: {
                             ZStack {
                                 Circle()
@@ -206,10 +196,9 @@ extension TripHomePageView {
                                 Image(systemName: categoryViewModel.categoryVM[item].icon)
                             }
                         })
-                        if item < 4{
+                        if item < 4 {
                             Spacer()
                         }
-                        
                     }
                 }
                 .foregroundColor(deepblue)

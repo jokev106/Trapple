@@ -63,23 +63,23 @@ struct HomeView: View {
     var body: some View {
         GeometryReader { _ in
             ZStack {
-                NavigationView {
+//                NavigationView {
                     TabView {
                         // Move to Travel Plan view
                         TravelPlanView(vm: vm)
-                            .navigationBarHidden(true)
+//                            .navigationBarHidden(true)
                             .tabItem {
                                 Label("Travel Plan", systemImage: "airplane")
                             }
 
                         // Move to my profile view
                         MyProfileView(CKvm: CKvm)
-                            .navigationBarHidden(true)
+//                            .navigationBarHidden(true)
                             .tabItem {
                                 Label("My Profile", systemImage: "person.crop.circle.fill")
                             }
                     }
-                }
+//                }
                 .accentColor(deepblue)
             
             }
