@@ -247,7 +247,7 @@ extension TripHomePageView {
                             HStack(spacing: 0) {
                                 Rectangle()
                                     .frame(width: 5)
-                                    .background(.black)
+                                    .background(deepblue)
                                     .cornerRadius(15)
                                     .padding(.trailing)
                                     .opacity(0.4)
@@ -270,8 +270,8 @@ extension TripHomePageView {
                 
             })
         }
-        .foregroundColor(.black)
-        .background(.white)
+        .foregroundColor(blacktext)
+        .background(tripcardColor)
         .cornerRadius(15)
         .padding(.horizontal)
         .padding(.vertical, 5)

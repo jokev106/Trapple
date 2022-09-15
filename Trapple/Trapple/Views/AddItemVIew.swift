@@ -25,61 +25,187 @@ struct AddItemVIew: View {
     @State var imageSelected = UIImage()
     @State var sourceType: UIImagePickerController.SourceType = .camera
     
+    @State var isItemName = false
+    @State var isItemDescription = false
+    @State var isItemImage = false
+    
     @Binding var showModal: Bool
     
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack {
-                    ZStack {
-                        Rectangle()
-                            .frame(height: 50)
-                            .frame(maxWidth: .infinity)
-                            .foregroundColor(tripcardColor)
-                            .cornerRadius(10)
-                            .padding(.horizontal, 30)
-                        HStack {
-                            Image(systemName: "tag")
-                                .resizable()
-                                .scaledToFit()
-                                .foregroundColor(blacktext)
-                                .frame(width: 15)
-                            Spacer()
-                                .frame(width: 20)
-                            TextField("Item Name", text: $vm.itemName)
-                                .frame(width: 250, alignment: .leading)
-                                .foregroundColor(blacktext)
-                            Spacer()
+                    if isItemName == true {
+                        if vm.itemName.isEmpty{
+                            VStack{
+                            ZStack {
+                                Rectangle()
+                                    .frame(height: 50)
+                                    .frame(maxWidth: .infinity)
+                                    .foregroundColor(tripcardColor)
+                                    .cornerRadius(10)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .stroke(.red, lineWidth: 1)
+                                    )
+                                    .padding(.horizontal, 30)
+                                HStack {
+                                    Image(systemName: "tag")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .foregroundColor(blacktext)
+                                        .frame(width: 15)
+                                    Spacer()
+                                        .frame(width: 20)
+                                    TextField("Item Name", text: $vm.itemName)
+                                        .frame(width: 250, alignment: .leading)
+                                        .foregroundColor(blacktext)
+                                    Spacer()
+                                }
+                                .padding(.horizontal, 50)
+                            }
+                                Text("Item name is required")
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .font(Font.custom("Gilroy-Light", size: 15))
+                                    .foregroundColor(.red)
+                                    .padding(.horizontal, 50)
+                            }
+                        }else {
+                            ZStack {
+                                Rectangle()
+                                    .frame(height: 50)
+                                    .frame(maxWidth: .infinity)
+                                    .foregroundColor(tripcardColor)
+                                    .cornerRadius(10)
+                                    .padding(.horizontal, 30)
+                                HStack {
+                                    Image(systemName: "tag")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .foregroundColor(blacktext)
+                                        .frame(width: 15)
+                                    Spacer()
+                                        .frame(width: 20)
+                                    TextField("Item Name", text: $vm.itemName)
+                                        .frame(width: 250, alignment: .leading)
+                                        .foregroundColor(blacktext)
+                                    Spacer()
+                                }
+                                .padding(.horizontal, 50)
+                            }
                         }
-                        .padding(.horizontal, 50)
+                    }else {
+                        ZStack {
+                            Rectangle()
+                                .frame(height: 50)
+                                .frame(maxWidth: .infinity)
+                                .foregroundColor(tripcardColor)
+                                .cornerRadius(10)
+                                .padding(.horizontal, 30)
+                            HStack {
+                                Image(systemName: "tag")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .foregroundColor(blacktext)
+                                    .frame(width: 15)
+                                Spacer()
+                                    .frame(width: 20)
+                                TextField("Item Name", text: $vm.itemName)
+                                    .frame(width: 250, alignment: .leading)
+                                    .foregroundColor(blacktext)
+                                Spacer()
+                            }
+                            .padding(.horizontal, 50)
+                        }
                     }
                         
                     Spacer()
                         .frame(height: 20)
                     
-                    ZStack {
-                        Rectangle()
-                            .frame(height: 50)
-                            .frame(maxWidth: .infinity)
-                            .foregroundColor(tripcardColor)
-                            .cornerRadius(10)
-                            .padding(.horizontal, 30)
-                        HStack {
-                            Image(systemName: "pencil")
-                                .resizable()
-                                .scaledToFit()
-                                .foregroundColor(blacktext)
-                                .frame(width: 15)
-                            Spacer()
-                                .frame(width: 20)
-                            TextField("Item Description", text: $vm.description)
-                                .frame(width: 250, alignment: .leading)
-                                .foregroundColor(blacktext)
-                            Spacer()
+                    if isItemDescription == true {
+                        if vm.description.isEmpty{
+                            VStack{
+                                ZStack {
+                                    Rectangle()
+                                        .frame(height: 50)
+                                        .frame(maxWidth: .infinity)
+                                        .foregroundColor(tripcardColor)
+                                        .cornerRadius(10)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .stroke(.red, lineWidth: 1)
+                                        )
+                                        .padding(.horizontal, 30)
+                                    HStack {
+                                        Image(systemName: "pencil")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .foregroundColor(blacktext)
+                                            .frame(width: 15)
+                                        Spacer()
+                                            .frame(width: 20)
+                                        TextField("Item Description", text: $vm.description)
+                                            .frame(width: 250, alignment: .leading)
+                                            .foregroundColor(blacktext)
+                                        Spacer()
+                                    }
+                                    .padding(.horizontal, 50)
+                                }
+                                Text("Item description is required")
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .font(Font.custom("Gilroy-Light", size: 15))
+                                    .foregroundColor(.red)
+                                    .padding(.horizontal, 50)
+                            }
+                        }else {
+                            ZStack {
+                                Rectangle()
+                                    .frame(height: 50)
+                                    .frame(maxWidth: .infinity)
+                                    .foregroundColor(tripcardColor)
+                                    .cornerRadius(10)
+                                    .padding(.horizontal, 30)
+                                HStack {
+                                    Image(systemName: "pencil")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .foregroundColor(blacktext)
+                                        .frame(width: 15)
+                                    Spacer()
+                                        .frame(width: 20)
+                                    TextField("Item Description", text: $vm.description)
+                                        .frame(width: 250, alignment: .leading)
+                                        .foregroundColor(blacktext)
+                                    Spacer()
+                                }
+                                .padding(.horizontal, 50)
+                            }
                         }
-                        .padding(.horizontal, 50)
+                    }else {
+                        ZStack {
+                            Rectangle()
+                                .frame(height: 50)
+                                .frame(maxWidth: .infinity)
+                                .foregroundColor(tripcardColor)
+                                .cornerRadius(10)
+                                .padding(.horizontal, 30)
+                            HStack {
+                                Image(systemName: "pencil")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .foregroundColor(blacktext)
+                                    .frame(width: 15)
+                                Spacer()
+                                    .frame(width: 20)
+                                TextField("Item Description", text: $vm.description)
+                                    .frame(width: 250, alignment: .leading)
+                                    .foregroundColor(blacktext)
+                                Spacer()
+                            }
+                            .padding(.horizontal, 50)
+                        }
                     }
-                        
+                    
                     Spacer()
                         .frame(height: 20)
                     
@@ -101,6 +227,7 @@ struct AddItemVIew: View {
                             Button(action:{
                                 changeSubmissionImage = true
                                 showActionSheetCamera = true
+                                isItemImage = true
                             }){
                                 if changeSubmissionImage {
                                     ZStack{
@@ -117,22 +244,33 @@ struct AddItemVIew: View {
                                         
                                     }
                                 }else {
-                                    ZStack{
-                                        Rectangle()
-                                            .frame(height: 144)
-                                            .frame(maxWidth: .infinity)
-                                            .foregroundColor(tripcardColor)
-                                            .cornerRadius(10)
-                                            .padding(.horizontal, 30)
-                                        HStack{
-                                            Spacer()
-                                            Image(systemName: "photo.on.rectangle.angled")
-                                                .resizable()
-                                                .foregroundColor(blacktext)
-                                                .aspectRatio(contentMode: .fit)
-                                                .frame(width: 50, height: 50, alignment: .center)
-                                            Spacer()
+                                    VStack{
+                                        ZStack{
+                                            Rectangle()
+                                                .frame(height: 144)
+                                                .frame(maxWidth: .infinity)
+                                                .foregroundColor(tripcardColor)
+                                                .cornerRadius(10)
+                                                .overlay(
+                                                    RoundedRectangle(cornerRadius: 10)
+                                                        .stroke(.red, lineWidth: 1)
+                                                )
+                                                .padding(.horizontal, 30)
+                                            HStack{
+                                                Spacer()
+                                                Image(systemName: "photo.on.rectangle.angled")
+                                                    .resizable()
+                                                    .foregroundColor(blacktext)
+                                                    .aspectRatio(contentMode: .fit)
+                                                    .frame(width: 50, height: 50, alignment: .center)
+                                                Spacer()
+                                            }
                                         }
+                                        Text("Photo is required")
+                                            .frame(maxWidth: .infinity, alignment: .leading)
+                                            .font(Font.custom("Gilroy-Light", size: 15))
+                                            .foregroundColor(.red)
+                                            .padding(.horizontal, 50)
                                     }
                                 }
                             }.actionSheet(isPresented: $showActionSheetCamera) {
@@ -165,24 +303,23 @@ struct AddItemVIew: View {
             .navigationBarTitle("Equipment", displayMode: .inline)
             .toolbar {
                 ToolbarItemGroup(placement: .principal){
-                    Text("Equipment").font(Font.custom("Gilroy-ExtraBold", size: 20))
+                    Text("Equipment").font(Font.custom("Gilroy-ExtraBold", size: 18))
             };
                 ToolbarItemGroup(placement: .navigationBarLeading) {
                     Button(action: { self.showModal.toggle()
                     }, label: {
                         Text("Cancel")
-                            .foregroundColor(.yellow)
+                            .foregroundColor(deepblue)
                     })
                 }
 
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     Button(action: {
-                        vm.addButtonPressed(categoryID: categoryID, category: category, icon: icon, savedImage: imageSelected)
-                        self.showModal.toggle()
+                        addButtonFunc()
                     }, label: {
                         Text("Add")
                             .fontWeight(.bold)
-                            .foregroundColor(.yellow)
+                            .foregroundColor(deepblue)
                     })
                 }
             }
@@ -199,3 +336,23 @@ struct AddItemVIew: View {
 //        AddItemVIew(showModal: .constant(true))
 //    }
 //}
+
+
+//MARK: Function
+extension AddItemVIew {
+    
+    func addButtonFunc() {
+       
+        if vm.itemName.isEmpty || vm.description.isEmpty || isItemImage == false {
+            isItemName = true
+            isItemDescription = true
+        }
+        else {
+            vm.addButtonPressed(categoryID: categoryID, category: category, icon: icon, savedImage: imageSelected)
+            self.showModal.toggle()
+
+        }
+    }
+    
+}
+
