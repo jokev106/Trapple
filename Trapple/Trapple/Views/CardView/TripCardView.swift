@@ -31,51 +31,53 @@ struct TripCardView: View {
         
         NavigationLink(destination: TripHomePageView(planVM: vm, planRecord: $planRecord, title: $plan, destination: $destination, planID: $planID, startDate: $startDate, endDate: $endDate, categoryDefault: $categoryDefault)){
             HStack{
-                VStack{
+                VStack {
                     if let url = planImage, let data = try? Data(contentsOf: url), let
                         image = UIImage(data: data){
                         Image(uiImage: image)
                             .resizable()
                             .scaledToFill()
+                            .frame(width: 150)
                         //                        .padding(.trailing, 10)
-                                                .frame(width: 120)
                         //                        .background(Color.white)
                         //                        .foregroundColor(Color.gray.opacity(0.5))
                         //                        .cornerRadius(13)
                     }
                 }
+                .frame(width: 120)
                 
                 VStack{
                     Text(plan)
                         .font(Font.custom("Gilroy-ExtraBold", size: 15))
                         .lineLimit(2)
                         .padding(.trailing, 10)
-                        .frame(width: 200, alignment: .leading)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                         .foregroundColor(blacktext)
                     Text(destination)
                         .font(Font.custom("Gilroy-Light", size: 12))
                         .lineLimit(2)
                         .padding(.trailing, 10)
                         .padding(.top, 0.5)
-                        .frame(width: 200,alignment: .leading)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                         .foregroundColor(blacktext)
                     Text("Start: \(startDate, formatter: Self.stackDateFormat)")
                         .font(Font.custom("Gilroy-Light", size: 10))
                         .lineLimit(2)
                         .padding(.trailing, 10)
                         .padding(.top, 5)
-                        .frame(width: 200,alignment: .leading)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                         .foregroundColor(blacktext)
                     Text("\(vm.getDateRange(startDate: startDate, endDate: endDate)) Days, \(vm.getDateRange(startDate: startDate, endDate: endDate) - 1) Nights")
                         .font(Font.custom("Gilroy-Light", size: 8))
                         .lineLimit(2)
                         .padding(.trailing, 10)
                         .padding(.top, 2)
-                        .frame(width: 200,alignment: .leading)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                         .foregroundColor(blacktext)
                 }
-                
-                Spacer()
+                .frame(maxHeight: .infinity)
+                .padding(.horizontal)
+                .background(tripcardColor)
             }
             
         }
