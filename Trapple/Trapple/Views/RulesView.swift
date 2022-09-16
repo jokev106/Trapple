@@ -19,7 +19,9 @@ struct RulesView: View {
                     // Content
                     RulesList
                 }
+                .listStyle(.plain)
             }
+            .background(graybg)
             .onAppear {
                 vm.fetchItems(planID: planID)
             }
@@ -117,6 +119,7 @@ extension RulesView {
             .listRowSeparator(.hidden)
             .listRowInsets(EdgeInsets())
             .frame(height: 100)
+            .padding(.horizontal)
 //            RulesCardView(vm: vm, planID: planID, item: item)
         }
         .onDelete(perform: vm.deleteItem)
