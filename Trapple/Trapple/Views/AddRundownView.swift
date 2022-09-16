@@ -173,9 +173,13 @@ struct AddRundownView: View {
 
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     Button(action: {
-                        if vm.activity.isEmpty || vm.location.isEmpty || vm.description.isEmpty {
+                        if vm.title.isEmpty || vm.location.isEmpty {
                             isFormBlank = true
-                        }else{
+                            print(isFormBlank)
+                            print(vm.title)
+                            print(vm.location)
+                        }
+                        else{
                             vm.addButtonPressed(planID: planID, actualDate: vm.dates[selectedDate])
                             print(vm.dates)
                                self.showModal.toggle()
