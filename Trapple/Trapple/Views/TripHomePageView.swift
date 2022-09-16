@@ -38,7 +38,7 @@ struct TripHomePageView: View {
         }
         .background(graybg)
         .onAppear {
-            vmActivity.fetchItem(planID: planID)
+//            vmActivity.fetchItem(planID: planID)
             
             if categoryDefault == 0 {
                 categoryViewModel.addButtonPressed(planID: planID, category: "Food & Beverages", icon: "fork.knife")
@@ -121,7 +121,7 @@ extension TripHomePageView {
         .padding(.vertical, 5)
         .shadow(color: Color.gray.opacity(0.105), radius: 2, x: 0, y: 3)
         .onAppear {
-            vmActivity.fetchItem(planID: planID)
+            vmActivity.fetchItems(planID: planID)
         }
     }
     

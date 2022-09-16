@@ -90,7 +90,7 @@ class RulesViewModel: ObservableObject {
             }
         }
             
-        self.removeList(index: index)
+        removeList(index: index)
     }
     
     func fetchItems(planID: CKRecord.ID) {
