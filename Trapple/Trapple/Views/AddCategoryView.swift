@@ -50,7 +50,7 @@ struct AddCategoryView: View {
                         .frame(height: 20)
                         
                     if isIconBlank == true {
-                        if icon.isEmpty {
+                        if  icon.isEmpty {
                             VStack{
                                 chooseIconIncorrect
                                 Text("Category icon is required")
@@ -86,7 +86,7 @@ struct AddCategoryView: View {
 
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     Button(action: {
-                        if vm.category.isEmpty || vm.icon.isEmpty {
+                        if category.isEmpty || icon.isEmpty {
                             isNameBlank = true
                             isIconBlank = true
                         }else {
