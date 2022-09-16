@@ -98,7 +98,7 @@ struct EquipmentView: View {
                     showModal.toggle()
                 }, label: {
                     Image(systemName: "plus")
-                        .foregroundColor(.black)
+                        .foregroundColor(blacktext)
                 })
                 .sheet(isPresented: $showModal) {
                     AddCategoryView(vm: vm, planID: planID, showModal: self.$showModal)

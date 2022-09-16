@@ -24,6 +24,9 @@ struct AddRundownView: View {
     @State private var start = Date()
     @State private var end = Date()
     
+    //Bool for alert black space
+    @State var isFormBlank = false
+    
     @Binding var showModal: Bool
     
 //    var dateFormatter: DateFormatter {
@@ -37,7 +40,25 @@ struct AddRundownView: View {
         NavigationView {
             ScrollView {
                 VStack {
+                    if isFormBlank == true {
+                        ZStack{
+                            Text("The activity and location  is required.\n  Please fill in the blank to add new activity")
+//                                .multilineTextAlignment(2)
+                                .frame(maxWidth: .infinity, alignment: .center)
+                                .frame(height: 60)
+                                .foregroundColor(.red)
+                                .background(redalert)
+                                .multilineTextAlignment(.center)
+                                .cornerRadius(10)
+                                .font(Font.custom("Gilroy-Light", size: 15))
+                                .padding()
+                        }
+                    }else {
+                        Spacer()
+                            .frame(height:1)
+                    }
                     VStack(alignment: .leading) {
+                        
                         TextField("Activity", text: $vm.title)
                             .foregroundColor(blacktext)
                             .frame(height: 25)
@@ -152,9 +173,17 @@ struct AddRundownView: View {
 
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     Button(action: {
-                        vm.addButtonPressed(planID: planID, actualDate: vm.dates[selectedDate])
-                        print(vm.dates)
-                           self.showModal.toggle()
+                        if vm.title.isEmpty || vm.location.isEmpty {
+                            isFormBlank = true
+                            print(isFormBlank)
+                            print(vm.title)
+                            print(vm.location)
+                        }
+                        else{
+                            vm.addButtonPressed(planID: planID, actualDate: vm.dates[selectedDate])
+                            print(vm.dates)
+                               self.showModal.toggle()
+                        }
                     }, label: {
                         Text("Add")
                             .fontWeight(.bold)

@@ -38,7 +38,7 @@ struct TripCardView: View {
                             .resizable()
                             .scaledToFill()
                         //                        .padding(.trailing, 10)
-                        //                        .frame(width: 120, height: 130)
+                                                .frame(width: 120)
                         //                        .background(Color.white)
                         //                        .foregroundColor(Color.gray.opacity(0.5))
                         //                        .cornerRadius(13)

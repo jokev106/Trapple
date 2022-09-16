@@ -32,10 +32,9 @@ class ActivitiesViewModel: ObservableObject {
     
     func addButtonPressed(planID: CKRecord.ID, actualDate: String) {
         print("Activities Plan ID: \(planID)")
-        guard !title.isEmpty else { return }
-        guard !location.isEmpty else { return }
-        guard !description.isEmpty else { return }
-        
+        guard !title.isEmpty else {return}
+        guard !location.isEmpty else {return}
+//        guard !description.isEmpty else {return}
         addItem(planID: planID, title: title, location: location, description: description, startDate: startDate, endDate: endDate, actualDate: actualDate)
     }
     

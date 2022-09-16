@@ -116,6 +116,7 @@ extension CreatePlanView {
                 Button(action:{
                     changeSubmissionImage = true
                     showActionSheetCamera = true
+                    valueSubmissionImage = true
                 }){
                     if changeSubmissionImage {
                         ZStack{
@@ -184,47 +185,47 @@ extension CreatePlanView {
             //Trip Name Form
             if tripNameValidation == true {
                 if vm.title.isEmpty {
-                    Group{
+//                    Group{
                         TripNameIncorrect
                         Spacer()
                             .frame(height: 10)
-                    }
+//                    }
                 }else {
-                    Group{
+//                    Group{
                         TripNameCorrect
                         Spacer()
                             .frame(height: 10)
-                    }
+//                    }
                 }
             }
             else {
-                Group{
+//                Group{
                     TripNameCorrect
                     Spacer()
                         .frame(height: 10)
-                }
+//                }
             }
             //Trip Destination Form
             if destinationValidation == true {
                 if vm.destination.isEmpty{
-                    Group{
+//                    Group{
                         DestinationIncorrect
                         Spacer()
                             .frame(height: 10)
-                    }
+//                    }
                 }else {
-                    Group{
+//                    Group{
                         DestinationCorrect
                         Spacer()
                             .frame(height: 10)
-                    }
+//                    }
                 }
             }else {
-                Group{
+//                Group{
                     DestinationCorrect
                     Spacer()
                         .frame(height: 10)
-                }
+//                }
             }
             //Trip Start Date Form
             TripStartDate
@@ -244,13 +245,13 @@ extension CreatePlanView {
         VStack{
             
 //            NavigationLink(destination: TripHomePageView(title: vm.$title, destination: vm.$destination, planID: vm.$plans, startDate: vm.startDate, endDate: vm.endDate), label: {
-            if vm.title.isEmpty || vm.destination.isEmpty || valueStartDate == false  || valueEndDate == false {
+            if vm.title.isEmpty || vm.destination.isEmpty || valueStartDate == false  || valueEndDate == false || valueSubmissionImage == false{
                 Text("Create")
                     .fontWeight(.bold)
                     .frame(height: 50)
                     .frame(maxWidth: .infinity)
-                    .background(.gray)
-                    .foregroundColor(graytimebg)
+                    .background(disabledcolor)
+                    .foregroundColor(disabledtext)
                     .cornerRadius(10)
                     .onTapGesture {
                         //Function Save trip plan data + Move to Trip Page
@@ -306,7 +307,7 @@ extension CreatePlanView {
                         }
                     }, label: {
                         Text((valueStartDate ? "\(vm.startDate, formatter: CreatePlanView.stackDateFormat)" : "Set Start Date"))
-                            .foregroundColor(valueStartDate ? .black : .gray)
+                            .foregroundColor(valueStartDate ? blacktext : hinttextcolor)
                             .font(Font.custom("Gilroy-Light", size: 15))
                         Spacer()
                         Image(systemName: "chevron.right")
@@ -346,7 +347,7 @@ extension CreatePlanView {
                     }
                 }, label: {
                     Text((valueStartDate ? "\(vm.startDate, formatter: CreatePlanView.stackDateFormat)" : "Set Start Date"))
-                        .foregroundColor(valueStartDate ? .black : .gray)
+                        .foregroundColor(valueStartDate ? blacktext : hinttextcolor)
                         .font(Font.custom("Gilroy-Light", size: 15))
                     Spacer()
                     Image(systemName: "chevron.right")
@@ -381,7 +382,7 @@ extension CreatePlanView {
                                 }
                             } label: {
                                 Text(valueStartDate ?  "\(vm.startDate, formatter: CreatePlanView.stackDateFormat)" : "Set Start Date")
-                                    .foregroundColor(valueStartDate ? .black : .gray)
+                                    .foregroundColor(valueStartDate ? blacktext : hinttextcolor)
                                     .font(Font.custom("Gilroy-Light", size: 15))
                                 Spacer()
                                 Image(systemName: "chevron.right")
@@ -443,7 +444,7 @@ extension CreatePlanView {
                         }
                     }, label: {
                         Text((valueEndDate ? "\(vm.endDate, formatter: CreatePlanView.stackDateFormat)" : "Set End Date"))
-                            .foregroundColor(valueEndDate ? .black : .gray)
+                            .foregroundColor(valueEndDate ? blacktext : hinttextcolor)
                             .font(Font.custom("Gilroy-Light", size: 15))
                         Spacer()
                         Image(systemName: "chevron.right")
@@ -483,7 +484,7 @@ extension CreatePlanView {
                     }
                 }, label: {
                     Text((valueEndDate ? "\(vm.endDate, formatter: CreatePlanView.stackDateFormat)" : "Set End Date"))
-                        .foregroundColor(valueEndDate ? .black : .gray)
+                        .foregroundColor(valueEndDate ? blacktext : hinttextcolor)
                         .font(Font.custom("Gilroy-Light", size: 15))
                     Spacer()
                     Image(systemName: "chevron.right")
@@ -518,7 +519,7 @@ extension CreatePlanView {
                                 }
                             } label: {
                                 Text((valueEndDate ? "\(vm.endDate, formatter: CreatePlanView.stackDateFormat)" : "Set End Date"))
-                                    .foregroundColor(valueEndDate ? .black : .gray)
+                                    .foregroundColor(valueEndDate ? blacktext : hinttextcolor)
                                     .font(Font.custom("Gilroy-Light", size: 15))
                                 Spacer()
                                 Image(systemName: "chevron.right")
@@ -567,8 +568,8 @@ extension CreatePlanView {
                                     showStartDate = false
                                 }
                             }, label: {
-                                Text((valueEndDate ? "\(vm.endDate, formatter: CreatePlanView.stackDateFormat)" : "Set Start Date"))
-                                    .foregroundColor(valueEndDate ? .black : .gray)
+                                Text((valueEndDate ? "\(vm.endDate, formatter: CreatePlanView.stackDateFormat)" : "Set End Date"))
+                                    .foregroundColor(valueEndDate ? blacktext : hinttextcolor)
                                     .font(Font.custom("Gilroy-Light", size: 15))
                                 Spacer()
                                 Image(systemName: "chevron.right")
