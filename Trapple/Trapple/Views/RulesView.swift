@@ -21,6 +21,7 @@ struct RulesView: View {
                 }
                 .listStyle(.plain)
             }
+            .background(graybg)
             .onAppear {
                 vm.fetchItems(planID: planID)
             }
@@ -114,7 +115,7 @@ extension RulesView {
                     }.buttonStyle(PlainButtonStyle())
                 }
             }
-//            .listRowBackground(graybg)
+            .listRowBackground(graybg)
             .listRowSeparator(.hidden)
             .listRowInsets(EdgeInsets())
             .frame(height: 100)
