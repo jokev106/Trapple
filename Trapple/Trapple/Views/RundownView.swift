@@ -15,6 +15,7 @@ struct RundownView: View {
     @Binding var planID: CKRecord.ID
     @Binding var startDate: Date
     @Binding var endDate: Date
+    
     @State private var selected = 0
     @State private var slider = 0
     @State private var posX = 0
@@ -25,7 +26,7 @@ struct RundownView: View {
     @State private var dates = ["August 3", "August 4", "August 5", "August 6", "August 7", "August 8", "August 9"]
     
     @State private var isExist = true
-    @State private var apaa = CKRecord.ID(recordName: "0")
+    @State private var isOpen = CKRecord.ID(recordName: "0")
     @State private var currentDate: String = ""
     
     var body: some View {
@@ -33,8 +34,6 @@ struct RundownView: View {
 //            NavigationView {
             VStack {
                 SegmentedControl
-                    
-                //                ScrollView {
                 VStack(spacing: 0) {
                     HStack {
                         Text(currentDate)
@@ -61,44 +60,44 @@ struct RundownView: View {
                     }
                     .padding(.horizontal, 30)
                     .padding(.vertical)
-                        
-                    if !vm.activity.isEmpty {
-                        List {
+                    
+                    ScrollView {
+                        if !vm.activity.isEmpty {
+                            //                        List {
                             ForEach(vm.activity.indices, id: \.self) { index in
                                 if dateFormatter(date: vm.activity[index].actualDate) == currentDate {
-                                    if apaa == vm.activity[index].recordID {
-                                        Button(action: { apaa = CKRecord.ID(recordName: "0") }) {
-                                            RundownDetailCardView(
-                                                activity: vm.activity[index].title, location: vm.activity[index].location, description: vm.activity[index].description, startTime: vm.activity[index].startDate, endTime: vm.activity[index].endDate
-                                            )
+                                    if isOpen == vm.activity[index].recordID {
+                                        Button(action: { isOpen = CKRecord.ID(recordName: "0") }) {
+                                            RundownDetailCardView(vm: vm, activity: vm.activity[index].title, location: vm.activity[index].location, description: vm.activity[index].description, startTime: vm.activity[index].startDate, endTime: vm.activity[index].endDate, index: index)
                                         }
-                                            
+                                        
                                     } else {
-                                        Button(action: { apaa = vm.activity[index].recordID! }) {
-                                            RundownCardview(activity: vm.activity[index].title, location: vm.activity[index].location, startTime: vm.activity[index].startDate)
+                                        Button(action: {
+                                            isOpen = vm.activity[index].recordID!
+                                        }) {
+                                            RundownCardview(vm: vm, planID: $planID, activity: vm.activity[index].title, location: vm.activity[index].location, startTime: vm.activity[index].startDate, index: index)
                                         }
                                     }
                                 }
                             }
-                            .onDelete(perform: vm.deleteItem)
+//                            .onDelete(perform: vm.deleteItem)
                             .foregroundColor(blacktext)
-                            .listRowSeparator(.hidden)
-                            .listRowInsets(EdgeInsets())
-                            //                                .padding(.horizontal)
-                            //                                .padding(.bottom)
+//                            .listRowBackground(graybg)
+//                            .listRowSeparator(.hidden, edges: .all)
+//                            .listRowInsets(EdgeInsets())
                             .animation(.default)
-                        }
+                            //                        }
                             
-                    } else {
-                        VStack {
-                            Text("No Activity")
-                                .foregroundColor(blacktext)
-                                .opacity(0.2)
+                        } else {
+                            VStack {
+                                Text("No Activity")
+                                    .foregroundColor(blacktext)
+                                    .opacity(0.2)
+                            }
+                            .frame(width: geometry.size.width, height: geometry.size.height / 1.2, alignment: .center)
                         }
-                        .frame(width: geometry.size.width, height: geometry.size.height / 1.2, alignment: .center)
                     }
                 }
-                //                }
             }
             .background(graybg)
             .font(Font.custom("Gilroy-Light", size: 15))
@@ -123,9 +122,8 @@ struct RundownView: View {
 //                }
             }
             .onAppear {
-                vm.activity.removeAll()
+                vm.resetList()
                 vm.getDates(startDate: startDate, endDate: endDate)
-                vm.fetchItems(planID: planID)
 //                }
             }
         }
