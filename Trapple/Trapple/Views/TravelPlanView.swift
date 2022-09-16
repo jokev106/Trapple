@@ -77,8 +77,8 @@ extension TravelPlanView {
 
             Spacer()
                 .frame(width: 15)
-            Button {
-
+            NavigationLink {
+                JoinPlanView()
             } label: {
                 ZStack{
                     Rectangle()
