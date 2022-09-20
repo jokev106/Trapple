@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct TrappleApp: App {
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
+//            PDFView(showPDF: .constant(true))
         }
     }
 }
